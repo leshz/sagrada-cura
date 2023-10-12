@@ -7,7 +7,7 @@ export default function Home() {
         <div id="stars3"></div>
       </div>
       <div className="container h-full flex justify-center align-middle flex-col">
-        <h1 className="title main">Sagradacura.com</h1>
+        <h1 className="title main">Sagrada Cura</h1>
         <h2 className="title secondary">
           ¡Pronto nuestra magia sagrada estará disponible para ti!
         </h2>

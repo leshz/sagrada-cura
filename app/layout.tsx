@@ -1,12 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Raleway } from "next/font/google";
+import Fav from "../public/favicon.ico";
 
-const monse = Montserrat({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"], weight: ["200", "400"] });
 
 export const metadata: Metadata = {
   title: "sagradacura.com | Sanación Natural",
   description: "Sanacion Natural y Espiritual",
+  icons: [{ rel: "icon", url: Fav.src }],
 };
 
 export default function RootLayout({
@@ -16,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={monse.className}>{children}</body>
+      <body className={raleway.className}>{children}</body>
     </html>
   );
 }

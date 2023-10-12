@@ -588,16 +588,12 @@ html {
 }
 
 .title {
-  left: 0;
-  right: 0;
   color: #fff;
   text-align: center;
-  font-weight: 300;
-  font-size: 50px;
 }
 .title.main {
-  font-weight: normal;
-  font-size: xx-large;
+  font-weight: 400;
+  font-size: 3rem;
   background: linear-gradient(to right, #fff 20%, #ff0 40%, #ff0 60%, #fff 80%);
   background-size: 200% auto;
   color: #000;
@@ -608,8 +604,10 @@ html {
   animation: shine 4s linear infinite;
 }
 .title.secondary {
-  font-weight: 100;
+  font-weight: 200;
   font-size: large;
+  letter-spacing: 3px;
+  text-shadow: 7px 4px 10px rgba(253, 236, 0, 0.6);
 }
 
 @keyframes animStar {
