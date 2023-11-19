@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "engines": {
     "node": "18.x"
@@ -31,6 +32,7 @@
     "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.1",
+    "husky": "^8.0.0",
     "prettier": "3.1.0",
     "typescript": "5.2.2"
   }
