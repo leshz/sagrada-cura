@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import Banner from '../components/banner/Banner'
+import DoubleBanner from '../components/banner/DoubleBanner'
 import ChooseProduct from '../components/Home/ChooseProduct'
 import BestSellingProduct from '../components/Home/BestSellingProduct'
 import JustForSection from '../components/Home/JustForSection'
@@ -14,23 +14,16 @@ import Testimonial from '../components/Home/Testimonial'
 import Newsletters from '../components/Home/Newsletter'
 import InstagramSection from '../components/Home/InstagramSection'
 import PromoModal from '../components/common/PromoModal'
+import LatestArticle from '../components/home2/LatestArticle'
 
 export default function Home() {
   return (
     <main>
-      <Banner />
-      <PromoModal />
+      <DoubleBanner />
       <ChooseProduct />
-      <BestSellingProduct />
-      <JustForSection />
-      <OfferBanner />
-      <NewestProduct />
       <ExclusiveProduct />
-      <SpecialOffer />
-      <BestBrand />
-      <MakeupSection />
+      <LatestArticle />
       <Testimonial />
-      <Newsletters />
       <InstagramSection />
     </main>
   )

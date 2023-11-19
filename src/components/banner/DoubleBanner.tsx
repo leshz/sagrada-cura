@@ -1,13 +1,9 @@
-import React, { useMemo } from "react";
-import Link from "next/link";
-import SwiperCore, {
-  Autoplay,
-  EffectFade,
-  Navigation,
-  Pagination,
-} from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation]);
+import React, { useMemo } from 'react'
+import Link from 'next/link'
+import SwiperCore from 'swiper'
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Banner2 = () => {
   const bannerSlide = useMemo(() => {
@@ -17,16 +13,16 @@ const Banner2 = () => {
       speed: 2000,
       loop: true,
       autoplay: true,
-      effect: "fade",
+      effect: 'fade',
       fadeEffect: {
-        crossFade: true,
+        crossFade: true
       },
       pagination: {
-        el: ".swiper-pagination2",
-        clickable: true,
-      },
-    };
-  },[])
+        el: '.swiper-pagination2',
+        clickable: true
+      }
+    }
+  }, [])
   return (
     <div className="banner-2-section mb-110 ">
       <div className="container-fluid p-0">
@@ -55,7 +51,7 @@ const Banner2 = () => {
                       className="banner-2-right-img-bg"
                       style={{
                         backgroundImage:
-                          "url(assets/img/home2/banner-right-bg-img1.png)",
+                          'url(assets/img/home2/banner-right-bg-img1.png)'
                       }}
                     >
                       <div className="banner-2-right-content">
@@ -80,7 +76,7 @@ const Banner2 = () => {
                       className="banner-2-right-img-bg"
                       style={{
                         backgroundImage:
-                          "url(assets/img/home2/banner-right-bg-img2.png)",
+                          'url(assets/img/home2/banner-right-bg-img2.png)'
                       }}
                     >
                       <div className="banner-2-right-content">
@@ -105,7 +101,7 @@ const Banner2 = () => {
                       className="banner-2-right-img-bg"
                       style={{
                         backgroundImage:
-                          "url(assets/img/home2/banner-right-bg-img3.png)",
+                          'url(assets/img/home2/banner-right-bg-img3.png)'
                       }}
                     >
                       <div className="banner-2-right-content">
@@ -130,7 +126,7 @@ const Banner2 = () => {
                       className="banner-2-right-img-bg"
                       style={{
                         backgroundImage:
-                          "url(assets/img/home2/banner-right-bg-img4.png)",
+                          'url(assets/img/home2/banner-right-bg-img4.png)'
                       }}
                     >
                       <div className="banner-2-right-content">
@@ -158,7 +154,7 @@ const Banner2 = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Banner2;
+export default Banner2

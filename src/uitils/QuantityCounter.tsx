@@ -1,15 +1,16 @@
-import React from "react";
-import useQuantityCounter from "../hooks/useQuantityCounter";
+'use client'
+import React from 'react'
+import useQuantityCounter from '../hooks/useQuantityCounter'
 
 function QuantityCounter() {
   const { quantity, increment, decrement, handleInputChange } =
-    useQuantityCounter(1);
+    useQuantityCounter(1)
 
   return (
     <div className="quantity-counter">
       <div
         className="quantity__minus"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: 'pointer' }}
         onClick={decrement}
       >
         <i className="bx bx-minus" />
@@ -23,13 +24,13 @@ function QuantityCounter() {
       />
       <div
         className="quantity__plus"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: 'pointer' }}
         onClick={increment}
       >
         <i className="bx bx-plus" />
       </div>
     </div>
-  );
+  )
 }
 
-export default QuantityCounter;
+export default QuantityCounter

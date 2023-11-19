@@ -1,31 +1,31 @@
-import React, { useMemo } from "react";
-import Link from "next/link";
+import React, { useMemo } from 'react'
+import Link from 'next/link'
 import SwiperCore, {
   Autoplay,
   EffectFade,
   Navigation,
-  Pagination,
-} from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { banner1Data } from "../../data/bannerData";
-SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation]);
+  Pagination
+} from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { banner1Data } from '../../data/bannerData'
+SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Banner = () => {
   const bannerSlideSetting = useMemo(() => {
     return {
-      slidesPerView: "auto",
+      slidesPerView: 'auto',
       speed: 1500,
       loop: true,
       autoplay: true,
-      effect: "fade",
+      effect: 'fade',
       fadeEffect: {
-        crossFade: true,
+        crossFade: true
       },
       pagination: {
-        el: ".swiper-pagination1",
-        clickable: true,
-      },
-    };
+        el: '.swiper-pagination1',
+        clickable: true
+      }
+    }
   }, [])
   return (
     <>
@@ -35,15 +35,15 @@ const Banner = () => {
             <div className="col-lg-12">
               <Swiper {...bannerSlideSetting} className="swiper banner1-slider">
                 <div className="swiper-wrapper">
-                  {banner1Data.map((e) => {
+                  {banner1Data.map(e => {
                     const {
                       id,
                       banner_img,
                       title,
                       description,
                       discount,
-                      blackFriday,
-                    } = e;
+                      blackFriday
+                    } = e
                     return (
                       <SwiperSlide className="swiper-slide" key={id}>
                         <div className="banner-wrapper">
@@ -102,7 +102,7 @@ const Banner = () => {
                           </div>
                         </div>
                       </SwiperSlide>
-                    );
+                    )
                   })}
                 </div>
                 <div className="swiper-pagination1" />
@@ -111,7 +111,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="banner-footer mb-110">
+      {/* <div className="banner-footer mb-110">
         <div className="container-fluid p-0">
           <div className="banner-footer-wrapper">
             <div className="row g-lg-4 gy-4">
@@ -212,9 +212,9 @@ const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner
