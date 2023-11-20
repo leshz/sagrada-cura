@@ -251,7 +251,7 @@ const Header = () => {
             </div>
           </div>
           <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
-            <div className="search-area">
+            {/* <div className="search-area">
               <div className="search-btn">
                 <i className="bx bx-search" />
               </div>
@@ -299,11 +299,11 @@ const Header = () => {
                   </div>
                 </form>
               </div>
-            </div>
+            </div> */}
             <div className="dropdown">
               <Cart />
             </div>
-            <div className="save-btn">
+            {/* <div className="save-btn">
               <Link legacyBehavior href="/shop/whistlist">
                 <a>
                   <svg
@@ -337,7 +337,7 @@ const Header = () => {
                   </g>
                 </svg>
               </button>
-            </div>
+            </div> */}
             <div
               className={`sidebar-button mobile-menu-btn ${
                 state.isSidebarOpen ? 'active' : ''
