@@ -2,10 +2,11 @@ import React, { useMemo } from 'react'
 import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { SwiperOptions } from 'swiper/types'
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const InstagramSection = () => {
-  const sldieSettings = useMemo(() => {
+  const sldieSettings: SwiperOptions = useMemo(() => {
     return {
       slidesPerView: 'auto',
       spaceBetween: 15,

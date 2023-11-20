@@ -5,6 +5,8 @@ import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useCountdownTimer } from '@/hooks/useCountdownTimer'
 import QuantityCounter from '@/uitils/QuantityCounter'
+import { SwiperOptions } from 'swiper/types'
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 const NewestProduct = () => {
   const [selectColor, setselectColor] = useState(0)
@@ -13,7 +15,7 @@ const NewestProduct = () => {
   }
   const endTime = '2023-10-23'
   const { days, hours, minutes, seconds } = useCountdownTimer(endTime)
-  const newestSlideSetting = useMemo(() => {
+  const newestSlideSetting: SwiperOptions = useMemo(() => {
     return {
       slidesPerView: 'auto',
       spaceBetween: 30,

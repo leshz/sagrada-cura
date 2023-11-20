@@ -1,43 +1,49 @@
-import useCustomSelect from "@/hooks/useCustomSelect";
-import React, { useEffect, useRef } from "react";
-const SelectComponent = ({ options, placeholder, open, customClass }) => {
+import useCustomSelect from '@/hooks/useCustomSelect'
+import React, { useEffect, useRef } from 'react'
+const SelectComponent = ({
+  options,
+  placeholder,
+  open = false,
+  customClass = ''
+}) => {
   const {
     isOpen,
     selectedOption,
     openDropdown,
     closeDropdown,
     toggleDropdown,
-    selectOption,
-  } = useCustomSelect(options, open);
+    selectOption
+  } = useCustomSelect(options, open)
 
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLInputElement>(null)
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = event => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       // Click is outside the dropdown, close the dropdown
-      closeDropdown();
+      closeDropdown()
     }
-  };
+  }
 
   useEffect(() => {
     if (isOpen) {
       // Add event listener when the component mounts
-      document.addEventListener("click", handleClickOutside);
+      document.addEventListener('click', handleClickOutside)
     }
 
     // Remove event listener when the component unmounts
     return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isOpen]);
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [isOpen])
 
-  const dropdownClassName = `nice-select ${customClass || ""} ${isOpen ? "open" : ""
-    }`;
+  const dropdownClassName = `nice-select ${customClass || ''} ${
+    isOpen ? 'open' : ''
+  }`
 
   return (
     <div
       className={dropdownClassName}
-      tabIndex="0"
+      tabIndex={0}
       onClick={toggleDropdown}
       ref={dropdownRef}
     >
@@ -46,12 +52,13 @@ const SelectComponent = ({ options, placeholder, open, customClass }) => {
         {options.map((option, index) => (
           <li
             key={index}
-            className={`option${selectedOption === option ? " selected focus" : ""
-              }`}
+            className={`option${
+              selectedOption === option ? ' selected focus' : ''
+            }`}
             data-value={index}
             onClick={() => {
-              selectOption(option);
-              openDropdown(); // Open the next dropdown
+              selectOption(option)
+              openDropdown() // Open the next dropdown
             }}
           >
             {option}
@@ -59,7 +66,7 @@ const SelectComponent = ({ options, placeholder, open, customClass }) => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default SelectComponent;
+export default SelectComponent

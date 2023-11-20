@@ -9,8 +9,9 @@ import { useCountdownTimer } from '@/hooks/useCountdownTimer'
 import QuantityCounter from '@/uitils/QuantityCounter'
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
+import { SwiperOptions } from 'swiper/types'
 
-function valuetext(value) {
+function valuetext(value: string) {
   return `${value}°C`
 }
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
@@ -18,13 +19,13 @@ SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 const CategoryOnTop = () => {
   const [isOpenSiebar, setIsOpenSidebar] = useState(false)
   const [selectColor, setselectColor] = useState(0)
-  const handleItemClick = index => {
+  const handleItemClick = (index: number) => {
     setselectColor(index)
   }
-  const sidebarRef = useRef(null)
+  const sidebarRef = useRef<HTMLInputElement>(null)
   const endTime = '2023-10-23'
   const { days, hours, minutes, seconds } = useCountdownTimer(endTime)
-  const sidebarBtnRef = useRef(null)
+  const sidebarBtnRef = useRef<HTMLInputElement>(null)
   const [activeColumn, setActiveColumn] = useState('column-4') // Initialize activeColumn to 'column-1'
   const [value, setValue] = useState([20, 37])
   const handleChange = (event, newValue) => {
@@ -38,7 +39,7 @@ const CategoryOnTop = () => {
       if (
         isOpenSiebar &&
         sidebarRef.current &&
-        !sidebarRef.current.contains(e.target)
+        !sidebarRef?.current.contains(e.target)
       ) {
         setIsOpenSidebar(false)
       }
@@ -68,7 +69,7 @@ const CategoryOnTop = () => {
     toggleSidebar()
   }
 
-  const slideSettings = useMemo(() => {
+  const slideSettings: SwiperOptions = useMemo(() => {
     return {
       slidesPerView: 'auto',
       spaceBetween: 30,
@@ -272,7 +273,6 @@ const CategoryOnTop = () => {
                 }}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
               />
               <div className="range-wrap">
                 <div className="slider-labels">

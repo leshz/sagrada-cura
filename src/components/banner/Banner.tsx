@@ -1,17 +1,14 @@
 import React, { useMemo } from 'react'
 import Link from 'next/link'
-import SwiperCore, {
-  Autoplay,
-  EffectFade,
-  Navigation,
-  Pagination
-} from 'swiper'
+import SwiperCore from 'swiper'
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { banner1Data } from '../../data/bannerData'
+import { SwiperOptions } from 'swiper/types'
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Banner = () => {
-  const bannerSlideSetting = useMemo(() => {
+  const bannerSlideSetting: SwiperOptions = useMemo(() => {
     return {
       slidesPerView: 'auto',
       speed: 1500,

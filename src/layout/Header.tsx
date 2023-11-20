@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useReducer, useRef } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Cart from '../components/common/Cart'
 import SelectComponent from '../components/common/SelectComponent'
 const initialState = {
@@ -50,7 +50,7 @@ const Header = () => {
     const { scrollY } = window
     dispatch({ type: 'setScrollY', payload: scrollY })
   }
-  const currentRoute = useRouter().pathname || '/'
+  const currentRoute = usePathname()
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => {
