@@ -23,20 +23,36 @@ export const metadata: Metadata = {
   description: ''
 }
 
-export default function RootLayout({
+async function getLayoutInfo() {
+  const res = await fetch(
+    'http://127.0.0.1:1337/api/general?populate[top][populate]=*&populate[menu][populate]=*&populate[footer][populate]=*&locale=es'
+  )
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  return res.json()
+}
+
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  const {
+    data: {
+      attributes: { top, menu, footer }
+    }
+  } = await getLayoutInfo()
+
   return (
     <html lang="en">
       <Script src="/assets/js/bootstrap.min.js" />
       <body className={inter.className}>
-        <Topbar />
-        <Header></Header>
-        <Modal />
+        <Topbar data={top} />
+        {/* <Header data={menu}></Header> */}
+        {/* <Modal /> */}
         {children}
-        <Footer2></Footer2>
+        {/* <Footer2 data={footer}></Footer2> */}
       </body>
     </html>
   )

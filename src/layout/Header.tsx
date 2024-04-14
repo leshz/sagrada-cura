@@ -43,20 +43,13 @@ function reducer(state, action) {
   }
 }
 
-const Header = () => {
+const Header = ({ data }) => {
+
+  
   const [state, dispatch] = useReducer(reducer, initialState)
   const headerRef = useRef(null)
-  const handleScroll = () => {
-    const { scrollY } = window
-    dispatch({ type: 'setScrollY', payload: scrollY })
-  }
+
   const currentRoute = usePathname()
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
   const toggleMenu = menu => {
     dispatch({ type: 'TOGGLE_MENU', menu })
   }
@@ -71,10 +64,7 @@ const Header = () => {
   }
   return (
     <>
-      <header
-        ref={headerRef}
-        className={`header-area style-2 ${state.scrollY > 10 ? 'sticky' : ''}`}
-      >
+      <header ref={headerRef} className={`header-area style-2 sticky}`}>
         <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
           <div className="header-logo d-lg-none d-flex">
             <Link legacyBehavior href="/">
