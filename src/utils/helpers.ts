@@ -1,4 +1,4 @@
-import { availableIcons } from './constants'
+import { availableIcons, availablePaths } from './constants'
 
 export const phoneFormmater = (phone: string) =>
   phone.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
@@ -9,4 +9,18 @@ export const getIcons = (icon: string): string => {
     return 'no icon'
   }
   return iconName
+}
+
+export const getMenuData = data => {
+  const menudata = availablePaths.map(path => {
+    const item = data[path] 
+    if (item === null) return null
+    const multiple = Array.isArray(item)
+    return {
+      item,
+      multiple,
+      name: path
+    }
+  })
+  return menudata
 }

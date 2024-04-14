@@ -1,42 +1,29 @@
-import Link from "next/link";
-import React from "react";
+import { phoneFormmater } from '@/utils/helpers'
+import { PhoneIcon } from '@/icons/phone'
 
-const Topbar = () => {
+import Link from 'next/link'
+import { SocialHeader } from '@/components/social-header'
+
+const Topbar = ({ data }) => {
+  const { phone, title, socialLink } = data
+  
   return (
-    <div className="top-bar">
-      <div className="container">
+    <div className="top-bar2">
+      <div className="container-md container-fluid">
         <div className="row">
           <div className="col-lg-12 d-flex align-items-center justify-content-between gap-3">
             <div className="top-bar-left">
-              <p>
-                *New Winter Product 2023{" "}
-                <Link legacyBehavior href="/shop">
-                  <a>Shop Now*</a>
-                </Link>
-              </p>
+              <PhoneIcon />
+              <Link href={`tel:${phone}`}>{phoneFormmater(phone)}</Link>
             </div>
-            <div className="company-logo">
-              <Link legacyBehavior href="/">
-                <a>
-                  <img src="/assets/img/logo.svg" alt="" />
-                </a>
-              </Link>
-            </div>
-            <div className="search-area">
-              <form>
-                <div className="form-inner">
-                  <input type="text" placeholder="Search..." />
-                  <button type="submit">
-                    <i className="bx bx-search" />
-                  </button>
-                </div>
-              </form>
-            </div>
+            {/* TODO: Move to componente to render markdowns} */}
+            <p>{title}</p>
+            <SocialHeader links={socialLink} />
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Topbar;
+export default Topbar

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { mock } from '@/mock/mockLayout'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
-import Header from '@/layout/Header'
+import { Header } from '@/layout/Header'
 import Footer from '@/layout/Footer'
 import Footer2 from '@/layout/Footer2'
-import Topbar from '@/layout/Topbar2'
+import Topbar from '@/layout/Topbar'
 import Modal from '@/layout/AuthModal'
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/bootstrap-icons.css'
@@ -48,8 +49,8 @@ export default async function RootLayout({
     <html lang="en">
       <Script src="/assets/js/bootstrap.min.js" />
       <body className={inter.className}>
-        <Topbar data={top} />
-        {/* <Header data={menu}></Header> */}
+        {/* <Topbar data={top} /> */}
+        <Header data={menu}></Header>
         {/* <Modal /> */}
         {children}
         {/* <Footer2 data={footer}></Footer2> */}
