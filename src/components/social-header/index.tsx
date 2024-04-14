@@ -5,7 +5,7 @@ const SocialHeader = ({ links }) => {
     const icon = getIcons(text)
     return (
       <li>
-        <a href={link} target='_blank'>
+        <a href={link} target="_blank">
           <i className={`fab ${icon}`} />
         </a>
       </li>
@@ -15,7 +15,7 @@ const SocialHeader = ({ links }) => {
   return (
     <div className="social-area">
       <ul>
-        {links.map(item => {
+        {links?.map(item => {
           return <SocialItem key={item.id} {...item} />
         })}
       </ul>

@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { SocialHeader } from '@/components/social-header'
 
 const Topbar = ({ data }) => {
-  const { phone, title, socialLink } = data
-  
+  const { top } = data
+  const { phone, title, social_links: links } = top
+
   return (
     <div className="top-bar2">
       <div className="container-md container-fluid">
@@ -18,7 +19,7 @@ const Topbar = ({ data }) => {
             </div>
             {/* TODO: Move to componente to render markdowns} */}
             <p>{title}</p>
-            <SocialHeader links={socialLink} />
+            <SocialHeader links={links} />
           </div>
         </div>
       </div>

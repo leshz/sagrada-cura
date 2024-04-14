@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Topbar from "./Topbar";
-import Header from "./Header";
+import Topbar from "./topbar";
+import Header from "./header";
 import Footer from "./Footer";
 import AuthModal from "./AuthModal";
 import Breadcrumb from "../components/common/Breadcrumb";

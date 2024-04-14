@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Menu } from '@/components/menu'
 import { getMenuData } from '@/utils/helpers'
 
 const Header = ({ data }) => {
-  const { icon = {}, cart = false } = data
+  const { menu: cmsMenu } = data
+  const { logo = {}, cart = false } = cmsMenu
   const [menu, setMenu] = useState({
     activeMenu: '',
     isSidebarOpen: false
@@ -25,22 +26,22 @@ const Header = ({ data }) => {
       activeMenu: subMenu
     })
   }
-  const menuItems = getMenuData(data)
-
-  console.log(menuItems)
+  const menuItems = getMenuData(cmsMenu)
 
   return (
     <Menu.Root>
-      <Menu.Logo logo={icon} />
-      <Menu.NavBar isOpen={menu.isSidebarOpen}>
-        {menuItems.map((section: any, index) => {
+      <Menu.Logo logo={logo} />
+      <Menu.NavBar isOpen={menu.isSidebarOpen} data={data}>
+        {menuItems?.map((section: any, index) => {
           const {
             multiple = false,
             name,
             item,
-            item: { id }
+            item: { id = index }
           } = section
-          return multiple ? (
+          return !multiple ? (
+            <Menu.Single key={`${id}-${index}`} {...item} />
+          ) : (
             <Menu.Multiple
               toggleSubMenu={toggleSubMenu}
               activeMenu={menu.activeMenu}
@@ -48,8 +49,6 @@ const Header = ({ data }) => {
               name={name}
               key={index}
             />
-          ) : (
-            <Menu.Single key={`${id}-${index}`} {...item} />
           )
         })}
       </Menu.NavBar>

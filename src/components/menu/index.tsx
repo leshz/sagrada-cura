@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { Cart } from '@/components/common/Cart'
+import { phoneFormmater } from '@/utils/helpers'
 
 const SingleItemMenu = ({ link, text }) => {
   return (
@@ -72,7 +73,13 @@ const LogoMenu = ({ logo }) => {
   )
 }
 
-const NavBarRoot = ({ children, isOpen }) => {
+const NavBarRoot = ({ children, isOpen, data }) => {
+  const {
+    top: { phone },
+    menu: {
+      mobile: { phone: message, email }
+    }
+  } = data
   return (
     <div className={`main-menu ${isOpen ? 'show-menu' : ''}`}>
       <ul className="menu-list">{children}</ul>
@@ -90,9 +97,9 @@ const NavBarRoot = ({ children, isOpen }) => {
               </svg>
             </div>
             <div className="hotline-info">
-              <span>Call Us Now</span>
+              <span>{message}</span>
               <h6>
-                <a href="tel:+8801701111000">+880 170 1111 000</a>
+                <a href="tel:phone">{phoneFormmater(phone)}</a>
               </h6>
             </div>
           </div>
@@ -108,7 +115,7 @@ const NavBarRoot = ({ children, isOpen }) => {
               </svg>
             </div>
             <div className="email-info">
-              <span>Email Now</span>
+              <span>{email}</span>
               <h6>
                 <a href="mailto:example@gmail.com">example@gmail.com</a>
               </h6>
@@ -141,7 +148,7 @@ const RightSideMenu = ({ click, isOpen, cart }) => {
 
 const MainMenuRoot = ({ children }) => {
   return (
-    <header className="header-area style-2 sticky">
+    <header className="header-area style-2">
       <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
         {children}
       </div>

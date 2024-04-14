@@ -12,15 +12,17 @@ export const getIcons = (icon: string): string => {
 }
 
 export const getMenuData = data => {
-  const menudata = availablePaths.map(path => {
-    const item = data[path] 
-    if (item === null) return null
-    const multiple = Array.isArray(item)
-    return {
-      item,
-      multiple,
-      name: path
-    }
-  })
+  const menudata = availablePaths
+    .map(path => {
+      const item = data[path] || null
+      if (item === null) return null
+      const multiple = Array.isArray(item)
+      return {
+        item,
+        multiple,
+        name: path
+      }
+    })
+    .filter(item => item !== null)
   return menudata
 }

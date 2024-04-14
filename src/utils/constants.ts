@@ -5,4 +5,4 @@ export const availableIcons = {
   ig: 'fa-instagram'
 }
 
-export const availablePaths: string[] = ['Home', 'NuestraMarca', 'Productos']
+export const availablePaths: string[] = ['home', 'nuestra_marca', 'productos']

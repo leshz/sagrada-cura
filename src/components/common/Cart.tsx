@@ -15,8 +15,7 @@ const Cart = () => {
   // Close the cart when a click occurs outside of the cart area
   const handleOutsideClick = event => {
     if (
-      cartMenuRef.current &&
-      !cartMenuRef.current.contains(event.target) &&
+      !cartMenuRef?.current?.contains(event.target) &&
       cartButtonRef.current !== event.target
     ) {
       setShowCart(false)
