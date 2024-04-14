@@ -3,10 +3,9 @@ import { mock } from '@/mock/mockLayout'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { Header } from '@/layout/header'
-import Footer from '@/layout/Footer'
-import Footer2 from '@/layout/Footer2'
+import { Footer } from '@/layout/footer'
 import Topbar from '@/layout/topbar'
-import Modal from '@/layout/AuthModal'
+
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/bootstrap-icons.css'
 // import '../../public/assets/css/fontawesome.min.css'
@@ -40,20 +39,17 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const {
-    data: {
-      attributes: layoutData
-    }
+    data: { attributes: layoutData }
   } = await getLayoutInfo()
 
   return (
     <html lang="en">
       <Script src="/assets/js/bootstrap.min.js" />
       <body className={inter.className}>
-        {/* <Topbar data={layoutData} /> */}
-        <Header data={layoutData}/>
-        {/* <Modal />
+        <Topbar data={layoutData} />
+        <Header data={layoutData} />
         {children}
-        <Footer2 data={layoutData}></Footer2>  */}
+        <Footer data={layoutData}></Footer>
       </body>
     </html>
   )
