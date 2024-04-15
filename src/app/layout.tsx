@@ -3,7 +3,7 @@ import { mock } from '@/mock/mockLayout'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { Header } from '@/layout/header'
-import { Footer } from '@/layout/footer'
+import { FooterLayout } from '@/layout/footer'
 import Topbar from '@/layout/topbar'
 
 import '../../public/assets/css/bootstrap.min.css'
@@ -49,7 +49,7 @@ export default async function RootLayout({
         <Topbar data={layoutData} />
         <Header data={layoutData} />
         {children}
-        <Footer data={layoutData}></Footer>
+        <FooterLayout data={layoutData} />
       </body>
     </html>
   )
