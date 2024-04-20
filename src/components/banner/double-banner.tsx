@@ -1,6 +1,7 @@
 'use client'
 import { useMemo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -11,48 +12,64 @@ import {
 } from '@strapi/blocks-react-renderer'
 
 const FixedBanner = ({ content }) => {
-  const { title } = content
+  const { title = {}, image = {}, link = {} } = content
+
+  const imagenToBoanner = image?.data?.attributes || null
+
+  const { text = '', link: url = '' } = link
   return (
     <div className="col-xxl-3 col-xl-4">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          <img src="/assets/img/home2/banner-2-left-img.png" alt="" />
+          {imagenToBoanner && (
+            <Image
+              src={imagenToBoanner.url}
+              width={imagenToBoanner.width}
+              height={imagenToBoanner.height}
+              alt=""
+            />
+          )}
         </div>
+
         <div className="banner-2-left-content">
-          <BlocksRenderer
-            content={title}
-            blocks={{
-              // You can use the default components to set class names...
-              paragraph: ({ children }) => (
-                <h2 className="text-neutral900 max-w-prose">{children}</h2>
-              ),
-              // ...or point to a design system
-              heading: ({ children, level }) => {
-                switch (level) {
-                  case 1:
-                    return <h2 className="">{children}</h2>
-                  case 2:
-                    return <h2 className="">{children}</h2>
-                  case 3:
-                    return <h2 className="">{children}</h2>
-                  case 4:
-                    return <h2 className="">{children}</h2>
-                  case 5:
-                    return <h2 className="">{children}</h2>
-                  case 6:
-                    return <h2 className="">{children}</h2>
-                  default:
-                    return <h2 className="">{children}</h2>
+          {text && (
+            <BlocksRenderer
+              content={title}
+              blocks={{
+                // You can use the default components to set class names...
+                paragraph: ({ children }) => (
+                  <h2 className="text-neutral900 max-w-prose">{children}</h2>
+                ),
+                // ...or point to a design system
+                heading: ({ children, level }) => {
+                  switch (level) {
+                    case 1:
+                      return <h2 className="">{children}</h2>
+                    case 2:
+                      return <h2 className="">{children}</h2>
+                    case 3:
+                      return <h2 className="">{children}</h2>
+                    case 4:
+                      return <h2 className="">{children}</h2>
+                    case 5:
+                      return <h2 className="">{children}</h2>
+                    case 6:
+                      return <h2 className="">{children}</h2>
+                    default:
+                      return <h2 className="">{children}</h2>
+                  }
                 }
-              }
-            }}
-            modifiers={{
-              bold: ({ children }) => <strong>{children}</strong>
-            }}
-          />
-          <Link href="/shop" className="primary-btn3 hover-btn5">
-            Shop Now
-          </Link>
+              }}
+              modifiers={{
+                bold: ({ children }) => <strong>{children}</strong>
+              }}
+            />
+          )}
+          {url && (
+            <Link href="/shop" className="primary-btn3 hover-btn5">
+              {text}
+            </Link>
+          )}
         </div>
       </div>
     </div>
