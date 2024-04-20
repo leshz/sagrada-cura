@@ -12,10 +12,8 @@ import {
 } from '@strapi/blocks-react-renderer'
 
 const FixedBanner = ({ content }) => {
-  const { title = {}, image = {}, link = {} } = content
-
+  const { title = {}, image = {}, link = {} } = content || {}
   const imagenToBoanner = image?.data?.attributes || null
-
   const { text = '', link: url = '' } = link
   return (
     <div className="col-xxl-3 col-xl-4">
@@ -66,7 +64,7 @@ const FixedBanner = ({ content }) => {
             />
           )}
           {url && (
-            <Link href="/shop" className="primary-btn3 hover-btn5">
+            <Link href={url} className="primary-btn3 hover-btn5">
               {text}
             </Link>
           )}
@@ -76,8 +74,43 @@ const FixedBanner = ({ content }) => {
   )
 }
 
+const BannerSlide = () => {
+  return (
+    <SwiperSlide className="swiper-slide">
+      <div
+        className="banner-2-right-img-bg"
+        style={{
+          backgroundImage: 'url(assets/img/home2/banner-right-bg-img1.png)'
+        }}
+      >
+        <div className="banner-2-right-content">
+          <h1>
+            Makeup Package <span>Under</span>
+            <strong>$25</strong>
+          </h1>
+          <p>
+            Whatever your summer looks like, bring yourown heat with up to 25%
+            off Lumin Brand.
+          </p>
+          <Link
+            className="primary-btn3 black-bg hover-btn5 hover-white"
+            href="/shop"
+          >
+            Shop Now
+          </Link>
+        </div>
+      </div>
+    </SwiperSlide>
+  )
+}
+
 const DoubleBanner = ({ data }) => {
-  const { fixed_banner } = data
+  console.log(data)
+  const {
+    banners,
+    banners: { dinamic_banner = [] }
+  } = data
+
 
   const bannerSlide = useMemo(() => {
     return {
@@ -100,111 +133,15 @@ const DoubleBanner = ({ data }) => {
     <div className="banner-2-section mb-110 ">
       <div className="container-fluid p-0">
         <div className="row">
-          <FixedBanner content={fixed_banner} />
+          <FixedBanner content={banners} />
           <div className="col-xxl-9 col-xl-8">
             <div className="banner-2-right">
               <Swiper {...bannerSlide} className="swiper banner2-slider">
                 <div className="swiper-wrapper">
-                  <SwiperSlide className="swiper-slide">
-                    <div
-                      className="banner-2-right-img-bg"
-                      style={{
-                        backgroundImage:
-                          'url(assets/img/home2/banner-right-bg-img1.png)'
-                      }}
-                    >
-                      <div className="banner-2-right-content">
-                        <h1>
-                          Makeup Package <span>Under</span>
-                          <strong>$25</strong>
-                        </h1>
-                        <p>
-                          Whatever your summer looks like, bring yourown heat
-                          with up to 25% off Lumin Brand.
-                        </p>
-                        <Link legacyBehavior href="/shop">
-                          <a className="primary-btn3 black-bg hover-btn5 hover-white">
-                            Shop Now
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide className="swiper-slide">
-                    <div
-                      className="banner-2-right-img-bg"
-                      style={{
-                        backgroundImage:
-                          'url(assets/img/home2/banner-right-bg-img2.png)'
-                      }}
-                    >
-                      <div className="banner-2-right-content">
-                        <h2>
-                          Face Accessories <span>Under</span>
-                          <strong>$25</strong>
-                        </h2>
-                        <p>
-                          Whatever your summer looks like, bring yourown heat
-                          with up to 25% off Lumin Brand.
-                        </p>
-                        <Link legacyBehavior href="/shop">
-                          <a className="primary-btn3 black-bg hover-btn5 hover-white">
-                            Shop Now
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide className="swiper-slide">
-                    <div
-                      className="banner-2-right-img-bg"
-                      style={{
-                        backgroundImage:
-                          'url(assets/img/home2/banner-right-bg-img3.png)'
-                      }}
-                    >
-                      <div className="banner-2-right-content">
-                        <h2>
-                          Beauty Product <span>Under</span>
-                          <strong>$25</strong>
-                        </h2>
-                        <p>
-                          Whatever your summer looks like, bring yourown heat
-                          with up to 25% off Lumin Brand.
-                        </p>
-                        <Link legacyBehavior href="/shop">
-                          <a className="primary-btn3 black-bg hover-btn5 hover-white">
-                            Shop Now
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide className="swiper-slide">
-                    <div
-                      className="banner-2-right-img-bg"
-                      style={{
-                        backgroundImage:
-                          'url(assets/img/home2/banner-right-bg-img4.png)'
-                      }}
-                    >
-                      <div className="banner-2-right-content">
-                        <h2>
-                          Makeup Package <span>Under</span>
-                          <strong>$25</strong>
-                        </h2>
-                        <p>
-                          Whatever your summer looks like, bring yourown heat
-                          with up to 25% off Lumin Brand.
-                        </p>
-                        <Link legacyBehavior href="/shop">
-                          <a className="primary-btn3 black-bg hover-btn5 hover-white">
-                            Shop Now
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </SwiperSlide>
+                  {dinamic_banner.map(slide => {
+                    const { id } = slide
+                    return <BannerSlide key={id} />
+                  })}
                 </div>
                 <div className="swiper-pagination2" />
               </Swiper>

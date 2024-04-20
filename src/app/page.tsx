@@ -1,4 +1,5 @@
-import { DoubleBanner } from '../components/banner/double-banner'
+import { DoubleBanner } from '@/components/banner/double-banner'
+import { Cms } from '@/services'
 // import ChooseProduct from '../components/Home/ChooseProduct'
 // import BestSellingProduct from '../components/Home/BestSellingProduct'
 // import JustForSection from '../components/Home/JustForSection'
@@ -15,22 +16,12 @@ import { DoubleBanner } from '../components/banner/double-banner'
 // import LatestArticle from '../components/home2/LatestArticle'
 import { Suspense } from 'react'
 
-async function getPageInfo() {
-  const res = await fetch('http://127.0.0.1:1337/api/home?populate[fixed_banner][populate]=*')
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  return res.json()
-}
-
 export default async function Home() {
-  const {
-    data: { attributes }
-  } = await getPageInfo()
+  const data = await Cms('/home')
   return (
     <main>
       <Suspense>
-        <DoubleBanner data={attributes} />
+        <DoubleBanner data={data} />
       </Suspense>
       {/* <ChooseProduct /> */}
       {/* <ExclusiveProduct />

@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import { Header } from '@/layout/header'
 import { FooterLayout } from '@/layout/footer'
 import Topbar from '@/layout/topbar'
+import { Cms } from '@/services'
 
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/bootstrap-icons.css'
@@ -23,33 +24,21 @@ export const metadata: Metadata = {
   description: ''
 }
 
-async function getLayoutInfo() {
-  const res = await fetch(
-    'http://127.0.0.1:1337/api/general?populate[top][populate]=*&populate[menu][populate]=*&populate[footer][populate]=*&locale=es'
-  )
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  return res.json()
-}
-
 export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
-  const {
-    data: { attributes: layoutData }
-  } = await getLayoutInfo()
+  const data = await Cms('/general?locale=es')
 
   return (
     <html lang="en">
       <Script src="/assets/js/bootstrap.min.js" />
       <body className={inter.className}>
-        <Topbar data={layoutData} />
-        <Header data={layoutData} />
+        <Topbar data={data} />
+        <Header data={data} />
         {children}
-        <FooterLayout data={layoutData} />
+        <FooterLayout data={data} />
       </body>
     </html>
   )
