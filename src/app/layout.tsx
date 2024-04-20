@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { mock } from '@/mock/mockLayout'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { Header } from '@/layout/header'

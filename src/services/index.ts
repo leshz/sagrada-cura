@@ -1,7 +1,7 @@
 'use server'
 
 const Cms = async (url, options = {}) => {
-  const basePath = 'http://127.0.0.1:1337/api'
+  const basePath = `${process.env.DOMAIN}/api`
   const buildUrl = `${basePath}${url}`
   try {
     const response = await fetch(buildUrl, options)
@@ -10,7 +10,7 @@ const Cms = async (url, options = {}) => {
     } = await response.json()
     return info
   } catch (error) {
-    console.log(`Error fetching data: ${error}`)
+    throw new Error(`Error fetching data: on ${buildUrl} `)
   }
 }
 
