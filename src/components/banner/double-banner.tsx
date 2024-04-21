@@ -68,73 +68,16 @@ const FixedBanner = ({ content }) => {
   )
 }
 
-const BannerSlide = ({ slide }) => {
-  const { image, text } = slide || {}
-  const {
-    data: { attributes: imageData }
-  } = image
-
-  return (
-    <SwiperSlide className="swiper-slide">
-      <div
-        className="banner-2-right-img-bg"
-        style={{
-          backgroundImage: `url(${imageData.url})`
-        }}
-      >
-        {text && (
-          <div className="banner-2-right-content">
-            <BlocksRenderer
-              content={text}
-              blocks={{
-                // You can use the default components to set class names...
-                paragraph: ({ children }) => (
-                  <h2 className="text-neutral900 max-w-prose">{children}</h2>
-                ),
-                // ...or point to a design system
-                heading: ({ children, level }) => {
-                  switch (level) {
-                    case 1:
-                      return <h1 className="">{children}</h1>
-                    case 2:
-                      return <h2 className="">{children}</h2>
-                    case 3:
-                      return <h3 className="">{children}</h3>
-                    case 4:
-                      return <h4 className="">{children}</h4>
-                    case 5:
-                      return <h5 className="">{children}</h5>
-                    case 6:
-                      return <h6 className="">{children}</h6>
-                    default:
-                      return <h1 className="">{children}</h1>
-                  }
-                }
-              }}
-              modifiers={{
-                bold: ({ children }) => <strong>{children}</strong>
-              }}
-            />
-          </div>
-        )}
-      </div>
-    </SwiperSlide>
-  )
-}
-
 const DoubleBanner = ({ data }) => {
-  const {
-    banners,
-    banners: { dinamic_banner = [] }
-  } = data
+  const { dinamic_banner = [] } = data
 
-  const bannerSlide = useMemo(() => {
+  const configBanner = useMemo(() => {
     return {
       slidesPerView: 1,
       spaceBetween: 30,
       speed: 2000,
-      loop: dinamic_banner.length > 1,
-      autoplay: true,
+      loop: true,
+      autoplay: false,
       effect: 'fade',
       fadeEffect: {
         crossFade: true
@@ -144,19 +87,70 @@ const DoubleBanner = ({ data }) => {
         clickable: true
       }
     }
-  }, [dinamic_banner])
+  }, [])
   return (
     <div className="banner-2-section mb-110 ">
       <div className="container-fluid p-0">
         <div className="row">
-          <FixedBanner content={banners} />
+          <FixedBanner content={data} />
           <div className="col-xxl-9 col-xl-8">
             <div className="banner-2-right">
-              <Swiper {...bannerSlide} className="swiper banner2-slider">
+              <Swiper {...configBanner} className="swiper banner2-slider">
                 <div className="swiper-wrapper">
                   {dinamic_banner.map(slide => {
-                    const { id } = slide
-                    return <BannerSlide key={id} slide={slide} />
+                    const { image, text } = slide || {}
+                    const {
+                      data: { attributes: imageData }
+                    } = image
+
+                    return (
+                      <SwiperSlide key={slide.id} className="swiper-slide">
+                        <div
+                          className="banner-2-right-img-bg"
+                          style={{
+                            background: `url(${imageData.url}) center center / cover scroll no-repeat`
+                          }}
+                        >
+                          {text && (
+                            <div className="banner-2-right-content">
+                              <BlocksRenderer
+                                content={text}
+                                blocks={{
+                                  paragraph: ({ children }) => (
+                                    <h2 className="text-neutral900 max-w-prose">
+                                      {children}
+                                    </h2>
+                                  ),
+                                  heading: ({ children, level }) => {
+                                    switch (level) {
+                                      case 1:
+                                        return <h1 className="">{children}</h1>
+                                      case 2:
+                                        return <h2 className="">{children}</h2>
+                                      case 3:
+                                        return <h3 className="">{children}</h3>
+                                      case 4:
+                                        return <h4 className="">{children}</h4>
+                                      case 5:
+                                        return <h5 className="">{children}</h5>
+                                      case 6:
+                                        return <h6 className="">{children}</h6>
+                                      default:
+                                        return <h1 className="">{children}</h1>
+                                    }
+                                  }
+                                }}
+                                modifiers={{
+                                  bold: ({ children }) => (
+                                    <strong>{children}</strong>
+                                  )
+                                }}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </SwiperSlide>
+                    )
                   })}
                 </div>
                 <div className="swiper-pagination2" />

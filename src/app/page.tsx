@@ -1,6 +1,6 @@
 import { DoubleBanner } from '@/components/banner/double-banner'
 import { Cms } from '@/services'
-// import ChooseProduct from '../components/Home/ChooseProduct'
+import { ChooseProduct } from '@/components/choose-product'
 // import BestSellingProduct from '../components/Home/BestSellingProduct'
 // import JustForSection from '../components/Home/JustForSection'
 // import OfferBanner from '../components/Home/OfferBanner'
@@ -14,16 +14,14 @@ import { Cms } from '@/services'
 // import InstagramSection from '../components/Home/InstagramSection'
 // import PromoModal from '../components/common/PromoModal'
 // import LatestArticle from '../components/home2/LatestArticle'
-import { Suspense } from 'react'
+// import { Suspense } from 'react'
 
 export default async function Home() {
-  const data = await Cms('/home')
+  const { banners, product_categories } = await Cms('/home')
   return (
     <main>
-      <Suspense>
-        <DoubleBanner data={data} />
-      </Suspense>
-      {/* <ChooseProduct /> */}
+      {/* <DoubleBanner data={banners} /> */}
+      <ChooseProduct products={product_categories} />
       {/* <ExclusiveProduct />
       <LatestArticle />
       <Testimonial />
