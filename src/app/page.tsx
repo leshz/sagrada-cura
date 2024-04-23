@@ -20,8 +20,8 @@ export default async function Home() {
   const { banners, product_categories, highlight_products } = await Cms('/home')
   return (
     <main>
-      {/* <DoubleBanner data={banners} />
-      <ChooseProduct products={product_categories} /> */}
+      <DoubleBanner data={banners} />
+      <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
       {/* <LatestArticle />
       <Testimonial />
