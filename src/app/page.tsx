@@ -1,31 +1,31 @@
-import { DoubleBanner } from '@/components/banner/double-banner'
-import { Cms } from '@/services'
 import { ChooseProduct } from '@/components/choose-product'
-// import BestSellingProduct from '../components/Home/BestSellingProduct'
-// import JustForSection from '../components/Home/JustForSection'
-// import OfferBanner from '../components/Home/OfferBanner'
-// import NewestProduct from '../components/Home/NewestProduct'
-// import ExclusiveProduct from '../components/Home/ExclusiveProduct'
-// import SpecialOffer from '../components/Home/SpecialOffer'
-// import BestBrand from '../components/Home/BestBrand'
-// import MakeupSection from '../components/Home/MakeupSection'
-// import Testimonial from '../components/Home/Testimonial'
-// import Newsletters from '../components/Home/Newsletter'
-// import InstagramSection from '../components/Home/InstagramSection'
-// import PromoModal from '../components/common/PromoModal'
-// import LatestArticle from '../components/home2/LatestArticle'
-// import { Suspense } from 'react'
+import { Cms } from '@/services'
+import { DoubleBanner } from '@/components/banner/double-banner'
+import { HightLights } from '@/components/highlight-product'
+import { Suspense } from 'react'
+import BestBrand from '../components/Home/BestBrand'
+import BestSellingProduct from '../components/Home/BestSellingProduct'
+import InstagramSection from '../components/Home/InstagramSection'
+import JustForSection from '../components/Home/JustForSection'
+import LatestArticle from '../components/home2/LatestArticle'
+import MakeupSection from '../components/Home/MakeupSection'
+import NewestProduct from '../components/Home/NewestProduct'
+import Newsletters from '../components/Home/Newsletter'
+import OfferBanner from '../components/Home/OfferBanner'
+import PromoModal from '../components/common/PromoModal'
+import SpecialOffer from '../components/Home/SpecialOffer'
+import Testimonial from '../components/Home/Testimonial'
 
 export default async function Home() {
-  const { banners, product_categories } = await Cms('/home')
+  const { banners, product_categories, highlight_products } = await Cms('/home')
   return (
     <main>
-      {/* <DoubleBanner data={banners} /> */}
-      <ChooseProduct products={product_categories} />
-      {/* <ExclusiveProduct />
-      <LatestArticle />
+      {/* <DoubleBanner data={banners} />
+      <ChooseProduct products={product_categories} /> */}
+      <HightLights highlights={highlight_products} />
+      {/* <LatestArticle />
       <Testimonial />
-      <InstagramSection />  */}
+      <InstagramSection /> */}
     </main>
   )
 }
