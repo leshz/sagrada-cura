@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef } from 'react'
 
 const Cart = () => {
   const [showCart, setShowCart] = useState(false)
-  const cartButtonRef = useRef(null)
-  const cartMenuRef = useRef(null)
+  const cartButtonRef = useRef<HTMLButtonElement | null>(null)
+  const cartMenuRef = useRef<HTMLDivElement | null>(null)
 
   // Handle cart button click
   const handleCartButtonClick = () => {
@@ -34,7 +34,7 @@ const Cart = () => {
   return (
     <>
       <button
-        ref={cartButtonRef.current}
+        ref={cartButtonRef}
         onClick={handleCartButtonClick}
         type="button"
         className="modal-btn header-cart-btn"
@@ -51,7 +51,7 @@ const Cart = () => {
         <span>02</span>
       </button>
       <div
-        ref={cartMenuRef.current}
+        ref={cartMenuRef}
         className={`cart-menu ${showCart ? 'active' : ''}`}
       >
         <div className="cart-body">
