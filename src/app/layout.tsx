@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
-import { Header } from '@/layout/header2'
+import { Header } from '@/layout/header'
 import { FooterLayout } from '@/layout/footer'
 import Topbar from '@/layout/topbar'
 import { Cms } from '@/services'
