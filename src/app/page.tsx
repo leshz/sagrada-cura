@@ -23,6 +23,7 @@ export default async function Home() {
       <DoubleBanner data={banners} />
       <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
+      
       {/* <LatestArticle />
       <Testimonial />
       <InstagramSection /> */}
