@@ -5,7 +5,7 @@ import { Menu } from '@/components/menu'
 import { getMenuData } from '@/utils/helpers'
 
 const Header = ({ data }) => {
-  const { menu: cmsMenu } = data
+  const { menu: cmsMenu, menu_items } = data
   const { logo = {}, cart = false } = cmsMenu
   const [menu, setMenu] = useState({
     activeMenu: '',
@@ -26,7 +26,7 @@ const Header = ({ data }) => {
       activeMenu: subMenu
     })
   }
-  const menuItems = getMenuData(cmsMenu)
+  const menuItems = getMenuData(menu_items)
 
   return (
     <Menu.Root>

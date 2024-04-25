@@ -12,7 +12,8 @@ const SingleItemMenu = ({ link, text }) => {
   )
 }
 
-const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items, name }) => {
+const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
+  const filterItems: any = items.filter(({ link }) => link !== '#')
   return (
     <li className="menu-item-has-children">
       <a
@@ -22,7 +23,7 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items, name }) => {
           toggleSubMenu(name)
         }}
       >
-        Productos
+        {name}
       </a>
       <i
         className={`bi bi-${
@@ -30,7 +31,7 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items, name }) => {
         } dropdown-icon`}
       />
       <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
-        {items.map((item, index) => {
+        {filterItems.map((item, index) => {
           const { id } = item
           return <SingleItemMenu key={`${id}-${index}`} {...item} />
         })}

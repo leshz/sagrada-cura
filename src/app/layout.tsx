@@ -4,7 +4,9 @@ import { Inter } from 'next/font/google'
 import { Header } from '@/layout/header'
 import { FooterLayout } from '@/layout/footer'
 import Topbar from '@/layout/topbar'
-import { Cms } from '@/services'
+import { Api } from '@/services'
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
+import ErrorComponent from './error'
 
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/bootstrap-icons.css'
@@ -19,8 +21,8 @@ import '../../public/assets/css/style.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '',
-  description: ''
+  title: 'Sagrada cura',
+  description: 'Sanacion natural'
 }
 
 export default async function RootLayout({
@@ -28,17 +30,19 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const data = await Cms('/general?locale=es')
+  const data = await Api('/general?locale=es')
 
   return (
     <html lang="en">
-      <Script src="/assets/js/bootstrap.min.js" />
-      <body className={inter.className}>
-        <Topbar data={data} />
-        <Header data={data} />
-        {children}
-        <FooterLayout data={data} />
-      </body>
+      <ErrorBoundary errorComponent={ErrorComponent}>
+        <Script src="/assets/js/bootstrap.min.js" />
+        <body className={inter.className}>
+          <Topbar data={data} />
+          <Header data={data} />
+          {children}
+          <FooterLayout data={data} />
+        </body>
+      </ErrorBoundary>
     </html>
   )
 }

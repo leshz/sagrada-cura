@@ -5,4 +5,7 @@ export const availableIcons = {
   ig: 'fa-instagram'
 }
 
-export const availablePaths: string[] = ['home', 'nuestra_marca', 'productos']
+export const menuComponents = {
+  single: 'menu.single-item',
+  multiple: 'menu.multiple-item'
+}
