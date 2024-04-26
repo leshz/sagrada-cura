@@ -1,6 +1,6 @@
 'use server'
 
-const Api = async (url: string, options?: Request) => {
+const Api = async (url: string, fullResponse = false, options?: Request) => {
   const basePath = `${process.env.DOMAIN}/api`
   const buildUrl = `${basePath}${url}`
   const headerAuth = {
@@ -14,9 +14,10 @@ const Api = async (url: string, options?: Request) => {
     })
     if (response.ok) {
       const {
-        data: { attributes: info }
+        data: { attributes: info },
+        data
       } = await response.json()
-      return info
+      return fullResponse ? data : info
     }
     throw new Error(`${response.status}`)
   } catch (error: any) {
