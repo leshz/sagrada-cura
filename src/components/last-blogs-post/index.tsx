@@ -1,18 +1,27 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Api } from '@/services'
 
-const PreviewArticle = ({ article }) => {
-  const { attributes } = article
-  const { title, short_description, slug } = attributes
+const PreviewArticle = ({ article, readlabel }) => {
+  const { attributes, id } = article
+  const { title, short_description, slug, image, tags, author } = attributes
+  const {
+    data: { attributes: imageData }
+  } = image
+
+  const linkBlogPage = `/blog/${id}`
 
   return (
     <div className="col-lg-6">
       <div className="article-card style-2">
         <div className="article-image">
-          <Link legacyBehavior href="/blog-details">
-            <a className="article-card-img hover-img">
-              <img src="/assets/img/home2/latest-article-img1.png" alt="" />
-            </a>
+          <Link className="article-card-img hover-img" href={linkBlogPage}>
+            <Image
+              src={imageData.url}
+              width={imageData.width}
+              height={imageData.height}
+              alt=""
+            />
           </Link>
         </div>
         <div className="article-card-content">
@@ -28,12 +37,12 @@ const PreviewArticle = ({ article }) => {
             </ul>
           </div>
           <h5>
-            <Link className="hover-underline" href="/blog-details">
+            <Link className="hover-underline" href={linkBlogPage}>
               {title}
             </Link>
           </h5>
           <p>{short_description}</p>
-          <Link href={`/blog/${slug}`}>Read More</Link>
+          <Link href={linkBlogPage}>{readlabel}</Link>
         </div>
       </div>
     </div>
@@ -41,7 +50,7 @@ const PreviewArticle = ({ article }) => {
 }
 
 const LastBlogsPost = async ({ blog }) => {
-  const { title, sub_title, get_last } = blog
+  const { title, sub_title, get_last, read_more } = blog
 
   const data = await Api(
     `/blogs?sort=createdAt:desc&pagination[limit]=${get_last}`,
@@ -58,7 +67,13 @@ const LastBlogsPost = async ({ blog }) => {
         </div>
         <div className="row g-4">
           {data.map(article => {
-            return <PreviewArticle key={article.id} article={article} />
+            return (
+              <PreviewArticle
+                key={article.id}
+                article={article}
+                readlabel={read_more}
+              />
+            )
           })}
         </div>
       </div>

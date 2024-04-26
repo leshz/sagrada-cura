@@ -1,10 +1,13 @@
 import Link from 'next/link'
-import React from 'react'
+import { Api } from '@/services'
 
-const BlogDetailsPage = () => {
+const BlogDetailsPage = async ({ params }) => {
+  const { slug } = params
+  const data = await Api(`/blogs/${slug}`)
   return (
     <div className="blog-details-section mt-110 mb-110">
       <div className="container">
+        <h1>Post: {slug}</h1>
         <div className="row g-lg-4 gy-5">
           <div className="col-lg-8">
             <div className="blog-author-meta">

@@ -19,7 +19,7 @@ const Api = async (url: string, fullResponse = false, options?: Request) => {
       } = await response.json()
       return fullResponse ? data : info
     }
-    throw new Error(`${response.status}`)
+    throw new Error(`${response.status} || ${response.url}`)
   } catch (error: any) {
     throw new Error(`Failed to connect api ${error.message}`)
   }

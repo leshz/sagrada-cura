@@ -36,7 +36,7 @@ export default async function RootLayout({
     <html lang="en">
       <ErrorBoundary errorComponent={ErrorComponent}>
         <Script src="/assets/js/bootstrap.min.js" />
-        <body className={inter.className}>
+        <body >
           <Topbar data={data} />
           <Header data={data} />
           {children}
