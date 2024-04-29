@@ -25,9 +25,8 @@ export default async function Home() {
       <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
       <LastBlogsPost blog={last_blogposts} />
-      {/*
       <Testimonial />
-      <InstagramSection /> */}
+      {/* <InstagramSection /> */}
     </main>
   )
 }
