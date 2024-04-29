@@ -5,10 +5,9 @@ const getColletions = async (url, params) => {
     const parsedParams = new URLSearchParams(params)
     const urlwithparams = `${url}?${parsedParams.toString()}`
     const response = await api(urlwithparams)
-
     return response
   } catch (error: any) {
-    throw new Error(`error to get singles ${error.message}}`)
+    throw new Error(`error to get collections ${error.message}`)
   }
 }
 

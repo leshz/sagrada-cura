@@ -1,9 +1,19 @@
 import Link from 'next/link'
-import { Api } from '@/services'
+import { notFound } from 'next/navigation'
+import { getColletions } from '@/services'
+import { COLLECTIONS } from '@/utils/constants'
 
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
-  const data = await Api(`/blogs/${slug}`)
+  const searchparams = {
+    'filters[slug][$eq]': slug
+  }
+
+  const { data } = await getColletions(COLLECTIONS.blogs, searchparams)
+  if (data.length === 0) {
+    return notFound()
+  }
+
   return (
     <div className="blog-details-section mt-110 mb-110">
       <div className="container">

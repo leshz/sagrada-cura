@@ -4,13 +4,13 @@ import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 
 const PreviewArticle = ({ article, readlabel }) => {
-  const { attributes, id } = article
+  const { attributes } = article
   const { title, short_description, slug, image, tags, author } = attributes
   const {
     data: { attributes: imageData }
   } = image
 
-  const linkBlogPage = `/blog/${id}`
+  const linkBlogPage = `/blog/${slug}`
 
   return (
     <div className="col-lg-6">
