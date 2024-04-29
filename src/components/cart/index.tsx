@@ -1,11 +1,11 @@
 'use client'
 import Link from 'next/link'
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const Cart = () => {
   const [showCart, setShowCart] = useState(false)
-  const cartButtonRef = useRef<HTMLButtonElement | null>(null)
-  const cartMenuRef = useRef<HTMLDivElement | null>(null)
+  const cartButtonRef = useRef()
+  const cartMenuRef = useRef()
 
   // Handle cart button click
   const handleCartButtonClick = () => {
@@ -15,7 +15,8 @@ const Cart = () => {
   // Close the cart when a click occurs outside of the cart area
   const handleOutsideClick = event => {
     if (
-      !cartMenuRef?.current?.contains(event.target) &&
+      cartMenuRef.current &&
+      !cartMenuRef.current.contains(event.target) &&
       cartButtonRef.current !== event.target
     ) {
       setShowCart(false)
@@ -34,7 +35,7 @@ const Cart = () => {
   return (
     <>
       <button
-        ref={cartButtonRef}
+        // ref={cartButtonRef}
         onClick={handleCartButtonClick}
         type="button"
         className="modal-btn header-cart-btn"
@@ -51,7 +52,7 @@ const Cart = () => {
         <span>02</span>
       </button>
       <div
-        ref={cartMenuRef}
+        // ref={cartMenuRef}
         className={`cart-menu ${showCart ? 'active' : ''}`}
       >
         <div className="cart-body">

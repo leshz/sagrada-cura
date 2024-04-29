@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Api } from '@/services'
+import { getColletions } from '@/services'
+import { COLLECTIONS } from '@/utils/constants'
 
 const PreviewArticle = ({ article, readlabel }) => {
   const { attributes, id } = article
@@ -52,10 +53,11 @@ const PreviewArticle = ({ article, readlabel }) => {
 const LastBlogsPost = async ({ blog }) => {
   const { title, sub_title, get_last, read_more } = blog
 
-  const data = await Api(
-    `/blogs?sort=createdAt:desc&pagination[limit]=${get_last}`,
-    true
-  )
+  const params = {
+    sort: 'createdAt:desc',
+    'pagination[limit]': get_last
+  }
+  const { data = [] } = await getColletions(COLLECTIONS.blogs, params)
 
   return (
     <div className="latest-article-section mb-110">

@@ -1,5 +1,5 @@
 import { ChooseProduct } from '@/components/choose-product'
-import { Api } from '@/services'
+import { getSingles } from '@/services'
 import { DoubleBanner } from '@/components/banner/double-banner'
 import { HightLights } from '@/components/highlight-product'
 import { LastBlogsPost } from '@/components/last-blogs-post'
@@ -18,7 +18,7 @@ import Testimonial from '../components/Home/Testimonial'
 
 export default async function Home() {
   const { banners, product_categories, highlight_products, last_blogposts } =
-    await Api('/home')
+    await getSingles('home')
   return (
     <main>
       <DoubleBanner data={banners} />

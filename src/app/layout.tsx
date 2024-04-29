@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import { Header } from '@/layout/header'
 import { FooterLayout } from '@/layout/footer'
 import Topbar from '@/layout/topbar'
-import { Api } from '@/services'
+import { getSingles } from '@/services'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import ErrorComponent from './error'
 
@@ -30,7 +30,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const data = await Api('/general?locale=es')
+  const data = await getSingles('general')
 
   return (
     <html lang="en">

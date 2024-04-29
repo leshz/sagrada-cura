@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { Cart } from '@/components/common/Cart'
+import { Cart } from '@/components/cart'
 import { phoneFormmater } from '@/utils/helpers'
 
 const SingleItemMenu = ({ link, text }) => {
