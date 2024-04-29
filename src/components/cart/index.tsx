@@ -1,11 +1,12 @@
+//@ts-ignore
 'use client'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 
 const Cart = () => {
   const [showCart, setShowCart] = useState(false)
-  const cartButtonRef = useRef()
-  const cartMenuRef = useRef()
+  const cartButtonRef: any = useRef()
+  const cartMenuRef: any = useRef()
 
   // Handle cart button click
   const handleCartButtonClick = () => {
