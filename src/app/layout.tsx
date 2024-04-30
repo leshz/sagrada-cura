@@ -11,11 +11,11 @@ import ErrorComponent from './error'
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/bootstrap-icons.css'
 // import '../../public/assets/css/fontawesome.min.css'
-import '../../public/assets/css/boxicons.min.css'
+// import '../../public/assets/css/boxicons.min.css'
 import '../../public/assets/css/all.min.css'
 import '../../public/assets/css/swiper-bundle.min.css'
 // import '../../public/assets/css/nice-select.css'
-import '../../public/assets/css/animate.min.css'
+// import '../../public/assets/css/animate.min.css'
 import '../../public/assets/css/style.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -34,15 +34,15 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <ErrorBoundary errorComponent={ErrorComponent}>
-        <Script src="/assets/js/bootstrap.min.js" />
-        <body >
+      <Script src="/assets/js/bootstrap.min.js" />
+      <body>
+        <ErrorBoundary errorComponent={ErrorComponent}>
           <Topbar data={data} />
           <Header data={data} />
           {children}
           <FooterLayout data={data} />
-        </body>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </body>
     </html>
   )
 }

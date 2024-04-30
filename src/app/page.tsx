@@ -14,7 +14,7 @@ import Newsletters from '../components/Home/Newsletter'
 import OfferBanner from '../components/Home/OfferBanner'
 import PromoModal from '../components/common/PromoModal'
 import SpecialOffer from '../components/Home/SpecialOffer'
-import Testimonial from '../components/Home/Testimonial'
+import { Testimonial } from '@/components/testimonial/testimonial-wrapper'
 
 export default async function Home() {
   const {

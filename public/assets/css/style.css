@@ -6488,6 +6488,7 @@ header.style-2 .nav-right::after {
   height: 65px;
   width: 65px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .say-about-section
   .say-about-wrapper
@@ -11714,6 +11715,7 @@ header.style-2 .nav-right::after {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .blog-details-section .blog-author-meta .author-area .author-content p {
   color: var(--text-color2);
@@ -14119,11 +14121,13 @@ Testimonial-Section Css
   height: 110px;
   border-radius: 50%;
   margin-bottom: 10px;
+  object-fit: cover;
 }
 .testimonial-section .author-img-and-rating .author-img img {
   width: 110px;
   height: 110px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /*================================================
