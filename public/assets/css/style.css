@@ -11737,14 +11737,7 @@ header.style-2 .nav-right::after {
     gap: 15px;
   }
 }
-.blog-details-section .blog-author-meta .blog-meta .tag {
-  margin-right: 40px;
-}
-@media (max-width: 576px) {
-  .blog-details-section .blog-author-meta .blog-meta .tag {
-    margin-right: 20px;
-  }
-}
+
 .blog-details-section .blog-author-meta .blog-meta .tag ul {
   padding: 0;
   margin: 0;

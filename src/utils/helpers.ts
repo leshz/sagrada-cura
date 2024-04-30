@@ -1,3 +1,4 @@
+import { format, parse } from '@formkit/tempo'
 import { availableIcons, menuComponents } from './constants'
 
 export const phoneFormmater = (phone: string) =>
@@ -42,4 +43,8 @@ export const getMenuData = (data = []) => {
     .filter(item => item !== null)
 
   return menudata
+}
+
+export const dateFormat = date => {
+  return format(date, 'medium')
 }
