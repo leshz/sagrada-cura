@@ -1,5 +1,5 @@
-'use client'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
+import Image from 'next/image'
 import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,7 +7,9 @@ import { SwiperOptions } from 'swiper/types'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
-const Testimonial = () => {
+const Testimonial = ({ labels }) => {
+  const { title } = labels
+
   const testimonialSlideSettings: SwiperOptions = useMemo(() => {
     return {
       slidesPerView: 'auto',
@@ -51,19 +53,16 @@ const Testimonial = () => {
 
   return (
     <div className="say-about-section mb-110">
-      <img
-        src="/assets/img/home1/testimonial-vector-2.png"
-        alt=""
-        className="vector3"
-      />
-      <img
+      <Image
         src="/assets/img/home1/testimonial-vector-1.png"
         alt=""
         className="vector4"
+        width={864}
+        height={710}
       />
       <div className="container-fluid p-0">
         <div className="section-title2 style-3">
-          <h3>They Say About Our Product</h3>
+          <h3>{title}</h3>
           <div className="slider-btn">
             <div className="about-prev-btn">
               <i className="bi bi-arrow-left" />

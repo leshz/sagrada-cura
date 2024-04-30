@@ -17,15 +17,20 @@ import SpecialOffer from '../components/Home/SpecialOffer'
 import Testimonial from '../components/Home/Testimonial'
 
 export default async function Home() {
-  const { banners, product_categories, highlight_products, last_blogposts } =
-    await getSingles('home')
+  const {
+    banners,
+    product_categories,
+    highlight_products,
+    last_blogposts,
+    testimonial
+  } = await getSingles('home')
   return (
     <main>
       <DoubleBanner data={banners} />
       <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
       <LastBlogsPost blog={last_blogposts} />
-      <Testimonial />
+      <Testimonial labels={testimonial} />
       {/* <InstagramSection /> */}
     </main>
   )
