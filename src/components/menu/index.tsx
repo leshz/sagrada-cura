@@ -50,7 +50,7 @@ const LogoMenu = ({ logo }) => {
       <div className="header-logo d-lg-none d-flex">
         <Link href="/">
           <Image
-            alt={attributes.alternativeText}
+            alt=""
             className="img-fluid"
             src={attributes.url}
             width={attributes.width}
@@ -62,7 +62,7 @@ const LogoMenu = ({ logo }) => {
       <div className="company-logo d-lg-flex d-none">
         <Link href="/">
           <Image
-            alt={attributes.alternativeText}
+            alt=""
             className="img-fluid"
             src={attributes.url}
             width={attributes.width}
