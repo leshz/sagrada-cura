@@ -1,12 +1,11 @@
-import type { Metadata } from 'next'
-import Script from 'next/script'
-import { Inter } from 'next/font/google'
-import { Header } from '@/layout/header'
-import { FooterLayout } from '@/layout/footer'
-import Topbar from '@/layout/topbar'
-import { getSingles } from '@/services'
+import { Metadata } from 'next'
+import { Header } from '@/components/layout/header'
+import { FooterLayout } from '@/components/layout/footer'
+import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
-import ErrorComponent from './error'
+import { getSingles } from '@/services'
+import Error from './error'
+import Script from 'next/script'
 
 import '../../public/assets/css/bootstrap.min.css'
 import '../../public/assets/css/bootstrap-icons.css'
@@ -18,25 +17,19 @@ import '../../public/assets/css/swiper-bundle.min.css'
 // import '../../public/assets/css/animate.min.css'
 import '../../public/assets/css/style.css'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Sagrada cura',
   description: 'Sanacion natural'
 }
 
-export default async function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+export default async function Root({ children }) {
   const data = await getSingles('general')
 
   return (
     <html lang="en">
       <Script src="/assets/js/bootstrap.min.js" />
       <body>
-        <ErrorBoundary errorComponent={ErrorComponent}>
+        <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
           <Header data={data} />
           {children}

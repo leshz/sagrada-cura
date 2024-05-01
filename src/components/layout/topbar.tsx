@@ -14,7 +14,7 @@ const Topbar = ({ data }) => {
         <div className="row">
           <div className="col-lg-12 d-flex align-items-center justify-content-between gap-3">
             <div className="top-bar-left">
-              <PhoneIcon  width={14} height={14}/>
+              <PhoneIcon width={14} height={14} />
               <Link href={`tel:${phone}`}>{phoneFormmater(phone)}</Link>
             </div>
             {/* TODO: Move to componente to render markdowns} */}
@@ -27,4 +27,4 @@ const Topbar = ({ data }) => {
   )
 }
 
-export default Topbar
+export { Topbar }
