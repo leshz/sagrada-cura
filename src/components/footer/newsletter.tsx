@@ -1,5 +1,5 @@
 const NewsLetter = ({ data }) => {
-  const { title, label } = data
+  const { title = '', label = '' } = data || {}
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 d-flex align-items-center">
       <div className="footer-widget pr-25">

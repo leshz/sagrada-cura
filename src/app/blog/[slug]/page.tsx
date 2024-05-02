@@ -1,35 +1,27 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { BlogAuthor } from '@/components/blog-author'
+import { BlogAuthor } from '@/components/blog/blog-author'
+import { BlogContent } from '@/components/blog/blog-content'
 import { RecentPost } from '@/components/recent-post'
 import { TagsCloud } from '@/components/tags-cloud'
 import { TagBar } from '@/components/tag-bar'
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { dateFormat } from '@/utils/helpers'
-import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import { ImageWrapper } from '@/components/Image'
 
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
   const searchparams = {
     'filters[slug][$eq]': slug
   }
-  const { data } = await getColletions(COLLECTIONS.blogs, searchparams)
+  const { data = [] } = await getColletions(COLLECTIONS.blogs, searchparams)
 
-  if (data.length === 0) {
-    return notFound()
-  }
+  if (data.length === 0) return notFound()
 
   const {
     attributes: { publishedAt, article, title, image, tags, author }
-  } = data[0]
-
-
-
-  const {
-    data: { attributes: imageData }
-  } = image
+  } = data[0] || {}
 
   return (
     <div className="blog-details-section mb-40">
@@ -38,18 +30,10 @@ const BlogDetailsPage = async ({ params }) => {
           <div className="col-lg-8">
             <BlogAuthor author={author} tags={tags} />
             <div className="blog-thumb">
-              <Image
-                src={imageData.url}
-                width={imageData.width}
-                height={imageData.height}
-                alt=""
-              />
+              <ImageWrapper image={image} />
               <Link href="#">{dateFormat(publishedAt)}</Link>
             </div>
-            <div className="blog-content">
-              <h1>{title}</h1>
-              <BlocksRenderer content={article} />
-            </div>
+            <BlogContent title={title} content={article} />
           </div>
           <div className="col-lg-4">
             <div className="sidebar-area">

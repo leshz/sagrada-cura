@@ -1,12 +1,12 @@
 'use client'
 import { useMemo } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import SwiperCore from 'swiper'
+import { ImageWrapper } from '@/components/Image'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import Link from 'next/link'
+import SwiperCore from 'swiper'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
@@ -31,14 +31,16 @@ const HightLights = ({ highlights }) => {
   }, [])
   return (
     <div className="exclusive-product-section mb-110">
-      <Image
+      <ImageWrapper
+        image={{}}
         src="/assets/img/home1/icon/vector-3.svg"
         alt=""
         width={229}
         height={294}
         className="vector3"
       />
-      <Image
+      <ImageWrapper
+        image={{}}
         src="/assets/img/home1/icon/vector-4.svg"
         alt=""
         width={332}
@@ -58,9 +60,6 @@ const HightLights = ({ highlights }) => {
               <div className="swiper-wrapper">
                 {sliders.map(slide => {
                   const { id, title, description, link, button, image } = slide
-                  const {
-                    data: { attributes: imageData }
-                  } = image || {}
 
                   return (
                     <SwiperSlide key={id} className="swiper-slide">
@@ -100,9 +99,8 @@ const HightLights = ({ highlights }) => {
                           <div className="exclusive-product-right">
                             <div className="product-right-img hover-img">
                               <Link href="/shop/product-default">
-                                <Image
-                                  src={imageData.url}
-                                  alt=""
+                                <ImageWrapper
+                                  image={image}
                                   width={540}
                                   height={321}
                                 />

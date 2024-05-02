@@ -13252,6 +13252,7 @@ home2 Banner Css
   .banner-2-right
   .banner-2-right-img-bg
   .banner-2-right-content {
+  position: relative;
   text-align: center;
   padding: 185px 0 187px 40px;
   max-width: 500px;
@@ -15704,4 +15705,8 @@ Testimonial-Section Css
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.3px;
-} /*# sourceMappingURL=style.css.map */
+}
+
+.swiper-slide {
+  height: unset !important;
+}

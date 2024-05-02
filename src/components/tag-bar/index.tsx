@@ -14,7 +14,7 @@ const TagBarWrapper = ({ tags }) => {
   )
 }
 
-const TagItem = ({ tag }) => {
+const TagItem = ({ tag, link = false }) => {
   const {
     attributes: { name, slug }
   } = tag

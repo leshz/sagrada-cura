@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 import { Cart } from '@/components/cart'
 import { phoneFormmater } from '@/utils/helpers'
+import { ImageWrapper } from '@/components/Image'
 
 const SingleItemMenu = ({ link, text }) => {
   return (
@@ -41,32 +41,20 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
 }
 
 const LogoMenu = ({ logo }) => {
-  const {
-    data: { attributes }
-  } = logo
   return (
     <>
       {/* Mobile image  */}
       <div className="header-logo d-lg-none d-flex">
         <Link href="/">
-          <Image
-            alt=""
-            className="img-fluid"
-            src={attributes.url}
-            width={attributes.width}
-            height={attributes.height}
-          />
+          <ImageWrapper image={logo} className={'img-fluid'} />
         </Link>
       </div>
       {/* Desktop Image */}
       <div className="company-logo d-lg-flex d-none">
         <Link href="/">
-          <Image
-            alt=""
+          <ImageWrapper
+            image={logo}
             className="img-fluid"
-            src={attributes.url}
-            width={attributes.width}
-            height={attributes.height}
           />
         </Link>
       </div>

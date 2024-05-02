@@ -1,6 +1,6 @@
 import { ChooseProduct } from '@/components/choose-product'
 import { getSingles } from '@/services'
-import { DoubleBanner } from '@/components/banner/double-banner'
+import { DoubleBanner } from '@/components/banner'
 import { HightLights } from '@/components/highlight-product'
 import { LastBlogsPost } from '@/components/last-blogs-post'
 import { Testimonial } from '@/components/testimonial/testimonial-wrapper'

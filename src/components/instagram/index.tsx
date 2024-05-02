@@ -5,6 +5,7 @@ import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
+import { ImageWrapper } from '@/components/Image'
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Instagram = ({ feed }) => {
@@ -49,6 +50,7 @@ const Instagram = ({ feed }) => {
       }
     }
   }, [])
+
   return (
     <>
       <div className="instagram-section mb-110">
@@ -69,16 +71,11 @@ const Instagram = ({ feed }) => {
                 <Swiper {...sldieSettings} className="swiper instagram-slider">
                   <div className="swiper-wrapper">
                     {data.map(item => {
-                      const { attributes, id } = item
+                      const { id } = item
                       return (
                         <SwiperSlide key={id} className="swiper-slide">
                           <a target="_blank" href={profile_url}>
-                            <Image
-                              src={attributes.url}
-                              width={attributes.width}
-                              height={attributes.height}
-                              alt=""
-                            />
+                            <ImageWrapper image={item} />
                           </a>
                         </SwiperSlide>
                       )

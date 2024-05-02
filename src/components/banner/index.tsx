@@ -3,8 +3,8 @@ import { useMemo } from 'react'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
-import Image from 'next/image'
 import SwiperCore from 'swiper'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
@@ -17,14 +17,7 @@ const FixedBanner = ({ content }) => {
     <div className="col-xxl-3 col-xl-4">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {imagenToBoanner && (
-            <Image
-              src={imagenToBoanner.url}
-              width={imagenToBoanner.width}
-              height={imagenToBoanner.height}
-              alt=""
-            />
-          )}
+          {imagenToBoanner && <ImageWrapper image={image} />}
         </div>
 
         <div className="banner-2-left-content">
@@ -107,10 +100,9 @@ const DoubleBanner = ({ data }) => {
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div
                           className="banner-2-right-img-bg"
-                          style={{
-                            background: `url(${imageData.url}) center center / cover scroll no-repeat`
-                          }}
+                        
                         >
+                          <ImageWrapper image={image} fill  />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer

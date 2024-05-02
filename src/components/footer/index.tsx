@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import { Columns, Column } from './column'
 import { NewsLetter } from './newsletter'
 import { PhoneIcon } from '@/icons/phone'
 import { phoneFormmater } from '@/utils/helpers'
+import { ImageWrapper } from '@/components/Image'
+import Link from 'next/link'
 
 const FooterRoot = ({ children }) => {
   return (
@@ -15,16 +15,12 @@ const FooterRoot = ({ children }) => {
 
 const Botton = ({ data }) => {
   const {
-    top: { phone },
-    footer: {
-      botton: { copyright, phone: message }
-    },
+    top: { phone = {} } = {},
+    footer: { botton: { copyright = '', phone: message = '' } = {} },
     menu = {}
   } = data
 
-  const {
-    logo: { data: { attributes = {} } = {} }
-  } = menu
+  const { logo = {} } = menu
 
   return (
     <div className="footer-bottom">
@@ -32,19 +28,14 @@ const Botton = ({ data }) => {
         <div className="col-lg-12 d-flex flex-md-row flex-column align-items-center justify-content-md-between justify-content-center flex-wrap gap-3">
           <div className="footer-left">
             <p>
-              ©Copyright 2023 {copyright} | Design By
-              <a href="http://shzdev.com/">Shz Dev</a>
+              ©Copyright 2023 {copyright} | Design By{' '}
+              <a href="https://shzcode.tech/">Shz Code</a>
             </p>
           </div>
-          {attributes && (
+          {logo && (
             <div className="footer-logo">
               <Link href="/">
-                <Image
-                  src={attributes.url}
-                  alt="logo sagrada cura"
-                  width={80}
-                  height={20}
-                />
+                <ImageWrapper image={logo} />
               </Link>
             </div>
           )}
@@ -75,12 +66,12 @@ const LastItem = () => {
         <p>Sed vitae elementum elit. Ut sed maur id sem ultricies ultricies.</p>
         <div className="payment-gateway">
           <p>Secured Payment Gateways</p>
-          <div className="icons">
+          {/* <div className="icons">
             <img src="assets/img/home1/icon/visa.png" alt="" />
             <img src="assets/img/home1/icon/mastercard.png" alt="" />
             <img src="assets/img/home1/icon/american-express.png" alt="" />
             <img src="assets/img/home1/icon/maestro.png" alt="" />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

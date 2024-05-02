@@ -6,6 +6,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
 import { Starts } from './starts'
+import { ImageWrapper } from '@/components/Image'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
@@ -58,10 +59,6 @@ const Slider = ({ slides }) => {
           const { id, attributes = {} } = slide
           const { name, job_title, starts, testimonial, image } = attributes
 
-          const {
-            data: { attributes: imageData }
-          } = image
-
           return (
             <SwiperSlide key={id} className="swiper-slide">
               <div className="say-about-card">
@@ -70,12 +67,7 @@ const Slider = ({ slides }) => {
                 <div className="say-about-card-bottom">
                   <div className="author-area">
                     <div className="author-img">
-                      <Image
-                        src={imageData.url}
-                        alt=""
-                        width={65}
-                        height={65}
-                      />
+                      <ImageWrapper image={image} width={65} height={65} />
                     </div>
                     <div className="author">
                       <h5>{name}</h5>

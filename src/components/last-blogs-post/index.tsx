@@ -1,14 +1,18 @@
 import Link from 'next/link'
-import Image from 'next/image'
+
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
+import { dateFormat } from '@/utils/helpers'
+import { ImageWrapper } from '@/components/Image'
+import { TagBar } from '@/components/tag-bar'
 
 const PreviewArticle = ({ article, readlabel }) => {
   const { attributes } = article
-  const { title, short_description, slug, image, tags, author } = attributes
-  const {
-    data: { attributes: imageData }
-  } = image
+  const { title, short_description, slug, image, tags, author, publishedAt } =
+    attributes || {}
+  const { data: dataTags = [] } = tags || {}
+
+  const tagsSlice = dataTags.length > 2 ? dataTags.slice(0,2) : dataTags;
 
   const linkBlogPage = `/blog/${slug}`
 
@@ -17,24 +21,16 @@ const PreviewArticle = ({ article, readlabel }) => {
       <div className="article-card style-2">
         <div className="article-image">
           <Link className="article-card-img hover-img" href={linkBlogPage}>
-            <Image
-              src={imageData.url}
-              width={imageData.width}
-              height={imageData.height}
-              alt=""
-            />
+            <ImageWrapper image={image} />
           </Link>
         </div>
         <div className="article-card-content">
           <div className="tag two">
-            <span>20 July, 2023</span>
+            <span>{dateFormat(publishedAt)}</span>
             <ul>
-              <li>
-                <Link href="/blog-grid">Beauty</Link>
-              </li>
-              <li>
-                <Link href="/blog-grid">Makeup</Link>
-              </li>
+              {tagsSlice.map(tag => {
+                return <TagBar.TagItem key={tag.id} tag={tag} />
+              })}
             </ul>
           </div>
           <h5>

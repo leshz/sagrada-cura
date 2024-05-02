@@ -3,8 +3,8 @@ import {
   type BlocksContent
 } from '@strapi/blocks-react-renderer'
 
-const Column = ({ data }) => {  
-  const { title, column } = data
+const Column = ({ data }) => {
+  const { title = '', column = '' } = data || {}
   return (
     <div className="col-lg-2 col-md-4 col-sm-6 d-flex justify-content-lg-start justify-content-sm-end">
       <div className="footer-widget">

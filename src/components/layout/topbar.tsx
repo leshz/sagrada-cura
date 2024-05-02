@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { SocialHeader } from '@/components/social-header'
 
 const Topbar = ({ data }) => {
-  const { top } = data
-  const { phone, title, social_links: links } = top
+  const { top = {} } = data || {}
+  const { phone = '', title = '', social_links: links = [] } = top
 
   return (
     <div className="top-bar2">
