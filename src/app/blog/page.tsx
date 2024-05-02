@@ -1,6 +1,6 @@
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { BlogPreview } from '@/components/blog/blog-preview'
+import { BlogPreview } from '@/components/blog'
 import { Paginator } from '@/components/paginator'
 
 const BlogMasonaryPage = async () => {
@@ -15,9 +15,9 @@ const BlogMasonaryPage = async () => {
 
   return (
     <>
-      <div className="blog-grid-section ">
+      <div className="blog-grid-section  mb-40 mt-40 ">
         <div className="container-md container-fluid">
-          <div className="row g-4 mb-80 justify-content-center">
+          <div className="row g-4 mb-80 ">
             {data.map(item => (
               <BlogPreview key={item.id} blog={item} />
             ))}

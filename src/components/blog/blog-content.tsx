@@ -4,9 +4,9 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
 
-const BlogContent = ({ title, content }) => {
+const BlogContent = ({ title, content, className = 'blog-content' }) => {
   return (
-    <div className="blog-content">
+    <div className={className}>
       <h1>{title}</h1>
       <BlocksRenderer
         content={content}

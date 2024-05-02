@@ -50,7 +50,7 @@ const LastBlogsPost = async ({ blog }) => {
   const { title, sub_title, get_last, read_more } = blog
 
   const params = {
-    sort: 'createdAt:desc',
+    sort: 'publishedAt:desc',
     'pagination[limit]': get_last
   }
   const { data = [] } = await getColletions(COLLECTIONS.blogs, params)
