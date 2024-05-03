@@ -4,9 +4,13 @@ import { useState } from 'react'
 import { Menu } from '@/components/menu'
 import { getMenuData } from '@/utils/helpers'
 
-const Header = ({ data }) => {
-  const { menu: cmsMenu, menu_items } = data
+const Header = ({ data, menuLinks }) => {
+  const { menu: cmsMenu } = data
   const { logo = {}, cart = false } = cmsMenu
+  const {
+    menu: { menu_items }
+  } = menuLinks || {}
+
   const [menu, setMenu] = useState({
     activeMenu: '',
     isSidebarOpen: false

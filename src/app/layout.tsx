@@ -24,7 +24,10 @@ export const metadata: Metadata = {
 }
 
 export default async function Root({ children }) {
-  const data = await getSingles('general')
+  const generes = getSingles('general')
+  const menures = getSingles('menu')
+
+  const [data, menu] = await Promise.all([generes, menures])
 
   return (
     <html lang="en">
@@ -32,7 +35,7 @@ export default async function Root({ children }) {
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
-          <Header data={data} />
+          <Header data={data} menuLinks={menu} />
           <Suspense fallback={<h1>Loading..</h1>}>{children}</Suspense>
           <FooterLayout data={data} />
         </ErrorBoundary>
