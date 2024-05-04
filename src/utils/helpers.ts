@@ -48,3 +48,10 @@ export const getMenuData = (data = []) => {
 export const dateFormat = date => {
   return format(date, 'medium')
 }
+
+export const currencyFormat = new Intl.NumberFormat('es-CO', {
+  style: 'currency',
+  currency: 'COP',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});

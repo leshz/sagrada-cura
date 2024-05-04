@@ -13,5 +13,6 @@ export const menuComponents = {
 export const COLLECTIONS = {
   blogs: '/blogs',
   testimonials: '/testimonials',
-  categories: '/categories'
+  categories: '/categories',
+  products: '/products'
 }

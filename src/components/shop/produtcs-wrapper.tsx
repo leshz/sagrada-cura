@@ -1,13 +1,28 @@
 import Link from 'next/link'
 import React from 'react'
+import { Paginator } from '@/components/paginator'
+import { Card } from '@/components/shop/card'
+import { getColletions } from '@/services'
+import { COLLECTIONS } from '@/utils/constants'
 
-const ProductWrapper = async () => {
-  await new Promise(resolve => setTimeout(resolve, 5000))
+type props = {
+  labels: {
+    out_of_stock: string
+    add_to_cart: string
+    request_stock: string
+  }
+}
+
+const ProductWrapper = async ({ labels }: props) => {
+  await new Promise(resolve => setTimeout(resolve, 100))
+  const { meta = {}, data = [] } = await getColletions(COLLECTIONS.products, {})
+
   return (
     <div className="col-xl-9 order-xl-1 order-2">
       <div className="all-products list-grid-product-wrap">
         <div className="row gy-4 mb-80 ">
-          <div className={`col-md-4`}>
+          <Card product={data[0]} labels={labels} />
+          {/* <div className={`col-md-4`}>
             <div className="product-card style-3 hover-btn">
               <div className="product-card-img double-img">
                 <Link legacyBehavior href="/shop">
@@ -1112,42 +1127,10 @@ const ProductWrapper = async () => {
               </div>
               <span className="for-border" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-      <nav className="shop-pagination">
-        <ul className="pagination-list">
-          <li>
-            <a href="#" className="shop-pagi-btn">
-              <i className="bi bi-chevron-left" />
-            </a>
-          </li>
-          <li>
-            <a href="#">1</a>
-          </li>
-          <li>
-            <a href="#" className="active">
-              2
-            </a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="bi bi-three-dots" />
-            </a>
-          </li>
-          <li>
-            <a href="#">6</a>
-          </li>
-          <li>
-            <a href="#" className="shop-pagi-btn">
-              <i className="bi bi-chevron-right" />
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Paginator meta={meta} />
     </div>
   )
 }

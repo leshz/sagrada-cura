@@ -6,7 +6,14 @@ import Test from '@/components/shop/test'
 import { Suspense } from 'react'
 
 const Shop = async ({ searchParams }) => {
-  const { categories } = await getSingles('shop')
+  const { categories, out_of_stock, add_to_cart, request_stock } =
+    await getSingles('shop')
+
+  const cardLabels = {
+    out_of_stock,
+    add_to_cart,
+    request_stock
+  }
 
   return (
     <>
@@ -14,7 +21,7 @@ const Shop = async ({ searchParams }) => {
         <div className="container-fluid">
           <div className="row gy-5 justify-content-center">
             <Suspense>
-              <ProductWrapper />
+              <ProductWrapper labels={cardLabels} />
             </Suspense>
             <div className="col-xl-3 col-md-8 order-xl-2 order-1">
               <div className="sidebar-area">
