@@ -52,10 +52,7 @@ const LogoMenu = ({ logo }) => {
       {/* Desktop Image */}
       <div className="company-logo d-lg-flex d-none">
         <Link href="/">
-          <ImageWrapper
-            image={logo}
-            className="img-fluid"
-          />
+          <ImageWrapper image={logo} className="img-fluid" />
         </Link>
       </div>
     </>

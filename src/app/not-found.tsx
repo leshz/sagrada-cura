@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Img from 'next/image'
 
-function Error() {
+function NotFound() {
   return (
     <div className="error-section">
       <div className="container">
@@ -43,4 +43,4 @@ function Error() {
   )
 }
 
-export default Error
+export default NotFound
