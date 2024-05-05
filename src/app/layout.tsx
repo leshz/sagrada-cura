@@ -8,10 +8,10 @@ import Error from './error'
 import Script from 'next/script'
 
 import '../../public/assets/css/bootstrap.min.css'
+import './style.scss'
 import '../../public/assets/css/bootstrap-icons.css'
 import '../../public/assets/css/all.min.css'
 import '../../public/assets/css/swiper-bundle.min.css'
-import './style.scss'
 
 export const metadata: Metadata = {
   title: 'Sagrada cura',
