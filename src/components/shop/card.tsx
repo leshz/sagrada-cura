@@ -1,9 +1,11 @@
+'use client'
 import type { ProductsDatum } from '@/types/products'
 
 import Link from 'next/link'
 import { ImageWrapper } from '@/components/Image'
 import { Price } from '@/components/price'
 import { Batch } from '@/components/shop/batch'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {
   product: ProductsDatum
@@ -15,11 +17,15 @@ type Props = {
 }
 
 const Card = ({ product, labels }: Props): JSX.Element => {
+  const params = useSearchParams()
+  const gridParam = Number(params.get('grid'))
+  const grid = Number.isNaN(gridParam) ? 3 : gridParam
+  let gridClass = ''
   const {
     attributes: {
       slug,
       pictures,
-      promotion ,
+      promotion,
       price,
       name,
       quantity,
@@ -31,15 +37,41 @@ const Card = ({ product, labels }: Props): JSX.Element => {
 
   const images = pictures?.data || []
   const previews = images.length > 2 ? images.slice(0, 2) : images || []
-
   const productView = `/tienda/${slug}`
+
+  switch (grid) {
+    case 2:
+      gridClass = '-sm-6'
+      break
+    case 3:
+      gridClass = '-md-4'
+      break
+    case 4:
+      gridClass = '-lg-3'
+      break
+
+    default:
+      gridClass = '-md-4'
+      break
+  }
+
   return (
-    <div className={`col-md-4`}>
+    <div className={`col${gridClass}`}>
       <div className="product-card style-3 hover-btn">
-        <div className="product-card-img double-img">
+        <div
+          className={`product-card-img ${
+            previews.length == 2 ? 'double-img' : ''
+          }`}
+        >
           <Link href={productView}>
-            {previews.map(image => {
-              return <ImageWrapper key={image.id} image={image} />
+            {previews.map((image, index) => {
+              return (
+                <ImageWrapper
+                  key={image.id}
+                  image={image}
+                  className={`img${index + 1}`}
+                />
+              )
             })}
             <Batch info={promotion} />
           </Link>

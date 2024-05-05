@@ -36,7 +36,7 @@ export default async function Root({ children }) {
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
           <Header data={data} menuLinks={menu} />
-          <Suspense fallback={<h1>Loading..</h1>}>{children}</Suspense>
+          {children}
           <FooterLayout data={data} />
         </ErrorBoundary>
       </body>

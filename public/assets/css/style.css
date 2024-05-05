@@ -4225,18 +4225,19 @@ header.style-2 .nav-right::after {
   gap: 5px;
 }
 .product-card .product-card-img > a .batch > span {
-  width: 52px;
-  height: 24px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--white-color);
-  text-align: center;
-  font-size: 15px;
-  font-family: var(--font-Jost);
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
   background-color: var(--primary-color1);
+  color: var(--white-color);
+  display: flex;
+  display: inline-block;
+  font-family: var(--font-Jost);
+  font-size: 15px;
+  height: 24px;
+  justify-content: center;
+  letter-spacing: 0.3px;
+  padding: 0 10px;
+  text-align: center;
+  text-transform: uppercase;
   z-index: 1;
 }
 .product-card .product-card-img > a .batch > span.new {
