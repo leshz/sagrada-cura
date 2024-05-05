@@ -29,7 +29,7 @@ const Paginator = ({ meta }) => {
             </li>
           )
         })}
-        {page !== pageCount && (
+        {page !== 1 && pageCount !== 0 && (
           <li>
             <Link href={`?page=${page + 1}`} className="shop-pagi-btn">
               <i className="bi bi-chevron-right" />

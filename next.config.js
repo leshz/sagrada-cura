@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require('path')
+
 const nextConfig = {
   images: {
     unoptimized: true,
@@ -13,6 +15,9 @@ const nextConfig = {
         port: '1337'
       }
     ]
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')]
   }
 }
 

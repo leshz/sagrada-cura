@@ -13,6 +13,11 @@ const CategoryBox = async () => {
       <div className="check-box-item">
         <h5 className="shop-widget-title">{categories?.title}</h5>
         <ul className="shop-item">
+          <Item
+            category={{}}
+            defaultValue
+            defaultName={categories?.all_products}
+          />
           {data.map(category => (
             <Item key={category.id} category={category} />
           ))}
