@@ -7,10 +7,10 @@ import { getSingles } from '@/services'
 import Error from './error'
 import Script from 'next/script'
 
-import '../../public/assets/css/bootstrap.min.css'
 import './style.scss'
-import '../../public/assets/css/bootstrap-icons.css'
-import '../../public/assets/css/all.min.css'
+
+// import '../../public/assets/css/bootstrap-icons.css'
+// import '../../public/assets/css/all.min.css'
 import '../../public/assets/css/swiper-bundle.min.css'
 
 export const metadata: Metadata = {
