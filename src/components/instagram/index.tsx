@@ -1,4 +1,5 @@
 'use client'
+
 import Image from 'next/image'
 import { useMemo } from 'react'
 import SwiperCore from 'swiper'
@@ -6,13 +7,13 @@ import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
 import { ImageWrapper } from '@/components/Image'
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Instagram = ({ feed }) => {
   const { title, subtitle, profile_url, feed: images } = feed
   const { data } = images
-  const sldieSettings: SwiperOptions = useMemo(() => {
-    return {
+  const sldieSettings: SwiperOptions = useMemo(() => ({
       slidesPerView: 'auto',
       spaceBetween: 15,
       loop: true,
@@ -48,12 +49,10 @@ const Instagram = ({ feed }) => {
           slidesPerView: 8
         }
       }
-    }
-  }, [])
+    }), [])
 
   return (
-    <>
-      <div className="instagram-section mb-110">
+    <div className="instagram-section mb-110">
         <div className="container">
           <div className="section-title style-3">
             <h3>{title}</h3>
@@ -87,7 +86,6 @@ const Instagram = ({ feed }) => {
           </div>
         </div>
       </div>
-    </>
   )
 }
 

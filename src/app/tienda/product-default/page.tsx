@@ -1,10 +1,12 @@
 'use client'
+
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import NewestProduct from '@/components/Home/NewestProduct'
 import GiftSection from '@/components/common/GiftSection'
 import useMagneticHover from '@/hooks/useMagneticHover'
 import QuantityCounter from '@/uitils/QuantityCounter'
+
 const ProductDefaultPage = () => {
   const [selectColor, setselectColor] = useState(0)
 
@@ -691,7 +693,7 @@ const ProductDefaultPage = () => {
                                     <textarea
                                       rows={5}
                                       placeholder="Your Reviews *"
-                                      defaultValue={''}
+                                      defaultValue=""
                                     />
                                   </div>
                                 </div>

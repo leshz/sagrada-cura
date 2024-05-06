@@ -16,9 +16,7 @@ const BlogSection = async ({ title }) => {
           <h3>{title}</h3>
         </div>
         <div className="row gy-4">
-          {data.map(blog => {
-            return <BlogPreview key={blog.id} blog={blog} />
-          })}
+          {data.map(blog => <BlogPreview key={blog.id} blog={blog} />)}
         </div>
       </div>
     </div>

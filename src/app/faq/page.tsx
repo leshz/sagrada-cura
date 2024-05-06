@@ -1,9 +1,7 @@
 import React from 'react'
 
-const FaqPage = () => {
-  return (
-    <>
-      <div className="faq-section mt-110 mb-110">
+const FaqPage = () => (
+    <div className="faq-section mt-110 mb-110">
         <div className="container">
           <div className="faq-title">
             <h1>
@@ -518,8 +516,6 @@ const FaqPage = () => {
           </div>
         </div>
       </div>
-    </>
   )
-}
 
 export default FaqPage

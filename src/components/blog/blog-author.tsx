@@ -34,9 +34,7 @@ const BlogAuthor = ({ author, tags }) => {
         {data && (
           <div className="tag">
             <ul>
-              {data.map(item => {
-                return <TagBar.TagItem key={item.id} tag={item} />
-              })}
+              {data.map(item => <TagBar.TagItem key={item.id} tag={item} />)}
             </ul>
           </div>
         )}

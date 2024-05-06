@@ -1,17 +1,15 @@
-import { Columns, Column } from './column'
-import { NewsLetter } from './newsletter'
 import { PhoneIcon } from '@/icons/phone'
 import { phoneFormmater } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
+import { NewsLetter } from './newsletter'
+import { Columns, Column } from './column'
 
-const FooterRoot = ({ children }) => {
-  return (
+const FooterRoot = ({ children }) => (
     <footer className="footer-section style-2">
       <div className="container">{children}</div>
     </footer>
   )
-}
 
 const Botton = ({ data }) => {
   const {
@@ -56,8 +54,7 @@ const Botton = ({ data }) => {
   )
 }
 
-const LastItem = () => {
-  return (
+const LastItem = () => (
     <div className="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-lg-end justify-content-md-center">
       <div className="footer-widget">
         <div className="widget-title style-2">
@@ -76,12 +73,11 @@ const LastItem = () => {
       </div>
     </div>
   )
-}
 
 export const Footer = {
   Root: FooterRoot,
   Bottom: Botton,
-  Columns: Columns,
+  Columns,
   NewsLetter,
   LastItem,
   Column

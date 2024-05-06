@@ -1,4 +1,5 @@
 'use client'
+
 import { useMemo } from 'react'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -64,8 +65,7 @@ const FixedBanner = ({ content }) => {
 const DoubleBanner = ({ data }) => {
   const { dinamic_banner = [] } = data
 
-  const configBanner = useMemo(() => {
-    return {
+  const configBanner = useMemo(() => ({
       slidesPerView: 1,
       spaceBetween: 30,
       speed: 2000,
@@ -79,8 +79,7 @@ const DoubleBanner = ({ data }) => {
         el: '.swiper-pagination2',
         clickable: true
       }
-    }
-  }, [])
+    }), [])
   return (
     <div className="banner-2-section mb-110 ">
       <div className="container-fluid p-0">

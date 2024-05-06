@@ -12,18 +12,16 @@ const Column = ({ data }) => {
           <h5>{title}</h5>
           <BlocksRenderer content={column} />
         </div>
-        <div className="widget-list"></div>
+        <div className="widget-list" />
       </div>
     </div>
   )
 }
 
-const Columns = ({ children }) => {
-  return (
+const Columns = ({ children }) => (
     <div className="footer-top">
       <div className="row g-lg-4 gy-5 justify-content-center">{children}</div>
     </div>
   )
-}
 
 export { Columns, Column }

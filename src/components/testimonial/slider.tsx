@@ -1,18 +1,18 @@
 'use client'
+
 import { useMemo } from 'react'
 import Image from 'next/image'
 import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
-import { Starts } from './starts'
 import { ImageWrapper } from '@/components/Image'
+import { Starts } from './starts'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Slider = ({ slides }) => {
-  const testimonialSlideSettings: SwiperOptions = useMemo(() => {
-    return {
+  const testimonialSlideSettings: SwiperOptions = useMemo(() => ({
       slidesPerView: 'auto',
       spaceBetween: 40,
       loop: true,
@@ -49,8 +49,7 @@ const Slider = ({ slides }) => {
           slidesPerView: 3
         }
       }
-    }
-  }, [])
+    }), [])
 
   return (
     <Swiper {...testimonialSlideSettings} className="swiper say-about-slider">

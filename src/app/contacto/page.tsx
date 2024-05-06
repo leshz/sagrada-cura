@@ -1,9 +1,7 @@
 import React from 'react'
 
-const ContactPage = () => {
-  return (
-    <>
-      <div className="contact-page pt-100 mb-100">
+const ContactPage = () => (
+    <div className="contact-page pt-100 mb-100">
         <div className="container">
           <div className="row g-4 justify-content-center mb-100">
             <div className="col-lg-4">
@@ -272,7 +270,7 @@ const ContactPage = () => {
                         <label>Short Notes*</label>
                         <textarea
                           placeholder="Write Something..."
-                          defaultValue={''}
+                          defaultValue=""
                         />
                       </div>
                     </div>
@@ -295,8 +293,6 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-    </>
   )
-}
 
 export default ContactPage

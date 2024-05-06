@@ -1,4 +1,5 @@
 'use client'
+
 import { useMemo } from 'react'
 import { ImageWrapper } from '@/components/Image'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
@@ -13,8 +14,7 @@ SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 const HightLights = ({ highlights }) => {
   const { title, highlight_slider: sliders } = highlights
 
-  const exclusiveSlideSettings: SwiperOptions = useMemo(() => {
-    return {
+  const exclusiveSlideSettings: SwiperOptions = useMemo(() => ({
       slidesPerView: 'auto',
       spaceBetween: 30,
       loop: true,
@@ -27,8 +27,7 @@ const HightLights = ({ highlights }) => {
         nextEl: '.exclusive-next-btn',
         prevEl: '.exclusive-prev-btn'
       }
-    }
-  }, [])
+    }), [])
   return (
     <div className="exclusive-product-section mb-110">
       <ImageWrapper
@@ -70,8 +69,7 @@ const HightLights = ({ highlights }) => {
                             <BlocksRenderer
                               content={description}
                               blocks={{
-                                'list-item': ({ children }) => {
-                                  return (
+                                'list-item': ({ children }) => (
                                     <li>
                                       <svg
                                         width={13}
@@ -84,7 +82,6 @@ const HightLights = ({ highlights }) => {
                                       {children}
                                     </li>
                                   )
-                                }
                               }}
                             />
                             <Link

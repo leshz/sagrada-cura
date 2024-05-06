@@ -15,9 +15,7 @@ const SocialHeader = ({ links }) => {
   return (
     <div className="social-area">
       <ul>
-        {links?.map(item => {
-          return <SocialItem key={item.id} {...item} />
-        })}
+        {links?.map(item => <SocialItem key={item.id} {...item} />)}
       </ul>
     </div>
   )

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
-const TagsCloud = () => {
-  return (
+const TagsCloud = () => (
     <div className="shop-widget">
       <h5 className="shop-widget-title">Tags</h5>
       <ul className="tag-list">
@@ -53,6 +52,5 @@ const TagsCloud = () => {
       </ul>
     </div>
   )
-}
 
 export { TagsCloud }

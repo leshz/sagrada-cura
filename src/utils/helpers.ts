@@ -1,4 +1,4 @@
-import { format, parse } from '@formkit/tempo'
+import { format } from '@formkit/tempo'
 import { availableIcons, menuComponents } from './constants'
 
 export const phoneFormmater = (phone: string) =>
@@ -45,9 +45,7 @@ export const getMenuData = (data = []) => {
   return menudata
 }
 
-export const dateFormat = date => {
-  return format(date, 'medium')
-}
+export const dateFormat = date => format(date, 'medium')
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
   style: 'currency',

@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Img from 'next/image'
 
-function NotFound() {
-  return (
+const NotFound = () => (
     <div className="error-section">
       <div className="container">
         <div className="row justify-content-center align-items-center">
@@ -41,6 +40,5 @@ function NotFound() {
       </div>
     </div>
   )
-}
 
 export default NotFound

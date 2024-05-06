@@ -1,4 +1,5 @@
 'use client'
+
 import type { ProductsDatum } from '@/types/products'
 
 import Link from 'next/link'
@@ -64,15 +65,13 @@ const Card = ({ product, labels }: Props): JSX.Element => {
           }`}
         >
           <Link href={productView}>
-            {previews.map((image, index) => {
-              return (
+            {previews.map((image, index) => (
                 <ImageWrapper
                   key={image.id}
                   image={image}
                   className={`img${index + 1}`}
                 />
-              )
-            })}
+              ))}
             <Batch info={promotion} />
           </Link>
           <div className="overlay">

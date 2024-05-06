@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const RecentPost = () => {
-  return (
+const RecentPost = () => (
     <div className="shop-widget mb-30">
       <h5 className="shop-widget-title">Recent Post</h5>
       <div className="recent-post-widget mb-20">
@@ -64,6 +63,5 @@ const RecentPost = () => {
       </div>
     </div>
   )
-}
 
 export { RecentPost }

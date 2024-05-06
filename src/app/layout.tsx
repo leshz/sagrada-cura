@@ -4,8 +4,8 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
-import Error from './error'
 import Script from 'next/script'
+import Error from './error'
 
 import './style.scss'
 

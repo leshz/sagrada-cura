@@ -1,5 +1,4 @@
-const PhoneIcon = ({ width, height }) => {
-  return (
+const PhoneIcon = ({ width, height }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
@@ -13,6 +12,5 @@ const PhoneIcon = ({ width, height }) => {
       </g>
     </svg>
   )
-}
 
 export { PhoneIcon }

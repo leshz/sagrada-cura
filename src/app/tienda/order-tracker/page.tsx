@@ -1,9 +1,7 @@
 import React from 'react'
 
-const OrderTracking = () => {
-  return (
-    <>
-      <div className="order-tracking">
+const OrderTracking = () => (
+    <div className="order-tracking">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
@@ -48,8 +46,6 @@ const OrderTracking = () => {
           </div>
         </div>
       </div>
-    </>
   )
-}
 
 export default OrderTracking

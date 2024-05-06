@@ -1,6 +1,5 @@
 
-const SearchBox = () => {
-  return (
+const SearchBox = () => (
     <div className="shop-widget mb-30">
       <h5 className="shop-widget-title">Search Here</h5>
       <form>
@@ -13,6 +12,5 @@ const SearchBox = () => {
       </form>
     </div>
   )
-}
 
 export { SearchBox }

@@ -1,10 +1,9 @@
 import React from 'react'
 import QuantityCounter from '@/uitils/QuantityCounter'
 import Link from 'next/link'
-const Cart = () => {
-  return (
-    <>
-      <div className="whistlist-section cart mt-110 mb-110">
+
+const Cart = () => (
+    <div className="whistlist-section cart mt-110 mb-110">
         <div className="container">
           <div className="row mb-50">
             <div className="col-12">
@@ -182,8 +181,6 @@ const Cart = () => {
           </div>
         </div>
       </div>
-    </>
   )
-}
 
 export default Cart

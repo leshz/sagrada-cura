@@ -4,13 +4,11 @@ import { Cart } from '@/components/cart'
 import { phoneFormmater } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
-const SingleItemMenu = ({ link, text }) => {
-  return (
-    <li className={`menu-single-item`}>
+const SingleItemMenu = ({ link, text }) => (
+    <li className="menu-single-item">
       <Link href={link}>{text}</Link>
     </li>
   )
-}
 
 const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
   const filterItems: any = items.filter(({ link }) => link !== '#')
@@ -40,13 +38,12 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
   )
 }
 
-const LogoMenu = ({ logo }) => {
-  return (
+const LogoMenu = ({ logo }) => (
     <>
       {/* Mobile image  */}
       <div className="header-logo d-lg-none d-flex">
         <Link href="/">
-          <ImageWrapper image={logo} className={'img-fluid'} />
+          <ImageWrapper image={logo} className="img-fluid" />
         </Link>
       </div>
       {/* Desktop Image */}
@@ -57,7 +54,6 @@ const LogoMenu = ({ logo }) => {
       </div>
     </>
   )
-}
 
 const NavBarRoot = ({ children, isOpen, data }) => {
   const {
@@ -113,8 +109,7 @@ const NavBarRoot = ({ children, isOpen, data }) => {
   )
 }
 
-const RightSideMenu = ({ click, isOpen, cart }) => {
-  return (
+const RightSideMenu = ({ click, isOpen, cart }) => (
     <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
       {cart && (
         <div className="dropdown">
@@ -130,17 +125,14 @@ const RightSideMenu = ({ click, isOpen, cart }) => {
       </div>
     </div>
   )
-}
 
-const MainMenuRoot = ({ children }) => {
-  return (
+const MainMenuRoot = ({ children }) => (
     <header className="header-area style-2">
       <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
         {children}
       </div>
     </header>
   )
-}
 
 export const Menu = {
   Single: SingleItemMenu,

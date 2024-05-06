@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { BlogAuthor } from '@/components/blog'
-import { BlogContent } from '@/components/blog'
+import { BlogAuthor , BlogContent } from '@/components/blog'
 import { RecentPost } from '@/components/recent-post'
 import { TagsCloud } from '@/components/tags-cloud'
 import { TagBar } from '@/components/tag-bar'

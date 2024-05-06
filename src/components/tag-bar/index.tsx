@@ -6,9 +6,7 @@ const TagBarWrapper = ({ tags }) => {
     <div className="tag">
       <h6>Tag: </h6>
       <ul className="tag-list">
-        {data.map(item => {
-          return <TagItem key={item.id} tag={item} />
-        })}
+        {data.map(item => <TagItem key={item.id} tag={item} />)}
       </ul>
     </div>
   )

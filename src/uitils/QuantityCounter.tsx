@@ -1,8 +1,9 @@
 'use client'
+
 import React from 'react'
 import useQuantityCounter from '../hooks/useQuantityCounter'
 
-function QuantityCounter() {
+const QuantityCounter = () => {
   const { quantity, increment, decrement, handleInputChange } =
     useQuantityCounter(1)
 

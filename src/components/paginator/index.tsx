@@ -17,8 +17,7 @@ const Paginator = ({ meta }) => {
             </Link>
           </li>
         )}
-        {pages.map(item => {
-          return (
+        {pages.map(item => (
             <li key={item}>
               <Link
                 href={page === item ? '' : `?page=${item}`}
@@ -27,8 +26,7 @@ const Paginator = ({ meta }) => {
                 {item}
               </Link>
             </li>
-          )
-        })}
+          ))}
         {page !== 1 && pageCount !== 0 && (
           <li>
             <Link href={`?page=${page + 1}`} className="shop-pagi-btn">

@@ -1,11 +1,11 @@
 'use client'
+
 import React from 'react'
-import SelectComponent from '@/components/common/SelectComponent'
 import QuantityCounter from '@/uitils/QuantityCounter'
-const Checkout = () => {
-  return (
-    <>
-      <div className="checkout-section pt-110 mb-110">
+import SelectComponent from '@/components/common/SelectComponent'
+
+const Checkout = () => (
+    <div className="checkout-section pt-110 mb-110">
         <div className="container">
           <div className="row gy-5">
             <div className="col-lg-7">
@@ -104,7 +104,7 @@ const Checkout = () => {
                           name="message"
                           placeholder="Order Notes (Optional)"
                           rows={6}
-                          defaultValue={''}
+                          defaultValue=""
                         />
                       </div>
                     </div>
@@ -141,7 +141,7 @@ const Checkout = () => {
                           name="message"
                           placeholder="Order Notes (Optional)"
                           rows={3}
-                          defaultValue={''}
+                          defaultValue=""
                         />
                       </div>
                     </div>
@@ -278,14 +278,14 @@ const Checkout = () => {
                           State / Country, Store Postcode.
                         </p>
                       </div>
-                      <div className="checked"></div>
+                      <div className="checked" />
                     </li>
                     <li className="cash-delivary">
                       <div className="form-check payment-check">
                         <h6>Cash on delivery</h6>
                         <p className="para">Pay with cash upon delivery.</p>
                       </div>
-                      <div className="checked"></div>
+                      <div className="checked" />
                     </li>
                     <li className="paypal">
                       <div className="form-check payment-check paypal">
@@ -295,11 +295,11 @@ const Checkout = () => {
                           What is PayPal?
                         </a>
                       </div>
-                      <div className="checked"></div>
+                      <div className="checked" />
                     </li>
                     <li className="stripe">
                       <h6>Card</h6>
-                      <div className="checked"></div>
+                      <div className="checked" />
                     </li>
                   </ul>
                   <div
@@ -367,7 +367,7 @@ const Checkout = () => {
                       <div className="col-xl-5">
                         <div className="input-area">
                           <label>CVC</label>
-                          <input type="text" placeholder={'123'} />
+                          <input type="text" placeholder="123" />
                         </div>
                       </div>
                     </div>
@@ -394,8 +394,6 @@ const Checkout = () => {
           </div>
         </div>
       </div>
-    </>
   )
-}
 
 export default Checkout

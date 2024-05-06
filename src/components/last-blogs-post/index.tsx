@@ -28,9 +28,7 @@ const PreviewArticle = ({ article, readlabel }) => {
           <div className="tag two">
             <span>{dateFormat(publishedAt)}</span>
             <ul>
-              {tagsSlice.map(tag => {
-                return <TagBar.TagItem key={tag.id} tag={tag} />
-              })}
+              {tagsSlice.map(tag => <TagBar.TagItem key={tag.id} tag={tag} />)}
             </ul>
           </div>
           <h5>
@@ -64,15 +62,13 @@ const LastBlogsPost = async ({ blog }) => {
           </h3>
         </div>
         <div className="row g-4">
-          {data.map(article => {
-            return (
+          {data.map(article => (
               <PreviewArticle
                 key={article.id}
                 article={article}
                 readlabel={read_more}
               />
-            )
-          })}
+            ))}
         </div>
       </div>
     </div>

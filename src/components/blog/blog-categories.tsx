@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
-const BlogCategories = () => {
-  return (
+const BlogCategories = () => (
     <div className="shop-widget mb-30">
       <div className="check-box-item">
         <h5 className="shop-widget-title">Categories</h5>
@@ -50,6 +49,5 @@ const BlogCategories = () => {
       </div>
     </div>
   )
-}
 
 export { BlogCategories }

@@ -1,6 +1,5 @@
-import { BlogSection } from '@/components/blog'
+import { BlogSection , BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
-import { BlogContent } from '@/components/blog'
 import { getSingles } from '@/services'
 
 const AboutUs = async () => {
