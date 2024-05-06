@@ -4,6 +4,12 @@
     "camelcase": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "jsx-a11y/anchor-is-valid": ["warn"],
+    "react/jsx-props-no-spreading": [
+      2,
+      {
+        "exceptions": ["Swiper", "img"]
+      }
+    ],
     "react/function-component-definition": [
       2,
       {

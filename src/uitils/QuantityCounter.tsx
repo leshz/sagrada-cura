@@ -1,4 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable lines-around-directive */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 'use client'
+
+
 
 import React from 'react'
 import useQuantityCounter from '../hooks/useQuantityCounter'

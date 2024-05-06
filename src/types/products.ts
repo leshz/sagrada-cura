@@ -1,8 +1,65 @@
-export interface ProductsDatum {
+export interface FluffyAttributes {
+  name: string
+  slug: string
+}
+export interface CategoriesDatum {
   id: number
-  attributes: PurpleAttributes
+  attributes: FluffyAttributes
+}
+export interface Categories {
+  data: CategoriesDatum[]
 }
 
+export interface Child {
+  text: string
+  type: string
+}
+export interface FullDescription {
+  type: string
+  level: number
+  children: Child[]
+}
+
+export interface Thumbnail {
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: null
+  size: number
+  width: number
+  height: number
+}
+export interface Formats {
+  thumbnail: Thumbnail
+}
+
+export interface TentacledAttributes {
+  url: string
+  width: number
+  height: number
+  alternativeText: null
+  formats: Formats
+}
+export interface PicturesDatum {
+  id: number
+  attributes: TentacledAttributes
+}
+
+export interface Pictures {
+  data: PicturesDatum[]
+}
+
+export interface Promotion {
+  id: number
+  with_discount: boolean
+  price_with_discount: null
+  recommended: boolean
+  best_seller: boolean
+  new: null
+  discount_tag: null
+}
 export interface PurpleAttributes {
   name: string
   price: number
@@ -20,71 +77,7 @@ export interface PurpleAttributes {
   promotion: Promotion
 }
 
-export interface Categories {
-  data: CategoriesDatum[]
-}
-
-export interface CategoriesDatum {
+export interface ProductsDatum {
   id: number
-  attributes: FluffyAttributes
+  attributes: PurpleAttributes
 }
-
-export interface FluffyAttributes {
-  name: string
-  slug: string
-}
-
-export interface FullDescription {
-  type: string
-  level: number
-  children: Child[]
-}
-
-export interface Child {
-  text: string
-  type: string
-}
-
-export interface Pictures {
-  data: PicturesDatum[]
-}
-
-export interface PicturesDatum {
-  id: number
-  attributes: TentacledAttributes
-}
-
-export interface TentacledAttributes {
-  url: string
-  width: number
-  height: number
-  alternativeText: null
-  formats: Formats
-}
-
-export interface Formats {
-  thumbnail: Thumbnail
-}
-
-export interface Thumbnail {
-  ext: string
-  url: string
-  hash: string
-  mime: string
-  name: string
-  path: null
-  size: number
-  width: number
-  height: number
-}
-
-export interface Promotion {
-  id: number
-  with_discount: boolean
-  price_with_discount: null
-  recommended: boolean
-  best_seller: boolean
-  new: null
-  discount_tag: null
-}
-

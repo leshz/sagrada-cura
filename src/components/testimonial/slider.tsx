@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo } from 'react'
-import Image from 'next/image'
 import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'

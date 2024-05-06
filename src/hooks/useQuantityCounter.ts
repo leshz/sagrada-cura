@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 // hooks/useQuantityCounter.js
 import { useState } from 'react'
 

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const RecentPost = () => (
     <div className="shop-widget mb-30">

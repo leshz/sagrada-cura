@@ -11,6 +11,7 @@ export const getIcons = (icon: string): string => {
   }
   return iconName
 }
+
 type singleType = {
   text: string
   url: string

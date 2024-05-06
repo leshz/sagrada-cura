@@ -1,7 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { getIcons } from '@/utils/helpers'
 
 const SocialHeader = ({ links }) => {
-  const SocialItem = ({ link, id, text }) => {
+  const SocialItem = ({ link, text }) => {
     const icon = getIcons(text)
     return (
       <li>

@@ -1,6 +1,9 @@
 const Starts = ({ quantity }) => {
   let i = 1
-  const starts = Array.from(Array(5), () => i++)
+  const starts = Array.from(Array(5), () => {
+    i += 1
+    return i
+  })
 
   return (
     <div className="say-about-card-top">

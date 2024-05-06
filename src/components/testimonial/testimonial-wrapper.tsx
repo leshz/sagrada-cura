@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { ImageWrapper } from '@/components/Image'

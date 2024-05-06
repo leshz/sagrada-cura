@@ -17,7 +17,7 @@ type Props = {
   }
 }
 
-const Card = ({ product, labels }: Props): JSX.Element => {
+const Card = ({ product, labels }: Props) => {
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
   const grid = Number.isNaN(gridParam) ? 3 : gridParam
@@ -61,7 +61,7 @@ const Card = ({ product, labels }: Props): JSX.Element => {
       <div className="product-card style-3 hover-btn">
         <div
           className={`product-card-img ${
-            previews.length == 2 ? 'double-img' : ''
+            previews.length === 2 ? 'double-img' : ''
           }`}
         >
           <Link href={productView}>

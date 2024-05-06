@@ -5,10 +5,10 @@ import { phoneFormmater } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
 const SingleItemMenu = ({ link, text }) => (
-    <li className="menu-single-item">
-      <Link href={link}>{text}</Link>
-    </li>
-  )
+  <li className="menu-single-item">
+    <Link href={link}>{text}</Link>
+  </li>
+)
 
 const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
   const filterItems: any = items.filter(({ link }) => link !== '#')
@@ -29,9 +29,9 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
         } dropdown-icon`}
       />
       <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
-        {filterItems.map((item, index) => {
+        {filterItems.map(item => {
           const { id } = item
-          return <SingleItemMenu key={`${id}-${index}`} {...item} />
+          return <SingleItemMenu key={id} {...item} />
         })}
       </ul>
     </li>
@@ -39,21 +39,21 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
 }
 
 const LogoMenu = ({ logo }) => (
-    <>
-      {/* Mobile image  */}
-      <div className="header-logo d-lg-none d-flex">
-        <Link href="/">
-          <ImageWrapper image={logo} className="img-fluid" />
-        </Link>
-      </div>
-      {/* Desktop Image */}
-      <div className="company-logo d-lg-flex d-none">
-        <Link href="/">
-          <ImageWrapper image={logo} className="img-fluid" />
-        </Link>
-      </div>
-    </>
-  )
+  <>
+    {/* Mobile image  */}
+    <div className="header-logo d-lg-none d-flex">
+      <Link href="/">
+        <ImageWrapper image={logo} className="img-fluid" />
+      </Link>
+    </div>
+    {/* Desktop Image */}
+    <div className="company-logo d-lg-flex d-none">
+      <Link href="/">
+        <ImageWrapper image={logo} className="img-fluid" />
+      </Link>
+    </div>
+  </>
+)
 
 const NavBarRoot = ({ children, isOpen, data }) => {
   const {
@@ -110,29 +110,29 @@ const NavBarRoot = ({ children, isOpen, data }) => {
 }
 
 const RightSideMenu = ({ click, isOpen, cart }) => (
-    <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
-      {cart && (
-        <div className="dropdown">
-          <Cart />
-        </div>
-      )}
-
-      <div
-        className={`sidebar-button mobile-menu-btn ${isOpen ? 'active' : ''}`}
-        onClick={click}
-      >
-        <span />
+  <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
+    {cart && (
+      <div className="dropdown">
+        <Cart />
       </div>
+    )}
+
+    <div
+      className={`sidebar-button mobile-menu-btn ${isOpen ? 'active' : ''}`}
+      onClick={click}
+    >
+      <span />
     </div>
-  )
+  </div>
+)
 
 const MainMenuRoot = ({ children }) => (
-    <header className="header-area style-2">
-      <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
-        {children}
-      </div>
-    </header>
-  )
+  <header className="header-area style-2">
+    <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
+      {children}
+    </div>
+  </header>
+)
 
 export const Menu = {
   Single: SingleItemMenu,

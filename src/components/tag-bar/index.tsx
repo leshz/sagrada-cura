@@ -1,18 +1,6 @@
 import Link from 'next/link'
 
-const TagBarWrapper = ({ tags }) => {
-  const { data } = tags
-  return (
-    <div className="tag">
-      <h6>Tag: </h6>
-      <ul className="tag-list">
-        {data.map(item => <TagItem key={item.id} tag={item} />)}
-      </ul>
-    </div>
-  )
-}
-
-const TagItem = ({ tag, link = false }) => {
+const TagItem = ({ tag }) => {
   const {
     attributes: { name, slug }
   } = tag
@@ -21,6 +9,20 @@ const TagItem = ({ tag, link = false }) => {
     <li>
       <Link href={`/blog?slug=${slug}`}>{name}</Link>
     </li>
+  )
+}
+
+const TagBarWrapper = ({ tags }) => {
+  const { data } = tags
+  return (
+    <div className="tag">
+      <h6>Tag: </h6>
+      <ul className="tag-list">
+        {data.map(item => (
+          <TagItem key={item.id} tag={item} />
+        ))}
+      </ul>
+    </div>
   )
 }
 
