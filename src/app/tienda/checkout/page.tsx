@@ -1,8 +1,10 @@
 'use client'
 
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React from 'react'
 import QuantityCounter from '@/uitils/QuantityCounter'
-import SelectComponent from '@/components/common/SelectComponent'
+// import SelectComponent from '@/components/common/SelectComponent'
 
 const Checkout = () => (
     <div className="checkout-section pt-110 mb-110">
@@ -55,10 +57,10 @@ const Checkout = () => (
                     </div>
                     <div className="col-12">
                       <div className="form-inner">
-                        <SelectComponent
+                        {/* <SelectComponent
                           options={['Dhaka', 'Saidpur', 'Newyork']}
                           placeholder="Town / City"
-                        />
+                        /> */}
                       </div>
                     </div>
                     <div className="col-12">
@@ -329,7 +331,7 @@ const Checkout = () => (
                           <label>Expiration Date</label>
                           <div className="row gy-4">
                             <div className="col-sm-6">
-                              <SelectComponent
+                              {/* <SelectComponent
                                 options={[
                                   'January',
                                   'February',
@@ -345,10 +347,10 @@ const Checkout = () => (
                                   'December'
                                 ]}
                                 placeholder="Month"
-                              />
+                              /> */}
                             </div>
                             <div className="col-sm-6">
-                              <SelectComponent
+                              {/* <SelectComponent
                                 options={[
                                   '01',
                                   '02',
@@ -359,7 +361,7 @@ const Checkout = () => (
                                   '07'
                                 ]}
                                 placeholder="Day"
-                              />
+                              /> */}
                             </div>
                           </div>
                         </div>

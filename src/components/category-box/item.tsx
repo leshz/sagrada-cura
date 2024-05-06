@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { useSearchParams, usePathname } from 'next/navigation'
 
 const Item = ({ category, defaultValue = false, defaultName = '' }) => {
   const { attributes: { name = '', slug = '' } = {} } = category || {}

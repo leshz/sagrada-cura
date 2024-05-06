@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const ProductImage = ({ imageUrl, dataScale }) => {
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(1)
 
   const handleMouseEnter = () => {
-    setScale(dataScale); // Use the data-scale attribute
-  };
+    setScale(dataScale) // Use the data-scale attribute
+  }
 
   const handleMouseLeave = () => {
-    setScale(1); // Reset the scale on mouse out
-  };
+    setScale(1) // Reset the scale on mouse out
+  }
 
-  const handleMouseMove = (e) => {
-    const image = e.currentTarget.querySelector(".product-img--main__image");
-    const rect = image.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
+  const handleMouseMove = e => {
+    const image = e.currentTarget.querySelector('.product-img--main__image')
+    const rect = image.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
 
-    image.style.transformOrigin = `${x}% ${y}%`;
-  };
+    image.style.transformOrigin = `${x}% ${y}%`
+  }
 
   return (
     <div
@@ -31,11 +31,11 @@ const ProductImage = ({ imageUrl, dataScale }) => {
         className="product-img--main__image"
         style={{
           backgroundImage: `url(${imageUrl})`,
-          transform: `scale(${scale})`,
+          transform: `scale(${scale})`
         }}
-      ></div>
+      />
     </div>
-  );
-};
+  )
+}
 
-export default ProductImage;
+export default ProductImage

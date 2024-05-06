@@ -8,6 +8,7 @@ const NewsLetter = ({ data }) => {
           <div className="from-inner">
             <input type="email" placeholder={label} />
             <button
+              aria-label="button"
               type="submit"
               style={{ background: 'transparent' }}
               className="from-arrow"

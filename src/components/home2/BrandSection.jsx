@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const BrandSection = () => {
-  return (
+const BrandSection = () => (
     <div className="brand-section mb-110">
       <div className="container-fluid">
         <div className="row">
@@ -110,6 +109,5 @@ const BrandSection = () => {
     </div>
 
   )
-}
 
 export default BrandSection

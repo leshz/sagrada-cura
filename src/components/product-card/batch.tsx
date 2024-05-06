@@ -1,7 +1,7 @@
 import type { Promotion } from '@/types/products'
 
 type Props = {
-  info?: Promotion
+  info: Promotion | undefined
 }
 
 const Batch = ({ info }: Props) => {

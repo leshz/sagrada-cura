@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useMemo } from 'react'
 import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
@@ -73,7 +72,7 @@ const Instagram = ({ feed }) => {
                       const { id } = item
                       return (
                         <SwiperSlide key={id} className="swiper-slide">
-                          <a target="_blank" href={profile_url}>
+                          <a target="_blank" href={profile_url} aria-label='link'>
                             <ImageWrapper image={item} />
                           </a>
                         </SwiperSlide>

@@ -65,7 +65,8 @@ const FixedBanner = ({ content }) => {
 const DoubleBanner = ({ data }) => {
   const { dinamic_banner = [] } = data
 
-  const configBanner = useMemo(() => ({
+  const configBanner = useMemo(
+    () => ({
       slidesPerView: 1,
       spaceBetween: 30,
       speed: 2000,
@@ -79,7 +80,9 @@ const DoubleBanner = ({ data }) => {
         el: '.swiper-pagination2',
         clickable: true
       }
-    }), [])
+    }),
+    []
+  )
   return (
     <div className="banner-2-section mb-110 ">
       <div className="container-fluid p-0">
@@ -91,17 +94,11 @@ const DoubleBanner = ({ data }) => {
                 <div className="swiper-wrapper">
                   {dinamic_banner.map(slide => {
                     const { image, text } = slide || {}
-                    const {
-                      data: { attributes: imageData }
-                    } = image
 
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
-                        <div
-                          className="banner-2-right-img-bg"
-                        
-                        >
-                          <ImageWrapper image={image} fill  />
+                        <div className="banner-2-right-img-bg">
+                          <ImageWrapper image={image} fill />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer

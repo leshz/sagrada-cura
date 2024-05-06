@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const PopularCategory = () => {
-  return (
+const PopularCategory = () => (
     <div className="popular-category-section mb-110">
       <div className="container">
         <div className="section-title3">
@@ -122,6 +121,5 @@ const PopularCategory = () => {
       </div>
     </div>
   )
-}
 
 export default PopularCategory

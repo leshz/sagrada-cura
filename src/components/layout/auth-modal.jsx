@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 
-const AuthModal = () => {
-  return (
+const AuthModal = () => (
     <div className="modal login-modal fade" id="user-login" data-bs-keyboard="false" tabIndex={-1} aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
@@ -74,6 +74,5 @@ const AuthModal = () => {
       </div>
     </div>
   )
-}
 
 export default AuthModal

@@ -7,12 +7,12 @@ import SwiperCore, {
   Pagination,
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation]);
 
 const ProductBanner = () => {
 
-    const productBannerSlider = useMemo(()=>{
-        return {
+    const productBannerSlider = useMemo(()=>({
           slidesPerView: "auto",
           spaceBetween: 30,
           loop: true,
@@ -26,8 +26,7 @@ const ProductBanner = () => {
             nextEl: ".pd-banner-next-btn",
             prevEl: ".pd-banner-prev-btn",
           },
-        }
-      },[])
+        }),[])
 
     
   return (

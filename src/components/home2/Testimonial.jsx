@@ -7,11 +7,11 @@ import SwiperCore, {
   Pagination,
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation]);
 
 const Testimonial = () => {
-    const testimonialSlide = useMemo(()=>{
-        return {
+    const testimonialSlide = useMemo(()=>({
           slidesPerView: "auto",
             loop: true,
             spaceBetween: 30,
@@ -47,8 +47,7 @@ const Testimonial = () => {
                 slidesPerView: 2,
               },
             },
-        }
-      },[])
+        }),[])
 
   return (
     <div className="testimonial-section mb-110">

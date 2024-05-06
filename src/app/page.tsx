@@ -6,7 +6,7 @@ import { LastBlogsPost } from '@/components/last-blogs-post'
 import { Testimonial } from '@/components/testimonial/testimonial-wrapper'
 import { Instagram } from '@/components/instagram'
 
-export default async function Home() {
+const Home = async () => {
   const {
     banners,
     product_categories,
@@ -27,3 +27,5 @@ export default async function Home() {
     </main>
   )
 }
+
+export default Home

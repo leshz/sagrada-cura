@@ -7,12 +7,12 @@ import SwiperCore, {
   Pagination,
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation]);
 
 const TopSellingProduct = () => {
   
-  const slideSettings = useMemo(()=>{
-    return {
+  const slideSettings = useMemo(()=>({
       slidesPerView: "auto",
         spaceBetween: 30,
         loop: true,
@@ -45,8 +45,7 @@ const TopSellingProduct = () => {
             slidesPerView: 4,
           },
         },
-        }
-      },[])
+        }),[])
 
 
   return (

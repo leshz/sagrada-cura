@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
 import SwiperCore from 'swiper'

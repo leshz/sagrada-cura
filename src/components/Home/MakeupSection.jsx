@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const MakeupSection = () => {
-  return (
+const MakeupSection = () => (
     <div className="makeup-section mb-110">
       <div className="container">
         <div className="makeup-top-item">
@@ -40,6 +39,5 @@ const MakeupSection = () => {
     </div>
 
   )
-}
 
 export default MakeupSection

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BlogAuthor , BlogContent } from '@/components/blog'

@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const FeatureProduct = () => {
-  return (
+const FeatureProduct = () => (
     <div className="feature-product-section mb-110">
       <div className="container">
         <div className="section-title3">
@@ -500,6 +499,5 @@ const FeatureProduct = () => {
     </div>
 
   )
-}
 
 export default FeatureProduct

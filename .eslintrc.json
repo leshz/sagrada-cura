@@ -4,10 +4,11 @@
     "camelcase": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "jsx-a11y/anchor-is-valid": ["warn"],
+    "react/no-unstable-nested-components": ["off"],
     "react/jsx-props-no-spreading": [
       2,
       {
-        "exceptions": ["Swiper", "img"]
+        "exceptions": ["Swiper", "Img"]
       }
     ],
     "react/function-component-definition": [

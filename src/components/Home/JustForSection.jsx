@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const JustForSection = () => {
-  return (
+const JustForSection = () => (
     <div className="just-for-section mb-110">
       <img src="/assets/img/home1/icon/vector-1.svg" alt="" className="vector1" />
       <img src="/assets/img/home1/icon/vector-2.svg" alt="" className="vector2" />
@@ -2039,6 +2038,5 @@ const JustForSection = () => {
     </div>
   
   )
-}
 
 export default JustForSection

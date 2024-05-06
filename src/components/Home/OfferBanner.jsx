@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-function OfferBanner() {
-  return (
+const OfferBanner = () => (
     <div className="offer-banner mb-110">
       <div className="container">
         <div className="row gy-4">
@@ -34,6 +33,5 @@ function OfferBanner() {
       </div>
     </div>
   )
-}
 
 export default OfferBanner

@@ -1,7 +1,6 @@
 import React from 'react'
 
-const BannerFooter = () => {
-  return (
+const BannerFooter = () => (
     <div className="banner-footer style-2">
       <div className="container-fluid p-0">
         <div className="banner-footer-wrapper">
@@ -77,6 +76,5 @@ const BannerFooter = () => {
     </div>
   
   )
-}
 
 export default BannerFooter

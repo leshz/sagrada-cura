@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 // Breadcrumb.js
 
 import Link from "next/link";

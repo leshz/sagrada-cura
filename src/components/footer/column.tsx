@@ -1,6 +1,5 @@
 import {
   BlocksRenderer,
-  type BlocksContent
 } from '@strapi/blocks-react-renderer'
 
 const Column = ({ data }) => {

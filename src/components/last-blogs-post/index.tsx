@@ -8,7 +8,7 @@ import { TagBar } from '@/components/tag-bar'
 
 const PreviewArticle = ({ article, readlabel }) => {
   const { attributes } = article
-  const { title, short_description, slug, image, tags, author, publishedAt } =
+  const { title, short_description, slug, image, tags, publishedAt } =
     attributes || {}
   const { data: dataTags = [] } = tags || {}
 

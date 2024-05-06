@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react'
 
-const Newsletter = () => {
-  return (
+const Newsletter = () => (
     <div className="newsletter-section style-2 mb-110">
       <div className="container">
         <div className="row">
@@ -28,6 +28,5 @@ const Newsletter = () => {
       </div>
     </div>
   )
-}
 
 export default Newsletter

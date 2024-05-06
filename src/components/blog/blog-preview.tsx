@@ -15,15 +15,11 @@ const BlogPreview = ({ blog }) => {
     <div className="col-lg-4 col-sm-6">
       <div className="article-card">
         <div className="article-image">
-          <Link legacyBehavior href="/blog-details">
-            <a className="article-card-img hover-img">
-              <ImageWrapper image={image} />
-            </a>
+          <Link className="article-card-img hover-img" href="/blog-details">
+            <ImageWrapper image={image} />
           </Link>
           <div className="blog-date">
-            <Link legacyBehavior href={urlBlog}>
-              <a>{dateFormat(publishedAt)}</a>
-            </Link>
+            <Link href={urlBlog}>{dateFormat(publishedAt)}</Link>
           </div>
         </div>
         <div className="article-card-content">

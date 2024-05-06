@@ -1,7 +1,6 @@
 import React from "react";
 
-const Newsletter = () => {
-  return (
+const Newsletter = () => (
     <div className="newsletter-section mb-110">
       <div className="container">
         <div className="row">
@@ -27,6 +26,5 @@ const Newsletter = () => {
       </div>
     </div>
   );
-};
 
 export default Newsletter;

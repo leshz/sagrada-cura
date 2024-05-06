@@ -66,12 +66,12 @@ const Card = ({ product, labels }: Props) => {
         >
           <Link href={productView}>
             {previews.map((image, index) => (
-                <ImageWrapper
-                  key={image.id}
-                  image={image}
-                  className={`img${index + 1}`}
-                />
-              ))}
+              <ImageWrapper
+                key={image.id}
+                image={image}
+                className={`img${index + 1}`}
+              />
+            ))}
             <Batch info={promotion} />
           </Link>
           <div className="overlay">

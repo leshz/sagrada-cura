@@ -22,7 +22,12 @@ const GridSelector = () => {
 
   return (
     <ul className="grid-view">
-      <li className={grid === 2 ? 'active' : ''} onClick={() => toggleGrid(2)}>
+      <button
+        aria-label="button"
+        type="button"
+        className={grid === 2 ? 'active' : ''}
+        onClick={() => toggleGrid(2)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={12}
@@ -50,8 +55,13 @@ const GridSelector = () => {
             />
           </g>
         </svg>
-      </li>
-      <li className={grid === 3 ? 'active' : ''} onClick={() => toggleGrid(3)}>
+      </button>
+      <button
+        aria-label="button"
+        type="button"
+        className={grid === 3 ? 'active' : ''}
+        onClick={() => toggleGrid(3)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={20}
@@ -94,8 +104,13 @@ const GridSelector = () => {
             />
           </g>
         </svg>
-      </li>
-      <li className={grid === 4 ? 'active' : ''} onClick={() => toggleGrid(4)}>
+      </button>
+      <button
+        aria-label="button"
+        type="button"
+        className={grid === 4 ? 'active' : ''}
+        onClick={() => toggleGrid(4)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={20}
@@ -153,7 +168,7 @@ const GridSelector = () => {
             />
           </g>
         </svg>
-      </li>
+      </button>
     </ul>
   )
 }

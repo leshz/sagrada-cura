@@ -1,6 +1,6 @@
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { BlogPreview } from '@/components/blog'
+import { BlogPreview } from '@/components/blog/blog-preview'
 import { Paginator } from '@/components/paginator'
 
 const BlogMasonaryPage = async () => {

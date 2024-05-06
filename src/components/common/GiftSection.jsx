@@ -1,8 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function GiftSection() {
-  return (
+const GiftSection = () => (
     <div className="gift-section">
       <img
         src="/assets/img/home1/gift-card-img1.png"
@@ -29,7 +28,6 @@ function GiftSection() {
         </div>
       </div>
     </div>
-  );
-}
+  )
 
 export default GiftSection;

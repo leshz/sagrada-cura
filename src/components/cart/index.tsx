@@ -1,6 +1,7 @@
-// @ts-ignore
-
 'use client'
+
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable react/button-has-type */
 
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -113,7 +114,11 @@ const Cart = () => {
                       <span>
                         $150 <del>$200</del>
                       </span>
-                      <button className="close-btn">
+                      <button
+                        type="button"
+                        aria-label="button"
+                        className="close-btn"
+                      >
                         <i className="bi bi-x" />
                       </button>
                     </div>

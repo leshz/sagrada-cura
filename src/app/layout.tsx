@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: 'Sanacion natural'
 }
 
-export default async function Root({ children }) {
+const RootLayout = async ({ children }) => {
   const generes = getSingles('general')
   const menures = getSingles('menu')
 
@@ -38,3 +38,5 @@ export default async function Root({ children }) {
     </html>
   )
 }
+
+export default RootLayout
