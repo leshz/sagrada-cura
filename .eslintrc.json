@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "next", "prettier"]
+  "extends": ["airbnb", "next/core-web-vitals", "next", "prettier"],
+  "rules": {
+    "camelcase": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "tsx": "never",
+        "js": "never",
+        "ts": "never",
+        "jsx": "never"
+      }
+    ]
+  }
 }
