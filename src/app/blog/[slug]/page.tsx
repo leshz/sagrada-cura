@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { BlogAuthor , BlogContent } from '@/components/blog'
+import { BlogAuthor, BlogContent } from '@/components/blog'
 import { RecentPost } from '@/components/recent-post'
 import { TagsCloud } from '@/components/tags-cloud'
 import { TagBar } from '@/components/tag-bar'
@@ -31,7 +29,7 @@ const BlogDetailsPage = async ({ params }) => {
             <BlogAuthor author={author} tags={tags} />
             <div className="blog-thumb">
               <ImageWrapper image={image} />
-              <Link href="#">{dateFormat(publishedAt)}</Link>
+              <time className="date-blog">{dateFormat(publishedAt)}</time>
             </div>
             <BlogContent title={title} content={article} />
           </div>
@@ -48,22 +46,22 @@ const BlogDetailsPage = async ({ params }) => {
             <h6>Share On:</h6>
             <ul className="social-list">
               <li>
-                <a href="https://www.facebook.com/">
+                <a href="https://www.facebook.com/" aria-label="go to facebook">
                   <i className="fab fa-facebook-f" />
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/">
+                <a href="https://twitter.com/" aria-label="go to twitter">
                   <i className="fab fa-twitter" />
                 </a>
               </li>
               <li>
-                <a href="https://www.pinterest.com/">
+                <a href="https://www.pinterest.com/" aria-label="go to">
                   <i className="fab fa-pinterest-p" />
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/">
+                <a href="https://www.instagram.com/" aria-label="go to">
                   <i className="fab fa-instagram" />
                 </a>
               </li>

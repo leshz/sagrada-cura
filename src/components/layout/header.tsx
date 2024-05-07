@@ -1,7 +1,5 @@
 'use client'
 
-/* eslint-disable react/jsx-props-no-spreading */
-
 import { useState } from 'react'
 import { Menu } from '@/components/menu'
 import { getMenuData } from '@/utils/helpers'
@@ -46,14 +44,14 @@ const Header = ({ data, menuLinks }) => {
             item: { id = index }
           } = section
           return !multiple ? (
-            <Menu.Single key={`${id}`} {...item} />
+            <Menu.Single key={`${id}`} link={item.link} text={item.text} />
           ) : (
             <Menu.Multiple
               toggleSubMenu={toggleSubMenu}
               activeMenu={menu.activeMenu}
               items={item}
               name={name}
-              key={section.id}
+              key={`${index + 1}`}
             />
           )
         })}

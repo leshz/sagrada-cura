@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/jsx-props-no-spreading */
 import Link from 'next/link'
 
 import { Cart } from '@/components/cart'
@@ -17,24 +14,30 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
   const filterItems: any = items.filter(({ link }) => link !== '#')
   return (
     <li className="menu-item-has-children">
-      <a
+      <div
         className="drop-down"
         onClick={() => {
           toggleSubMenu(name)
         }}
+        role="button"
+        tabIndex={0}
+        onKeyUp={() => {}}
       >
         {name}
-      </a>
+      </div>
       <i
         className={`bi bi-${
           activeMenu === name ? 'dash' : 'plus'
         } dropdown-icon`}
       />
       <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
-        {filterItems.map(item => {
-          const { id } = item
-          return <SingleItemMenu key={id} {...item} />
-        })}
+        {filterItems.map((item, index) => (
+          <SingleItemMenu
+            key={`${index + 1}`}
+            link={item.link}
+            text={item.text}
+          />
+        ))}
       </ul>
     </li>
   )
@@ -119,12 +122,14 @@ const RightSideMenu = ({ click, isOpen, cart }) => (
       </div>
     )}
 
-    <div
+    <button
       className={`sidebar-button mobile-menu-btn ${isOpen ? 'active' : ''}`}
       onClick={click}
+      type="button"
+      aria-label="button"
     >
       <span />
-    </div>
+    </button>
   </div>
 )
 

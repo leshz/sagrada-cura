@@ -981,7 +981,7 @@ header {
       &.active {
         display: block;
         transform: scaleY(1);
-        animation: fade-down 0.3s linear;
+        animation: fade-down 0.2s linear;
 
         @keyframes fade-down {
           0% {
@@ -1009,7 +1009,8 @@ header {
             border-bottom: none;
           }
 
-          a {
+          a,
+          div {
             color: var(--primary-color1);
             font-family: var(--font-Jost);
             font-size: 15px;
@@ -1533,7 +1534,8 @@ header {
           margin-right: 0;
         }
 
-        > a, {
+        > a,
+        div {
           color: var(--primary-color1);
           display: block;
           text-transform: uppercase;
@@ -2428,7 +2430,8 @@ header {
     .main-menu {
       ul {
         li {
-          a {
+          a,
+          div {
             padding: 25px 0;
             @include lg-down-device() {
               padding: 10px 0;
@@ -3538,6 +3541,7 @@ header {
   border: 1px solid #ececec;
   padding: 15px;
   transition: 0.5s;
+  height: 100%;
   .product-card-img {
     display: flex;
     align-items: center;
@@ -5704,6 +5708,7 @@ header {
               height: 65px;
               width: 65px;
               border-radius: 50%;
+              object-fit: cover;
             }
           }
         }
@@ -5760,6 +5765,7 @@ header {
   border: 1px solid var(--primary-color1);
   overflow: hidden;
   position: relative;
+  height: 100%;
   .article-image {
     position: relative;
     @include lg-down-device() {
@@ -5775,18 +5781,18 @@ header {
         }
       }
 
-      // &::before {
-      //   content: "";
-      //   background: rgba(255, 255, 255, .2);
-      //   position: absolute;
-      //   left: -75%;
-      //   top: 0;
-      //   height: 100%;
-      //   width: 50%;
-      //   transform: skewX(-25deg);
-      //   transform-origin: right;
-      //   transition: transform .4s ease-in;
-      // }
+      &::before {
+        content: '';
+        background: rgba(255, 255, 255, 0.2);
+        position: absolute;
+        left: -75%;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        transform: skewX(-25deg);
+        transform-origin: right;
+        transition: transform 0.4s ease-in;
+      }
       &.style-2 {
         img {
           @include sm-down-device() {
@@ -5859,6 +5865,11 @@ header {
     }
 
     h5 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
       a {
         color: var(--primary-color1);
         font-size: 22px;
@@ -5895,6 +5906,11 @@ header {
       line-height: 1.6;
       letter-spacing: 0.45px;
       margin-bottom: 15px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
 
       @include lg-device() {
         font-size: 14px;
@@ -7877,7 +7893,8 @@ header {
       @include md-down-device() {
         display: none;
       }
-      li {
+      button {
+        background: unset;
         line-height: 1;
         cursor: pointer;
         svg {
@@ -10193,6 +10210,7 @@ header {
           width: 30px;
           height: 30px;
           border-radius: 50%;
+          object-fit: cover;
         }
       }
 
@@ -10335,7 +10353,7 @@ header {
     position: relative;
     margin-bottom: 30px;
 
-    a {
+    .date-blog {
       color: var(--white-color);
       font-size: 14px;
       font-family: var(--font-Jost);
@@ -13505,4 +13523,9 @@ Testimonial-Section Css
       }
     }
   }
+}
+
+// Improvements CSS
+.swiper-slide {
+  height: unset !important;
 }

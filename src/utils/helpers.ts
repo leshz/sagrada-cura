@@ -46,11 +46,11 @@ export const getMenuData = (data = []) => {
   return menudata
 }
 
-export const dateFormat = date => format(date, 'medium')
+export const dateFormat = date => format(date, 'medium', 'co')
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
   style: 'currency',
   currency: 'COP',
   minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-});
+  maximumFractionDigits: 0
+})
