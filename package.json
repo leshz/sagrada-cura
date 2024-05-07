@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "linter:fix":"next lint --fix",
+    "linter:fix": "next lint --fix",
     "prepare": "husky install"
   },
   "engines": {
@@ -18,6 +18,7 @@
     "@formkit/tempo": "^0.1.1",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",

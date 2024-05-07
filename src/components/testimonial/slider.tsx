@@ -8,10 +8,13 @@ import { SwiperOptions } from 'swiper/types'
 import { ImageWrapper } from '@/components/Image'
 import { Starts } from './starts'
 
+import 'swiper/css/bundle'
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Slider = ({ slides }) => {
-  const testimonialSlideSettings: SwiperOptions = useMemo(() => ({
+  const testimonialSlideSettings: SwiperOptions = useMemo(
+    () => ({
       slidesPerView: 'auto',
       spaceBetween: 40,
       loop: true,
@@ -48,7 +51,9 @@ const Slider = ({ slides }) => {
           slidesPerView: 3
         }
       }
-    }), [])
+    }),
+    []
+  )
 
   return (
     <Swiper {...testimonialSlideSettings} className="swiper say-about-slider">

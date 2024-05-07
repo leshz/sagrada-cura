@@ -9,6 +9,8 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import Link from 'next/link'
 import SwiperCore from 'swiper'
 
+import 'swiper/css/bundle';
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const HightLights = ({ highlights }) => {

@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons';
 /*===========================
      01.COMMON CSS 
 ===========================*/
@@ -1532,7 +1533,7 @@ header {
           margin-right: 0;
         }
 
-        > a {
+        > a, {
           color: var(--primary-color1);
           display: block;
           text-transform: uppercase;

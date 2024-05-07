@@ -7,6 +7,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
 import { ImageWrapper } from '@/components/Image'
 
+import 'swiper/css/bundle';
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Instagram = ({ feed }) => {

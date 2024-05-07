@@ -8,6 +8,8 @@ import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
 import SwiperCore from 'swiper'
 
+import 'swiper/css/bundle';
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const FixedBanner = ({ content }) => {

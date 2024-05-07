@@ -11,6 +11,8 @@ import { useCountdownTimer } from '@/hooks/useCountdownTimer'
 import QuantityCounter from '@/uitils/QuantityCounter'
 import { SwiperOptions } from 'swiper/types'
 
+import 'swiper/css/bundle';
+
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 const NewestProduct = () => {
   const [selectColor, setselectColor] = useState(0)

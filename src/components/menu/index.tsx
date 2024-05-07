@@ -18,7 +18,6 @@ const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => {
   return (
     <li className="menu-item-has-children">
       <a
-        href="#"
         className="drop-down"
         onClick={() => {
           toggleSubMenu(name)

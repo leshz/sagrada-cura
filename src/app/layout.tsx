@@ -4,14 +4,9 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
-import Script from 'next/script'
 import Error from './error'
 
 import './style.scss'
-
-// import '../../public/assets/css/bootstrap-icons.css'
-// import '../../public/assets/css/all.min.css'
-import '../../public/assets/css/swiper-bundle.min.css'
 
 export const metadata: Metadata = {
   title: 'Sagrada cura',
@@ -25,8 +20,7 @@ const RootLayout = async ({ children }) => {
   const [data, menu] = await Promise.all([generes, menures])
 
   return (
-    <html lang="en">
-      <Script src="/assets/js/bootstrap.min.js" />
+    <html lang="es-CO">
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
