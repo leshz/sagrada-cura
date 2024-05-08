@@ -1,8 +1,9 @@
 export const availableIcons = {
-  fb: 'fa-facebook-f',
-  tw: 'fa-twitter',
-  pinteres: 'fa-pinterest-p',
-  ig: 'fa-instagram'
+  facebook: 'facebook',
+  x: 'twitter-x',
+  pinteres: 'pinterest',
+  instagram: 'instagram',
+  tiktok: 'tiktok'
 }
 
 export const menuComponents = {

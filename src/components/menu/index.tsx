@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Cart } from '@/components/cart'
 import { phoneFormmater } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
+import { useEffect, useState } from 'react'
 
 const SingleItemMenu = ({ link, text }) => (
   <li className="menu-single-item">
@@ -48,13 +49,13 @@ const LogoMenu = ({ logo }) => (
     {/* Mobile image  */}
     <div className="header-logo d-lg-none d-flex">
       <Link href="/">
-        <ImageWrapper image={logo} className="img-fluid" />
+        <ImageWrapper image={logo} className="image-logo-mobile" />
       </Link>
     </div>
     {/* Desktop Image */}
     <div className="company-logo d-lg-flex d-none">
       <Link href="/">
-        <ImageWrapper image={logo} className="img-fluid" />
+        <ImageWrapper image={logo} className="image-logo-desktop" />
       </Link>
     </div>
   </>
@@ -133,13 +134,30 @@ const RightSideMenu = ({ click, isOpen, cart }) => (
   </div>
 )
 
-const MainMenuRoot = ({ children }) => (
-  <header className="header-area style-2">
-    <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
-      {children}
-    </div>
-  </header>
-)
+const MainMenuRoot = ({ children }) => {
+  const [position, setposition] = useState('')
+
+  const handlerScroll = () => {
+    const { scrollY } = window
+    if (scrollY >= 56) {
+      setposition('sticky')
+    } else {
+      setposition('')
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('scroll', handlerScroll)
+    return () => document.removeEventListener('scroll', handlerScroll)
+  })
+
+  return (
+    <header className={`header-area style-2 ${position}`}>
+      <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
+        {children}
+      </div>
+    </header>
+  )
+}
 
 export const Menu = {
   Single: SingleItemMenu,

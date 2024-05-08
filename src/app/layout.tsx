@@ -6,7 +6,7 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
 import Error from './error'
 
-import './style.scss'
+import '@/styles/global.scss'
 
 export const metadata: Metadata = {
   title: 'Sagrada cura',

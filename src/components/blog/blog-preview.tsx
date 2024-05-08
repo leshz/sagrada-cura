@@ -15,7 +15,7 @@ const BlogPreview = ({ blog }) => {
     <div className="col-lg-4 col-sm-6">
       <div className="article-card">
         <div className="article-image">
-          <Link className="article-card-img hover-img" href="/blog-details">
+          <Link className="article-card-img hover-img" href={urlBlog}>
             <ImageWrapper image={image} />
           </Link>
           <div className="blog-date">

@@ -1,12 +1,12 @@
 import { getIcons } from '@/utils/helpers'
 
 const SocialHeader = ({ links }) => {
-  const SocialItem = ({ link, text }) => {
+  const SocialItem = ({ link, text }) => {    
     const icon = getIcons(text)
     return (
       <li>
         <a href={link} target="_blank" aria-label="goto">
-          <i className={`fab ${icon}`} />
+          <i className={`bi bi-${icon}`} />
         </a>
       </li>
     )

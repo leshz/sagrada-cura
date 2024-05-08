@@ -8,7 +8,7 @@ import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
 import SwiperCore from 'swiper'
 
-import 'swiper/css/bundle';
+import 'swiper/css/bundle'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
@@ -20,7 +20,7 @@ const FixedBanner = ({ content }) => {
     <div className="col-xxl-3 col-xl-4">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {imagenToBoanner && <ImageWrapper image={image} />}
+          {imagenToBoanner && <ImageWrapper image={image} priority />}
         </div>
 
         <div className="banner-2-left-content">
@@ -100,7 +100,7 @@ const DoubleBanner = ({ data }) => {
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div className="banner-2-right-img-bg">
-                          <ImageWrapper image={image} fill />
+                          <ImageWrapper image={image} fill priority />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
