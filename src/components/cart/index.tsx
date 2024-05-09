@@ -9,7 +9,7 @@ const Cart = () => {
   const cartButtonRef: any = useRef()
   const cartMenuRef: any = useRef()
   const store = useStore()
-  const { cart } = store
+  const { cart }: any = store
   console.debug(store)
 
   const quantity = cart.reduce(

@@ -19,7 +19,7 @@ type Props = {
 }
 
 const Card = ({ product, labels }: Props) => {
-  const { addToCart } = useStore()
+  const { addToCart }: any = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
   const grid = Number.isNaN(gridParam) ? 3 : gridParam
@@ -79,10 +79,7 @@ const Card = ({ product, labels }: Props) => {
           <div className="overlay">
             <div className="cart-area">
               {stock === 0 ? (
-                <Link
-                  className="hover-btn3 add-cart-btn "
-                  href="/"
-                >
+                <Link className="hover-btn3 add-cart-btn " href="/">
                   {request_stock}
                 </Link>
               ) : (
