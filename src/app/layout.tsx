@@ -4,6 +4,7 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
+import { Jost, Kalam } from 'next/font/google'
 import Error from './error'
 
 import '@/styles/global.scss'
@@ -13,6 +14,21 @@ export const metadata: Metadata = {
   description: 'Sanacion natural'
 }
 
+export const jost = Jost({
+  weight: ['300', '400', '500', '600', '800', '900'],
+  display: 'swap',
+  style: 'normal',
+  subsets: ['latin'],
+  variable: '--font-jost-next'
+})
+
+export const kalam = Kalam({
+  weight: '700',
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-kalam-next'
+})
+
 const RootLayout = async ({ children }) => {
   const generes = getSingles('general')
   const menures = getSingles('menu')
@@ -20,7 +36,7 @@ const RootLayout = async ({ children }) => {
   const [data, menu] = await Promise.all([generes, menures])
 
   return (
-    <html lang="es-CO">
+    <html className={`${jost.variable} ${kalam.variable}`} lang="es-CO">
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />

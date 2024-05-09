@@ -248,6 +248,9 @@ header {
     .dropdown {
       position: relative;
       transition: 0.5s;
+      @include sm-down-device() {
+        margin-right: 20px;
+      }
 
       .modal-btn {
         display: flex;
@@ -286,11 +289,11 @@ header {
       .cart-menu {
         min-height: 10rem;
         background-color: var(--white-color);
-        box-shadow: 0px 30px 80px rgba(8, 0, 42, 0.08);
+        box-shadow: 1px 10px 8px 0px rgb(8, 0, 42, 11%);
         border-radius: 0 0 10px 10px;
         position: absolute;
         right: 0px;
-        top: 37px;
+        top: 44px;
         padding: 20px;
         z-index: 99;
         display: none;
@@ -299,7 +302,7 @@ header {
         margin-right: -2.5rem;
         @include sm-down-device() {
           padding: 15px;
-          right: -75px;
+          right: -45px;
         }
         &.active {
           display: block;
@@ -323,6 +326,7 @@ header {
 
         .cart-body {
           padding: 0 0 20px;
+          min-width: 290px;
 
           ul {
             .single-item {
@@ -361,14 +365,16 @@ header {
                     line-height: 1;
                     margin-bottom: 10px;
 
-                    span {
+                    p {
                       font-family: var(--font-Jost);
                       font-weight: 600;
-                      font-size: 15px;
+                      font-size: 14px;
                       color: var(--primary-color1);
                       display: inline-block;
+                      margin: 0;
+                      line-height: normal;
 
-                      del {
+                      .discount {
                         font-size: 13px;
                       }
                     }
@@ -383,17 +389,6 @@ header {
                         color: var(--primary-color1);
                       }
                     }
-
-                    p {
-                      margin-bottom: 0;
-
-                      a {
-                        font-size: 14px;
-                        font-weight: 500;
-                        font-family: var(--font-Jost);
-                        color: var(--text-color);
-                      }
-                    }
                   }
 
                   .quantity-area {
@@ -401,7 +396,7 @@ header {
                       display: flex;
                       gap: 5px;
 
-                      a {
+                      button {
                         height: 24px;
                         width: 34px;
                         border-radius: 4px;

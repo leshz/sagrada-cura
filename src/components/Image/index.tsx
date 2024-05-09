@@ -20,9 +20,9 @@ const ImageWrapper = ({ image, format = '', fill = false, ...props }) => {
       fill
     }
   }
-  const propsToImage = { ...imagen, ...props }
+  const propsToImage: any = { ...imagen, ...props }
 
-  return <Img {...propsToImage} />
+  return <Img src={propsToImage.src} alt={propsToImage.alt} {...propsToImage} />
 }
 
 export { ImageWrapper }

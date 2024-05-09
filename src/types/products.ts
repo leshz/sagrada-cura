@@ -80,4 +80,5 @@ export interface PurpleAttributes {
 export interface ProductsDatum {
   id: number
   attributes: PurpleAttributes
+  quantityCart?: number
 }

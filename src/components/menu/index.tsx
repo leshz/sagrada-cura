@@ -115,11 +115,11 @@ const NavBarRoot = ({ children, isOpen, data }) => {
   )
 }
 
-const RightSideMenu = ({ click, isOpen, cart }) => (
+const RightSideMenu = ({ click, isOpen, cart, labels }) => (
   <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
     {cart && (
       <div className="dropdown">
-        <Cart />
+        <Cart labels={labels} />
       </div>
     )}
 

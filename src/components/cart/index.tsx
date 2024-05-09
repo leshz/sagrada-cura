@@ -1,22 +1,24 @@
 'use client'
 
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/button-has-type */
-
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '@/store'
+import { productsCalculator, currencyFormat } from '@/utils/helpers'
+import { CartItem } from './cart-item'
 
-const Cart = () => {
+const Cart = ({ labels }) => {
   const [showCart, setShowCart] = useState(false)
   const cartButtonRef: any = useRef()
   const cartMenuRef: any = useRef()
-  const store = useStore()
-  const { cart }: any = store
-  console.debug(store)
+  const { sub_total, discount, continue_shopping, got_checkout } = labels || {}
+  const { cart } = useStore(state => state)
+  const cartHasItems: boolean = cart.length > 0
+  const {
+    totals: { totalDiscounted, totalFullPrice, totalFullPriceDiscount }
+  } = productsCalculator(cart)
 
   const quantity = cart.reduce(
-    (acum, product) => acum + product.quantityCart,
+    (acum, product) => acum + (product?.quantityCart || 0),
     0
   )
 
@@ -68,135 +70,55 @@ const Cart = () => {
         ref={cartMenuRef.current}
         className={`cart-menu ${showCart ? 'active' : ''}`}
       >
-        <div className="cart-body">
-          <ul>
-            <li className="single-item">
-              <div className="item-area">
-                <div className="item-img">
-                  <img src="/assets/img/home1/cart-img-1.png" alt="" />
-                </div>
-                <div className="content-and-quantity">
-                  <div className="content">
-                    <div className="price-and-btn d-flex align-items-center justify-content-between">
-                      <span>
-                        $150 <del>$200</del>
-                      </span>
-                      <button className="close-btn">
-                        <i className="bi bi-x" />
-                      </button>
-                    </div>
-                    <p>
-                      <a href="#">Estee Lauder new Nail Polish</a>
-                    </p>
-                  </div>
-                  <div className="quantity-area">
-                    <div className="quantity">
-                      <a className="quantity__minus">
-                        <span>
-                          <i className="bi bi-dash" />
-                        </span>
-                      </a>
-                      <input
-                        name="quantity"
-                        type="text"
-                        className="quantity__input"
-                        defaultValue={1}
-                      />
-                      <a className="quantity__plus">
-                        <span>
-                          <i className="bi bi-plus" />
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+        {cartHasItems && (
+          <>
+            <div className="cart-body">
+              <ul>
+                {cart.length > 0 &&
+                  cart.map(product => (
+                    <CartItem key={product.id} product={product} />
+                  ))}
+              </ul>
+            </div>
+            <div className="cart-footer">
+              <div className="pricing-area">
+                <ul>
+                  <li>
+                    <span>{sub_total}</span>
+                    <span>{currencyFormat.format(totalFullPrice)}</span>
+                  </li>
+                  <li>
+                    <span>{discount}</span>
+                    <span>{currencyFormat.format(totalDiscounted)}</span>
+                  </li>
+                </ul>
+                <ul className="total">
+                  <li>
+                    <span>Total</span>
+                    <span>{currencyFormat.format(totalFullPriceDiscount)}</span>
+                  </li>
+                </ul>
               </div>
-            </li>
-            <li className="single-item">
-              <div className="item-area">
-                <div className="item-img">
-                  <img src="/assets/img/home1/cart-img-2.png" alt="" />
-                </div>
-                <div className="content-and-quantity">
-                  <div className="content">
-                    <div className="price-and-btn d-flex align-items-center justify-content-between">
-                      <span>
-                        $150 <del>$200</del>
-                      </span>
-                      <button
-                        type="button"
-                        aria-label="button"
-                        className="close-btn"
-                      >
-                        <i className="bi bi-x" />
-                      </button>
-                    </div>
-                    <p>
-                      <a href="#">Argan &amp; Olive Nature organ Oil</a>
-                    </p>
-                  </div>
-                  <div className="quantity-area">
-                    <div className="quantity">
-                      <a className="quantity__minus">
-                        <span>
-                          <i className="bi bi-dash" />
-                        </span>
-                      </a>
-                      <input
-                        name="quantity"
-                        type="text"
-                        className="quantity__input"
-                        defaultValue={1}
-                      />
-                      <a className="quantity__plus">
-                        <span>
-                          <i className="bi bi-plus" />
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              <div className="footer-button">
+                <ul>
+                  <li>
+                    <Link className="primary-btn1 hover-btn4" href="/tienda">
+                      {continue_shopping}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="primary-btn1 hover-btn3"
+                      href="/tienda/checkout"
+                    >
+                      {got_checkout}
+                    </Link>
+                  </li>
+                </ul>
               </div>
-            </li>
-          </ul>
-        </div>
-        <div className="cart-footer">
-          <div className="pricing-area">
-            <ul>
-              <li>
-                <span>Sub Total</span>
-                <span>$468</span>
-              </li>
-              <li>
-                <span>Offer (20%)</span>
-                <span>$56</span>
-              </li>
-            </ul>
-            <ul className="total">
-              <li>
-                <span>Total</span>
-                <span>$425</span>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-button">
-            <ul>
-              <li>
-                <Link className="primary-btn1 hover-btn4" href="/tienda">
-                  Continue Shopping
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="primary-btn1 hover-btn3"
-                  href="/tienda/checkout"
-                >
-                  Product Checkout
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   )

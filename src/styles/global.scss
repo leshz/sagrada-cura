@@ -1,12 +1,25 @@
-@import './mixins';
-@import './variables';
-
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
+@import './mixins';
+
+:root {
+  --font-Jost: var(--font-jost-next);
+  --font-Kalam: var(--font-kalam-next);
+  // Colors ---------------
+  --white-color: #fff;
+  --black-color: #000000;
+  --title-color: #13141a;
+  --text-color: #212121;
+  --text-color2: #ababab;
+  --text-color3: #969696;
+  // Theme Color
+  --primary-color1: #222222;
+  --bg-color: #f2f2f2;
+}
+
 /*===========================
      01.COMMON CSS 
 ===========================*/
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&family=Kalam:wght@700&display=swap');
 
 * {
   margin: 0;
