@@ -1,4 +1,3 @@
-import { PhoneIcon } from '@/icons/phone'
 import { phoneFormmater } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
@@ -6,10 +5,10 @@ import { NewsLetter } from './newsletter'
 import { Columns, Column } from './column'
 
 const FooterRoot = ({ children }) => (
-    <footer className="footer-section style-2">
-      <div className="container">{children}</div>
-    </footer>
-  )
+  <footer className="footer-section style-2">
+    <div className="container">{children}</div>
+  </footer>
+)
 
 const Botton = ({ data }) => {
   const {
@@ -39,7 +38,7 @@ const Botton = ({ data }) => {
           )}
           <div className="footer-contact">
             <div className="logo">
-              <PhoneIcon width={33} height={33} />
+              <i className="bi bi-telephone" />
             </div>
             <div className="content">
               <p>{message}</p>
@@ -55,24 +54,24 @@ const Botton = ({ data }) => {
 }
 
 const LastItem = () => (
-    <div className="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-lg-end justify-content-md-center">
-      <div className="footer-widget">
-        <div className="widget-title style-2">
-          <h5>Payment Gateway</h5>
-        </div>
-        <p>Sed vitae elementum elit. Ut sed maur id sem ultricies ultricies.</p>
-        <div className="payment-gateway">
-          <p>Secured Payment Gateways</p>
-          {/* <div className="icons">
+  <div className="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-lg-end justify-content-md-center">
+    <div className="footer-widget">
+      <div className="widget-title style-2">
+        <h5>Payment Gateway</h5>
+      </div>
+      <p>Sed vitae elementum elit. Ut sed maur id sem ultricies ultricies.</p>
+      <div className="payment-gateway">
+        <p>Secured Payment Gateways</p>
+        {/* <div className="icons">
             <img src="assets/img/home1/icon/visa.png" alt="" />
             <img src="assets/img/home1/icon/mastercard.png" alt="" />
             <img src="assets/img/home1/icon/american-express.png" alt="" />
             <img src="assets/img/home1/icon/maestro.png" alt="" />
           </div> */}
-        </div>
       </div>
     </div>
-  )
+  </div>
+)
 
 export const Footer = {
   Root: FooterRoot,

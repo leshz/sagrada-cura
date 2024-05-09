@@ -1,8 +1,9 @@
 import { phoneFormmater } from '@/utils/helpers'
-import { PhoneIcon } from '@/icons/phone'
 
 import Link from 'next/link'
 import { SocialHeader } from '@/components/social-header'
+
+import './styles/topbar.scss'
 
 const Topbar = ({ data }) => {
   const { top = {} } = data || {}
@@ -14,7 +15,9 @@ const Topbar = ({ data }) => {
         <div className="row">
           <div className="col-lg-12 d-flex align-items-center justify-content-between gap-3">
             <div className="top-bar-left">
-              <PhoneIcon width={14} height={14} />
+              <p>
+                <i className="bi bi-telephone" />
+              </p>
               <Link href={`tel:${phone}`}>{phoneFormmater(phone)}</Link>
             </div>
             {/* TODO: Move to componente to render markdowns} */}

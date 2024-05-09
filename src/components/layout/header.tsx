@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Menu } from '@/components/menu'
 import { getMenuData } from '@/utils/helpers'
 
+import './styles/header.scss'
+
 const Header = ({ data, menuLinks }) => {
   const { menu: cmsMenu } = data
   const { logo = {}, cart = false } = cmsMenu
