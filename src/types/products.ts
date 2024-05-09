@@ -65,7 +65,7 @@ export interface PurpleAttributes {
   price: number
   full_description: FullDescription[]
   slug: string
-  quantity: number
+  stock: number
   createdAt: Date
   updatedAt: Date
   publishedAt: Date

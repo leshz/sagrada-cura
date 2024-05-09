@@ -7,6 +7,7 @@ import { ImageWrapper } from '@/components/Image'
 import { Price } from '@/components/price'
 import { Batch } from '@/components/product-card/batch'
 import { useSearchParams } from 'next/navigation'
+import { useStore } from '@/store'
 
 type Props = {
   product: ProductsDatum
@@ -18,6 +19,7 @@ type Props = {
 }
 
 const Card = ({ product, labels }: Props) => {
+  const { addToCart } = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
   const grid = Number.isNaN(gridParam) ? 3 : gridParam
@@ -29,7 +31,7 @@ const Card = ({ product, labels }: Props) => {
       promotion,
       price,
       name,
-      quantity,
+      stock,
       short_description
     } = {}
   } = product
@@ -76,17 +78,21 @@ const Card = ({ product, labels }: Props) => {
           </Link>
           <div className="overlay">
             <div className="cart-area">
-              {quantity === 0 ? (
+              {stock === 0 ? (
                 <Link
                   className="hover-btn3 add-cart-btn "
-                  href="/shop/out-of-stock"
+                  href="/"
                 >
                   {request_stock}
                 </Link>
               ) : (
-                <Link className="hover-btn3 add-cart-btn" href="#">
+                <button
+                  type="button"
+                  className="hover-btn3 add-cart-btn"
+                  onClick={() => addToCart(product)}
+                >
                   <i className="bi bi-bag-check" /> {add_to_cart}
-                </Link>
+                </button>
               )}
             </div>
           </div>
@@ -106,6 +112,10 @@ const Card = ({ product, labels }: Props) => {
             with_discount={with_discount}
           />
         </div>
+        <Link href={productView} className="hover-btn2 add-cart-btn">
+          ver producto
+        </Link>
+
         <span className="for-border" />
       </div>
     </div>
