@@ -59,8 +59,7 @@ const Slider = ({ slides }) => {
     <Swiper {...testimonialSlideSettings} className="swiper say-about-slider">
       <div className="swiper-wrapper">
         {slides.map(slide => {
-          const { id, attributes = {} } = slide
-          const { name, job_title, starts, testimonial, image } = attributes
+          const { id, name, job_title, starts, testimonial, image } = slide
 
           return (
             <SwiperSlide key={id} className="swiper-slide">

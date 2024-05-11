@@ -4,9 +4,8 @@ import { TagBar } from '@/components/tag-bar'
 import { dateFormat } from '@/utils/helpers'
 
 const BlogPreview = ({ blog }) => {
-  const {
-    attributes: { short_description, title, image, tags, publishedAt, slug }
-  } = blog || {}
+  const { short_description, title, image, tags, publishedAt, slug } =
+    blog || {}
 
   const { data: dataTags = [] } = tags || {}
   const urlBlog = `/blog/${slug}`

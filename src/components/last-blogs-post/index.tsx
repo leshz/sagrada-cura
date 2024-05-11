@@ -7,13 +7,10 @@ import { ImageWrapper } from '@/components/Image'
 import { TagBar } from '@/components/tag-bar'
 
 const PreviewArticle = ({ article, readlabel }) => {
-  const { attributes } = article
-  const { title, short_description, slug, image, tags, publishedAt } =
-    attributes || {}
+  const { title, short_description, slug, image, tags, publishedAt } = article
   const { data: dataTags = [] } = tags || {}
 
-  const tagsSlice = dataTags.length > 2 ? dataTags.slice(0,2) : dataTags;
-
+  const tagsSlice = dataTags.length > 2 ? dataTags.slice(0, 2) : dataTags
   const linkBlogPage = `/blog/${slug}`
 
   return (
@@ -28,7 +25,9 @@ const PreviewArticle = ({ article, readlabel }) => {
           <div className="tag two">
             <span>{dateFormat(publishedAt)}</span>
             <ul>
-              {tagsSlice.map(tag => <TagBar.TagItem key={tag.id} tag={tag} />)}
+              {tagsSlice.map(tag => (
+                <TagBar.TagItem key={tag.id} tag={tag} />
+              ))}
             </ul>
           </div>
           <h5>
@@ -63,12 +62,12 @@ const LastBlogsPost = async ({ blog }) => {
         </div>
         <div className="row g-4">
           {data.map(article => (
-              <PreviewArticle
-                key={article.id}
-                article={article}
-                readlabel={read_more}
-              />
-            ))}
+            <PreviewArticle
+              key={article.id}
+              article={article}
+              readlabel={read_more}
+            />
+          ))}
         </div>
       </div>
     </div>

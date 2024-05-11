@@ -7,16 +7,14 @@ import { Price } from '@/components/price'
 const CartItem = ({ product }) => {
   const { addToCart, deleteToCart, removeToCart } = useStore()
   const {
-    attributes: {
-      pictures: { data },
-      price,
-      name,
-      promotions = {}
-    },
+    pictures = [],
+    price,
+    name,
+    promotions = {},
     quantityCart = 1
   } = product
   const { with_discount, price_with_discount } = promotions
-  const imagen = data?.[0] || {}
+  const imagen = pictures?.[0] || {}
   return (
     <li className="single-item">
       <div className="item-area">

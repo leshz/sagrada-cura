@@ -1,24 +1,20 @@
 import Image from 'next/image'
 import { TagBar } from '@/components/tag-bar'
 
-const BlogAuthor = ({ author, tags }) => {
-  const { data } = tags
-  const { data: dataAuth } = author
-  if (dataAuth === null) {
+const BlogAuthor = ({ author, tags = [] }) => {
+  const { username = '' } = author
+
+  if (!username) {
     console.warn('autor no data')
     return null
   }
-
-  const {
-    attributes: { username }
-  } = dataAuth
 
   return (
     <div className="blog-author-meta">
       <div className="author-area">
         <div className="author-img">
           <Image
-            src="/assets/img/inner-page/blog-author-img1.png"
+            src="/assets/img/profile.png"
             width={30}
             height={30}
             alt=""
@@ -26,15 +22,17 @@ const BlogAuthor = ({ author, tags }) => {
         </div>
         <div className="author-content">
           <p>
-            By, <a href="#">{username}</a>
+            Escrito por, <span>{username}</span>
           </p>
         </div>
       </div>
       <div className="blog-meta">
-        {data && (
+        {tags && (
           <div className="tag">
             <ul>
-              {data.map(item => <TagBar.TagItem key={item.id} tag={item} />)}
+              {tags.map((item: any) => (
+                <TagBar.TagItem key={item.id} tag={item} />
+              ))}
             </ul>
           </div>
         )}

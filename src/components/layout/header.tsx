@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { Menu } from '@/components/menu'
-import { getMenuData } from '@/utils/helpers'
 import { useStore } from '@/store'
 
 import './styles/header.scss'
@@ -11,10 +10,7 @@ const Header = ({ data, menuLinks }) => {
   const { cart } = useStore(state => state)
   const { menu: cmsMenu } = data
   const { logo = {}, cart_menu } = cmsMenu
-  const {
-    menu: { menu_items }
-  } = menuLinks || {}
-
+  const { items = [] } = menuLinks || {}
   const cartAvailable = cart.length > 0
 
   const [menu, setMenu] = useState({
@@ -36,28 +32,23 @@ const Header = ({ data, menuLinks }) => {
       activeMenu: subMenu
     })
   }
-  const menuItems = getMenuData(menu_items)
 
   return (
     <Menu.Root>
       <Menu.Logo logo={logo} />
       <Menu.NavBar isOpen={menu.isSidebarOpen} data={data}>
-        {menuItems?.map((section: any, index) => {
-          const {
-            multiple = false,
-            name,
-            item,
-            item: { id = index }
-          } = section
-          return !multiple ? (
-            <Menu.Single key={`${id}`} link={item.link} text={item.text} />
+        {items?.map((section: any) => {
+          const { title, url, children = [], id } = section
+          const hasChildren = children.length > 1
+          return !hasChildren ? (
+            <Menu.Single key={id} link={url} text={title} />
           ) : (
             <Menu.Multiple
               toggleSubMenu={toggleSubMenu}
               activeMenu={menu.activeMenu}
-              items={item}
-              name={name}
-              key={`${index + 1}`}
+              items={children}
+              name={title}
+              key={id}
             />
           )
         })}

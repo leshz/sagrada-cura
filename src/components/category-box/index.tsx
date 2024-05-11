@@ -7,16 +7,19 @@ const CategoryBox = async () => {
   const single = await getSingles('shop')
   const [resCollect, resSingle] = await Promise.all([collection, single])
   const { data = [] } = resCollect
-  const { categories = {} } = resSingle
+  const categories = resSingle
+
+  const { categories: labels } = categories
+
   return (
     <div className="shop-widget">
       <div className="check-box-item">
-        <h5 className="shop-widget-title">{categories?.title}</h5>
+        <h5 className="shop-widget-title">{labels?.title}</h5>
         <ul className="shop-item">
           <Item
             category={{}}
             defaultValue
-            defaultName={categories?.all_products}
+            defaultName={labels?.all_products}
           />
           {data.map(category => (
             <Item key={category.id} category={category} />

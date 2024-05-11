@@ -6,11 +6,6 @@ export const availableIcons = {
   tiktok: 'tiktok'
 }
 
-export const menuComponents = {
-  single: 'menu.single-item',
-  multiple: 'menu.multiple-item'
-}
-
 export const COLLECTIONS = {
   blogs: '/blogs',
   testimonials: '/testimonials',

@@ -14,13 +14,13 @@ SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const FixedBanner = ({ content }) => {
   const { title = {}, image = {}, link = {} } = content || {}
-  const imagenToBoanner = image?.data?.attributes || null
+
   const { text = '', link: url = '' } = link
   return (
     <div className="col-xxl-3 col-xl-4">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {imagenToBoanner && <ImageWrapper image={image} priority />}
+          {image && <ImageWrapper image={image} priority />}
         </div>
 
         <div className="banner-2-left-content">

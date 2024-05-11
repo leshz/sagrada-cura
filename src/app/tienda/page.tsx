@@ -37,7 +37,7 @@ const Shop = async ({ searchParams }) => {
     pagination: { total }
   } = meta
   const hasProducts = data?.length >= 1
-
+  
   return (
     <div className="right-sidebar-section column-sidebar-padding mt-40 mb-40">
       <div className="container-fluid">

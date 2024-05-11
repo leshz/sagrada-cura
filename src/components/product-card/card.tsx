@@ -24,22 +24,12 @@ const Card = ({ product, labels }: Props) => {
   const gridParam = Number(params.get('grid'))
   const grid = Number.isNaN(gridParam) ? 3 : gridParam
   let gridClass = ''
-  const {
-    attributes: {
-      slug,
-      pictures,
-      promotion,
-      price,
-      name,
-      stock,
-      short_description
-    } = {}
-  } = product
+  const { slug, pictures, promotion, price, name, stock, short_description } =
+    product
   const { with_discount = false, price_with_discount = 0 } = promotion || {}
   const { add_to_cart, request_stock } = labels
 
-  const images = pictures?.data || []
-  const previews = images.length > 2 ? images.slice(0, 2) : images || []
+  const previews = pictures.length > 2 ? pictures.slice(0, 2) : pictures || []
   const productView = `/tienda/${slug}`
 
   switch (grid) {

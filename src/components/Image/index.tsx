@@ -2,7 +2,7 @@ import Img from 'next/image'
 
 const ImageWrapper = ({ image, format = '', fill = false, ...props }) => {
   let imagen = {}
-  const source = image?.data?.attributes || image?.attributes || {}
+  const source = image?.data || image || {}
 
   if (
     Object.prototype.hasOwnProperty.call(source, 'formats') &&

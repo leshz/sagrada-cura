@@ -1,9 +1,7 @@
 import Link from 'next/link'
 
 const TagItem = ({ tag }) => {
-  const {
-    attributes: { name, slug }
-  } = tag
+  const { name, slug } = tag
 
   return (
     <li>
@@ -12,19 +10,16 @@ const TagItem = ({ tag }) => {
   )
 }
 
-const TagBarWrapper = ({ tags }) => {
-  const { data } = tags
-  return (
-    <div className="tag">
-      <h6>Tag: </h6>
-      <ul className="tag-list">
-        {data.map(item => (
-          <TagItem key={item.id} tag={item} />
-        ))}
-      </ul>
-    </div>
-  )
-}
+const TagBarWrapper = ({ tags }) => (
+  <div className="tag">
+    <h6>Tag: </h6>
+    <ul className="tag-list">
+      {tags.map(item => (
+        <TagItem key={item.id} tag={item} />
+      ))}
+    </ul>
+  </div>
+)
 
 const TagBar = {
   TagBar: TagBarWrapper,

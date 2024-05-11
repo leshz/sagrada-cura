@@ -35,20 +35,13 @@ export interface Formats {
   thumbnail: Thumbnail
 }
 
-export interface TentacledAttributes {
+export interface imagesType {
+  id: number
   url: string
   width: number
   height: number
   alternativeText: null
   formats: Formats
-}
-export interface PicturesDatum {
-  id: number
-  attributes: TentacledAttributes
-}
-
-export interface Pictures {
-  data: PicturesDatum[]
 }
 
 export interface Promotion {
@@ -60,7 +53,9 @@ export interface Promotion {
   new: null
   discount_tag: null
 }
-export interface PurpleAttributes {
+
+export interface ProductsDatum {
+  id: number
   name: string
   price: number
   full_description: FullDescription[]
@@ -72,13 +67,8 @@ export interface PurpleAttributes {
   locale: string
   short_description: string
   sku: string
-  pictures: Pictures
+  pictures: imagesType[]
   categories: Categories
   promotion: Promotion
-}
-
-export interface ProductsDatum {
-  id: number
-  attributes: PurpleAttributes
   quantityCart?: number
 }

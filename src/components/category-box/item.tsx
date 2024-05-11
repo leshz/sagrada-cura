@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useSearchParams, usePathname } from 'next/navigation'
 
 const Item = ({ category, defaultValue = false, defaultName = '' }) => {
-  const { attributes: { name = '', slug = '' } = {} } = category || {}
+  const { name = '', slug = '' } = category || {}
   const path = usePathname()
   const params = useSearchParams()
   const newParams = new URLSearchParams(params)

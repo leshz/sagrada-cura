@@ -17,9 +17,7 @@ const BlogDetailsPage = async ({ params }) => {
 
   if (data.length === 0) return notFound()
 
-  const {
-    attributes: { publishedAt, article, title, image, tags, author }
-  } = data[0] || {}
+  const { publishedAt, article, title, image, tags, author } = data[0] || {}
 
   return (
     <div className="blog-details-section mb-40">
@@ -43,26 +41,21 @@ const BlogDetailsPage = async ({ params }) => {
         <div className="blog-tag-and-social">
           <TagBar.TagBar tags={tags} />
           <div className="social">
-            <h6>Share On:</h6>
+            <h6>Compartir :</h6>
             <ul className="social-list">
               <li>
                 <a href="https://www.facebook.com/" aria-label="go to facebook">
-                  <i className="fab fa-facebook-f" />
+                  <i className="bi bi-facebook" />
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/" aria-label="go to twitter">
-                  <i className="fab fa-twitter" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.pinterest.com/" aria-label="go to">
-                  <i className="fab fa-pinterest-p" />
+                  <i className="bi bi-twitter" />
                 </a>
               </li>
               <li>
                 <a href="https://www.instagram.com/" aria-label="go to">
-                  <i className="fab fa-instagram" />
+                  <i className="bi bi-instagram" />
                 </a>
               </li>
             </ul>

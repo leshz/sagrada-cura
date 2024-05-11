@@ -13,14 +13,11 @@ export const useStore = create<Store>(set => ({
   cart: [],
   addToCart: product =>
     set(state => {
-      const {
-        attributes,
-        attributes: { stock }
-      } = product
+      const { stock, sku } = product
       const { cart } = state
 
       const selectedProduct = cart.findIndex(
-        cartProduct => cartProduct?.attributes?.sku === attributes?.sku
+        cartProduct => cartProduct?.sku === sku
       )
 
       if (selectedProduct !== -1) {
@@ -38,20 +35,18 @@ export const useStore = create<Store>(set => ({
     }),
   removeToCart: product => {
     set(state => {
-      const { attributes } = product
+      const { sku } = product
       const { cart } = state
 
       const selectedProduct = cart.findIndex(
-        cartProduct => cartProduct?.attributes?.sku === attributes?.sku
+        cartProduct => cartProduct?.sku === sku
       )
 
       if (selectedProduct !== -1) {
         const quantity = cart[selectedProduct].quantityCart || 0
         const newQuantity = quantity - 1
         if (newQuantity <= 0) {
-          const modCart = cart.filter(
-            cartProduct => attributes?.sku !== cartProduct?.attributes?.sku
-          )
+          const modCart = cart.filter(cartProduct => sku !== cartProduct?.sku)
           return { cart: modCart }
         }
         cart[selectedProduct].quantityCart = newQuantity
@@ -62,12 +57,10 @@ export const useStore = create<Store>(set => ({
   },
   deleteToCart: product => {
     set(state => {
-      const { attributes } = product
+      const { sku } = product
       const { cart } = state
 
-      const modCart = cart.filter(
-        cartProduct => attributes?.sku !== cartProduct?.attributes?.sku
-      )
+      const modCart = cart.filter(cartProduct => sku !== cartProduct?.sku)
       return { cart: modCart }
     })
   }

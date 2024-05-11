@@ -1,10 +1,10 @@
-import { BlogSection , BlogContent } from '@/components/blog'
+import { BlogSection, BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
 
 const AboutUs = async () => {
   const { title, article, image, blogs_title } = await getSingles('about-us')
-
+  
   return (
     <>
       <div className="about-us-banner mb-40 mt-40 ">

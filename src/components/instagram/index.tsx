@@ -13,7 +13,6 @@ SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Instagram = ({ feed }) => {
   const { title, subtitle, profile_url, feed: images } = feed
-  const { data } = images
   const sldieSettings: SwiperOptions = useMemo(() => ({
       slidesPerView: 'auto',
       spaceBetween: 15,
@@ -70,7 +69,7 @@ const Instagram = ({ feed }) => {
               <div className="col-12">
                 <Swiper {...sldieSettings} className="swiper instagram-slider">
                   <div className="swiper-wrapper">
-                    {data.map(item => {
+                    {images.map(item => {
                       const { id } = item
                       return (
                         <SwiperSlide key={id} className="swiper-slide">
