@@ -31,7 +31,7 @@ export const kalam = Kalam({
 
 const RootLayout = async ({ children }) => {
   const generes = getSingles('general')
-  const menures = getSingles('menus/1?nested&populate=*')
+  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`)
 
   const [data, menu] = await Promise.all([generes, menures])
 
