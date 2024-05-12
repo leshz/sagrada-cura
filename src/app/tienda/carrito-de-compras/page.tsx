@@ -4,19 +4,19 @@ import { PurchaseSummary } from '@/components/purchase-summary'
 import { getSingles } from '@/services'
 
 const Cart = async () => {
-  const { table, summary } = (await getSingles('cart')) || {}
+  const { table, summary , empty} = (await getSingles('cart')) || {}
   return (
     <div className="whistlist-section cart mt-40 mb-110">
       <div className="container">
         <div className="row mb-50">
           <div className="col-12">
-            <WishList labels={table} />
+            <WishList labels={table} empty={empty} />
           </div>
         </div>
         <div className="row g-4">
           <div className="col-lg-4">{false && <Cupons />}</div>
           <div className="col-lg-8">
-            <PurchaseSummary labels={summary} />
+            <PurchaseSummary labels={summary}  />
           </div>
         </div>
       </div>

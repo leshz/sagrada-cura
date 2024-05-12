@@ -4,6 +4,7 @@ import { useStore } from '@/store'
 import Link from 'next/link'
 import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
 
+
 const PurchaseSummary = ({ labels }) => {
   const { cart_total, summary, total, go_checkout } = labels
   const { cart } = useStore(state => state)

@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '@/store'
 import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
+import { usePathname } from 'next/navigation'
 import { CartItem } from './cart-item'
 
 const Cart = ({ labels }) => {
+  const pathname = usePathname()
   const [showCart, setShowCart] = useState(false)
   const cartButtonRef: any = useRef()
   const cartMenuRef: any = useRef()
@@ -53,6 +55,10 @@ const Cart = ({ labels }) => {
       setShowCart(false)
     }
   }, [cartHasItems])
+
+  useEffect(() => {
+    setShowCart(false)
+  }, [pathname])
 
   return (
     <>

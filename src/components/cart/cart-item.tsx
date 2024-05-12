@@ -15,6 +15,7 @@ const CartItem = ({ product }) => {
   } = product
   const { with_discount, price_with_discount } = promotions
   const imagen = pictures?.[0] || {}
+
   return (
     <li className="single-item">
       <div className="item-area">
