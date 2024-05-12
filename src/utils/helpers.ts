@@ -22,40 +22,66 @@ export const currencyFormat = new Intl.NumberFormat('es-CO', {
   maximumFractionDigits: 0
 })
 
-export const productsCalculator = (products: ProductsDatum[]) => {
+export const productPriceSummary = (product: ProductsDatum) => {
+  const { quantityCart = 1, price, promotion } = product
+  const { price_with_discount = 0, with_discount = false } = promotion || {}
+
+  // precio total * cantidad
+  const fullPrice = price * quantityCart
+
+  // precio con descuento * cantidad
+  const fullPriceDiscount = with_discount
+    ? (price_with_discount || 0) * quantityCart
+    : fullPrice
+
+  // precio total menos precio total con despuesto
+  const totalDiscounted = fullPrice - fullPriceDiscount
+
+  // precio total - total descontado
+  const finalPrice = fullPrice - totalDiscounted
+
+  return { fullPrice, fullPriceDiscount, totalDiscounted, finalPrice }
+}
+
+export const productsPricesSummary = (products: ProductsDatum[]) => {
   const pricingInfo = products.map(product => {
-    const { quantityCart = 1, price, promotion } = product
-    const { price_with_discount, with_discount } = promotion || {}
-
-    const fullPrice = price * quantityCart
-    const fullPriceDiscount = with_discount
-      ? (price_with_discount || 0) * quantityCart
-      : 0
-
-    const totalDiscounted = with_discount ? fullPrice - fullPriceDiscount : 0
+    const { fullPrice, fullPriceDiscount, totalDiscounted, finalPrice } =
+      productPriceSummary(product)
 
     return {
       fullPrice,
       fullPriceDiscount,
       totalDiscounted,
+      finalPrice,
       ...product
     }
   })
 
+  // precio total del producto * cantidades
   const totalFullPrice = pricingInfo.reduce(
     (acum, product) => acum + product.fullPrice,
     0
   )
+
+  // precio total del producto con descuento * cantidades
   const totalFullPriceDiscount = pricingInfo.reduce(
     (acum, product) => acum + product.fullPriceDiscount,
     0
   )
+
+  // precio total descontado
   const totalDiscounted = pricingInfo.reduce(
     (acum, product) => acum + product.totalDiscounted,
     0
   )
 
-  const totals = { totalFullPrice, totalFullPriceDiscount, totalDiscounted }
+  // precio total menos el total de descuentos
+  const afterDiscountPrice = totalFullPrice - totalDiscounted
 
-  return { totals, products: pricingInfo }
+  return {
+    totalFullPrice,
+    totalFullPriceDiscount,
+    totalDiscounted,
+    afterDiscountPrice
+  }
 }

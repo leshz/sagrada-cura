@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '@/store'
-import { productsCalculator, currencyFormat } from '@/utils/helpers'
+import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
 import { CartItem } from './cart-item'
 
 const Cart = ({ labels }) => {
@@ -13,9 +13,8 @@ const Cart = ({ labels }) => {
   const { sub_total, discount, continue_shopping, got_checkout } = labels || {}
   const { cart } = useStore(state => state)
   const cartHasItems: boolean = cart.length > 0
-  const {
-    totals: { totalDiscounted, totalFullPrice, totalFullPriceDiscount }
-  } = productsCalculator(cart)
+  const prices = productsPricesSummary(cart)
+  const { totalDiscounted, totalFullPrice, totalFullPriceDiscount } = prices
 
   const quantity = cart.reduce(
     (acum, product) => acum + (product?.quantityCart || 0),
@@ -24,7 +23,9 @@ const Cart = ({ labels }) => {
 
   // Handle cart button click
   const handleCartButtonClick = () => {
-    setShowCart(!showCart)
+    if (cartHasItems) {
+      setShowCart(!showCart)
+    }
   }
 
   // Close the cart when a click occurs outside of the cart area
@@ -46,6 +47,12 @@ const Cart = ({ labels }) => {
       document.removeEventListener('click', handleOutsideClick)
     }
   }, [])
+
+  useEffect(() => {
+    if (!cartHasItems) {
+      setShowCart(false)
+    }
+  }, [cartHasItems])
 
   return (
     <>
@@ -102,7 +109,10 @@ const Cart = ({ labels }) => {
               <div className="footer-button">
                 <ul>
                   <li>
-                    <Link className="primary-btn1 hover-btn4" href="/tienda">
+                    <Link
+                      className="primary-btn1 hover-btn4"
+                      href="/tienda/carrito-de-compras"
+                    >
                       {continue_shopping}
                     </Link>
                   </li>

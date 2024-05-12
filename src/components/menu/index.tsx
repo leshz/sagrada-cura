@@ -12,34 +12,28 @@ const SingleItemMenu = ({ link, text }) => (
 )
 
 const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => (
-    <li className="menu-item-has-children">
-      <div
-        className="drop-down"
-        onClick={() => {
-          toggleSubMenu(name)
-        }}
-        role="button"
-        tabIndex={0}
-        onKeyUp={() => {}}
-      >
-        {name}
-      </div>
-      <i
-        className={`bi bi-${
-          activeMenu === name ? 'dash' : 'plus'
-        } dropdown-icon`}
-      />
-      <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
-        {items.map((item:any) => (
-          <SingleItemMenu
-            key={item.id}
-            link={item.url}
-            text={item.title}
-          />
-        ))}
-      </ul>
-    </li>
-  )
+  <li className="menu-item-has-children">
+    <div
+      className="drop-down"
+      onClick={() => {
+        toggleSubMenu(name)
+      }}
+      role="button"
+      tabIndex={0}
+      onKeyUp={() => {}}
+    >
+      {name}
+    </div>
+    <i
+      className={`bi bi-${activeMenu === name ? 'dash' : 'plus'} dropdown-icon`}
+    />
+    <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
+      {items.map((item: any) => (
+        <SingleItemMenu key={item.id} link={item.url} text={item.title} />
+      ))}
+    </ul>
+  </li>
+)
 
 const LogoMenu = ({ logo }) => (
   <>
@@ -112,13 +106,11 @@ const NavBarRoot = ({ children, isOpen, data }) => {
   )
 }
 
-const RightSideMenu = ({ click, isOpen, cart, labels }) => (
+const RightSideMenu = ({ click, isOpen, labels }) => (
   <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
-    {cart && (
-      <div className="dropdown">
+    <div className="dropdown">
         <Cart labels={labels} />
       </div>
-    )}
 
     <button
       className={`sidebar-button mobile-menu-btn ${isOpen ? 'active' : ''}`}

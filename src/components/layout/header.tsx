@@ -2,16 +2,13 @@
 
 import { useState } from 'react'
 import { Menu } from '@/components/menu'
-import { useStore } from '@/store'
 
 import './styles/header.scss'
 
 const Header = ({ data, menuLinks }) => {
-  const { cart } = useStore(state => state)
   const { menu: cmsMenu } = data
   const { logo = {}, cart_menu } = cmsMenu
   const { items = [] } = menuLinks || {}
-  const cartAvailable = cart.length > 0
 
   const [menu, setMenu] = useState({
     activeMenu: '',
@@ -54,7 +51,6 @@ const Header = ({ data, menuLinks }) => {
         })}
       </Menu.NavBar>
       <Menu.Right
-        cart={cartAvailable}
         labels={cart_menu}
         click={toggleMobile}
         isOpen={menu.isSidebarOpen}
