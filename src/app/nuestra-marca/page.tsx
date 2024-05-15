@@ -2,6 +2,8 @@ import { BlogSection, BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
 
+export const dynamic = 'force-static';
+
 const AboutUs = async () => {
   const { title, article, image, blogs_title } = await getSingles('about-us')
   
