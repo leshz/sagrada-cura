@@ -164,9 +164,8 @@ const Checkout = () => (
                       <a href="#">Brand new Nail Polish</a>
                     </h5>
                     <div className="product-total">
-                      <QuantityCounter />
+                      <QuantityCounter quantity={undefined} add={undefined} remove={undefined} product={undefined} />
                       <strong>
-                        {' '}
                         <i className="bi bi-x-lg px-2" />
                         <span className="product-price">$39.00</span>
                       </strong>
@@ -190,7 +189,7 @@ const Checkout = () => (
                       <a href="#">Brand new Face Product</a>
                     </h5>
                     <div className="product-total">
-                      <QuantityCounter />
+                      <QuantityCounter quantity={undefined} add={undefined} remove={undefined} product={undefined} />
                       <strong>
                         {' '}
                         <i className="bi bi-x-lg px-2" />
@@ -216,7 +215,7 @@ const Checkout = () => (
                       <a href="#">Brand new Shampoo</a>
                     </h5>
                     <div className="product-total">
-                      <QuantityCounter />
+                      <QuantityCounter quantity={undefined} add={undefined} remove={undefined} product={undefined} />
                       <strong>
                         {' '}
                         <i className="bi bi-x-lg px-2" />

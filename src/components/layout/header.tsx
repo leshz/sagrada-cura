@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Menu } from '@/components/menu'
+import { useChangePath } from '@/hooks/use-change-path'
 
 import './styles/header.scss'
 
@@ -15,12 +16,14 @@ const Header = ({ data, menuLinks }) => {
     isSidebarOpen: false
   })
 
-  const toggleMobile = () => {
+  const toggleMobile = optional => {
     setMenu({
       ...menu,
-      isSidebarOpen: !menu.isSidebarOpen
+      isSidebarOpen: optional || !menu.isSidebarOpen
     })
   }
+
+  const path = useChangePath(toggleMobile, false)
 
   const toggleSubMenu = (subMenuId: string): void => {
     const subMenu = menu.activeMenu === '' ? subMenuId : ''
@@ -38,9 +41,10 @@ const Header = ({ data, menuLinks }) => {
           const { title, url, children = [], id } = section
           const hasChildren = children.length > 1
           return !hasChildren ? (
-            <Menu.Single key={id} link={url} text={title} />
+            <Menu.Single key={id} link={url} text={title} path={path} />
           ) : (
             <Menu.Multiple
+              path={path}
               toggleSubMenu={toggleSubMenu}
               activeMenu={menu.activeMenu}
               items={children}

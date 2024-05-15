@@ -5656,8 +5656,12 @@ input {
         margin-bottom: 15px;
         position: relative;
         padding-left: 25px;
-
         transition: 0.5s;
+        &.selected {
+          &::before {
+            background-color: var(--primary-color1);
+          }
+        }
         &:last-child {
           margin-bottom: 0;
         }

@@ -9,11 +9,18 @@ const Item = ({ category, defaultValue = false, defaultName = '' }) => {
   const params = useSearchParams()
   const newParams = new URLSearchParams(params)
   newParams.set('category', slug)
+  let selected: string
+
+  selected = params.get('category') === slug ? 'selected' : ''
+  
+  if (params.get('category') === null && defaultValue) {
+    selected = 'selected'
+  }
 
   const link = defaultValue ? `${path}` : `${path}?${newParams.toString()}`
 
   return (
-    <li>
+    <li className={selected}>
       <Link href={link}>{name || defaultName} </Link>
     </li>
   )

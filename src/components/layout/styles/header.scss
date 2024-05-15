@@ -643,6 +643,14 @@ header {
         @include lg-down-device() {
           margin-right: 0;
         }
+        &.active {
+          a {
+            &::after {
+              transform-origin: left center;
+              transform: scale(1, 1);
+            }
+          }
+        }
 
         > a,
         div {
@@ -658,6 +666,12 @@ header {
           letter-spacing: 1px;
           @include lg-down-device() {
             padding: 32px 9px;
+          }
+          &.active {
+            &::after {
+              transform-origin: left center;
+              transform: scale(1, 1);
+            }
           }
 
           &::after {

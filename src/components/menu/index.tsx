@@ -5,35 +5,48 @@ import { phoneFormmater } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 import { useEffect, useState } from 'react'
 
-const SingleItemMenu = ({ link, text }) => (
-  <li className="menu-single-item">
-    <Link href={link}>{text}</Link>
-  </li>
-)
+const SingleItemMenu = ({ link, text, path = '' }) => {
+  const active = path === link ? 'active' : ''
+  return (
+    <li className={`menu-single-item ${active}`}>
+      <Link href={link}>{text}</Link>
+    </li>
+  )
+}
 
-const MultipleItemMenu = ({ toggleSubMenu, activeMenu, items = [], name }) => (
-  <li className="menu-item-has-children">
-    <div
-      className="drop-down"
-      onClick={() => {
-        toggleSubMenu(name)
-      }}
-      role="button"
-      tabIndex={0}
-      onKeyUp={() => {}}
-    >
-      {name}
-    </div>
-    <i
-      className={`bi bi-${activeMenu === name ? 'dash' : 'plus'} dropdown-icon`}
-    />
-    <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
-      {items.map((item: any) => (
-        <SingleItemMenu key={item.id} link={item.url} text={item.title} />
-      ))}
-    </ul>
-  </li>
-)
+const MultipleItemMenu = ({
+  toggleSubMenu,
+  activeMenu,
+  items = [],
+  name,
+  path = ''
+}) => {
+  const active = path.includes('tienda') ? 'active' : ''
+console.log(path)
+  return (
+    <li className="menu-item-has-children">
+      <div
+        className={`drop-down ${active}`}
+        onClick={() => {
+          toggleSubMenu(name)
+        }}
+        role="button"
+        tabIndex={0}
+        onKeyUp={() => {}}
+      >
+        {name}
+      </div>
+      <i
+        className={`bi bi-${activeMenu === name ? 'dash' : 'plus'} dropdown-icon`}
+      />
+      <ul className={`sub-menu ${activeMenu === name ? 'd-block' : ''}`}>
+        {items.map((item: any) => (
+          <SingleItemMenu key={item.id} link={item.url} text={item.title} />
+        ))}
+      </ul>
+    </li>
+  )
+}
 
 const LogoMenu = ({ logo }) => (
   <>
@@ -109,8 +122,8 @@ const NavBarRoot = ({ children, isOpen, data }) => {
 const RightSideMenu = ({ click, isOpen, labels }) => (
   <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
     <div className="dropdown">
-        <Cart labels={labels} />
-      </div>
+      <Cart labels={labels} />
+    </div>
 
     <button
       className={`sidebar-button mobile-menu-btn ${isOpen ? 'active' : ''}`}

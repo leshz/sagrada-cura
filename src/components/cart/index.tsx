@@ -4,11 +4,10 @@ import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { useStore } from '@/store'
 import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
-import { usePathname } from 'next/navigation'
+import { useChangePath } from '@/hooks/use-change-path'
 import { CartItem } from './cart-item'
 
 const Cart = ({ labels }) => {
-  const pathname = usePathname()
   const [showCart, setShowCart] = useState(false)
   const cartButtonRef: any = useRef()
   const cartMenuRef: any = useRef()
@@ -17,6 +16,7 @@ const Cart = ({ labels }) => {
   const cartHasItems: boolean = cart.length > 0
   const prices = productsPricesSummary(cart)
   const { totalDiscounted, totalFullPrice, totalFullPriceDiscount } = prices
+  useChangePath(setShowCart)
 
   const quantity = cart.reduce(
     (acum, product) => acum + (product?.quantityCart || 0),
@@ -55,10 +55,6 @@ const Cart = ({ labels }) => {
       setShowCart(false)
     }
   }, [cartHasItems])
-
-  useEffect(() => {
-    setShowCart(false)
-  }, [pathname])
 
   return (
     <>
