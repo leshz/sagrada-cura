@@ -9,7 +9,7 @@ const AboutUs = async () => {
   
   return (
     <>
-      <div className="about-us-banner mb-40 mt-40 ">
+      <div className="about-us-banner mb-40">
         <div className="container">
           <div className="row">
             <div className="col-12">

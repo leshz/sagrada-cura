@@ -6,6 +6,8 @@ import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
 
+export const revalidate = 60
+
 const Shop = async ({ searchParams }) => {
   let params = {}
   const category = searchParams?.category
@@ -37,7 +39,7 @@ const Shop = async ({ searchParams }) => {
     pagination: { total }
   } = meta
   const hasProducts = data?.length >= 1
-  
+
   return (
     <div className="right-sidebar-section column-sidebar-padding mt-40 mb-40">
       <div className="container-fluid">
