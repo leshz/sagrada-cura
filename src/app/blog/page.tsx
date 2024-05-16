@@ -15,7 +15,7 @@ const BlogMasonaryPage = async () => {
 
   return (
     <>
-      <div className="blog-grid-section  mb-40 mt-40 ">
+      <div className="blog-grid-section mb-40">
         <div className="container-md container-fluid">
           <div className="row g-4 mb-80 ">
             {data.map(item => (

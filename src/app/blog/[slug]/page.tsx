@@ -8,6 +8,12 @@ import { COLLECTIONS } from '@/utils/constants'
 import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
+export const generateStaticParams = async () => {
+  const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs, {})
+  const slugs = blogs.map(entry => ({ slug: entry.slug }))
+  return slugs
+}
+
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
   const searchparams = {
