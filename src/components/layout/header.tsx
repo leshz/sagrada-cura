@@ -16,14 +16,21 @@ const Header = ({ data, menuLinks }) => {
     isSidebarOpen: false
   })
 
-  const toggleMobile = optional => {
+  const toggleMobile = (optional = false) => {
     setMenu({
       ...menu,
       isSidebarOpen: optional || !menu.isSidebarOpen
     })
   }
 
-  const path = useChangePath(toggleMobile, false)
+  const closeMobile = () => {
+    setMenu({
+      activeMenu: '',
+      isSidebarOpen: false
+    })
+  }
+
+  const path = useChangePath(closeMobile)
 
   const toggleSubMenu = (subMenuId: string): void => {
     const subMenu = menu.activeMenu === '' ? subMenuId : ''
@@ -56,7 +63,7 @@ const Header = ({ data, menuLinks }) => {
       </Menu.NavBar>
       <Menu.Right
         labels={cart_menu}
-        click={toggleMobile}
+        click={() => toggleMobile()}
         isOpen={menu.isSidebarOpen}
       />
     </Menu.Root>

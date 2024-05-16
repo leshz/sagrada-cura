@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 const useChangePath = (setValue, value = false) => {
   const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     setValue(value)
-  }, [pathname])
+  }, [pathname, searchParams])
 
   return pathname
 }

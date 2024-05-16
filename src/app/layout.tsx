@@ -5,6 +5,7 @@ import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
 import { Jost, Kalam } from 'next/font/google'
+import { Suspense } from 'react'
 import Error from './error'
 
 import '@/styles/global.scss'
@@ -40,7 +41,9 @@ const RootLayout = async ({ children }) => {
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
-          <Header data={data} menuLinks={menu} />
+          <Suspense>
+            <Header data={data} menuLinks={menu} />
+          </Suspense>
           {children}
           <FooterLayout data={data} />
         </ErrorBoundary>
