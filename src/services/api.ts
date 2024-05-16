@@ -1,4 +1,4 @@
-export const api = async (url: string, options: any) => {
+export const api = async (url: string, options?: any) => {
   const basePath = `${process.env.DOMAIN}/api`
   const buildUrl = `${basePath}${url}`
   const headerAuth = {
