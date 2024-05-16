@@ -1,4 +1,4 @@
-export const api = async (url: string, options?: Request) => {
+export const api = async (url: string, options: any) => {
   const basePath = `${process.env.DOMAIN}/api`
   const buildUrl = `${basePath}${url}`
   const headerAuth = {
@@ -7,6 +7,7 @@ export const api = async (url: string, options?: Request) => {
   }
   try {
     const response = await fetch(buildUrl, {
+      ...options,
       method: options?.method || 'GET',
       headers: headerAuth
     })

@@ -6,8 +6,6 @@ import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
 
-export const revalidate = 60
-
 const Shop = async ({ searchParams }) => {
   let params = {}
   const category = searchParams?.category
@@ -31,7 +29,9 @@ const Shop = async ({ searchParams }) => {
   }
 
   const single = getSingles('shop')
-  const collection = getColletions(COLLECTIONS.products, params)
+  const collection = getColletions(COLLECTIONS.products, params, {
+    next: { revalidate: 120 }
+  })
   const [labels, rescollect] = await Promise.all([single, collection])
 
   const { meta = {}, data = [] } = rescollect
