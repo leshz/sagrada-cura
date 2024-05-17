@@ -5,7 +5,6 @@ const BlogAuthor = ({ author, tags = [] }) => {
   const { username = '' } = author
 
   if (!username) {
-    console.warn('autor no data')
     return null
   }
 
@@ -13,12 +12,7 @@ const BlogAuthor = ({ author, tags = [] }) => {
     <div className="blog-author-meta">
       <div className="author-area">
         <div className="author-img">
-          <Image
-            src="/assets/img/profile.png"
-            width={30}
-            height={30}
-            alt=""
-          />
+          <Image src="/assets/img/profile.png" width={30} height={30} alt="" />
         </div>
         <div className="author-content">
           <p>

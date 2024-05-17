@@ -5,7 +5,7 @@ import { Slider } from './slider'
 
 const Testimonial = async ({ labels }) => {
   const { title } = labels
-  const { data } = await getColletions(COLLECTIONS.testimonials, {})
+  const { data } = await getColletions(COLLECTIONS.testimonials)
   return (
     <div className="say-about-section mb-110">
       <ImageWrapper

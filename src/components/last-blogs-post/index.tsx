@@ -50,7 +50,7 @@ const LastBlogsPost = async ({ blog }) => {
     sort: 'publishedAt:desc',
     'pagination[limit]': get_last
   }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, params)
+  const { data = [] } = await getColletions(COLLECTIONS.blogs, { params })
 
   return (
     <div className="latest-article-section mb-110">

@@ -9,7 +9,7 @@ import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
 export const generateStaticParams = async () => {
-  const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs, {})
+  const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
   return slugs
 }
@@ -19,7 +19,9 @@ const BlogDetailsPage = async ({ params }) => {
   const searchparams = {
     'filters[slug][$eq]': slug
   }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, searchparams)
+  const { data = [] } = await getColletions(COLLECTIONS.blogs, {
+    params: searchparams
+  })
 
   if (data.length === 0) return notFound()
 

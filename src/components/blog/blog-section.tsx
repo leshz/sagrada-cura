@@ -5,9 +5,9 @@ import { BlogPreview } from './blog-preview'
 const BlogSection = async ({ title }) => {
   const params = {
     sort: 'publishedAt:desc',
-    'pagination[limit]': 3
+    'pagination[limit]': '3'
   }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, params)
+  const { data = [] } = await getColletions(COLLECTIONS.blogs, { params })
 
   return (
     <div className="beauty-article-section mt-40 mb-110">
@@ -16,7 +16,9 @@ const BlogSection = async ({ title }) => {
           <h3>{title}</h3>
         </div>
         <div className="row gy-4">
-          {data.map(blog => <BlogPreview key={blog.id} blog={blog} />)}
+          {data.map(blog => (
+            <BlogPreview key={blog.id} blog={blog} />
+          ))}
         </div>
       </div>
     </div>

@@ -6146,7 +6146,7 @@ input {
     @include lg-device() {
       margin-bottom: 30px;
     }
-    .price {
+    .price p {
       color: var(--text-color);
       font-family: var(--font-Jost);
       font-size: 25px;

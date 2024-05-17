@@ -5,13 +5,12 @@ import { Paginator } from '@/components/paginator'
 
 const BlogMasonaryPage = async () => {
   const params = {
-    'pagination[pageSize]': 6
+    'pagination[pageSize]': '6'
   }
 
-  const { data = [], meta = {} } = await getColletions(
-    COLLECTIONS.blogs,
+  const { data = [], meta = {} } = await getColletions(COLLECTIONS.blogs, {
     params
-  )
+  })
 
   return (
     <>

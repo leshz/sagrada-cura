@@ -61,6 +61,7 @@ export interface ProductsDatum {
   full_description: FullDescription[]
   slug: string
   stock: number
+  middle_description: string
   createdAt: Date
   updatedAt: Date
   publishedAt: Date
