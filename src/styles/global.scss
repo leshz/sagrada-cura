@@ -6961,15 +6961,24 @@ input {
         top: unset;
       }
 
-      .nav-link {
+      .swiper-slide-thumb {
         background-color: unset;
         margin-bottom: 25px;
         border-radius: unset;
         padding: 0;
         width: 80px;
         height: 80px;
-        &.active {
-          border: 1px solid var(--primary-color1);
+        border: 2px solid transparent;
+        transition: all ease-in-out 0.5s;
+        border-radius: 5px;
+
+        &-active {
+          border: 2px solid #858585;
+        }
+
+        .nav-image {
+          object-fit: fill;
+          width: 100%;
         }
 
         @include lg-device() {
