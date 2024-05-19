@@ -1,3 +1,5 @@
+import { type BlocksContent } from '@strapi/blocks-react-renderer'
+
 export interface FluffyAttributes {
   name: string
   slug: string
@@ -72,4 +74,5 @@ export interface ProductsDatum {
   categories: Categories
   promotion: Promotion
   quantityCart?: number
+  information?: BlocksContent[]
 }

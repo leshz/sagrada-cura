@@ -59,7 +59,7 @@ const CartItem = ({ product }) => {
                 type="button"
                 className="quantity__plus"
                 aria-label="anadir cantidad"
-                onClick={() => addToCart(product)}
+                onClick={() => addToCart({product})}
               >
                 <span>
                   <i className="bi bi-plus" />

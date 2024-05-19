@@ -1,17 +1,20 @@
 /* eslint-disable no-unused-vars */
 import { create } from 'zustand'
 import type { ProductsDatum } from '@/types/products'
+import { toast } from 'react-toastify'
+
+type addCart = { product: ProductsDatum; quantitymod?: number }
 
 interface Store {
   cart: ProductsDatum[]
   removeToCart: (product: ProductsDatum) => void
   deleteToCart: (product: ProductsDatum) => void
-  addToCart: (product: ProductsDatum) => void
+  addToCart: (item: addCart) => void
 }
 
 export const useStore = create<Store>(set => ({
   cart: [],
-  addToCart: product =>
+  addToCart: ({ product, quantitymod = 1 }) => {
     set(state => {
       const { stock, sku } = product
       const { cart } = state
@@ -22,17 +25,22 @@ export const useStore = create<Store>(set => ({
 
       if (selectedProduct !== -1) {
         const quantity = cart[selectedProduct].quantityCart || 1
-        const newQuantity = quantity + 1
+        const newQuantity = quantity + quantitymod
         if (newQuantity <= stock) {
           cart[selectedProduct].quantityCart = newQuantity
         } else {
-          alert('no hay mas productos disponibles')
+          toast('no hay mas productos disponibles', {
+            toastId: 'cart'
+          })
         }
         return { cart }
       }
 
-      return { cart: [...state.cart, { ...product, quantityCart: 1 }] }
-    }),
+      return {
+        cart: [...state.cart, { ...product, quantityCart: quantitymod }]
+      }
+    })
+  },
   removeToCart: product => {
     set(state => {
       const { sku } = product

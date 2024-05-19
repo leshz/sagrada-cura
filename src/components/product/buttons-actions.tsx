@@ -1,15 +1,26 @@
 'use client'
 
-import Link from 'next/link'
-import React from 'react'
+import { useStore } from '@/store'
 
-export const Buttons = () => (
+const Buttons = ({ quantity, product }) => {
+  const { addToCart } = useStore(state => state)
+
+  return (
     <div className="shop-details-btn">
-      <Link className="primary-btn1 hover-btn3" href="/shop/cart">
+      <button
+        type="button"
+        className="primary-btn1 hover-btn3"
+        onClick={() => {
+          addToCart({ product, quantitymod: quantity })
+        }}
+      >
         Add to Cart
-      </Link>
-      <Link className="primary-btn1 style-3 hover-btn4" href="/checkout">
+      </button>
+      <button type="button" className="primary-btn1 style-3 hover-btn4">
         Buy Now
-      </Link>
+      </button>
     </div>
   )
+}
+
+export { Buttons }

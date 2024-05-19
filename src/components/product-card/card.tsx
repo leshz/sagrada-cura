@@ -77,7 +77,7 @@ const Card = ({ product, labels }: Props) => {
                 <button
                   type="button"
                   className="hover-btn3 add-cart-btn"
-                  onClick={() => addToCart(product)}
+                  onClick={() => addToCart({product})}
                 >
                   <i className="bi bi-bag-check" /> {add_to_cart}
                 </button>

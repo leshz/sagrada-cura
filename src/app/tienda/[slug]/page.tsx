@@ -1,10 +1,9 @@
-import { QuantityCounter } from '@/components/quantity-selector'
 import {
   Slider,
   PaymentsInformation,
   ShippingInfo,
-  Buttons,
-  Accordion
+  Accordion,
+  QuantityArea
 } from '@/components/product'
 import { Price } from '@/components/price'
 import { getColletions } from '@/services'
@@ -24,14 +23,20 @@ const ProductDefaultPage = async ({ params }) => {
 
   const product: ProductsDatum = response.data || {}
 
-  const { name, middle_description, promotion, price, pictures, sku } =
-    product || {}
+  const {
+    name,
+    middle_description,
+    promotion,
+    price,
+    pictures,
+    sku,
+    information
+  } = product || {}
 
   const { price_with_discount, with_discount } = promotion || {}
   return (
     <>
-      <Script src="/js/bootstrap.min.js" /> 
-
+      <Script src="/js/bootstrap.min.js" />
       <div className="shop-details-top-section mt-40 mb-110">
         <div className="container-xl container-fluid-lg container">
           <div className="row gy-5">
@@ -49,19 +54,8 @@ const ProductDefaultPage = async ({ params }) => {
                     with_discount={with_discount}
                   />
                 </div>
-                <div className="quantity-color-area">
-                  <div className="quantity-color">
-                    <h6 className="widget-title">Quantity</h6>
-                    <QuantityCounter
-                      quantity={undefined}
-                      add={undefined}
-                      remove={undefined}
-                      product={undefined}
-                    />
-                  </div>
-                  <div className="quantity-color" />
-                </div>
-                <Buttons />
+                <QuantityArea product={product} />
+
                 <div className="product-info">
                   <ul className="product-info-list">
                     <li>
@@ -71,7 +65,7 @@ const ProductDefaultPage = async ({ params }) => {
                 </div>
                 <PaymentsInformation />
                 <ShippingInfo />
-                <Accordion />
+                <Accordion information={information} />
               </div>
             </div>
           </div>

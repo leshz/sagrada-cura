@@ -26,7 +26,7 @@ const QuantityCounter = ({ quantity, add, remove, product }) => (
       style={{ cursor: 'pointer' }}
       aria-label="menos 1 producto"
       type="button"
-      onClick={() => add(product)}
+      onClick={() => add({product})}
     >
       <i className="bi bi-plus" />
     </button>
