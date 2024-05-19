@@ -6966,11 +6966,12 @@ input {
         margin-bottom: 25px;
         border-radius: unset;
         padding: 0;
-        width: 80px;
-        height: 80px;
+        width: 80px !important;
+        height: 80px !important;
         border: 2px solid transparent;
         transition: all ease-in-out 0.5s;
         border-radius: 5px;
+        overflow: hidden;
 
         &-active {
           border: 2px solid #858585;

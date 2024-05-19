@@ -32,6 +32,8 @@ const Slider = ({ pictures }) => {
     }
   }
 
+  const picsPerView = pictures.length > 6 ? 6 : pictures.length || 0
+
   return (
     <div className="shop-details-img style-2">
       <div className="tab-content">
@@ -41,7 +43,7 @@ const Slider = ({ pictures }) => {
               {pictures.map(picture => (
                 <SwiperSlide key={picture.id} className="swiper-slide">
                   <div className="shop-details-tab-img">
-                    <ImageWrapper image={picture} fill />
+                    <ImageWrapper image={picture} fill priority />
                   </div>
                 </SwiperSlide>
               ))}
@@ -57,22 +59,31 @@ const Slider = ({ pictures }) => {
           </Swiper>
         </div>
       </div>
-      <div className="nav nav-pills">
-        <Swiper
-          modules={[Thumbs]}
-          onSwiper={setThumbsSwiper}
-          spaceBetween={1}
-          slidesPerView={6}
-          freeMode
-          watchSlidesProgress
-        >
-          {pictures.map(picture => (
-            <SwiperSlide key={picture.id} className='swiper-slide-thumb'>
-              <ImageWrapper image={picture} width={80} height={80} className="nav-image" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {picsPerView && (
+        <div className="nav nav-pills">
+          <Swiper
+            modules={[Thumbs]}
+            onSwiper={setThumbsSwiper}
+            spaceBetween={1}
+            height={80}
+            slidesPerView={picsPerView}
+            freeMode
+            watchSlidesProgress
+          >
+            {pictures.map(picture => (
+              <SwiperSlide key={picture.id} className="swiper-slide-thumb">
+                <ImageWrapper
+                  image={picture}
+                  width={80}
+                  height={80}
+                  className="nav-image"
+                  priority
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
     </div>
   )
 }
