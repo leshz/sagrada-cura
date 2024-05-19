@@ -1,44 +1,47 @@
+// @ts-nocheck
+
 'use client'
 
 import { ImageWrapper } from '@/components/Image'
-import { useMemo } from 'react'
+import { useState } from 'react'
+import type { Swiper as SwiperType } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Thumbs, Pagination } from 'swiper/modules'
+import SwiperCore from 'swiper'
 
 import 'swiper/css/bundle'
 
+SwiperCore.use([Pagination])
+
 const Slider = ({ pictures }) => {
-  const slideSettings = useMemo(
-    () => ({
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      speed: 1000,
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      navigation: {
-        nextEl: '.exclusive-next-btn',
-        prevEl: '.exclusive-prev-btn'
-      }
-    }),
-    []
-  )
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
+  const slideSettings = {
+    modules: [Thumbs],
+    thumbs: { swiper: thumbsSwiper },
+    spaceBetween: 10,
+    loop: true,
+    slidesPerView: 1,
+    speed: 1000,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    navigation: {
+      nextEl: '.exclusive-next-btn',
+      prevEl: '.exclusive-prev-btn'
+    }
+  }
 
   return (
     <div className="shop-details-img style-2">
-      <div className="tab-content" id="v-pills-tabContent">
-        <div
-          className="tab-pane fade show active"
-          id="v-pills-img1"
-          role="tabpanel"
-        >
+      <div className="tab-content">
+        <div className="tab-pane fade show active">
           <Swiper {...slideSettings} className="swiper exclusive-slider">
             <div className="swiper-wrapper">
               {pictures.map(picture => (
                 <SwiperSlide key={picture.id} className="swiper-slide">
                   <div className="shop-details-tab-img">
-                    <ImageWrapper image={picture} />
+                    <ImageWrapper image={picture} fill />
                   </div>
                 </SwiperSlide>
               ))}
@@ -54,29 +57,21 @@ const Slider = ({ pictures }) => {
           </Swiper>
         </div>
       </div>
-      <div
-        className="nav nav-pills"
-        id="v-pills-tab"
-        role="tablist"
-        aria-orientation="vertical"
-      >
-        {pictures.map(picture => (
-          <SwiperSlide key={picture.id} className="swiper-slide">
-            <button
-              aria-label="selector"
-              className="nav-link active"
-              id="v-pills-img1-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-img1"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-img1"
-              aria-selected="true"
-            >
+      <div className="nav nav-pills">
+        <Swiper
+          modules={[Thumbs]}
+          onSwiper={setThumbsSwiper}
+          spaceBetween={1}
+          slidesPerView={6}
+          freeMode
+          watchSlidesProgress
+        >
+          {pictures.map(picture => (
+            <SwiperSlide key={picture.id}>
               <ImageWrapper image={picture} width={80} height={80} />
-            </button>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   )
