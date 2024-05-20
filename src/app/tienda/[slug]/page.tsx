@@ -12,8 +12,8 @@ import { ProductsDatum } from '@/types/products'
 import Script from 'next/script'
 
 export const generateStaticParams = async () => {
-  const { data: blogs = [] } = await getColletions(COLLECTIONS.products)
-  const slugs = blogs.map(entry => ({ slug: entry.slug }))
+  const { data: products = [] } = await getColletions(COLLECTIONS.products)
+  const slugs = products.map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
@@ -55,7 +55,6 @@ const ProductDefaultPage = async ({ params }) => {
                   />
                 </div>
                 <QuantityArea product={product} />
-
                 <div className="product-info">
                   <ul className="product-info-list">
                     <li>

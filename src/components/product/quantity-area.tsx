@@ -29,7 +29,7 @@ const QuantityArea = ({ product }) => {
     <>
       <div className="quantity-color-area">
         <div className="quantity-color">
-          <h6 className="widget-title">Quantity</h6>
+          <h6 className="widget-title">Cantidad</h6>
           <QuantityCounter
             quantity={quantity}
             add={addUnits}
