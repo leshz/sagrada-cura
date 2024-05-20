@@ -20,6 +20,7 @@ const QuantityCounter = ({ quantity, add, remove, product }) => (
       type="text"
       className="quantity__input"
       value={quantity}
+      readOnly
     />
     <button
       className="quantity__plus"

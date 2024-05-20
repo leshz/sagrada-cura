@@ -1,6 +1,7 @@
 'use client'
 
 import { useStore } from '@/store'
+import Link from 'next/link'
 
 const Buttons = ({ quantity, product }) => {
   const { addToCart } = useStore(state => state)
@@ -14,11 +15,11 @@ const Buttons = ({ quantity, product }) => {
           addToCart({ product, quantitymod: quantity })
         }}
       >
-        Add to Cart
+        Anadir al carrito
       </button>
-      <button type="button" className="primary-btn1 style-3 hover-btn4">
-        Buy Now
-      </button>
+      <Link className="primary-btn1 style-3 hover-btn4" href="/tienda/checkout">
+        Comprar
+      </Link>
     </div>
   )
 }

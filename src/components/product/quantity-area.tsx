@@ -3,6 +3,7 @@
 import { QuantityCounter } from '@/components/quantity-selector'
 import { useStore } from '@/store'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import { Buttons } from './buttons-actions'
 
 const QuantityArea = ({ product }) => {
@@ -15,7 +16,10 @@ const QuantityArea = ({ product }) => {
   const addUnits = () => {
     const newQuantity = quantity + 1
     if (newQuantity > stockProduct) {
-      alert('no puedes agregar mas productos')
+      toast('😓 No hay mas productos disponibles', {
+        toastId: 'cart',
+        type: 'warning'
+      })
     } else {
       setQuantity(newQuantity)
     }
@@ -36,7 +40,7 @@ const QuantityArea = ({ product }) => {
           />
         </div>
       </div>
-      <Buttons quantity={quantity} product={product}/>
+      <Buttons quantity={quantity} product={product} />
     </>
   )
 }

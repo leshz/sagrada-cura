@@ -71,7 +71,7 @@ const Slider = ({ pictures }) => {
             watchSlidesProgress
           >
             {pictures.map(picture => (
-              <SwiperSlide key={picture.id} className="swiper-slide-thumb">
+              <SwiperSlide key={`${picture.id}`} className="swiper-slide-thumb">
                 <ImageWrapper
                   image={picture}
                   width={80}

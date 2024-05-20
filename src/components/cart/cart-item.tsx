@@ -31,14 +31,14 @@ const CartItem = ({ product }) => {
                 discountPrice={price_with_discount}
                 with_discount={with_discount}
               />
-              <button
+              {/* <button
                 type="button"
                 className="close-btn"
                 onClick={() => deleteToCart(product)}
                 aria-label="eliminar producto de lista "
               >
                 <i className="bi bi-x" />
-              </button>
+              </button> */}
             </div>
             <p>{name}</p>
           </div>

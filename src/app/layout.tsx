@@ -6,11 +6,11 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
 import { Jost, Kalam } from 'next/font/google'
 import { Suspense } from 'react'
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify'
 import Error from './error'
 
+import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
-import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'Sagrada cura',
@@ -47,7 +47,12 @@ const RootLayout = async ({ children }) => {
             <Header data={data} menuLinks={menu} />
           </Suspense>
           {children}
-          <ToastContainer />
+          <ToastContainer
+            pauseOnHover={false}
+            position="bottom-right"
+            transition={Slide}
+            pauseOnFocusLoss={false}
+          />
           <FooterLayout data={data} />
         </ErrorBoundary>
       </body>
