@@ -5,7 +5,7 @@ import { ImageWrapper } from '@/components/Image'
 import { Price } from '@/components/price'
 
 const CartItem = ({ product }) => {
-  const { addToCart, deleteToCart, removeToCart } = useStore()
+  const { addToCart, removeToCart } = useStore()
   const {
     pictures = [],
     price,
