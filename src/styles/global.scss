@@ -3649,6 +3649,7 @@ input {
   height: 100%;
   .article-image {
     position: relative;
+    min-width: 245px;
     @include lg-down-device() {
       width: 100%;
     }
@@ -3657,8 +3658,14 @@ input {
       display: block;
 
       img {
+        aspect-ratio: 60 / 70;
+        object-fit: cover;
+        object-position: center;
         @include lg-down-device() {
           width: 100%;
+        }
+        @include sm-down-device() {
+          aspect-ratio: unset;
         }
       }
 
@@ -3859,7 +3866,6 @@ input {
     }
 
     .article-image {
-      max-width: 245px;
       width: 100%;
       @include xxl-down-device() {
         .article-card-img {
