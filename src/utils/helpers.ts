@@ -13,7 +13,7 @@ export const getIcons = (icon: string): string => {
   return iconName
 }
 
-export const dateFormat = date => format(date, 'medium', 'co')
+export const dateFormat = date => format(date, 'medium', 'CO')
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
   style: 'currency',
