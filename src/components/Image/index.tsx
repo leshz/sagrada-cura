@@ -13,6 +13,7 @@ const ImageWrapper = ({ image, format = '', fill = false, ...props }) => {
     imagen = {
       src:
         source?.url ||
+        source ||
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nGPY2fXjv458/H9Bbtf/IDbD/7v//8/Mvfq/J+nEfxAbAF3NFsFiuaE1AAAAAElFTkSuQmCC',
       width: !fill ? source?.width || 100 : undefined,
       height: !fill ? source?.height || 100 : undefined,

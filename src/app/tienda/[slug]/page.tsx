@@ -11,6 +11,8 @@ import { COLLECTIONS } from '@/utils/constants'
 import { ProductsDatum } from '@/types/products'
 import Script from 'next/script'
 
+import './page.scss'
+
 export const generateStaticParams = async () => {
   const { data: products = [] } = await getColletions(COLLECTIONS.products)
   const slugs = products.map(entry => ({ slug: entry.slug }))
@@ -30,8 +32,13 @@ const ProductDefaultPage = async ({ params }) => {
     price,
     pictures,
     sku,
-    information
+    information,
+    stock
   } = product || {}
+
+  const limitedStock = stock >= 0 && stock <= 6
+
+  const noStock = stock === 0
 
   const { price_with_discount, with_discount } = promotion || {}
   return (
@@ -47,6 +54,19 @@ const ProductDefaultPage = async ({ params }) => {
               <div className="shop-details-content">
                 <h1>{name}</h1>
                 <p>{middle_description}</p>
+                {limitedStock && (
+                  <div className="stock-area">
+                    <h6>
+                      Disponibilidad:{'  '}
+                      {noStock ? (
+                        <span className="out-of-stock"> Agotado</span>
+                      ) : (
+                        stock
+                      )}
+                    </h6>
+                  </div>
+                )}
+
                 <div className="price-area">
                   <Price
                     price={price}
@@ -54,7 +74,7 @@ const ProductDefaultPage = async ({ params }) => {
                     with_discount={with_discount}
                   />
                 </div>
-                <QuantityArea product={product} />
+                {!noStock && <QuantityArea product={product} />}
                 <div className="product-info">
                   <ul className="product-info-list">
                     <li>

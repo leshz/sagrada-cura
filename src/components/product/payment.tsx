@@ -1,32 +1,29 @@
-import React from 'react'
+import { paymentMethods } from '@/mock/payment-methods'
+import { ImageWrapper } from '@/components/Image'
 
 const PaymentsInformation = () => (
-    <div className="payment-method">
-      <h6>Guaranted Safe Checkout</h6>
-      <ul className="payment-card-list">
-        <li>
-          <img src="/assets/img/inner-page/payment-img1.svg" alt="" />
-        </li>
-        <li>
-          <img src="/assets/img/inner-page/payment-img2.svg" alt="" />
-        </li>
-        <li>
-          <img src="/assets/img/inner-page/payment-img3.svg" alt="" />
-        </li>
-        <li>
-          <img src="/assets/img/inner-page/payment-img4.svg" alt="" />
-        </li>
-        <li>
-          <img src="/assets/img/inner-page/payment-img5.svg" alt="" />
-        </li>
-        <li>
-          <img src="/assets/img/inner-page/payment-img6.svg" alt="" />
-        </li>
-        <li>
-          <img src="/assets/img/inner-page/payment-img7.svg" alt="" />
-        </li>
-      </ul>
-    </div>
-  )
+  <div className="payment-method">
+    <h6>Guaranted Safe Checkout</h6>
+    <ul className="payment-card-list">
+      {paymentMethods.map(method => {
+        const { id, status, secure_thumbnail } = method
+
+        if (status === 'active') {
+          return (
+            <li key={id}>
+              <ImageWrapper
+                image={secure_thumbnail}
+                className="payment-method-image"
+                width={39}
+                height={26}
+              />
+            </li>
+          )
+        }
+        return null
+      })}
+    </ul>
+  </div>
+)
 
 export { PaymentsInformation }
