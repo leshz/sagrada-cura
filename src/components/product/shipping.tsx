@@ -1,18 +1,33 @@
-import React from 'react'
+'use client'
 
-const ShippingInfo = () => (
-  <ul className="product-shipping-delivers">
-    <li className="product-shipping">
-      <i className="bi bi-truck" />
-      Free worldwide shipping on all orders over $100
-    </li>
-    <li className="product-delivers">
-      <i className="bi bi-box2-heart" />
-      <p>
-        Delivers in: 3-7 Working Days <a href="#">Shipping &amp; Return</a>
-      </p>
-    </li>
-  </ul>
-)
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import Link from 'next/link'
+
+const ShippingInfo = ({ promises }) => {
+  if (promises.length === 0) return null
+
+  return (
+    <ul className="product-shipping-delivers">
+      {promises.map(item => {
+        const { id, message, icon } = item
+        return (
+          <li key={id} className="product-shipping">
+            {icon && (
+              <span>
+                <i className={`bi ${icon}`} />
+              </span>
+            )}
+            <BlocksRenderer
+              content={message}
+              blocks={{
+                link: ({ children, url }) => <Link href={url}>{children}</Link>
+              }}
+            />
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
 
 export { ShippingInfo }

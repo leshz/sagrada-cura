@@ -1,9 +1,9 @@
 import { paymentMethods } from '@/mock/payment-methods'
 import { ImageWrapper } from '@/components/Image'
 
-const PaymentsInformation = () => (
+const PaymentsInformation = ({ message }) => (
   <div className="payment-method">
-    <h6>Guaranted Safe Checkout</h6>
+    <h6>{message}</h6>
     <ul className="payment-card-list">
       {paymentMethods.map(method => {
         const { id, status, secure_thumbnail } = method

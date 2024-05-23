@@ -6,7 +6,7 @@ import {
   QuantityArea
 } from '@/components/product'
 import { Price } from '@/components/price'
-import { getColletions } from '@/services'
+import { getColletions, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { ProductsDatum } from '@/types/products'
 import Script from 'next/script'
@@ -21,9 +21,13 @@ export const generateStaticParams = async () => {
 
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
-  const response = await getColletions(COLLECTIONS.products, { slug })
+  const single = getSingles('product-detail')
+  const collection = getColletions(COLLECTIONS.products, { slug })
 
-  const product: ProductsDatum = response.data || {}
+  const [singleReq, collectionReq] = await Promise.all([single, collection])
+  const { payment_message, no_stock, promises = [] } = singleReq || {}
+
+  const product: ProductsDatum = collectionReq.data || {}
 
   const {
     name,
@@ -59,7 +63,7 @@ const ProductDefaultPage = async ({ params }) => {
                     <h6>
                       Disponibilidad:{'  '}
                       {noStock ? (
-                        <span className="out-of-stock"> Agotado</span>
+                        <span className="out-of-stock"> {no_stock}</span>
                       ) : (
                         stock
                       )}
@@ -82,8 +86,8 @@ const ProductDefaultPage = async ({ params }) => {
                     </li>
                   </ul>
                 </div>
-                <PaymentsInformation />
-                <ShippingInfo />
+                <PaymentsInformation message={payment_message} />
+                <ShippingInfo promises={promises} />
                 <Accordion information={information} />
               </div>
             </div>

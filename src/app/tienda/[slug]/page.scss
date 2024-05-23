@@ -616,7 +616,7 @@
     .shop-details-tab-img {
       aspect-ratio: 636/803 auto;
 
-      @include lg-device() {
+      @include md-down-device() {
         aspect-ratio: 1 / 1 auto;
       }
       img {
@@ -743,18 +743,29 @@
         }
       }
       .nav-pills {
-        position: relative;
+        bottom: 0;
         flex-direction: row;
-        left: unset;
-        top: unset;
         gap: 35px;
+        left: unset;
         padding-top: 30px;
+        position: absolute;
+        top: unset;
+        width: 100%;
+        background: linear-gradient(
+          0deg,
+          rgba(82, 82, 82, 0.742734593837535) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        z-index: 2;
         @include lg-device() {
           gap: 20px;
         }
         @include sm-down-device() {
           gap: 20px;
           justify-content: center;
+        }
+        img {
+          cursor: pointer;
         }
         .nav-link {
           margin-bottom: 0;

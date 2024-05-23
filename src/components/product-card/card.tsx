@@ -9,6 +9,8 @@ import { Batch } from '@/components/product-card/batch'
 import { useSearchParams } from 'next/navigation'
 import { useStore } from '@/store'
 
+import './styles/card.scss'
+
 type Props = {
   product: ProductsDatum
   labels: {
@@ -67,21 +69,29 @@ const Card = ({ product, labels }: Props) => {
             ))}
             <Batch info={promotion} />
           </Link>
+
+          {stock === 0 && (
+            <div className="out-of-stock">
+              <Link href={productView}>
+                {request_stock} <span>😭</span>
+              </Link>
+            </div>
+          )}
+
           <div className="overlay">
             <div className="cart-area">
-              {stock === 0 ? (
-                <Link className="hover-btn3 add-cart-btn " href="/">
-                  {request_stock}
-                </Link>
-              ) : (
+              {stock !== 0 ? (
                 <button
                   type="button"
                   className="hover-btn3 add-cart-btn"
-                  onClick={() => addToCart({product})}
+                  onClick={() => addToCart({ product })}
                 >
-                  <i className="bi bi-bag-check" /> {add_to_cart}
+                  <span>
+                    <i className="bi bi-bag-check" />
+                  </span>
+                  {add_to_cart}
                 </button>
-              )}
+              ) : null}
             </div>
           </div>
           <div className="view-and-favorite-area">

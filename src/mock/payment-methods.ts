@@ -298,5 +298,13 @@ export const paymentMethods = [
       }
     ],
     processing_modes: ['aggregator']
+  },
+  {
+    id: 'mercado-pago',
+    name: 'MELI',
+    status: 'active',
+    secure_thumbnail:
+      '/logos/mercado-pago.svg',
+    thumbnail: '/logos/mercado-pago.svg'
   }
 ]
