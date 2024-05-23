@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 
+export const dynamic = 'force-static'
+
 const OrderTracking = () => (
     <div className="order-tracking">
         <div className="container">

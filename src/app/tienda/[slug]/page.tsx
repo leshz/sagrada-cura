@@ -13,11 +13,11 @@ import Script from 'next/script'
 
 import './page.scss'
 
-export const generateStaticParams = async () => {
-  const { data: products = [] } = await getColletions(COLLECTIONS.products)
-  const slugs = products.map(entry => ({ slug: entry.slug }))
-  return slugs
-}
+// export const generateStaticParams = async () => {
+//   const { data: products = [] } = await getColletions(COLLECTIONS.products)
+//   const slugs = products.map(entry => ({ slug: entry.slug }))
+//   return slugs
+// }
 
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params

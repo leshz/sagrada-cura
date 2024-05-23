@@ -3,6 +3,8 @@ import { Cupons } from '@/components/cupons-area'
 import { PurchaseSummary } from '@/components/purchase-summary'
 import { getSingles } from '@/services'
 
+export const dynamic = 'force-static'
+
 const Cart = async () => {
   const { table, summary , empty} = (await getSingles('cart')) || {}
   return (

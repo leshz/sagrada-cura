@@ -6,6 +6,8 @@ import React from 'react'
 import { QuantityCounter } from '@/components/quantity-selector'
 // import SelectComponent from '@/components/common/SelectComponent'
 
+export const dynamic = 'force-static'
+
 const Checkout = () => (
   <div className="checkout-section pt-110 mb-110">
     <div className="container">
