@@ -7,7 +7,10 @@ import { getSingles } from '@/services'
 import { Jost, Kalam } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react'
 import Error from './error'
+
 
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
@@ -55,6 +58,8 @@ const RootLayout = async ({ children }) => {
           />
           <FooterLayout data={data} />
         </ErrorBoundary>
+        <Analytics  />
+        <SpeedInsights />
       </body>
     </html>
   )
