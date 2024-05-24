@@ -6444,8 +6444,12 @@ home2 Banner Css
     position: relative;
 
     .banner-2-right-img-bg {
-      background-size: cover;
+      object-fit: cover;
       background-repeat: no-repeat;
+      img {
+        object-fit: cover;
+        object-position: center;
+      }
 
       .banner-2-right-content {
         text-align: center;
