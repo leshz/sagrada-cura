@@ -1,9 +1,11 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-const Confirmation = () => {
+const Pepe = () => {
   const params = useSearchParams()
+
   return (
     <div className="container">
       <h1>Confirmation is </h1>
@@ -12,5 +14,11 @@ const Confirmation = () => {
     </div>
   )
 }
+
+const Confirmation = () => (
+    <Suspense>
+      <Pepe />
+    </Suspense>
+  )
 
 export default Confirmation
