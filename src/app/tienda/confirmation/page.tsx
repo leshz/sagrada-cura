@@ -5,20 +5,25 @@ import { Suspense } from 'react'
 
 const Pepe = () => {
   const params = useSearchParams()
+  const parapapam: any = {}
+
+  params.forEach((value, key) => {
+    parapapam[key] = value
+  })
 
   return (
     <div className="container">
-      <h1>Confirmation is </h1>
+      <h1>Confirmation is {parapapam?.status}</h1>
 
-      <pre>{JSON.stringify(params, null, 4)} </pre>
+      <pre>{JSON.stringify(parapapam, null, 4)} </pre>
     </div>
   )
 }
 
 const Confirmation = () => (
-    <Suspense>
-      <Pepe />
-    </Suspense>
-  )
+  <Suspense>
+    <Pepe />
+  </Suspense>
+)
 
 export default Confirmation
