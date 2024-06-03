@@ -9,6 +9,6 @@ export const availableIcons = {
 export const COLLECTIONS = {
   blogs: '/blogs',
   testimonials: '/testimonials',
-  categories: '/categories',
-  products: '/products'
+  categories: '/strapi-ecommerce-mercadopago/categories',
+  products: '/strapi-ecommerce-mercadopago/products'
 }
