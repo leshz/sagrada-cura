@@ -140,7 +140,7 @@
           &:hover {
             color: var(--primary-color1);
           }
-          span{
+          span {
             font-size: 18px;
           }
         }
@@ -199,9 +199,11 @@
           overflow: hidden;
           transform: translateX(-100%);
           transition: all 0.8s;
+          object-fit: cover;
         }
         .img1 {
           transition: all 0.8s;
+          object-fit: cover;
         }
       }
     }
