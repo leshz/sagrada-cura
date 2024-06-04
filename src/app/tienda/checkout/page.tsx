@@ -13,11 +13,6 @@ const Checkout = () => (
         <div className="col-lg-5">
           <OrdenSumary />
           <OrderTotalizer />
-          <div className="place-order-btn">
-            <button type="submit" className="primary-btn1 hover-btn3">
-              Realizar pedido
-            </button>
-          </div>
         </div>
       </div>
     </div>

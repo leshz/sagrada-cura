@@ -41,24 +41,6 @@ const BillingForm = () => {
       <h4>Detalles de facturación</h4>
       <form>
         <div className="row">
-          <div className="col-lg-12">
-            <div className="form-inner required">
-              <label htmlFor="dni">
-                Cedula*
-                <input
-                  id="dni"
-                  type="number"
-                  name="dni"
-                  placeholder="Cedula de cuidadania"
-                  min={0}
-                  inputMode="numeric"
-                  required
-                  onChange={formik.handleChange}
-                  value={formik.values.dni}
-                />
-              </label>
-            </div>
-          </div>
           <div className="col-lg-6">
             <div className="form-inner required">
               <label htmlFor="name">
@@ -85,6 +67,24 @@ const BillingForm = () => {
                   type="text"
                   name="lastName"
                   placeholder="Tu apellido"
+                />
+              </label>
+            </div>
+          </div>
+          <div className="col-lg-12">
+            <div className="form-inner required">
+              <label htmlFor="dni">
+                Cedula*
+                <input
+                  id="dni"
+                  type="number"
+                  name="dni"
+                  placeholder="Cedula de cuidadania"
+                  min={0}
+                  inputMode="numeric"
+                  required
+                  onChange={formik.handleChange}
+                  value={formik.values.dni}
                 />
               </label>
             </div>
@@ -116,7 +116,7 @@ const BillingForm = () => {
           <div className="col-12">
             <div className="form-inner">
               <label htmlFor="department">
-                Departamento
+                Departamento*
                 <select
                   required
                   id="department"
@@ -139,7 +139,7 @@ const BillingForm = () => {
           <div className="col-12">
             <div className="form-inner">
               <label htmlFor="department">
-                Ciudad
+                Ciudad*
                 <select
                   required
                   id="city"
@@ -168,11 +168,10 @@ const BillingForm = () => {
               </label>
             </div>
           </div>
-          <h4>Información Adicional</h4>
           <div className="col-12">
             <div className="form-inner">
               <label htmlFor="phone">
-                Telefono celular
+                Telefono celular*
                 <input
                   required
                   id="phone"
@@ -190,7 +189,7 @@ const BillingForm = () => {
           <div className="col-12">
             <div className="form-inner">
               <label htmlFor="email">
-                Email
+                Email*
                 <input
                   required
                   id="email"
@@ -214,9 +213,15 @@ const BillingForm = () => {
                   rows={5}
                   onChange={formik.handleChange}
                   value={formik.values.message}
-                  defaultValue=""
                 />
               </label>
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="place-order-btn">
+              <button type="submit" className="primary-btn1 hover-btn3">
+                Realizar pedido
+              </button>
             </div>
           </div>
         </div>
