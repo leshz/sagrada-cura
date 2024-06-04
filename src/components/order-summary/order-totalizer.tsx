@@ -8,6 +8,10 @@ const OrderTotalizer = () => {
 
   const { afterDiscountPrice, totalDiscounted, totalFullPrice } =
     productsPricesSummary(cart)
+
+  if (cart.length === 0) {
+    return null
+  }
   return (
     <>
       <div className="cost-summary mb-30">

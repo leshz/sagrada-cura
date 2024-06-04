@@ -19,6 +19,10 @@ const OrdenSumary = () => {
     }
   }, [cart.length, router])
 
+  if (cart.length === 0) {
+    return null
+  }
+
   return (
     <div className="added-product-summary mb-30">
       <h5>Resumen del pedido</h5>
