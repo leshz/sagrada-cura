@@ -24,12 +24,8 @@ const OrdenSumary = () => {
       <h5>Resumen del pedido</h5>
       <ul className="added-products">
         {cart.map(product => {
-          const { name, pictures, id, slug, quantityCart, promotion, price } =
-            product
-          const { with_discount, price_with_discount } = promotion
+          const { name, pictures, id, slug, quantityCart, price } = product
           const image = pictures?.[0]
-
-          const finalPrice = with_discount ? price_with_discount || 0 : price
 
           return (
             <li key={id} className="single-product">
@@ -51,7 +47,7 @@ const OrdenSumary = () => {
                     <strong>
                       <i className="bi bi-x-lg px-2" />
                       <span className="product-price">
-                        {currencyFormat.format(finalPrice)}
+                        {currencyFormat.format(price)}
                       </span>
                     </strong>
                   </div>
