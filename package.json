@@ -21,6 +21,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "formik": "^2.4.6",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
