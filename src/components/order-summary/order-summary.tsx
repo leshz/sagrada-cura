@@ -1,103 +1,76 @@
-import { QuantityCounter } from '@/components/quantity-selector'
+'use client'
 
-const OrdenSumary = () => (
-  <div className="added-product-summary mb-30">
-    <h5>Order Summary</h5>
-    <ul className="added-products">
-      <li className="single-product">
-        <div className="product-area">
-          <div className="product-img">
-            <img
-              src="/assets/img/inner-page/checkout-product-img1.png"
-              alt=""
-            />
-          </div>
-          <div className="product-info">
-            <h5>
-              <a href="#">Brand new Nail Polish</a>
-            </h5>
-            <div className="product-total">
-              <QuantityCounter
-                quantity={undefined}
-                add={undefined}
-                remove={undefined}
-                product={undefined}
-              />
-              <strong>
-                <i className="bi bi-x-lg px-2" />
-                <span className="product-price">$39.00</span>
-              </strong>
-            </div>
-          </div>
-        </div>
-        <div className="delete-btn">
-          <i className="bx bx-x" />
-        </div>
-      </li>
-      <li className="single-product">
-        <div className="product-area">
-          <div className="product-img">
-            <img
-              src="/assets/img/inner-page/checkout-product-img2.png"
-              alt=""
-            />
-          </div>
-          <div className="product-info">
-            <h5>
-              <a href="#">Brand new Face Product</a>
-            </h5>
-            <div className="product-total">
-              <QuantityCounter
-                quantity={undefined}
-                add={undefined}
-                remove={undefined}
-                product={undefined}
-              />
-              <strong>
-                {' '}
-                <i className="bi bi-x-lg px-2" />
-                <span className="product-price">$60.00</span>
-              </strong>
-            </div>
-          </div>
-        </div>
-        <div className="delete-btn">
-          <i className="bx bx-x" />
-        </div>
-      </li>
-      <li className="single-product">
-        <div className="product-area">
-          <div className="product-img">
-            <img
-              src="/assets/img/inner-page/checkout-product-img3.png"
-              alt=""
-            />
-          </div>
-          <div className="product-info">
-            <h5>
-              <a href="#">Brand new Shampoo</a>
-            </h5>
-            <div className="product-total">
-              <QuantityCounter
-                quantity={undefined}
-                add={undefined}
-                remove={undefined}
-                product={undefined}
-              />
-              <strong>
-                {' '}
-                <i className="bi bi-x-lg px-2" />
-                <span className="product-price">$40.00</span>
-              </strong>
-            </div>
-          </div>
-        </div>
-        <div className="delete-btn">
-          <i className="bx bx-x" />
-        </div>
-      </li>
-    </ul>
-  </div>
-)
+import { QuantityCounter } from '@/components/quantity-selector'
+import { useStore } from '@/store'
+import { ImageWrapper } from '@/components/Image'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { currencyFormat } from '@/utils/helpers'
+
+const OrdenSumary = () => {
+  const router = useRouter()
+  const { cart, addToCart, removeToCart, deleteToCart } = useStore(
+    store => store
+  )
+  useEffect(() => {
+    if (cart.length === 0) {
+      router.push('/tienda')
+    }
+  }, [cart.length, router])
+
+  return (
+    <div className="added-product-summary mb-30">
+      <h5>Resumen del pedido</h5>
+      <ul className="added-products">
+        {cart.map(product => {
+          const { name, pictures, id, slug, quantityCart, promotion, price } =
+            product
+          const { with_discount, price_with_discount } = promotion
+          const image = pictures?.[0]
+
+          const finalPrice = with_discount ? price_with_discount || 0 : price
+
+          return (
+            <li key={id} className="single-product">
+              <div className="product-area">
+                <div className="product-img">
+                  <ImageWrapper image={image} width={90} heigth={90} />
+                </div>
+                <div className="product-info">
+                  <h5>
+                    <Link href={`/tienda/${slug}`}>{name}</Link>
+                  </h5>
+                  <div className="product-total">
+                    <QuantityCounter
+                      quantity={quantityCart}
+                      add={addToCart}
+                      remove={removeToCart}
+                      product={product}
+                    />
+                    <strong>
+                      <i className="bi bi-x-lg px-2" />
+                      <span className="product-price">
+                        {currencyFormat.format(finalPrice)}
+                      </span>
+                    </strong>
+                  </div>
+                </div>
+              </div>
+              <button
+                aria-label="delete product"
+                type="button"
+                className="delete-btn"
+                onClick={() => deleteToCart(product)}
+              >
+                <i className="bi bi-x-lg" />
+              </button>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
 
 export { OrdenSumary }
