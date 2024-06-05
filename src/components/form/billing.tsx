@@ -3,6 +3,10 @@
 import { useFormik } from 'formik'
 import departments from '@/mock/departments.json'
 import { formSchema } from '@/schema/form'
+import { useStore } from '@/store'
+import { checkout } from '@/services'
+import type { ProductsDatum } from '@/types/products'
+import { useRouter } from 'next/navigation'
 
 const initialValues = () => ({
   dni: '',
@@ -17,16 +21,96 @@ const initialValues = () => ({
   message: ''
 })
 
+const submitForm = async (values, actions, cart: ProductsDatum[]) => {
+  const {
+    dni,
+    name,
+    lastName,
+    address,
+    department,
+    city,
+    postalCode,
+    phone,
+    email,
+    message
+  } = values
+  const items = cart.map(({ sku, quantityCart }) => ({
+    sku,
+    quantity: quantityCart
+  }))
+
+  const buyer = {
+    dni,
+    name,
+    lastName,
+    email,
+    phone
+  }
+  const shipping = {
+    address,
+    department,
+    city,
+    postalCode,
+    message
+  }
+
+  console.log({ items, buyer, shipping })
+
+  const { init_point } = await checkout({ items, buyer, shipping })
+  return init_point
+  // console.debug(values)
+  // console.debug(cart)
+}
+
 const BillingForm = () => {
+  const { cart } = useStore()
+  // const router = useRouter()
   const { colombia } = departments
-  const { handleChange, values, handleBlur, errors, touched, handleSubmit } =
-    useFormik({
-      initialValues: initialValues(),
-      validationSchema: formSchema,
-      onSubmit: async () => {
-        console.log('SUBMITTED')
+  const {
+    handleChange,
+    values,
+    handleBlur,
+    errors,
+    touched,
+    handleSubmit,
+    isSubmitting
+  } = useFormik({
+    initialValues: initialValues(),
+    // validationSchema: formSchema,
+    onSubmit: async (...args) => {
+      const body = {
+        items: [
+          {
+            sku: 'TWe897vM',
+            quantity: 2
+          }
+        ],
+        buyer: {
+          dni: 1212,
+          name: 'jeff',
+          lastName: 'barr',
+          email: 'le@le.com',
+          phone: 3132905749
+        },
+        shipping: {
+          address: 'sss',
+          department: 'Arauca',
+          city: 'Cravo Norte',
+          postalCode: '',
+          message: ''
+        }
       }
-    })
+
+      const { init_point } = await checkout(body)
+      console.log(init_point)
+
+      // const link = await submitForm(...args, cart)
+      // console.debug(link)
+
+      // window.location.assign(link)
+      // router.push(link)
+    }
+  })
 
   const renderOptions = (departmentName: string) => {
     const getcities = colombia.find(
@@ -42,7 +126,7 @@ const BillingForm = () => {
   return (
     <div className="form-wrap mb-30">
       <h4>Detalles de facturación</h4>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="POST">
         <div className="row">
           <div className="col-lg-6">
             <div className="form-inner required">
@@ -292,7 +376,44 @@ const BillingForm = () => {
           </div>
           <div className="col-12">
             <div className="place-order-btn">
-              <button type="submit" className="primary-btn1 hover-btn3">
+              <button
+                type="button"
+                onClick={async () => {
+                  const body = {
+                    items: [
+                      {
+                        sku: 'TWe897vM',
+                        quantity: 2
+                      }
+                    ],
+                    buyer: {
+                      dni: 1212,
+                      name: 'jeff',
+                      lastName: 'barr',
+                      email: 'le@le.com',
+                      phone: 3132905749
+                    },
+                    shipping: {
+                      address: 'sss',
+                      department: 'Arauca',
+                      city: 'Cravo Norte',
+                      postalCode: '',
+                      message: ''
+                    }
+                  }
+
+                  const { init_point } = await checkout(body)
+                  console.log(init_point)
+
+                  // const link = await submitForm(...args, cart)
+                  // console.debug(link)
+
+                  // window.location.assign(link)
+                  // router.push(link)
+                }}
+                disabled={isSubmitting}
+                className="primary-btn1 hover-btn3"
+              >
                 Realizar pedido
               </button>
             </div>

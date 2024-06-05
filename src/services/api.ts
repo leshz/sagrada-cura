@@ -3,7 +3,8 @@ export const api = async (url: string, options?: any) => {
   const buildUrl = `${basePath}${url}`
   const headerAuth = {
     Accept: 'application/json',
-    Authorization: `Bearer ${process.env.CMS_TOKEN}`
+    Authorization: `Bearer ${process.env.CMS_TOKEN}`,
+    'Content-Type': 'application/json'
   }
   try {
     const response = await fetch(buildUrl, {

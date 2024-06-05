@@ -16,6 +16,10 @@
   --primary-color1: #222222;
   --bg-color: #f2f2f2;
 
+  // errors
+
+  --error: #e57373;
+
   //toastity css
   --toastify-font-family: var(--font-jost-next);
 }
@@ -517,6 +521,19 @@ input {
     }
     &:focus {
       border: 1px solid #ddd;
+    }
+  }
+
+  label.input-error {
+    color: var(--error) !important;
+    span {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    input {
+      border-color: var(--error) !important;
+      color: var(--error) !important;
     }
   }
 }
