@@ -5,9 +5,11 @@ import { useState, useEffect, useRef } from 'react'
 import { useStore } from '@/store'
 import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
 import { useChangePath } from '@/hooks/use-change-path'
+import { useRouter } from 'next/navigation'
 import { CartItem } from './cart-item'
 
 const Cart = ({ labels }) => {
+  const router = useRouter()
   const [showCart, setShowCart] = useState(false)
   const cartButtonRef: any = useRef()
   const cartMenuRef: any = useRef()
@@ -27,6 +29,8 @@ const Cart = ({ labels }) => {
   const handleCartButtonClick = () => {
     if (cartHasItems) {
       setShowCart(!showCart)
+    } else {
+      router.push('/tienda')
     }
   }
 

@@ -2,6 +2,7 @@
 
 import { useFormik } from 'formik'
 import departments from '@/mock/departments.json'
+import { formSchema } from '@/schema/form'
 
 const initialValues = () => ({
   dni: '',
@@ -18,18 +19,20 @@ const initialValues = () => ({
 
 const BillingForm = () => {
   const { colombia } = departments
-  const formik = useFormik({
-    initialValues: initialValues(),
-    onSubmit: async () => {}
-  })
+  const { handleChange, values, handleBlur, errors, touched, handleSubmit } =
+    useFormik({
+      initialValues: initialValues(),
+      validationSchema: formSchema,
+      onSubmit: async () => {
+        console.log('SUBMITTED')
+      }
+    })
 
   const renderOptions = (departmentName: string) => {
     const getcities = colombia.find(
       department => department.departamento === departmentName
     )
-
     const cities = getcities?.ciudades || []
-
     return cities.map((city, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <option key={index} value={city} label={city} />
@@ -39,11 +42,14 @@ const BillingForm = () => {
   return (
     <div className="form-wrap mb-30">
       <h4>Detalles de facturación</h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-lg-6">
             <div className="form-inner required">
-              <label htmlFor="name">
+              <label
+                htmlFor="name"
+                className={errors.name && touched.name ? 'input-error' : ''}
+              >
                 Nombres*
                 <input
                   id="name"
@@ -51,15 +57,22 @@ const BillingForm = () => {
                   name="name"
                   placeholder="Tus nombres"
                   required
-                  onChange={formik.handleChange}
-                  value={formik.values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
                 />
+                {errors.name && touched.name && <span>{errors.name}</span>}
               </label>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="form-inner">
-              <label htmlFor="lastName">
+              <label
+                htmlFor="lastName"
+                className={
+                  errors.lastName && touched.lastName ? 'input-error' : ''
+                }
+              >
                 Apellidos*
                 <input
                   required
@@ -67,13 +80,22 @@ const BillingForm = () => {
                   type="text"
                   name="lastName"
                   placeholder="Tu apellido"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.lastName}
                 />
+                {errors.lastName && touched.lastName && (
+                  <span>{errors.lastName}</span>
+                )}
               </label>
             </div>
           </div>
           <div className="col-lg-12">
             <div className="form-inner required">
-              <label htmlFor="dni">
+              <label
+                htmlFor="dni"
+                className={errors.dni && touched.dni ? 'input-error' : ''}
+              >
                 Cedula*
                 <input
                   id="dni"
@@ -83,9 +105,11 @@ const BillingForm = () => {
                   min={0}
                   inputMode="numeric"
                   required
-                  onChange={formik.handleChange}
-                  value={formik.values.dni}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.dni}
                 />
+                {errors.dni && touched.dni && <span>{errors.dni}</span>}
               </label>
             </div>
           </div>
@@ -99,30 +123,19 @@ const BillingForm = () => {
           </div>
           <div className="col-12">
             <div className="form-inner">
-              <label htmlFor="address">
-                Dirección*
-                <input
-                  required
-                  id="address"
-                  type="text"
-                  name="address"
-                  placeholder="Dirección de la calle,apartamento, habitación, etc."
-                  onChange={formik.handleChange}
-                  value={formik.values.address}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="form-inner">
-              <label htmlFor="department">
+              <label
+                htmlFor="department"
+                className={
+                  errors.department && touched.department ? 'input-error' : ''
+                }
+              >
                 Departamento*
                 <select
                   required
                   id="department"
-                  value={formik.values.department}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
+                  value={values.department}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 >
                   <option value="" label="Elige una opcion" />
                   {colombia.map(({ id, departamento }) => (
@@ -133,44 +146,88 @@ const BillingForm = () => {
                     />
                   ))}
                 </select>
+                {errors.department && touched.department && (
+                  <span>{errors.department}</span>
+                )}
               </label>
             </div>
           </div>
           <div className="col-12">
             <div className="form-inner">
-              <label htmlFor="department">
+              <label
+                htmlFor="department"
+                className={errors.city && touched.city ? 'input-error' : ''}
+              >
                 Ciudad*
                 <select
                   required
                   id="city"
-                  value={formik.values.city}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
+                  value={values.city}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 >
                   <option value="" label="Elige una opcion" />
-                  {renderOptions(formik.values.department)}
+                  {renderOptions(values.department)}
                 </select>
+                {errors.city && touched.city && <span>{errors.city}</span>}
               </label>
             </div>
           </div>
           <div className="col-12">
             <div className="form-inner">
-              <label htmlFor="postalCode">
+              <label
+                htmlFor="address"
+                className={
+                  errors.address && touched.address ? 'input-error' : ''
+                }
+              >
+                Dirección*
+                <input
+                  required
+                  id="address"
+                  type="text"
+                  name="address"
+                  placeholder="Dirección de la calle,apartamento, habitación, etc."
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.address}
+                />
+                {errors.address && touched.address && (
+                  <span>{errors.address}</span>
+                )}
+              </label>
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="form-inner">
+              <label
+                htmlFor="postalCode"
+                className={
+                  errors.postalCode && touched.postalCode ? 'input-error' : ''
+                }
+              >
                 Codigo postal
                 <input
                   id="postalCode"
                   type="text"
                   name="postalCode"
-                  placeholder="Codigo postal "
-                  onChange={formik.handleChange}
-                  value={formik.values.postalCode}
+                  placeholder="Codigo postal"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.postalCode}
                 />
+                {errors.postalCode && touched.postalCode && (
+                  <span>{errors.postalCode}</span>
+                )}
               </label>
             </div>
           </div>
           <div className="col-12">
             <div className="form-inner">
-              <label htmlFor="phone">
+              <label
+                htmlFor="phone"
+                className={errors.phone && touched.phone ? 'input-error' : ''}
+              >
                 Telefono celular*
                 <input
                   required
@@ -180,15 +237,20 @@ const BillingForm = () => {
                   min={0}
                   inputMode="numeric"
                   placeholder="Numero de telefono"
-                  onChange={formik.handleChange}
-                  value={formik.values.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.phone}
                 />
+                {errors.phone && touched.phone && <span>{errors.phone}</span>}
               </label>
             </div>
           </div>
           <div className="col-12">
             <div className="form-inner">
-              <label htmlFor="email">
+              <label
+                htmlFor="email"
+                className={errors.email && touched.email ? 'input-error' : ''}
+              >
                 Email*
                 <input
                   required
@@ -196,24 +258,35 @@ const BillingForm = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
                 />
+                {errors.email && touched.email && <span>{errors.email}</span>}
               </label>
             </div>
           </div>
           <div className="col-12">
             <div className="form-inner">
-              <label htmlFor="message">
+              <label
+                htmlFor="message"
+                className={
+                  errors.message && touched.message ? 'input-error' : ''
+                }
+              >
                 Notas sobre el pedido
                 <textarea
                   id="message"
                   name="message"
                   placeholder="Notas sobre el pedido, por ejemplo, notas especiales para la entrega."
                   rows={5}
-                  onChange={formik.handleChange}
-                  value={formik.values.message}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.message}
                 />
+                {errors.message && touched.message && (
+                  <span>{errors.message}</span>
+                )}
               </label>
             </div>
           </div>

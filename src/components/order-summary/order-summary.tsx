@@ -15,7 +15,7 @@ const OrdenSumary = () => {
   )
   useEffect(() => {
     if (cart.length === 0) {
-      router.push('/tienda')
+      // router.push('/tienda')
     }
   }, [cart.length, router])
 
