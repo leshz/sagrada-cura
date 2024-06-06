@@ -1,17 +1,15 @@
 import { api } from './api'
 
-const checkout = async body => {
+const checkout = async checkoutData => {
   try {
-    const checkputEndpoint = `${process.env.CHECKOUT}`
-    const options = {
+    const data = JSON.stringify(checkoutData)
+    const response = await api(`${process.env.CHECKOUT}`, {
       method: 'POST',
-      body: JSON.stringify(body)
-    }
-    const response = await api(checkputEndpoint, options)
+      body: data
+    })
     return response
-  } catch (error: any) {
-    console.error(error.message)
-    throw new Error(`error to checkout ${error.message}}`)
+  } catch (err: any) {
+    throw new Error(`error to get singles ${err.message}}`)
   }
 }
 

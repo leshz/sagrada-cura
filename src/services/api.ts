@@ -6,12 +6,15 @@ export const api = async (url: string, options?: any) => {
     Authorization: `Bearer ${process.env.CMS_TOKEN}`,
     'Content-Type': 'application/json'
   }
+
+  const config = {
+    ...options,
+    method: options?.method || 'GET',
+    headers: headerAuth
+  }
+
   try {
-    const response = await fetch(buildUrl, {
-      ...options,
-      method: options?.method || 'GET',
-      headers: headerAuth
-    })
+    const response = await fetch(buildUrl, config)
     if (response.ok) {
       const data = await response.json()
       return data

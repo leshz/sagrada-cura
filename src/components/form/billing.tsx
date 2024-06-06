@@ -5,7 +5,6 @@ import departments from '@/mock/departments.json'
 import { formSchema } from '@/schema/form'
 import { useStore } from '@/store'
 import { checkout } from '@/services'
-import type { ProductsDatum } from '@/types/products'
 import { useRouter } from 'next/navigation'
 
 const initialValues = () => ({
@@ -21,50 +20,9 @@ const initialValues = () => ({
   message: ''
 })
 
-const submitForm = async (values, actions, cart: ProductsDatum[]) => {
-  const {
-    dni,
-    name,
-    lastName,
-    address,
-    department,
-    city,
-    postalCode,
-    phone,
-    email,
-    message
-  } = values
-  const items = cart.map(({ sku, quantityCart }) => ({
-    sku,
-    quantity: quantityCart
-  }))
-
-  const buyer = {
-    dni,
-    name,
-    lastName,
-    email,
-    phone
-  }
-  const shipping = {
-    address,
-    department,
-    city,
-    postalCode,
-    message
-  }
-
-  console.log({ items, buyer, shipping })
-
-  const { init_point } = await checkout({ items, buyer, shipping })
-  return init_point
-  // console.debug(values)
-  // console.debug(cart)
-}
-
 const BillingForm = () => {
   const { cart } = useStore()
-  // const router = useRouter()
+  const router = useRouter()
   const { colombia } = departments
   const {
     handleChange,
@@ -76,39 +34,44 @@ const BillingForm = () => {
     isSubmitting
   } = useFormik({
     initialValues: initialValues(),
-    // validationSchema: formSchema,
-    onSubmit: async (...args) => {
-      const body = {
-        items: [
-          {
-            sku: 'TWe897vM',
-            quantity: 2
-          }
-        ],
-        buyer: {
-          dni: 1212,
-          name: 'jeff',
-          lastName: 'barr',
-          email: 'le@le.com',
-          phone: 3132905749
-        },
-        shipping: {
-          address: 'sss',
-          department: 'Arauca',
-          city: 'Cravo Norte',
-          postalCode: '',
-          message: ''
-        }
+    validationSchema: formSchema,
+    onSubmit: async (valSubmit, actions) => {
+      const {
+        dni,
+        name,
+        lastName,
+        address,
+        department,
+        city,
+        postalCode,
+        phone,
+        email,
+        message
+      } = valSubmit
+      const items = cart.map(({ sku, quantityCart }) => ({
+        sku,
+        quantity: quantityCart
+      }))
+
+      const buyer = {
+        dni,
+        name,
+        lastName,
+        email,
+        phone
+      }
+      const ship = {
+        address,
+        department,
+        city,
+        postalCode,
+        message
       }
 
-      const { init_point } = await checkout(body)
-      console.log(init_point)
+      const { init_point } = await checkout({ items, buyer, ship })
 
-      // const link = await submitForm(...args, cart)
-      // console.debug(link)
-
-      // window.location.assign(link)
-      // router.push(link)
+      actions.resetForm()
+      router.push(init_point)
     }
   })
 
@@ -377,40 +340,7 @@ const BillingForm = () => {
           <div className="col-12">
             <div className="place-order-btn">
               <button
-                type="button"
-                onClick={async () => {
-                  const body = {
-                    items: [
-                      {
-                        sku: 'TWe897vM',
-                        quantity: 2
-                      }
-                    ],
-                    buyer: {
-                      dni: 1212,
-                      name: 'jeff',
-                      lastName: 'barr',
-                      email: 'le@le.com',
-                      phone: 3132905749
-                    },
-                    shipping: {
-                      address: 'sss',
-                      department: 'Arauca',
-                      city: 'Cravo Norte',
-                      postalCode: '',
-                      message: ''
-                    }
-                  }
-
-                  const { init_point } = await checkout(body)
-                  console.log(init_point)
-
-                  // const link = await submitForm(...args, cart)
-                  // console.debug(link)
-
-                  // window.location.assign(link)
-                  // router.push(link)
-                }}
+                type="submit"
                 disabled={isSubmitting}
                 className="primary-btn1 hover-btn3"
               >
