@@ -11,6 +11,7 @@ interface Store {
   removeToCart: (product: ProductsDatum) => void
   deleteToCart: (product: ProductsDatum) => void
   addToCart: (item: addCart) => void
+  resetCart: () => void
 }
 
 export const useStore = create<Store>()(
@@ -78,7 +79,8 @@ export const useStore = create<Store>()(
             cart: modCart
           }
         })
-      }
+      },
+      resetCart: () => set({ cart: [] })
     }),
     {
       name: 'cart',

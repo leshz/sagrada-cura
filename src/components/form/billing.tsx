@@ -21,7 +21,7 @@ const initialValues = () => ({
 })
 
 const BillingForm = () => {
-  const { cart } = useStore()
+  const { cart, resetCart } = useStore()
   const router = useRouter()
   const { colombia } = departments
   const {
@@ -71,6 +71,7 @@ const BillingForm = () => {
       const { init_point } = await checkout({ items, buyer, ship })
 
       actions.resetForm()
+      resetCart()
       router.push(init_point)
     }
   })
