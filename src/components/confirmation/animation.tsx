@@ -1,6 +1,6 @@
-const CircleCheckIcon = ({ className }) => (
+const IconAnimation = ({ status }) => (
   <svg
-    className={className}
+    className={`confirmation confirmation-icon ${status}`}
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
@@ -11,9 +11,9 @@ const CircleCheckIcon = ({ className }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <circle cx="12" cy="12" r="10" />
-    <path d="m9 12 2 2 4-4" />
+    <circle className="circle" cx="12" cy="12" r="10" />
+    <path className="checkmark" d="m9 12 2 2 4-4" />
   </svg>
 )
 
-export { CircleCheckIcon }
+export { IconAnimation }

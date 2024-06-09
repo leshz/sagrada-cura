@@ -5,17 +5,17 @@
   margin-bottom: -150px;
   width: 100%;
 
-  &.success {
+  &.approved {
     background: linear-gradient(
       180deg,
-      var(--success),
+      rgba(var(--success), 0.3),
       rgba(255, 255, 255, 0) 100%
     );
   }
   &.pending {
     background: linear-gradient(
       180deg,
-      var(--warning),
+      rgba(var(--warning), 0.3),
       rgba(255, 255, 255, 0) 100%
     );
   }
@@ -23,7 +23,7 @@
   &.failed {
     background: linear-gradient(
       180deg,
-      var(--error),
+      rgba(var(--error), 0.3),
       rgba(255, 255, 255, 0) 100%
     );
   }

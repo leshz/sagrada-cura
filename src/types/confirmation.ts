@@ -1,13 +1,13 @@
 export interface confirmation {
-    COLLECTION_ID: string;
-    COLLECTION_STATUS: string;
-    PAYMENT_ID: string;
-    STATUS: string;
-    EXTERNAL_REFERENCE: string;
-    PAYMENT_TYPE: string;
-    MERCHANT_ORDER_ID: string;
-    PREFERENCE_ID: string;
-    SITE_ID: string;
-    PROCESSING_MODE: string;
-    MERCHANT_ACCOUNT_ID: string | null;
+    collection_id: string;
+    collection_status: string;
+    payment_id: string;
+    status: string;
+    external_reference: string;
+    payment_type: string;
+    merchant_order_id: string;
+    preference_id: string;
+    site_id: string;
+    processing_mode: string;
+    merchant_account_id: string | null;
   }

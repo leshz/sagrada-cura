@@ -85,3 +85,28 @@ export const productsPricesSummary = (products: ProductsDatum[]) => {
     afterDiscountPrice
   }
 }
+
+export const getConfirmationCopys = (key: string) => {
+  switch (key) {
+    case 'approved':
+      return {
+        title: '¡Gracias por tu compra!',
+        subtitle: 'Tu pedido ha sido procesado con éxito.'
+      }
+    case 'pending':
+      return {
+        title: 'Pago en Proceso',
+        subtitle: 'Estamos verificando tu pago'
+      }
+    case 'failed':
+      return {
+        title: '¡Oops! Algo salió mal',
+        subtitle: ' Lamentablemente, no pudimos procesar tu pago.'
+      }
+    default:
+      return {
+        title: '',
+        subtitle: ''
+      }
+  }
+}
