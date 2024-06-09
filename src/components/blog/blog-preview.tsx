@@ -30,8 +30,8 @@ const BlogPreview = ({ blog }) => {
             </ul>
           </div>
           <h5>
-            <Link legacyBehavior href={urlBlog}>
-              <a className="hover-underline">{title}</a>
+            <Link className="hover-underline" href={urlBlog}>
+              {title}
             </Link>
           </h5>
           <p>{short_description}</p>

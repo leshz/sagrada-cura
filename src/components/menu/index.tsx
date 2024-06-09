@@ -22,7 +22,6 @@ const MultipleItemMenu = ({
   path = ''
 }) => {
   const active = path.includes('tienda') ? 'active' : ''
-console.log(path)
   return (
     <li className="menu-item-has-children">
       <div
