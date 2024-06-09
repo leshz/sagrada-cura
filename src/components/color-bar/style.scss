@@ -1,0 +1,30 @@
+@import '@/styles/mixins.scss';
+
+.color-bar {
+  height: 250px;
+  margin-bottom: -150px;
+  width: 100%;
+
+  &.success {
+    background: linear-gradient(
+      180deg,
+      var(--success),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+  &.pending {
+    background: linear-gradient(
+      180deg,
+      var(--warning),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  &.failed {
+    background: linear-gradient(
+      180deg,
+      var(--error),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
