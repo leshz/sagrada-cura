@@ -27,3 +27,9 @@ export const PARAMS_CONFIRMATION = {
   PROCESSING_MODE: 'processing_mode',
   MERCHANT_ACCOUNT_ID: 'merchant_account_id'
 }
+
+export const PAYMENT_STATUS = {
+  APPROVED: 'approved',
+  PENDING: 'pending',
+  FAILED: 'failed'
+}

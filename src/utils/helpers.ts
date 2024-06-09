@@ -91,22 +91,26 @@ export const getConfirmationCopys = (key: string) => {
     case 'approved':
       return {
         title: '¡Gracias por tu compra!',
-        subtitle: 'Tu pedido ha sido procesado con éxito.'
+        subtitle: 'Tu pedido ha sido procesado con éxito.',
+        state: 'Pagado'
       }
     case 'pending':
       return {
         title: 'Pago en Proceso',
-        subtitle: 'Estamos verificando tu pago'
+        subtitle: 'Estamos verificando tu pago',
+        state: 'Pendiente'
       }
     case 'failed':
       return {
         title: '¡Oops! Algo salió mal',
-        subtitle: ' Lamentablemente, no pudimos procesar tu pago.'
+        subtitle: ' Lamentablemente, no pudimos procesar tu pago.',
+        state: 'Fallido'
       }
     default:
       return {
         title: '',
-        subtitle: ''
+        subtitle: '',
+        state: ''
       }
   }
 }

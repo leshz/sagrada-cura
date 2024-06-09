@@ -5,6 +5,10 @@
   margin-bottom: -150px;
   width: 100%;
 
+  @include sm-down-device() {
+    margin-bottom: -210px ;
+  }
+
   &.approved {
     background: linear-gradient(
       180deg,
