@@ -7,13 +7,14 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
 import { ImageWrapper } from '@/components/Image'
 
-import 'swiper/css/bundle';
+import 'swiper/css/bundle'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const Instagram = ({ feed }) => {
-  const { title, subtitle, profile_url, feed: images } = feed
-  const sldieSettings: SwiperOptions = useMemo(() => ({
+  const { title, subtitle, profile_url, feed: images = [] } = feed || {}
+  const sldieSettings: SwiperOptions = useMemo(
+    () => ({
       slidesPerView: 'auto',
       spaceBetween: 15,
       loop: true,
@@ -49,43 +50,45 @@ const Instagram = ({ feed }) => {
           slidesPerView: 8
         }
       }
-    }), [])
+    }),
+    []
+  )
 
   return (
     <div className="instagram-section mb-110">
-        <div className="container">
-          <div className="section-title style-3">
-            <h3>{title}</h3>
-            <p>
-              <a target="_blank" href={profile_url}>
-                {subtitle}
-              </a>
-            </p>
-          </div>
+      <div className="container">
+        <div className="section-title style-3">
+          <h3>{title}</h3>
+          <p>
+            <a target="_blank" href={profile_url}>
+              {subtitle}
+            </a>
+          </p>
         </div>
-        <div className="instagram-wrapper">
-          <div className="container-fluid p-0">
-            <div className="row">
-              <div className="col-12">
-                <Swiper {...sldieSettings} className="swiper instagram-slider">
-                  <div className="swiper-wrapper">
-                    {images.map(item => {
-                      const { id } = item
-                      return (
-                        <SwiperSlide key={id} className="swiper-slide">
-                          <a target="_blank" href={profile_url} aria-label='link'>
-                            <ImageWrapper image={item} />
-                          </a>
-                        </SwiperSlide>
-                      )
-                    })}
-                  </div>
-                </Swiper>
-              </div>
+      </div>
+      <div className="instagram-wrapper">
+        <div className="container-fluid p-0">
+          <div className="row">
+            <div className="col-12">
+              <Swiper {...sldieSettings} className="swiper instagram-slider">
+                <div className="swiper-wrapper">
+                  {images.map(item => {
+                    const { id } = item
+                    return (
+                      <SwiperSlide key={id} className="swiper-slide">
+                        <a target="_blank" href={profile_url} aria-label="link">
+                          <ImageWrapper image={item} />
+                        </a>
+                      </SwiperSlide>
+                    )
+                  })}
+                </div>
+              </Swiper>
             </div>
           </div>
         </div>
       </div>
+    </div>
   )
 }
 

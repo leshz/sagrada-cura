@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { ChooseProduct } from '@/components/choose-product'
 import { getSingles } from '@/services'
 import { DoubleBanner } from '@/components/banner'
@@ -13,16 +14,16 @@ const Home = async () => {
     highlight_products,
     last_blogposts,
     testimonial,
-    instagram
+    instagram={}
   } = await getSingles('home')
   return (
     <main>
       <DoubleBanner data={banners} />
-      <ChooseProduct products={product_categories} />
-      <HightLights highlights={highlight_products} />
-      <LastBlogsPost blog={last_blogposts} />
-      <Testimonial labels={testimonial} />
-      <Instagram feed={instagram} />
+      {/* <ChooseProduct products={product_categories} /> */}
+      {/* <HightLights highlights={highlight_products} /> */}
+      {/* <LastBlogsPost blog={last_blogposts} /> */}
+      {/* <Testimonial labels={testimonial} /> */}
+      {/* <Instagram feed={instagram} /> */}
       {/* <PromoModal/> */}
     </main>
   )
