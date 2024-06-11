@@ -11,9 +11,7 @@ const Topbar = ({ data }) => {
       <div className="container-md container-fluid">
         <div className="row">
           <div className="col-lg-12 d-flex align-items-center justify-content-between gap-3">
-              <div className="top-bar-left"/> 
-          
-      
+            <div className="top-bar-left" />
             {/* TODO: Move to componente to render markdowns} */}
             <p>{title}</p>
             <SocialHeader links={links} />

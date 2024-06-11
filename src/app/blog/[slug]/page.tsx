@@ -8,6 +8,8 @@ import { COLLECTIONS } from '@/utils/constants'
 import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
+import './page.scss'
+
 export const generateStaticParams = async () => {
   const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
@@ -52,12 +54,12 @@ const BlogDetailsPage = async ({ params }) => {
             <h6>Compartir :</h6>
             <ul className="social-list">
               <li>
-                <a href="https://www.facebook.com/" aria-label="go to facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=" aria-label="go to facebook">
                   <i className="bi bi-facebook" />
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/" aria-label="go to twitter">
+                <a href="https://twitter.com/intent/tweet?text=" aria-label="go to twitter">
                   <i className="bi bi-twitter" />
                 </a>
               </li>

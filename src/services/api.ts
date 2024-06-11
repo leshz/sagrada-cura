@@ -11,7 +11,7 @@ export const api = async (url: string, options?: any) => {
     ...options,
     method: options?.method || 'GET',
     headers: headerAuth,
-    cache: 'no-store'
+    next: { revalidate: 0 }
   }
 
   try {

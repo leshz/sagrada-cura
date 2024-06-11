@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { ChooseProduct } from '@/components/choose-product'
 import { getSingles } from '@/services'
 import { DoubleBanner } from '@/components/banner'
@@ -19,10 +18,10 @@ const Home = async () => {
   return (
     <main>
       <DoubleBanner data={banners} />
-      {/* <ChooseProduct products={product_categories} /> */}
+      <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
       <LastBlogsPost blog={last_blogposts} />
-      {/* <Testimonial labels={testimonial} /> */}
+      <Testimonial labels={testimonial} />
       <Instagram feed={instagram} />
       {/* <PromoModal/> */}
     </main>

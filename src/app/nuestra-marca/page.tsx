@@ -2,6 +2,8 @@ import { BlogSection, BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
 
+import './page.scss'
+
 export const dynamic = 'force-static';
 
 const AboutUs = async () => {

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { TagBar } from '@/components/tag-bar'
 
 const BlogAuthor = ({ author, tags = [] }) => {
-  const { username = '' } = author
+  const { username = '' } = author || {}
 
   if (!username) {
     return null

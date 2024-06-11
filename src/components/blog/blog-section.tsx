@@ -2,6 +2,8 @@ import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { BlogPreview } from './blog-preview'
 
+import './styles/blog-preview.scss'
+
 const BlogSection = async ({ title }) => {
   const params = {
     sort: 'publishedAt:desc',
