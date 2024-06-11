@@ -1,6 +1,3 @@
-import { phoneFormmater } from '@/utils/helpers'
-import { ImageWrapper } from '@/components/Image'
-import Link from 'next/link'
 import { NewsLetter } from './newsletter'
 import { Columns, Column } from './column'
 
@@ -12,40 +9,18 @@ const FooterRoot = ({ children }) => (
 
 const Botton = ({ data }) => {
   const {
-    top: { phone = {} } = {},
-    footer: { botton: { copyright = '', phone: message = '' } = {} },
-    menu = {}
+    footer: { botton: { copyright = '' } = {} } = {}
   } = data
-
-  const { logo = {} } = menu
 
   return (
     <div className="footer-bottom">
       <div className="row">
-        <div className="col-lg-12 d-flex flex-md-row flex-column align-items-center justify-content-md-between justify-content-center flex-wrap gap-3">
+        <div className="col-lg-12 d-flex flex-md-row flex-column align-items-center justify-content-center flex-wrap gap-3">
           <div className="footer-left">
             <p>
               ©Copyright 2023 {copyright} | Design By{' '}
               <a href="https://shzcode.tech/">Shz Code</a>
             </p>
-          </div>
-          {logo && (
-            <div className="footer-logo">
-              <Link href="/">
-                <ImageWrapper image={logo} />
-              </Link>
-            </div>
-          )}
-          <div className="footer-contact">
-            <div className="logo">
-              <i className="bi bi-telephone" />
-            </div>
-            <div className="content">
-              <p>{message}</p>
-              <h6>
-                <a href={`tel:${phone}`}>{phoneFormmater(phone)}</a>
-              </h6>
-            </div>
           </div>
         </div>
       </div>

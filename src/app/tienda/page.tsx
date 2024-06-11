@@ -33,7 +33,7 @@ const Shop = async ({ searchParams }) => {
   const collection = getColletions(COLLECTIONS.products, {
     params,
     fetch: {
-      next: { revalidate: 120 }
+      // next: { revalidate: 120 }
     }
   })
   const [labels, rescollect] = await Promise.all([single, collection])

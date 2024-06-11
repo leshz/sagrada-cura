@@ -12,7 +12,6 @@ const FooterLayout = ({ data }) => {
         <Footer.Column data={columns[0]} />
         <Footer.Column data={columns[1]} />
         <Footer.Column data={columns[2]} />
-        <Footer.LastItem />
       </Footer.Columns>
       <Footer.Bottom data={data} />
     </Footer.Root>

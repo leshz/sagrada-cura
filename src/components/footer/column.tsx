@@ -19,7 +19,7 @@ const Column = ({ data }) => {
 
 const Columns = ({ children }) => (
     <div className="footer-top">
-      <div className="row g-lg-4 gy-5 justify-content-center">{children}</div>
+      <div className="row g-lg-4 gy-5 justify-content-between">{children}</div>
     </div>
   )
 

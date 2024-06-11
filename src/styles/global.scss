@@ -1935,7 +1935,6 @@ input {
       font-weight: 600;
       line-height: 1.5;
       letter-spacing: 0.8px;
-      text-transform: capitalize;
       margin-bottom: 15px;
       @include sm-down-device() {
         font-size: 35px;
@@ -1948,7 +1947,6 @@ input {
       font-family: var(--font-Jost);
       line-height: 1.9;
       letter-spacing: 0.48px;
-      text-transform: capitalize;
       margin-bottom: 30px;
       @include sm-down-device() {
         margin-bottom: 25px;

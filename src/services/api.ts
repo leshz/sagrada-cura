@@ -10,7 +10,8 @@ export const api = async (url: string, options?: any) => {
   const config = {
     ...options,
     method: options?.method || 'GET',
-    headers: headerAuth
+    headers: headerAuth,
+    cache: 'no-store'
   }
 
   try {

@@ -20,10 +20,10 @@ const Home = async () => {
     <main>
       <DoubleBanner data={banners} />
       {/* <ChooseProduct products={product_categories} /> */}
-      {/* <HightLights highlights={highlight_products} /> */}
-      {/* <LastBlogsPost blog={last_blogposts} /> */}
+      <HightLights highlights={highlight_products} />
+      <LastBlogsPost blog={last_blogposts} />
       {/* <Testimonial labels={testimonial} /> */}
-      {/* <Instagram feed={instagram} /> */}
+      <Instagram feed={instagram} />
       {/* <PromoModal/> */}
     </main>
   )
