@@ -5,8 +5,7 @@ import { getSingles } from '@/services'
 export const dynamic = 'force-static'
 
 const AboutUs = async () => {
-  // eslint-disable-next-line no-unused-vars
-  const { title, article, image } = await getSingles('about-us')
+  const { article, image } = await getSingles('about-us')
 
   return (
     <div className="about-us-banner mb-40">

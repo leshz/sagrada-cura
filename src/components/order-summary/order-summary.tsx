@@ -35,7 +35,7 @@ const OrdenSumary = () => {
             <li key={id} className="single-product">
               <div className="product-area">
                 <div className="product-img">
-                  <ImageWrapper image={image} width={90} heigth={90} />
+                  <ImageWrapper image={image} width={90} height={90} />
                 </div>
                 <div className="product-info">
                   <h5>
