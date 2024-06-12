@@ -36,7 +36,7 @@ const BlogDetailsPage = async ({ params }) => {
           <div className="col-lg-8">
             <BlogAuthor author={author} tags={tags} />
             <div className="blog-thumb">
-              <ImageWrapper image={image} />
+              <ImageWrapper image={image} format='medium' />
               <time className="date-blog">{dateFormat(publishedAt)}</time>
             </div>
             <BlogContent title={title} content={article} />

@@ -103,6 +103,7 @@ const HightLights = ({ highlights }) => {
                               <Link href="/shop/product-default">
                                 <ImageWrapper
                                   image={image}
+                                  format='small'
                                   width={540}
                                   height={321}
                                 />

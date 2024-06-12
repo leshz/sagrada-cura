@@ -4,11 +4,11 @@ import { getSingles } from '@/services'
 
 import './page.scss'
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-static'
 
 const AboutUs = async () => {
   const { title, article, image, blogs_title } = await getSingles('about-us')
-  
+
   return (
     <>
       <div className="about-us-banner mb-40">
@@ -16,7 +16,7 @@ const AboutUs = async () => {
           <div className="row">
             <div className="col-12">
               <div className="about-us-thumb hover-img mb-60">
-                <ImageWrapper image={image} />
+                <ImageWrapper image={image} fill format="large" />
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@ const AboutUs = async () => {
                 <BlogContent
                   title={title}
                   content={article}
-                  className="about-us-wrapper"
+                  className="content-wrapper"
                 />
               </div>
             </div>

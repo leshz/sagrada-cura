@@ -21,7 +21,7 @@ type Props = {
 }
 
 const Card = ({ product, labels }: Props) => {
-  const { addToCart }: any = useStore()
+  const { addToCart } = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
   const grid = Number.isNaN(gridParam) ? 3 : gridParam
@@ -63,6 +63,7 @@ const Card = ({ product, labels }: Props) => {
               <ImageWrapper
                 key={image.id}
                 image={image}
+                format='small'
                 fill
                 className={`img${index + 1}`}
               />

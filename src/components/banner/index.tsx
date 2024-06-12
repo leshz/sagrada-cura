@@ -20,7 +20,7 @@ const FixedBanner = ({ content }) => {
     <div className="col-xxl-3 col-xl-4">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {image && <ImageWrapper image={image} priority />}
+          {image && <ImageWrapper image={image} format='medium' priority />}
         </div>
 
         <div className="banner-2-left-content">
@@ -100,7 +100,7 @@ const DoubleBanner = ({ data }) => {
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div className="banner-2-right-img-bg">
-                          <ImageWrapper image={image} fill priority />
+                          <ImageWrapper image={image} format='large' fill priority />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
