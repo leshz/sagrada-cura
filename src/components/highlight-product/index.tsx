@@ -100,14 +100,14 @@ const HightLights = ({ highlights }) => {
                         <div className="col-lg-6">
                           <div className="exclusive-product-right">
                             <div className="product-right-img hover-img">
-                              <Link href="/shop/product-default">
+                              {/* <Link href="/shop/product-default"> */}
                                 <ImageWrapper
                                   image={image}
                                   format='small'
                                   width={540}
                                   height={321}
                                 />
-                              </Link>
+                              {/* </Link> */}
                             </div>
                             {/* TODO: Discutir el uso de esta parte  */}
                             {/* <div className="product-right-content">
