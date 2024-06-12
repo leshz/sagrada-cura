@@ -73,7 +73,7 @@ const DoubleBanner = ({ data }) => {
       spaceBetween: 30,
       speed: 2000,
       loop: true,
-      autoplay: false,
+      autoplay: true,
       effect: 'fade',
       fadeEffect: {
         crossFade: true
@@ -100,7 +100,7 @@ const DoubleBanner = ({ data }) => {
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div className="banner-2-right-img-bg">
-                          <ImageWrapper image={image} format='large' fill priority />
+                          <ImageWrapper image={image} format='large' priority />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer

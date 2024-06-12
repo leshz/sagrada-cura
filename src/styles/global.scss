@@ -1212,6 +1212,7 @@ input {
 .choose-product-section {
   .choose-product-card {
     position: relative;
+    max-height: 285px;
 
     img {
       width: 100%;
@@ -1226,10 +1227,10 @@ input {
         font-family: var(--font-Jost);
         font-style: normal;
         font-weight: 700;
-        font-size: 55px;
+        font-size: 45px;
         line-height: 1;
         text-transform: uppercase;
-        color: var(--text-color);
+        color: var(--white-color);
         margin-bottom: 10px;
 
         &.style-2 {
@@ -1246,11 +1247,11 @@ input {
         font-family: sans-serif;
         font-style: italic;
         font-weight: 400;
-        font-size: 45px;
+        font-size: 35px;
         line-height: 1;
         letter-spacing: 0.02em;
         text-transform: uppercase;
-        -webkit-text-stroke: 1px #353535;
+        -webkit-text-stroke: 1px var(--white-color);
         -webkit-text-fill-color: transparent;
 
         &.style-2 {
@@ -5298,20 +5299,25 @@ home2 Banner Css
 
   .banner-2-right {
     position: relative;
+    height: 100%;
 
     .banner-2-right-img-bg {
+      position: relative;
       object-fit: cover;
       background-repeat: no-repeat;
       img {
         object-fit: cover;
         object-position: center;
+        width: 100%;
+        height: auto;
       }
 
       .banner-2-right-content {
-        text-align: center;
-        position: relative;
-        padding: 185px 0 187px 40px;
+        bottom: 0;
         max-width: 500px;
+        padding: 185px 0 187px 40px;
+        position: absolute;
+        text-align: center;
         width: 100%;
         @include fifteen-down-device() {
           padding: 130px 0 167px 40px;
@@ -5980,6 +5986,6 @@ Testimonial-Section Css
 }
 
 // Improvements CSS
-.swiper-slide {
-  height: unset !important;
-}
+// .swiper-slide {
+//   height: unset !important;
+// }
