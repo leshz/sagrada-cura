@@ -3,6 +3,8 @@ import { ImageWrapper } from '@/components/Image'
 import { TagBar } from '@/components/tag-bar'
 import { dateFormat } from '@/utils/helpers'
 
+import './styles/blog-preview.scss'
+
 const BlogPreview = ({ blog }) => {
   const { short_description, title, image, tags, publishedAt, slug } =
     blog || {}
