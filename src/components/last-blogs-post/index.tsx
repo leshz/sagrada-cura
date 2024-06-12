@@ -6,6 +6,8 @@ import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 import { TagBar } from '@/components/tag-bar'
 
+import './styles.scss'
+
 const PreviewArticle = ({ article, readlabel }) => {
   const { title, short_description, slug, image, tags, publishedAt } = article
   const { data: dataTags = [] } = tags || {}
@@ -18,7 +20,7 @@ const PreviewArticle = ({ article, readlabel }) => {
       <div className="article-card style-2">
         <div className="article-image">
           <Link className="article-card-img hover-img" href={linkBlogPage}>
-            <ImageWrapper image={image} />
+            <ImageWrapper image={image}  />
           </Link>
         </div>
         <div className="article-card-content">
