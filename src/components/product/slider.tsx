@@ -41,7 +41,12 @@ const Slider = ({ pictures }) => {
               {pictures.map(picture => (
                 <SwiperSlide key={picture.id} className="swiper-slide">
                   <div className="shop-details-tab-img">
-                    <ImageWrapper image={picture} fill priority />
+                    <ImageWrapper
+                      image={picture}
+                      fill
+                      priority
+                      format="medium"
+                    />
                   </div>
                 </SwiperSlide>
               ))}
@@ -76,6 +81,7 @@ const Slider = ({ pictures }) => {
                   height={80}
                   className="nav-image"
                   priority
+                  format="thumbnail"
                 />
               </SwiperSlide>
             ))}

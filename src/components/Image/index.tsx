@@ -27,7 +27,7 @@ const ImageWrapper: FC<ImageProps> = ({
       fill
     }
   } else {
-    const sourcesPath = typeof source === 'string'
+    const sourcesPath = typeof source === 'string' ? source : source?.url
     imagen = {
       src: sourcesPath || source?.url || deafultImage,
       width: !fill ? source?.width || 100 : undefined,
