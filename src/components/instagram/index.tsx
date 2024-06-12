@@ -77,7 +77,7 @@ const Instagram = ({ feed }) => {
                     return (
                       <SwiperSlide key={id} className="swiper-slide">
                         <a target="_blank" href={profile_url} aria-label="link">
-                          <ImageWrapper image={item} />
+                          <ImageWrapper format='small' image={item} />
                         </a>
                       </SwiperSlide>
                     )
