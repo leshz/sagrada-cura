@@ -18,7 +18,7 @@ const Botton = ({ data }) => {
         <div className="col-lg-12 d-flex flex-md-row flex-column align-items-center justify-content-center flex-wrap gap-3">
           <div className="footer-left">
             <p>
-              ©Copyright 2024 {copyright} | made with <i className="fa fa-heart" /> By{' '}
+              ©Copyright 2024 {copyright} | made with <i className="bi bi-heart" /> By{' '}
               <a href="https://shzcode.tech/">Shz Code</a>
             </p>
           </div>
