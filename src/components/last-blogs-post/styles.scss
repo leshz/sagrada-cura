@@ -12,8 +12,8 @@
     height: 100%;
     .article-image {
       position: relative;
-      min-width: 245px;
-      flex-basis: content;
+      flex-basis: 245px;
+
       @include lg-down-device() {
         width: 100%;
       }
@@ -73,6 +73,7 @@
     }
 
     .article-card-content {
+      flex: 1 1;
       padding: 25px 20px 25px 20px;
       @include sm-device() {
         padding: 20px 15px 20px 15px;
@@ -232,7 +233,6 @@
       }
 
       .article-image {
-        width: 100%;
         @include xxl-down-device() {
           .article-card-img {
             width: 258px;
