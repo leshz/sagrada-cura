@@ -24,7 +24,7 @@ const Card = ({ product, labels }: Props) => {
   const { addToCart } = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
-  const grid = Number.isNaN(gridParam) ? 3 : gridParam
+  const grid = Number.isNaN(gridParam) ? 4 : gridParam
   let gridClass = ''
   const { slug, pictures, promotion, price, name, stock, short_description } =
     product
@@ -46,7 +46,7 @@ const Card = ({ product, labels }: Props) => {
       break
 
     default:
-      gridClass = '-md-4'
+      gridClass = '-lg-3'
       break
   }
 

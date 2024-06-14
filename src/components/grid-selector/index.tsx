@@ -3,7 +3,7 @@
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
 const GridSelector = () => {
-  let grid = 0
+  let grid = 4
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
   const path = usePathname()
@@ -17,7 +17,7 @@ const GridSelector = () => {
   if (gridParam >= 2 && gridParam <= 4) {
     grid = gridParam
   } else {
-    grid = 3
+    grid = 4
   }
 
   return (

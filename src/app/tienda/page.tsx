@@ -27,6 +27,11 @@ const Shop = async ({ searchParams }) => {
       'filters[categories][slug][$eq]': category.replace(/[^a-zA-Z]{1,}/gm, '')
     }
   }
+  params = {
+    ...params,
+    'pagination[pageSize]': 12,
+    'pagination[page]': searchParams?.page || 1
+  }
 
   const single = getSingles('shop')
 

@@ -1,16 +1,8 @@
 import Link from 'next/link'
 
 const Paginator = ({ meta }) => {
-  let i = 1
-  const {
-    pagination: { page = 1, pageSize = 25, pageCount = 1, total = 1 } = {}
-  } = meta || {}
-  const pages = Array.from(Array(pageCount), () => {
-    i += 1
-    return i
-  })
-  const itemByPage = total / pageSize
-  const nextpage = itemByPage > 1
+  const { pagination: { page = 1, pageCount = 1 } = {} } = meta || {}
+  const pages = Array.from(Array(pageCount), (p, index) => index + 1)
 
   return (
     <nav className="shop-pagination">
@@ -33,7 +25,7 @@ const Paginator = ({ meta }) => {
               </Link>
             </li>
           ))}
-        {nextpage && (
+        {page !== pageCount && (
           <li>
             <Link href={`?page=${page + 1}`} className="shop-pagi-btn">
               <i className="bi bi-chevron-right" />
