@@ -5,6 +5,7 @@ import { Paginator } from '@/components/paginator'
 
 const BlogMasonaryPage = async () => {
   const params = {
+    sort: 'publishedAt:desc',
     'pagination[pageSize]': '6'
   }
 
