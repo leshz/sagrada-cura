@@ -18,17 +18,14 @@ export const generateStaticParams = async () => {
 
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
-  const searchparams = {
-    'filters[slug][$eq]': slug
-  }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, {
-    params: searchparams
+  const { data } = await getColletions(COLLECTIONS.blogs, {
+    slug
   })
 
-  if (data.length === 0) return notFound()
 
-  const { publishedAt, article, title, image, tags, author } = data[0] || {}
+  if (data === null) return notFound()
 
+  const { publishedAt, article, title, image, tags, author } = data
   return (
     <div className="blog-details-section mb-40">
       <div className="container">
@@ -36,7 +33,7 @@ const BlogDetailsPage = async ({ params }) => {
           <div className="col-lg-8">
             <BlogAuthor author={author} tags={tags} />
             <div className="blog-thumb">
-              <ImageWrapper image={image} format='medium' />
+              <ImageWrapper image={image} format="medium" />
               <time className="date-blog">{dateFormat(publishedAt)}</time>
             </div>
             <BlogContent title={title} content={article} />
@@ -54,12 +51,18 @@ const BlogDetailsPage = async ({ params }) => {
             <h6>Compartir :</h6>
             <ul className="social-list">
               <li>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=" aria-label="go to facebook">
+                <a
+                  href="https://www.facebook.com/sharer/sharer.php?u="
+                  aria-label="go to facebook"
+                >
                   <i className="bi bi-facebook" />
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/intent/tweet?text=" aria-label="go to twitter">
+                <a
+                  href="https://twitter.com/intent/tweet?text="
+                  aria-label="go to twitter"
+                >
                   <i className="bi bi-twitter" />
                 </a>
               </li>
