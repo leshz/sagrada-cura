@@ -24,6 +24,8 @@ const BlogDetailsPage = async ({ params }) => {
 
   if (data === null) return notFound()
 
+    const fullPath = `${process.env.WEBPATH}/blog/${slug}`
+
   const { publishedAt, article, title, image, tags, author } = data
   
   return (
@@ -52,7 +54,7 @@ const BlogDetailsPage = async ({ params }) => {
             <ul className="social-list">
               <li>
                 <a
-                  href="https://www.facebook.com/sharer/sharer.php?u="
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${fullPath}`}
                   aria-label="go to facebook"
                 >
                   <i className="bi bi-facebook" />
@@ -60,17 +62,17 @@ const BlogDetailsPage = async ({ params }) => {
               </li>
               <li>
                 <a
-                  href="https://twitter.com/intent/tweet?text="
+                  href={`https://twitter.com/intent/tweet?text=${fullPath}`}
                   aria-label="go to twitter"
                 >
                   <i className="bi bi-twitter" />
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="https://www.instagram.com/" aria-label="go to">
                   <i className="bi bi-instagram" />
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
