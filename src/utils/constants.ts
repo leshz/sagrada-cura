@@ -11,7 +11,8 @@ export const COLLECTIONS = {
   testimonials: '/testimonials',
   categories: '/strapi-ecommerce-mercadopago/categories',
   products: '/strapi-ecommerce-mercadopago/products',
-  invoices: '/strapi-ecommerce-mercadopago/invoices'
+  invoices: '/strapi-ecommerce-mercadopago/invoices',
+  tags: '/tags',
 }
 
 export const PARAMS_CONFIRMATION = {

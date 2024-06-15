@@ -22,10 +22,10 @@ const BlogDetailsPage = async ({ params }) => {
     slug
   })
 
-
   if (data === null) return notFound()
 
   const { publishedAt, article, title, image, tags, author } = data
+  
   return (
     <div className="blog-details-section mb-40">
       <div className="container">

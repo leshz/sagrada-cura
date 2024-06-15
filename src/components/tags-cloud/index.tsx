@@ -1,56 +1,28 @@
 import Link from 'next/link'
 
+import { getColletions } from '@/services'
+import { COLLECTIONS } from '@/utils/constants'
+
 import './style.scss'
 
-const TagsCloud = () => (
-  <div className="shop-widget">
-    <h5 className="shop-widget-title">Tags</h5>
-    <ul className="tag-list">
-      <li>
-        <Link href="/blog">Makeup</Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Organic</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Skin Care</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Beauty Care</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Herbal</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Handmade</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Zerowaste</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Women Fashion</a>
-        </Link>
-      </li>
-      <li>
-        <Link legacyBehavior href="/blog-grid">
-          <a> Natural</a>
-        </Link>
-      </li>
-    </ul>
-  </div>
-)
+const TagsCloud = async () => {
+  const params = {
+    'pagination[limit]': '15'
+  }
+  const { data = [] } = await getColletions(COLLECTIONS.tags, { params })
+
+  return (
+    <div className="shop-widget">
+      <h5 className="shop-widget-title">Tags</h5>
+      <ul className="tag-list">
+        {data.map(({ name, id, slug }) => (
+            <li key={id}>
+              <Link href={`/blog?tag=${slug}`}>{name}</Link>
+            </li>
+          ))}
+      </ul>
+    </div>
+  )
+}
 
 export { TagsCloud }
