@@ -5,7 +5,20 @@ import { HightLights } from '@/components/highlight-product'
 import { LastBlogsPost } from '@/components/last-blogs-post'
 import { Testimonial } from '@/components/testimonial/testimonial-wrapper'
 import { Instagram } from '@/components/instagram'
+import { SEO } from '@/types/seo'
 
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo }: { seo: SEO } = await getSingles('home')
+  const { metaTitle, keywords, metaDescription } = seo
+
+  return {
+    title: metaTitle,
+    keywords: keywords?.split(','),
+    description: metaDescription
+  }
+}
 const Home = async () => {
   const {
     banners,
@@ -13,7 +26,7 @@ const Home = async () => {
     highlight_products,
     last_blogposts,
     testimonial,
-    instagram={}
+    instagram = {}
   } = await getSingles('home')
   return (
     <main>
