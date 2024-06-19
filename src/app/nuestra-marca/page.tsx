@@ -12,7 +12,7 @@ const AboutUs = async () => {
   return (
     <>
       <div className="about-us-banner mb-40">
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <div className="about-us-thumb hover-img mb-60">

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { ChooseProduct } from '@/components/choose-product'
 import { getSingles } from '@/services'
 import { DoubleBanner } from '@/components/banner'
@@ -7,18 +8,6 @@ import { Testimonial } from '@/components/testimonial/testimonial-wrapper'
 import { Instagram } from '@/components/instagram'
 import { SEO } from '@/types/seo'
 
-import type { Metadata } from 'next'
-
-export async function generateMetadata(): Promise<Metadata> {
-  const { seo }: { seo: SEO } = await getSingles('home')
-  const { metaTitle, keywords, metaDescription } = seo
-
-  return {
-    title: metaTitle,
-    keywords: keywords?.split(','),
-    description: metaDescription
-  }
-}
 const Home = async () => {
   const {
     banners,
@@ -26,18 +15,23 @@ const Home = async () => {
     highlight_products,
     last_blogposts,
     testimonial,
-    instagram = {}
-  } = await getSingles('home')
+    instagram = {},
+    seo
+  }: { seo: SEO; [key: string]: string | object } = await getSingles('home')
   return (
-    <main>
-      <DoubleBanner data={banners} />
-      <ChooseProduct products={product_categories} />
-      <HightLights highlights={highlight_products} />
-      <LastBlogsPost blog={last_blogposts} />
-      <Testimonial labels={testimonial} />
-      <Instagram feed={instagram} />
-      {/* <PromoModal/> */}
-    </main>
+    <>
+      <Head>
+        <title>{seo?.metaTitle}</title>
+      </Head>
+      <main>
+        <DoubleBanner data={banners} />
+        <ChooseProduct products={product_categories} />
+        <HightLights highlights={highlight_products} />
+        <LastBlogsPost blog={last_blogposts} />
+        <Testimonial labels={testimonial} />
+        <Instagram feed={instagram} />
+      </main>
+    </>
   )
 }
 
