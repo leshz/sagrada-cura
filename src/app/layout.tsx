@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
@@ -14,11 +13,6 @@ import Error from './error'
 
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
-
-export const metadata: Metadata = {
-  title: 'Sagrada cura',
-  description: 'Sanacion natural'
-}
 
 export const jost = Jost({
   weight: ['300', '400', '500', '600', '800', '900'],
