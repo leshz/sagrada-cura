@@ -2,18 +2,20 @@ import { BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
 
+import '../../nuestra-marca/page.scss'
+
 export const dynamic = 'force-static'
 
-const AboutUs = async () => {
-  const { article, image } = await getSingles('about-us')
+const Data = async () => {
+  const { content, image, title } = await getSingles('planes-corporativo')
 
   return (
     <div className="about-us-banner mb-40">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-12">
             <div className="about-us-thumb hover-img mb-60">
-              <ImageWrapper image={image} />
+              <ImageWrapper image={image} fill format="large" />
             </div>
           </div>
         </div>
@@ -23,11 +25,13 @@ const AboutUs = async () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <BlogContent
-                title="Politicas de envio y devoluciones"
-                content={article}
-                className="about-us-wrapper"
-              />
+              {content && (
+                <BlogContent
+                  title={title}
+                  content={content}
+                  className="content-wrapper"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -36,4 +40,4 @@ const AboutUs = async () => {
   )
 }
 
-export default AboutUs
+export default Data

@@ -1,6 +1,4 @@
-import {
-  BlocksRenderer,
-} from '@strapi/blocks-react-renderer'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 const Column = ({ data }) => {
   const { title = '', column = '' } = data || {}
@@ -9,18 +7,19 @@ const Column = ({ data }) => {
       <div className="footer-widget">
         <div className="widget-title">
           <h5>{title}</h5>
-          <BlocksRenderer content={column} />
+          <div className="widget-list">
+            <BlocksRenderer content={column} />
+          </div>
         </div>
-        <div className="widget-list" />
       </div>
     </div>
   )
 }
 
 const Columns = ({ children }) => (
-    <div className="footer-top">
-      <div className="row g-lg-4 gy-5 justify-content-between">{children}</div>
-    </div>
-  )
+  <div className="footer-top">
+    <div className="row g-lg-4 gy-5 justify-content-between">{children}</div>
+  </div>
+)
 
 export { Columns, Column }

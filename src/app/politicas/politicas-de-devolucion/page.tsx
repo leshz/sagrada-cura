@@ -6,8 +6,8 @@ import '../../nuestra-marca/page.scss'
 
 export const dynamic = 'force-static'
 
-const Data = async () => {
-  const { content, image, title } = await getSingles('tratamiento-de-dato')
+const Shipping = async () => {
+  const { content, image, title } = await getSingles('politicas-de-devolucion')
 
   return (
     <div className="about-us-banner mb-40">
@@ -40,4 +40,4 @@ const Data = async () => {
   )
 }
 
-export default Data
+export default Shipping

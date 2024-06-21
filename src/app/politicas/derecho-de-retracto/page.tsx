@@ -7,7 +7,7 @@ import '../../nuestra-marca/page.scss'
 export const dynamic = 'force-static'
 
 const Data = async () => {
-  const { content, image, title } = await getSingles('tratamiento-de-dato')
+  const { content, image, title } = await getSingles('derecho-de-retracto')
 
   return (
     <div className="about-us-banner mb-40">
