@@ -6,18 +6,18 @@ import { getSingles } from '@/services'
 import '../../nuestra-marca/page.scss'
 
 export const generateStaticParams = async () => {
-  const pages = [
+  const ids = [
     'condiciones-de-envio',
     'derecho-de-retracto',
-    'paquetes-corporativo',
+    'paquetes-corporativos',
     'politicas-de-devolucion',
     'tratamiento-de-datos'
   ]
-  return pages
+  return ids
 }
 
 const Docs = async ({ params }) => {
-  const { page } = params
+  const { id } = params
 
   const availablePages = {
     'condiciones-de-envio': 'condiciones-de-envio',
@@ -28,7 +28,7 @@ const Docs = async ({ params }) => {
   }
 
   try {
-    const { content, image, title } = await getSingles(availablePages[page])
+    const { content, image, title } = await getSingles(availablePages[id])
 
     return (
       <div className="about-us-banner mb-40">
