@@ -1,5 +1,5 @@
 const Starts = ({ quantity }) => {
-  let i = 1
+  let i = 0
   const starts = Array.from(Array(5), () => {
     i += 1
     return i

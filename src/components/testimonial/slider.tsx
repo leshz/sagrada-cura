@@ -60,7 +60,7 @@ const Slider = ({ slides }) => {
       <div className="swiper-wrapper">
         {slides.map(slide => {
           const { id, name, job_title, starts, testimonial, image } = slide
-
+          
           return (
             <SwiperSlide key={id} className="swiper-slide">
               <div className="say-about-card">

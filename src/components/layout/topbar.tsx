@@ -10,10 +10,10 @@ const Topbar = ({ data }) => {
     <div className="top-bar2">
       <div className="container-md container-fluid">
         <div className="row">
-          <div className="col-lg-12 d-flex align-items-center justify-content-between gap-3">
-            <div className="top-bar-left" />
+          <div className="col-lg-12 d-flex justify-content-center">
+            {/* <div className="top-bar-left" /> */}
             {/* TODO: Move to componente to render markdowns} */}
-            <p>{title}</p>
+            <p className='align-self-center'>{title}</p>
             <SocialHeader links={links} />
           </div>
         </div>
