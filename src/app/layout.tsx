@@ -1,26 +1,33 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Header } from '@/components/layout/header'
 import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
-import { Jost, Kalam } from 'next/font/google'
+import { Kalam, Alice, Cormorant_Upright } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 import Error from './error'
 
-
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
 
-export const jost = Jost({
-  weight: ['300', '400', '500', '600', '800', '900'],
+export const alice = Alice({
+  weight: ['400'],
   display: 'swap',
   style: 'normal',
   subsets: ['latin'],
   variable: '--font-jost-next'
 })
+// export const cormorant = Cormorant_Upright({
+//   weight: ['400'],
+//   display: 'swap',
+//   style: 'normal',
+//   subsets: ['latin'],
+//   variable: '--font-jost-next'
+// })
 
 export const kalam = Kalam({
   weight: '700',
@@ -36,7 +43,10 @@ const RootLayout = async ({ children }) => {
   const [data, menu] = await Promise.all([generes, menures])
 
   return (
-    <html className={`${jost.variable} ${kalam.variable}`} lang="es-CO">
+    <html
+      className={`${alice.variable} ${kalam.variable} `}
+      lang="es-CO"
+    >
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
@@ -52,7 +62,7 @@ const RootLayout = async ({ children }) => {
           />
           <FooterLayout data={data} />
         </ErrorBoundary>
-        <Analytics  />
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
