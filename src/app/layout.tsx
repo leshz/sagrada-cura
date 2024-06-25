@@ -4,7 +4,7 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
-import { Kalam, Alice, Cormorant_Upright } from 'next/font/google'
+import { Kalam, Lancelot } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
 
 
-export const cormorant = Cormorant_Upright({
+export const cormorant = Lancelot({
   weight: ['400'],
   display: 'swap',
   style: 'normal',
