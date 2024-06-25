@@ -14,20 +14,14 @@ import Error from './error'
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
 
-export const alice = Alice({
+
+export const cormorant = Cormorant_Upright({
   weight: ['400'],
   display: 'swap',
   style: 'normal',
   subsets: ['latin'],
   variable: '--font-jost-next'
 })
-// export const cormorant = Cormorant_Upright({
-//   weight: ['400'],
-//   display: 'swap',
-//   style: 'normal',
-//   subsets: ['latin'],
-//   variable: '--font-jost-next'
-// })
 
 export const kalam = Kalam({
   weight: '700',
@@ -44,7 +38,7 @@ const RootLayout = async ({ children }) => {
 
   return (
     <html
-      className={`${alice.variable} ${kalam.variable} `}
+      className={`${cormorant.variable} ${kalam.variable} `}
       lang="es-CO"
     >
       <body>
