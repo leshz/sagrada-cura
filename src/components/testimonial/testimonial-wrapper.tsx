@@ -1,6 +1,5 @@
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { ImageWrapper } from '@/components/Image'
 import { Slider } from './slider'
 
 const Testimonial = async ({ labels }) => {
@@ -8,14 +7,6 @@ const Testimonial = async ({ labels }) => {
   const { data } = await getColletions(COLLECTIONS.testimonials)
   return (
     <div className="say-about-section mb-110">
-      <ImageWrapper
-        image={{}}
-        src="/assets/img/home1/testimonial-vector-1.png"
-        alt=""
-        className="vector4"
-        width={864}
-        height={710}
-      />
       <div className="container-fluid p-0">
         <div className="section-title2 style-3">
           <h3>{title}</h3>

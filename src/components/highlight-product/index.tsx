@@ -35,22 +35,6 @@ const HightLights = ({ highlights }) => {
   )
   return (
     <div className="exclusive-product-section mb-110">
-      <ImageWrapper
-        image={{}}
-        src="/assets/img/home1/icon/vector-3.svg"
-        alt=""
-        width={229}
-        height={294}
-        className="vector3"
-      />
-      <ImageWrapper
-        image={{}}
-        src="/assets/img/home1/icon/vector-4.svg"
-        alt=""
-        width={332}
-        height={293}
-        className="vector4"
-      />
       <div className="container">
         <div className="section-title style-2 text-center">
           <h3>{title}</h3>
