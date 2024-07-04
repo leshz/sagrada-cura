@@ -20,7 +20,7 @@ const FixedBanner = ({ content }) => {
     <div className="col-xxl-3 col-xl-4">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {image && <ImageWrapper image={image} format='medium' priority />}
+          {image && <ImageWrapper image={image} format="medium" priority />}
         </div>
 
         <div className="banner-2-left-content">
@@ -29,6 +29,14 @@ const FixedBanner = ({ content }) => {
               content={title}
               blocks={{
                 paragraph: ({ children }) => <p className="">{children}</p>,
+                link: ({ children, url: path }) => (
+                  <Link
+                    href={path}
+                    className="primary-btn3 black-bg hover-btn5 hover-white"
+                  >
+                    {children}
+                  </Link>
+                ),
                 heading: ({ children, level }) => {
                   switch (level) {
                     case 1:
@@ -49,7 +57,8 @@ const FixedBanner = ({ content }) => {
                 }
               }}
               modifiers={{
-                bold: ({ children }) => <strong>{children}</strong>
+                bold: ({ children }) => <strong>{children}</strong>,
+                italic: ({ children }) => <span>{children}</span>
               }}
             />
           )}
@@ -100,40 +109,43 @@ const DoubleBanner = ({ data }) => {
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div className="banner-2-right-img-bg">
-                          <ImageWrapper image={image} format='large' priority />
+                          <ImageWrapper image={image} format="large" priority />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
                                 content={text}
                                 blocks={{
-                                  paragraph: ({ children }) => (
-                                    <h2 className="text-neutral900 max-w-prose">
+                                  paragraph: ({ children }) => <p className="">{children}</p>,
+                                  link: ({ children, url: path }) => (
+                                    <Link
+                                      href={path}
+                                      className="primary-btn3 black-bg hover-btn5 hover-white"
+                                    >
                                       {children}
-                                    </h2>
+                                    </Link>
                                   ),
                                   heading: ({ children, level }) => {
                                     switch (level) {
                                       case 1:
-                                        return <h1 className="">{children}</h1>
+                                        return <h2 className="">{children}</h2>
                                       case 2:
                                         return <h2 className="">{children}</h2>
                                       case 3:
-                                        return <h3 className="">{children}</h3>
+                                        return <h2 className="">{children}</h2>
                                       case 4:
-                                        return <h4 className="">{children}</h4>
+                                        return <h2 className="">{children}</h2>
                                       case 5:
-                                        return <h5 className="">{children}</h5>
+                                        return <h2 className="">{children}</h2>
                                       case 6:
-                                        return <h6 className="">{children}</h6>
+                                        return <h2 className="">{children}</h2>
                                       default:
-                                        return <h1 className="">{children}</h1>
+                                        return <h2 className="">{children}</h2>
                                     }
                                   }
                                 }}
                                 modifiers={{
-                                  bold: ({ children }) => (
-                                    <strong>{children}</strong>
-                                  )
+                                  bold: ({ children }) => <strong>{children}</strong>,
+                                  italic: ({ children }) => <span>{children}</span>
                                 }}
                               />
                             </div>
