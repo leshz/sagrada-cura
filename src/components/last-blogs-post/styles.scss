@@ -64,7 +64,7 @@
         a {
           color: var(--white-color);
           font-size: 13px;
-          font-family: var(--font-Jost);
+          font-family: var(--font-primary);
           text-transform: capitalize;
           background-color: var(--primary-color1);
           padding: 5px 16px;
@@ -106,7 +106,7 @@
             a {
               color: var(--text-color);
               font-size: 13px;
-              font-family: var(--font-Jost);
+              font-family: var(--font-primary);
               font-weight: 400;
               text-transform: capitalize;
               transition: 0.5s;
@@ -128,7 +128,7 @@
         a {
           color: var(--primary-color1);
           font-size: 22px;
-          font-family: var(--font-Jost);
+          font-family: var(--font-primary);
           font-weight: 600;
           line-height: 1.4;
           text-transform: capitalize;
@@ -156,7 +156,7 @@
       p {
         color: var(--primary-color1);
         font-size: 16px;
-        font-family: var(--font-Jost);
+        font-family: var(--font-primary);
         font-weight: 300;
         line-height: 1.6;
         letter-spacing: 0.45px;
@@ -183,7 +183,7 @@
       > a {
         color: var(--primary-color1);
         font-size: 16px;
-        font-family: var(--font-Jost);
+        font-family: var(--font-primary);
         font-weight: 600;
         letter-spacing: 0.48px;
         background: linear-gradient(to bottom, #222222 0%, #222222 98%);
@@ -272,7 +272,7 @@
             justify-content: space-between;
             span {
               color: var(--text-color);
-              font-family: var(--font-Jost);
+              font-family: var(--font-primary);
               font-size: 13px;
               font-weight: 400;
               text-transform: capitalize;

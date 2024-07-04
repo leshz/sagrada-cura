@@ -4,7 +4,7 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
-import { Kalam, Lancelot } from 'next/font/google'
+import { Jost, Cormorant } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -14,20 +14,19 @@ import Error from './error'
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/global.scss'
 
-
-export const cormorant = Lancelot({
-  weight: ['400'],
+export const cormorant = Cormorant({
+  weight: ['400', '600'],
   display: 'swap',
   style: 'normal',
   subsets: ['latin'],
-  variable: '--font-jost-next'
+  variable: '--font-primary-next'
 })
 
-export const kalam = Kalam({
-  weight: '700',
+export const kalam = Jost({
+  weight: ['400', '700'],
   display: 'swap',
   subsets: ['latin'],
-  variable: '--font-kalam-next'
+  variable: '--font-secondary-next'
 })
 
 const RootLayout = async ({ children }) => {
@@ -37,10 +36,7 @@ const RootLayout = async ({ children }) => {
   const [data, menu] = await Promise.all([generes, menures])
 
   return (
-    <html
-      className={`${cormorant.variable} ${kalam.variable} `}
-      lang="es-CO"
-    >
+    <html className={`${cormorant.variable} ${kalam.variable} `} lang="es-CO">
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
