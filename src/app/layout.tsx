@@ -9,6 +9,7 @@ import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
+import { CSPostHogProvider } from '../providers/posthog'
 import Error from './error'
 
 import 'react-toastify/dist/ReactToastify.css'
@@ -38,22 +39,24 @@ const RootLayout = async ({ children }) => {
   return (
     <html className={`${cormorant.variable} ${kalam.variable} `} lang="es-CO">
       <body>
-        <ErrorBoundary errorComponent={Error}>
-          <Topbar data={data} />
-          <Suspense>
-            <Header data={data} menuLinks={menu} />
-          </Suspense>
-          {children}
-          <ToastContainer
-            pauseOnHover={false}
-            position="bottom-right"
-            transition={Slide}
-            pauseOnFocusLoss={false}
-          />
-          <FooterLayout data={data} />
-        </ErrorBoundary>
-        <Analytics />
-        <SpeedInsights />
+        <CSPostHogProvider>
+          <ErrorBoundary errorComponent={Error}>
+            <Topbar data={data} />
+            <Suspense>
+              <Header data={data} menuLinks={menu} />
+            </Suspense>
+            {children}
+            <ToastContainer
+              pauseOnHover={false}
+              position="bottom-right"
+              transition={Slide}
+              pauseOnFocusLoss={false}
+            />
+            <FooterLayout data={data} />
+          </ErrorBoundary>
+          <Analytics />
+          <SpeedInsights />
+        </CSPostHogProvider>
       </body>
     </html>
   )
