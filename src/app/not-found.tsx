@@ -16,7 +16,7 @@ const NotFound = () => (
                 />
               </div>
               <div className="error-content">
-                <h1>ALgo no salio bien  :S</h1>
+                <h1>Algo no salio bien  :S</h1>
                 <p>
                   Donec bibendum enim ut elit porta ullamcorper. Vestibulum Nai
                   quam nulla, venenatis eget dapibus ac, catali topuny wekemdini

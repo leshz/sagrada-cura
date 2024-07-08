@@ -7,9 +7,9 @@ import { COLLECTIONS } from '@/utils/constants'
 const Page = async ({ searchParams }: { searchParams: confirmation }) => {
   const { status, external_reference } = searchParams
 
-
   const invoice = await getColletions(COLLECTIONS.invoices, {
-    slug: external_reference
+    slug: external_reference,
+    next: { revalidate: process.env.REVALIDATE_PRODUCTS }
   })
 
   return (

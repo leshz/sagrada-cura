@@ -16,7 +16,8 @@ const BlogMasonaryPage = async ({ searchParams }) => {
   }
 
   const { data = [], meta = {} } = await getColletions(COLLECTIONS.blogs, {
-    params
+    params,
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
   })
 
   //! TODO: Add EMPY PAGE

@@ -22,7 +22,10 @@ const singletonFetch = () => {
 
     if (!cache) {
       fetching = true
-      cache = (await getSingles('home')) as response
+
+      cache = (await getSingles('home', {
+        next: { revalidate: process.env.REVALIDATE_CONTENT }
+      })) as response
     }
     return cache
   }

@@ -33,13 +33,13 @@ const Shop = async ({ searchParams }) => {
     'pagination[page]': searchParams?.page || 1
   }
 
-  const single = getSingles('shop')
+  const single = getSingles('shop', {
+    next: { tags: ['content'] }
+  })
 
   const collection = getColletions(COLLECTIONS.products, {
     params,
-    fetch: {
-      // next: { revalidate: 120 }
-    }
+    next: { tags: ['ecommerce'] }
   })
   const [labels, rescollect] = await Promise.all([single, collection])
 

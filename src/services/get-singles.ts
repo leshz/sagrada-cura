@@ -1,8 +1,8 @@
 import { api } from './api'
 
-const getSingles = async (singleType = '') => {
+const getSingles = async (singleType = '', options = {}) => {
   try {
-    const response = await api(`/${singleType}`)
+    const response = await api(`/${singleType}`, options)
     const { data } = response
 
     return data

@@ -19,15 +19,16 @@ export const generateStaticParams = async () => {
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
   const { data } = await getColletions(COLLECTIONS.blogs, {
-    slug
+    slug,
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
   })
 
   if (data === null) return notFound()
 
-    const fullPath = `${process.env.WEBPATH}/blog/${slug}`
+  const fullPath = `${process.env.WEBPATH}/blog/${slug}`
 
   const { publishedAt, article, title, image, tags, author } = data
-  
+
   return (
     <div className="blog-details-section mb-40">
       <div className="container">

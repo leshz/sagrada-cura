@@ -21,8 +21,13 @@ import './page.scss'
 
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
-  const single = getSingles('product-detail')
-  const collection = getColletions(COLLECTIONS.products, { slug })
+  const single = getSingles('product-detail', {
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
+  })
+  const collection = getColletions(COLLECTIONS.products, {
+    slug,
+    next: { revalidate: process.env.REVALIDATE_PRODUCTS }
+  })
 
   const [singleReq, collectionReq] = await Promise.all([single, collection])
   const { payment_message, no_stock, promises = [] } = singleReq || {}

@@ -5,7 +5,8 @@ const checkout = async checkoutData => {
     const data = JSON.stringify(checkoutData)
     const response = await api(`${process.env.CHECKOUT}`, {
       method: 'POST',
-      body: data
+      body: data,
+      next: { revalidate: process.env.REVALIDATE_PRODUCTS }
     })
     return response
   } catch (err: any) {

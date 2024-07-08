@@ -31,8 +31,12 @@ export const kalam = Jost({
 })
 
 const RootLayout = async ({ children }) => {
-  const generes = getSingles('general')
-  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`)
+  const generes = getSingles('general', {
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
+  })
+  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`, {
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
+  })
 
   const [data, menu] = await Promise.all([generes, menures])
 

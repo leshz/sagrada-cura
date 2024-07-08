@@ -6,7 +6,10 @@ import { getSingles } from '@/services'
 export const dynamic = 'force-static'
 
 const Cart = async () => {
-  const { table, summary , empty} = (await getSingles('cart')) || {}
+  const { table, summary, empty } =
+    (await getSingles('cart', {
+      next: { revalidate: process.env.REVALIDATE_CONTENT }
+    })) || {}
   return (
     <div className="whistlist-section cart mt-40 mb-110">
       <div className="container">
@@ -18,7 +21,7 @@ const Cart = async () => {
         <div className="row g-4">
           <div className="col-lg-4">{false && <Cupons />}</div>
           <div className="col-lg-8">
-            <PurchaseSummary labels={summary}  />
+            <PurchaseSummary labels={summary} />
           </div>
         </div>
       </div>

@@ -30,7 +30,9 @@ const Docs = async ({ params }) => {
   }
 
   try {
-    const { content, image, title } = await getSingles(availablePages[id])
+    const { content, image, title } = await getSingles(availablePages[id], {
+      next: { revalidate: process.env.REVALIDATE_CONTENT }
+    })
 
     return (
       <div className="about-us-banner mb-40">
