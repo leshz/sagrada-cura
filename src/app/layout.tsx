@@ -39,6 +39,7 @@ const RootLayout = async ({ children }) => {
   return (
     <html className={`${cormorant.variable} ${kalam.variable} `} lang="es-CO">
       <CSPostHogProvider>
+        <Analytics />
         <body>
           <ErrorBoundary errorComponent={Error}>
             <Topbar data={data} />
@@ -54,7 +55,6 @@ const RootLayout = async ({ children }) => {
             />
             <FooterLayout data={data} />
           </ErrorBoundary>
-          <Analytics />
           <SpeedInsights />
         </body>
       </CSPostHogProvider>
