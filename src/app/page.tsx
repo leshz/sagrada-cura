@@ -13,34 +13,28 @@ type response = {
   [key: string]: any
 }
 
-const singletonFetch = () => {
-  let cache: response | null = null
-  let fetching = false
-
-  return async (): Promise<response | null> => {
-    if (fetching) return cache
-
-    if (!cache) {
-      fetching = true
-
-      cache = (await getSingles('home', {
-        next: { revalidate: process.env.REVALIDATE_CONTENT }
-      })) as response
-    }
-    return cache
-  }
-}
-
 export const generateMetadata = async (): Promise<Metadata> => {
-  const getHome = await singletonFetch()
-  const { seo } = (await getHome()) || {}
+  const { seo } = (await getSingles('home', {
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
+  })) as response
   return {
-    title: seo?.metaTitle || ''
+    title: seo?.metaTitle || '',
+    keywords: seo?.keywords || '',
+    description: seo?.metaDescription || '',
+    alternates: {
+      canonical: 'https://sagradacura.com/'
+    },
+    openGraph: {
+      title: seo?.metaTitle,
+      description: seo?.metaDescription,
+      url: 'https://sagradacura.com/',
+      images: seo?.metaImage.url,
+      type: 'website'
+    }
   }
 }
 
 const Home = async () => {
-  const getHome = await singletonFetch()
   const {
     banners,
     product_categories,
@@ -48,7 +42,9 @@ const Home = async () => {
     last_blogposts,
     testimonial,
     instagram
-  }: { [key: string]: any } = (await getHome()) || {}
+  }: { [key: string]: any } = await getSingles('home', {
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
+  })
 
   return (
     <main>

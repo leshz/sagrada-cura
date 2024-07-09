@@ -3,6 +3,13 @@ export interface MetaSocial {
   socialNetwork: string
   title: string
   description: string
+  image: {
+    id: number
+    url: string
+    width: number
+    height: number
+    alt: string
+  }
 }
 
 export interface SEO {
@@ -11,6 +18,10 @@ export interface SEO {
   metaDescription: string
   keywords: string
   metaRobots: null
+  metaImage: {
+    id: number
+    url: string
+  }
   structuredData: null
   metaViewport: null
   canonicalURL: null

@@ -9,6 +9,7 @@ import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
+import type { Metadata } from 'next'
 import { CSPostHogProvider } from '../providers/posthog'
 import Error from './error'
 
@@ -29,6 +30,30 @@ export const kalam = Jost({
   subsets: ['latin'],
   variable: '--font-secondary-next'
 })
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { seo } = await getSingles('general', {
+    next: { revalidate: process.env.REVALIDATE_CONTENT }
+  })
+  return {
+    title: {
+      template: '%s | Sanación Natural',
+      default: 'Sagrada Cura'
+    },
+    keywords: seo?.keywords || '',
+    description: seo?.metaDescription || '',
+    alternates: {
+      canonical: 'https://sagradacura.com/'
+    },
+    openGraph: {
+      title: seo?.metaTitle,
+      description: seo?.metaDescription,
+      url: 'https://sagradacura.com/',
+      images: seo?.metaImage.url,
+      type: 'website'
+    }
+  }
+}
 
 const RootLayout = async ({ children }) => {
   const generes = getSingles('general', {
