@@ -2052,8 +2052,6 @@ input {
       color: var(--primary-color1);
       font-size: 16px;
       font-family: var(--font-primary);
-      line-height: 1.9;
-      letter-spacing: 0.48px;
       margin-bottom: 30px;
       @include sm-down-device() {
         margin-bottom: 25px;
