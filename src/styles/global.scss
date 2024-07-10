@@ -1212,10 +1212,31 @@ input {
 .choose-product-section {
   .choose-product-card {
     position: relative;
-    max-height: 285px;
+    height: 280px;
+    @include lg-up-device() {
+      filter: grayscale(0.8);
+    }
+    transition: all 1s ease-in-out;
+    &:hover {
+      @include lg-up-device() {
+        filter: grayscale(0);
+        img {
+          filter: blur(0);
+        }
+      }
+    }
+
+    @include lg-up-device() {
+      height: 520px;
+    }
 
     img {
       width: 100%;
+      height: 100%;
+      transition: all 1s ease-in-out;
+      @include lg-up-device() {
+        filter: blur(2px);
+      }
     }
 
     .choose-product-card-content {
@@ -5144,6 +5165,7 @@ home2 Topbar Css
     letter-spacing: 0.28px;
     text-transform: capitalize;
     margin-bottom: 0;
+    margin: 0 auto;
     @include lg-down-device() {
       display: none;
       visibility: hidden;

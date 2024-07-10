@@ -7,7 +7,7 @@ const CategoryProduct = ({ product }) => {
     <div className="col-lg-4 col-md-6">
       <div className="choose-product-card hover-img style-2">
         <Link href={link}>
-          <ImageWrapper image={image} format='small' />
+          <ImageWrapper image={image} format='medium' />
         </Link>
         <div className="choose-product-card-content">
           {first_line && <h2 className="first-text">{first_line}</h2>}

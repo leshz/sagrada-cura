@@ -13,7 +13,7 @@ const SocialHeader = ({ links }) => {
   }
 
   return (
-    <div className="social-area align-self-end" style={{ marginLeft: 'auto' }}>
+    <div className="social-area align-self-end">
       <ul>
         {links?.map(item => (
           <SocialItem key={item.id} link={item.link} text={item.text} />

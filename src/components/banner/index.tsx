@@ -36,25 +36,7 @@ const FixedBanner = ({ content }) => {
                   >
                     {children}
                   </Link>
-                ),
-                heading: ({ children, level }) => {
-                  switch (level) {
-                    case 1:
-                      return <h2 className="">{children}</h2>
-                    case 2:
-                      return <h2 className="">{children}</h2>
-                    case 3:
-                      return <h2 className="">{children}</h2>
-                    case 4:
-                      return <h2 className="">{children}</h2>
-                    case 5:
-                      return <h2 className="">{children}</h2>
-                    case 6:
-                      return <h2 className="">{children}</h2>
-                    default:
-                      return <h2 className="">{children}</h2>
-                  }
-                }
+                )
               }}
               modifiers={{
                 bold: ({ children }) => <strong>{children}</strong>,
@@ -84,6 +66,7 @@ const DoubleBanner = ({ data }) => {
       loop: true,
       autoplay: true,
       effect: 'fade',
+
       fadeEffect: {
         crossFade: true
       },
@@ -95,8 +78,8 @@ const DoubleBanner = ({ data }) => {
     []
   )
   return (
-    <div className="banner-2-section mb-110 ">
-      <div className="container-fluid p-0">
+    <div className="banner-2-section mb-110">
+      <div className="container-fluid p-0 full-height">
         <div className="row">
           <FixedBanner content={data} />
           <div className="col-xxl-9 col-xl-8">
@@ -115,7 +98,9 @@ const DoubleBanner = ({ data }) => {
                               <BlocksRenderer
                                 content={text}
                                 blocks={{
-                                  paragraph: ({ children }) => <p className="">{children}</p>,
+                                  paragraph: ({ children }) => (
+                                    <p className="">{children}</p>
+                                  ),
                                   link: ({ children, url: path }) => (
                                     <Link
                                       href={path}
@@ -144,8 +129,12 @@ const DoubleBanner = ({ data }) => {
                                   }
                                 }}
                                 modifiers={{
-                                  bold: ({ children }) => <strong>{children}</strong>,
-                                  italic: ({ children }) => <span>{children}</span>
+                                  bold: ({ children }) => (
+                                    <strong>{children}</strong>
+                                  ),
+                                  italic: ({ children }) => (
+                                    <span>{children}</span>
+                                  )
                                 }}
                               />
                             </div>
