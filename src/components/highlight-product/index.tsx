@@ -9,7 +9,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import Link from 'next/link'
 import SwiperCore from 'swiper'
 
-import 'swiper/css/bundle';
+import 'swiper/css/bundle'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
@@ -47,14 +47,21 @@ const HightLights = ({ highlights }) => {
             >
               <div className="swiper-wrapper">
                 {sliders.map(slide => {
-                  const { id, description, link, button, image } = slide
+                  const {
+                    id,
+                    description,
+                    link,
+                    button,
+                    image,
+                    title: sliderTitle
+                  } = slide
 
                   return (
                     <SwiperSlide key={id} className="swiper-slide">
                       <div className="row g-4">
                         <div className="col-lg-6">
                           <div className="exclusive-product-left">
-                            <h2>{title}</h2>
+                            <h2>{sliderTitle}</h2>
                             <BlocksRenderer
                               content={description}
                               blocks={{
@@ -85,12 +92,12 @@ const HightLights = ({ highlights }) => {
                           <div className="exclusive-product-right">
                             <div className="product-right-img hover-img">
                               {/* <Link href="/shop/product-default"> */}
-                                <ImageWrapper
-                                  image={image}
-                                  format='small'
-                                  width={540}
-                                  height={321}
-                                />
+                              <ImageWrapper
+                                image={image}
+                                format="small"
+                                width={540}
+                                height={321}
+                              />
                               {/* </Link> */}
                             </div>
                             {/* TODO: Discutir el uso de esta parte  */}

@@ -4,7 +4,7 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
-import { Jost, Cormorant } from 'next/font/google'
+import { Cormorant, Fauna_One } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -24,8 +24,8 @@ export const cormorant = Cormorant({
   variable: '--font-primary-next'
 })
 
-export const kalam = Jost({
-  weight: ['400', '700'],
+export const Secondary = Fauna_One({
+  weight: ['400'],
   display: 'swap',
   subsets: ['latin'],
   variable: '--font-secondary-next'
@@ -66,7 +66,10 @@ const RootLayout = async ({ children }) => {
   const [data, menu] = await Promise.all([generes, menures])
 
   return (
-    <html className={`${cormorant.variable} ${kalam.variable} `} lang="es-CO">
+    <html
+      className={`${cormorant.variable} ${Secondary.variable} `}
+      lang="es-CO"
+    >
       <CSPostHogProvider>
         <Analytics />
         <body>

@@ -1248,7 +1248,7 @@ input {
         font-family: var(--font-primary);
         font-style: normal;
         font-weight: 700;
-        font-size: 45px;
+        font-size: 26px;
         line-height: 1;
         text-transform: uppercase;
         color: var(--white-color);
@@ -5318,15 +5318,22 @@ home2 Banner Css
     position: relative;
     height: 100%;
 
+    .swiper-wrapper {
+      @include sm-down-device() {
+        height: 555px;
+      }
+    }
+
     .banner-2-right-img-bg {
       position: relative;
       object-fit: cover;
       background-repeat: no-repeat;
+      height: inherit;
       img {
         object-fit: cover;
         object-position: center;
         width: 100%;
-        height: auto;
+        height: 100%;
       }
 
       .banner-2-right-content {

@@ -18,6 +18,9 @@ const Home = async () => {
     next: { revalidate: process.env.REVALIDATE_CONTENT }
   })
 
+  console.debug(highlight_products);
+  
+
   return (
     <main>
       <DoubleBanner data={banners} />
