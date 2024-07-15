@@ -41,10 +41,6 @@
           font-size: 35px;
           margin-bottom: 20px;
         }
-
-        @include sm-down-device() {
-          font-size: 25px;
-        }
       }
 
       p {

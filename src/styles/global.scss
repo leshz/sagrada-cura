@@ -15,6 +15,9 @@
   // Theme Color
   --primary-color1: #222222;
   --bg-color: #f2f2f2;
+  --important-color1: #c08558;
+  --important-color2: #1f261c;
+  --important-color3: #250507;
 
   --success: 7, 188, 12;
   --warning: 241, 196, 15;
@@ -552,9 +555,9 @@ blockquote {
   background-color: var(--white-color);
   display: inline-block;
   color: var(--primary-color1);
-  font-size: 17px;
+  font-size: 20px;
   font-family: var(--font-primary);
-  font-weight: 500;
+  font-weight: bold;
   letter-spacing: 0.36px;
   white-space: nowrap;
   border: 1px solid var(--primary-color1);
@@ -624,6 +627,12 @@ input {
 /*........................ 
   Banner section
 ........................*/
+
+.banner-2-section {
+  .swiper {
+    height: 100%;
+  }
+}
 .banner-section {
   overflow: hidden;
   display: flex;
@@ -1991,13 +2000,20 @@ input {
   Exclusive Product section
 ........................*/
 .exclusive-product-section {
-  background: #e3ece7;
+  background: var(--important-color2);
   padding: 100px 0 100px 0;
   position: relative;
   z-index: 1;
   @include sm-down-device() {
     padding: 80px 0 80px 0;
   }
+  h3 {
+    color: var(--white-color);
+    &:after {
+      background: var(--white-color);
+    }
+  }
+
   .slider-btn {
     flex-direction: column;
     position: absolute;
@@ -2035,7 +2051,7 @@ input {
     max-width: 516px;
 
     h2 {
-      color: var(--primary-color1);
+      color: var(--white-color);
       font-size: 40px;
       font-family: var(--font-primary);
       font-weight: 600;
@@ -2048,8 +2064,8 @@ input {
     }
 
     p {
-      color: var(--primary-color1);
-      font-size: 14px;
+      color: var(--white-color);
+      font-size: 16px;
       font-family: var(--font-secondary);
       margin-bottom: 30px;
       @include sm-down-device() {
@@ -2071,7 +2087,7 @@ input {
         margin-bottom: 35px;
       }
       li {
-        color: var(--primary-color1);
+        color: var(--white-color);
         font-size: 16px;
         font-family: var(--font-secondary);
         font-weight: 500;
@@ -2083,7 +2099,7 @@ input {
           font-size: 16px;
         }
         svg {
-          fill: var(--primary-color1);
+          fill: var(--white-color);
         }
       }
     }
@@ -2097,6 +2113,7 @@ input {
       border-bottom: 1px solid var(--primary-color1);
       img {
         width: 100%;
+        border-radius: 5px;
       }
     }
 
@@ -2518,11 +2535,29 @@ input {
   Say About section
 ........................*/
 .say-about-section {
-  background: #f1faff;
+  background: var(--important-color3);
   padding: 100px 0;
   overflow: hidden;
   position: relative;
   z-index: 1;
+
+  h3 {
+    color: var(--white-color);
+    &:after {
+      background: var(--white-color);
+    }
+  }
+  .slider-btn {
+    i {
+      color: var(--white-color);
+      border-color: var(--white-color);
+    }
+  }
+
+  .section-title2.style-3::after {
+    background: var(--white-color);
+  }
+
   @include lg-down-device() {
     padding: 90px 0;
   }
@@ -2596,26 +2631,18 @@ input {
 
           li {
             i {
-              color: #ffc107;
+              color: #ae8303;
             }
           }
         }
       }
 
       p {
-        color: var(--primary-color1);
+        color: var(--white-color);
         font-size: 16px;
         font-family: var(--font-secondary);
         line-height: 1.9;
         margin-bottom: 30px;
-
-        @include xl-device() {
-          font-size: 18px;
-        }
-
-        @include lg-down-device() {
-          font-size: 18px;
-        }
       }
 
       .say-about-card-bottom {
@@ -2645,7 +2672,7 @@ input {
         }
         .author {
           h5 {
-            color: var(--primary-color1);
+            color: var(--white-color);
             font-size: 21px;
             font-family: var(--font-primary);
             font-weight: 600;
@@ -2655,8 +2682,8 @@ input {
           }
 
           p {
-            color: var(--primary-color1);
-            font-size: 15px;
+            color: var(--white-color);
+            font-size: 16px;
             font-family: var(--font-primary);
             line-height: 1;
             margin-bottom: 0;
@@ -5131,7 +5158,7 @@ input {
 home2 Topbar Css
 =======================================*/
 .top-bar2 {
-  background-color: var(--primary-color1);
+  background-color: var(--important-color2);
   padding: 15px 0;
   @include sm-down-device() {
     display: none;

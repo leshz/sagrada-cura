@@ -17,6 +17,7 @@ const Slider = ({ slides }) => {
     () => ({
       slidesPerView: 'auto',
       spaceBetween: 40,
+      autoplay: true,
       loop: true,
       navigation: {
         nextEl: '.about-next-btn',

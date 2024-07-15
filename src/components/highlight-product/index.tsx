@@ -81,7 +81,7 @@ const HightLights = ({ highlights }) => {
                               }}
                             />
                             <Link
-                              className="primary-btn1 hover-btn3"
+                              className="primary-btn3 hover-btn1"
                               href={link}
                             >
                               {button}
