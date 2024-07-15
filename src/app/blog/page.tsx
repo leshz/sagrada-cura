@@ -4,11 +4,12 @@ import { BlogPreview } from '@/components/blog/blog-preview'
 import { Paginator } from '@/components/paginator'
 
 const BlogMasonaryPage = async ({ searchParams }) => {
-  const { tag = '' } = searchParams
+  const { tag = '', page = 1 } = searchParams
 
   const params = {
     sort: 'publishedAt:desc',
-    'pagination[pageSize]': '6'
+    'pagination[pageSize]': '6',
+    'pagination[page]': page 
   }
 
   if (tag) {
