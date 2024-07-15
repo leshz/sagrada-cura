@@ -5164,6 +5164,7 @@ home2 Topbar Css
     text-transform: capitalize;
     margin-bottom: 0;
     margin: 0 auto;
+    padding-left: 102px;
     @include lg-down-device() {
       display: none;
       visibility: hidden;
