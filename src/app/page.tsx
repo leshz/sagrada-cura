@@ -16,10 +16,7 @@ const Home = async () => {
     instagram
   }: { [key: string]: any } = await getSingles('home', {
     next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })
-
-  console.debug(highlight_products);
-  
+  })  
 
   return (
     <main>
