@@ -154,16 +154,15 @@
 
       p {
         color: var(--primary-color1);
-        font-size: 16px;
+        font-size: 14px;
         font-family: var(--font-secondary);
-        font-weight: 300;
         line-height: 1.6;
-        letter-spacing: 0.45px;
+        letter-spacing: normal;
         margin-bottom: 15px;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
         -webkit-box-orient: vertical;
 
         @include lg-device() {
