@@ -1216,7 +1216,7 @@ input {
     @include lg-up-device() {
       filter: grayscale(0.8);
     }
-    transition: all 1s ease-in-out;
+    transition: all 0.6s ease-in-out;
     &:hover {
       @include lg-up-device() {
         filter: grayscale(0);
