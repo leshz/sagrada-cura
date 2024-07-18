@@ -1367,7 +1367,7 @@ input {
     content: '';
     position: absolute;
     right: 0;
-    bottom: -0.5px;
+    bottom: 0px;
     width: 0%;
     height: 0.5px;
     background: #000;
@@ -2535,7 +2535,7 @@ input {
   Say About section
 ........................*/
 .say-about-section {
-  background: var(--important-color3);
+  background: var(--important-color2);
   padding: 100px 0;
   overflow: hidden;
   position: relative;
@@ -2687,6 +2687,11 @@ input {
             font-family: var(--font-primary);
             line-height: 1;
             margin-bottom: 0;
+          }
+        }
+        .quote{
+          svg{
+            fill: var(--white-color);
           }
         }
       }
@@ -3971,7 +3976,7 @@ input {
   }
   p {
     color: rgba(#222, 0.5);
-    font-family: var(--font-primary);
+    font-family: var(--font-secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -4150,8 +4155,8 @@ input {
     li {
       margin-right: 20px;
       .shop-pagi-btn {
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         border: 1px solid var(--primary-color1);
         display: flex;
@@ -4162,6 +4167,7 @@ input {
         i {
           color: var(--primary-color1);
           transition: 0.5s;
+          font-size: 15px;
         }
 
         &:hover {
@@ -5978,7 +5984,7 @@ Testimonial-Section Css
           display: none;
         }
         svg {
-          fill: rgba(#222, 0.05);
+          fill: rgba(#FFF, 0.05);
         }
       }
       .date-and-time {

@@ -8,6 +8,7 @@
   padding: 15px;
   transition: 0.5s;
   height: 100%;
+  border-radius: 5px;
   .product-card-img {
     display: flex;
     align-items: center;
@@ -71,7 +72,7 @@
           justify-content: center;
           color: var(--white-color);
           text-align: center;
-          font-size: 15px;
+          font-size: 13px;
           font-family: var(--font-primary);
           letter-spacing: 0.3px;
           text-transform: uppercase;
@@ -79,6 +80,7 @@
           display: inline-block;
           padding: 0 10px;
           z-index: 1;
+          border-radius: 0px 0px 5px 0;
 
           &.new {
             font-size: 12px;
@@ -95,13 +97,14 @@
       a {
         color: var(--primary-color1);
         text-align: center;
-        font-size: 15px;
+        font-size: 14px;
         font-family: var(--font-primary);
         font-weight: 500;
         background-color: var(--white-color);
         border: 1px solid var(--primary-color1);
         padding: 8px 25px;
         white-space: nowrap;
+        border-radius: 5px;
         span {
           font-size: 18px;
           margin: 0 5px;

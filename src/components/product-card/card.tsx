@@ -84,7 +84,7 @@ const Card = ({ product, labels }: Props) => {
               {stock !== 0 ? (
                 <button
                   type="button"
-                  className="hover-btn3 add-cart-btn"
+                  className="primary-btn3 hover-btn3 add-cart-btn"
                   onClick={() => addToCart({ product })}
                 >
                   <span>
