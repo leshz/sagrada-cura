@@ -265,24 +265,24 @@ header {
         }
 
         span {
-          font-family: var(--font-primary);
+          font-family: var(--font-secondary);
           font-style: normal;
           font-weight: 600;
-          font-size: 8px;
+          font-size: 10px;
           line-height: 1;
           letter-spacing: 0.03em;
           text-transform: capitalize;
           color: #ffffff;
           background-color: var(--primary-color1);
-          width: 15px;
-          height: 15px;
+          width: 18px;
+          height: 18px;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           position: absolute;
           left: 10px;
-          top: -7px;
+          top: -10px;
         }
       }
 
