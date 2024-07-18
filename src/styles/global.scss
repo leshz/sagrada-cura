@@ -4176,7 +4176,7 @@ input {
       a {
         color: rgba(#222, 0.5);
         font-family: var(--font-primary);
-        font-size: 18px;
+        font-size: 26px;
         font-weight: 500;
         line-height: 1;
         text-transform: capitalize;
@@ -4294,7 +4294,7 @@ input {
         a {
           color: var(--primary-color1);
           font-family: var(--font-primary);
-          font-size: 15px;
+          font-size: 18px;
           font-weight: 400;
           line-height: 1;
           letter-spacing: 0.3px;
@@ -4414,7 +4414,7 @@ input {
       .recent-post-content {
         > a {
           color: rgba(#222, 0.5);
-          font-family: var(--font-primary);
+          font-family: var(--font-secondary);
           font-size: 12px;
           font-weight: 500;
           text-transform: capitalize;
@@ -4425,11 +4425,10 @@ input {
           a {
             color: var(--text-color);
             font-family: var(--font-primary);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 500;
             line-height: 20px;
             letter-spacing: 0.32px;
-            text-transform: capitalize;
             transition: 0.5s;
 
             &:hover {

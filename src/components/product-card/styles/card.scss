@@ -218,11 +218,10 @@
 
       a {
         color: var(--text-color);
-        font-size: 20px;
+        font-size: 22px;
         font-family: var(--font-primary);
         font-weight: 500;
         letter-spacing: 0.4px;
-        text-transform: capitalize;
         margin-bottom: 5px;
         line-height: 1.4;
       }
@@ -234,10 +233,9 @@
       a {
         color: #878585;
         text-align: center;
-        font-size: 15px;
-        font-family: var(--font-primary);
+        font-size: 14px;
+        font-family: var(--font-secondary);
         letter-spacing: 0.3px;
-        text-transform: uppercase;
         transition: 0.5s;
         &:hover {
           color: var(--text-color);
@@ -246,16 +244,21 @@
     }
 
     .price {
-      color: var(--text-color);
-      font-size: 20px;
-      font-family: var(--font-primary);
-      font-weight: 600;
-      margin-bottom: 5px;
+      p {
+        color: var(--text-color);
+        font-size: 18px;
+        font-family: var(--font-secondary);
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      span{
+        display: block;
+      }
 
       del {
         color: var(--text-color2);
-        font-size: 15px;
-        font-family: var(--font-primary);
+        font-size: 14px;
+        font-family: var(--font-secondary);
       }
     }
 

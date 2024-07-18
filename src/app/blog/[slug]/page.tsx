@@ -56,6 +56,7 @@ const BlogDetailsPage = async ({ params }) => {
               <li>
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${fullPath}`}
+                  target="_blank"
                   aria-label="go to facebook"
                 >
                   <i className="bi bi-facebook" />
@@ -63,6 +64,7 @@ const BlogDetailsPage = async ({ params }) => {
               </li>
               <li>
                 <a
+                  target="_blank"
                   href={`https://twitter.com/intent/tweet?text=${fullPath}`}
                   aria-label="go to twitter"
                 >

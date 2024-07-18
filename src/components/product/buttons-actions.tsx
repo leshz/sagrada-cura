@@ -10,14 +10,14 @@ const Buttons = ({ quantity, product }) => {
     <div className="shop-details-btn">
       <button
         type="button"
-        className="primary-btn1 hover-btn3"
+        className="primary-btn3 black-bg hover-btn5 hover-white"
         onClick={() => {
           addToCart({ product, quantitymod: quantity })
         }}
       >
         Anadir al carrito
       </button>
-      <Link className="primary-btn1 style-3 hover-btn4" href="/tienda/checkout">
+      <Link className="primary-btn3 style-3 hover-btn5" href="/tienda/checkout">
         Comprar
       </Link>
     </div>

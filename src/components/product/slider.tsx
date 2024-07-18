@@ -45,7 +45,6 @@ const Slider = ({ pictures }) => {
                       image={picture}
                       fill
                       priority
-                      format="medium"
                     />
                   </div>
                 </SwiperSlide>

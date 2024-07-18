@@ -96,7 +96,7 @@ Shop Details page Css
   }
   p {
     color: #636262;
-    font-family: var(--font-primary);
+    font-family: var(--font-secondary);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.8;
@@ -115,18 +115,18 @@ Shop Details page Css
     }
     .price p {
       color: var(--text-color);
-      font-family: var(--font-primary);
-      font-size: 25px;
-      font-weight: 600;
+      font-family: var(--font-secondary);
+      font-size: 26px;
+      font-weight: bold;
       line-height: 1;
       margin-bottom: 0;
 
       del {
         color: var(--text-color2);
-        font-family: var(--font-primary);
-        font-size: 18px;
-        font-weight: 400;
+        font-family: var(--font-secondary);
+        font-size: 16px;
         line-height: 1;
+        padding-left: 10px;
       }
     }
   }
@@ -150,7 +150,7 @@ Shop Details page Css
       .widget-title {
         color: var(--primary-color1);
         font-family: var(--font-primary);
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 500;
         line-height: 1;
         letter-spacing: 0.48px;
@@ -180,7 +180,7 @@ Shop Details page Css
           border: 1px solid var(--primary-color1);
           text-align: center;
           color: var(--primary-color1);
-          font-family: var(--font-primary);
+          font-family: var(--font-secondary);
           font-size: 16px;
           font-weight: 500;
           line-height: 1;
@@ -330,7 +330,7 @@ Shop Details page Css
 
       li {
         color: var(--text-color3);
-        font-family: var(--font-primary);
+        font-family: var(--font-secondary);
         font-size: 16px;
         font-weight: 400;
         letter-spacing: 0.32px;
@@ -366,12 +366,11 @@ Shop Details page Css
     }
     h6 {
       color: var(--primary-color1);
-      font-family: var(--font-primary);
-      font-size: 16px;
+      font-family: var(--font-secondary);
+      font-size: 14px;
       font-weight: 400;
       line-height: 1;
       letter-spacing: 0.48px;
-
       margin-bottom: 15px;
     }
 
@@ -387,11 +386,10 @@ Shop Details page Css
       align-items: center;
       gap: 10px;
       color: var(--text-color3);
-      font-family: var(--font-primary);
+      font-family: var(--font-secondary);
       font-size: 16px;
       font-weight: 400;
       letter-spacing: 0.32px;
-
       margin-bottom: 10px;
       &:last-child {
         margin-bottom: 0;
@@ -399,10 +397,13 @@ Shop Details page Css
       svg {
         fill: var(--primary-color1);
       }
+      i {
+        font-size: 20px;
+      }
       p {
         color: var(--text-color3);
-        font-family: var(--font-primary);
-        font-size: 16px;
+        font-family: var(--font-secondary);
+        font-size: 14px;
         font-weight: 400;
         letter-spacing: 0.32px;
 
@@ -503,8 +504,8 @@ Shop Details page Css
           }
           color: var(--primary-color1);
           font-family: var(--font-primary);
-          font-size: 18px;
-          font-weight: 400;
+          font-size: 22px;
+          font-weight: bold;
           line-height: 1;
           letter-spacing: 0.36px;
 
@@ -518,7 +519,7 @@ Shop Details page Css
         .product-description {
           p {
             color: var(--primary-color1);
-            font-family: var(--font-primary);
+            font-family: var(--font-secondary);
             font-weight: 400;
             font-size: 16px;
             margin-bottom: 10px;
@@ -530,14 +531,13 @@ Shop Details page Css
             font-size: 16px;
             margin-bottom: 10px;
           }
-          ul {
+          ul,ol {
             padding-left: 25px;
             list-style: disc;
             li {
               color: var(--primary-color1);
-              font-family: var(--font-primary);
-              font-weight: 400;
-              font-size: 16px;
+              font-family: var(--font-secondary);
+              font-size: 16spx;
               margin-bottom: 10px;
               span {
                 font-weight: 500;
