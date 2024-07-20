@@ -26,9 +26,9 @@ Shop Details page Css
 
   .stock-area {
     h6 {
-      color: var(--primary-color1);
-      font-family: var(--font-primary);
-      font-size: 18px;
+      color: #636262;
+      font-family: var(--font-secondary);
+      font-size: 16px;
       font-weight: 500;
       line-height: 1;
       letter-spacing: 0.36px;
@@ -172,6 +172,7 @@ Shop Details page Css
           align-items: center;
           justify-content: center;
           color: var(--primary-color1);
+          border-radius: var(--radius);
         }
         .quantity__input {
           max-width: 58px;
@@ -353,11 +354,11 @@ Shop Details page Css
     }
   }
   .payment-method {
-    padding: 17px 30px;
-    border: 1px solid rgba(#222, 0.10000000149011612);
+    border: 1px solid rgba(#222, 0.1);
+    margin: 30px 0 20px;
     max-width: 460px;
+    padding: 17px 30px;
     width: 100%;
-    margin-bottom: 20px;
 
     &-image {
       object-fit: scale-down;
@@ -517,12 +518,20 @@ Shop Details page Css
       }
       .accordion-body {
         .product-description {
+          display: flex;
+          flex-direction: column;
           p {
             color: var(--primary-color1);
             font-family: var(--font-secondary);
             font-weight: 400;
             font-size: 16px;
             margin-bottom: 10px;
+          }
+          .accordion-image {
+            border-radius: 50%;
+            height: 200px;
+            margin: 0 auto;
+            width: 200px;
           }
           h6 {
             color: var(--primary-color1);
@@ -531,7 +540,8 @@ Shop Details page Css
             font-size: 16px;
             margin-bottom: 10px;
           }
-          ul,ol {
+          ul,
+          ol {
             padding-left: 25px;
             list-style: disc;
             li {

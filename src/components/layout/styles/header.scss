@@ -327,6 +327,8 @@ header {
         .cart-body {
           padding: 0 0 20px;
           min-width: 290px;
+          max-height: 250px;
+          overflow: scroll;s
 
           ul {
             .single-item {
@@ -355,6 +357,7 @@ header {
                     height: 70px;
                     max-width: 70px;
                     min-width: 70px;
+                    border-radius: var(--radius);
                   }
                 }
 
@@ -365,14 +368,21 @@ header {
                     line-height: 1;
                     margin-bottom: 10px;
 
+                    .price {
+                      p {
+                        font-family: var(--font-secondary);
+                        font-size: 12px;
+                      }
+                    }
+
                     p {
                       font-family: var(--font-primary);
-                      font-weight: 600;
-                      font-size: 14px;
+                      font-size: 16px;
                       color: var(--primary-color1);
                       display: inline-block;
                       margin: 0;
                       line-height: normal;
+                      letter-spacing: normal;
 
                       .discount {
                         font-size: 13px;
@@ -440,6 +450,7 @@ header {
         }
 
         .cart-footer {
+          background: var(--white-color);
           border-top: 1px solid rgba(238, 238, 238, 0.933333);
           position: sticky;
           width: 100%;
@@ -455,11 +466,16 @@ header {
               li {
                 font-family: var(--font-primary);
                 font-weight: 600;
-                font-size: 13px;
+                font-size: 14px;
                 color: var(--primary-color1);
                 display: flex;
                 justify-content: space-between;
                 line-height: 2;
+              }
+
+              .number {
+                font-family: var(--font-secondary);
+                font-size: 12px;
               }
 
               &.total {

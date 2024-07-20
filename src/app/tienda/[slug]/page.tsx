@@ -66,7 +66,7 @@ const ProductDefaultPage = async ({ params }) => {
                 {limitedStock && (
                   <div className="stock-area">
                     <h6>
-                      Disponibilidad:{'  '}
+                      Unidades disponibles:{'  '}
                       {noStock ? (
                         <span className="out-of-stock"> {no_stock}</span>
                       ) : (
@@ -91,8 +91,8 @@ const ProductDefaultPage = async ({ params }) => {
                     </li>
                   </ul>
                 </div>
-                <PaymentsInformation message={payment_message} />
                 <ShippingInfo promises={promises} />
+                <PaymentsInformation message={payment_message} />
                 <Accordion information={information} />
               </div>
             </div>

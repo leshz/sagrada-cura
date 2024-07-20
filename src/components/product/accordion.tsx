@@ -1,4 +1,8 @@
+'use client'
+
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import Link from 'next/link'
+import { ImageWrapper } from '@/components/Image'
 
 const Accordion = ({ information, parentId = 'productAccordion' }) => {
   if (!information || information?.length === 0) return null
@@ -27,7 +31,21 @@ const Accordion = ({ information, parentId = 'productAccordion' }) => {
           >
             <div className="accordion-body">
               <div className="product-description">
-                <BlocksRenderer content={item?.information} />
+                <BlocksRenderer
+                  content={item?.information}
+                  blocks={{
+                    image: ({ image }) => (
+                      <ImageWrapper
+                        className="accordion-image"
+                        format="thumbnail"
+                        image={image}
+                      />
+                    ),
+                    link: ({ children, url }) => (
+                      <Link href={url}>{children}</Link>
+                    )
+                  }}
+                />
               </div>
             </div>
           </div>
