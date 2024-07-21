@@ -576,24 +576,27 @@ input {
 .form-inner {
   input {
     border: 1px solid var(--primary-color1);
+    font-family: var(--font-secondary);
+    font-size: 14px;
     width: 100%;
     padding: 15px 20px;
     border-radius: unset;
+    border-radius: var(--radius);
     &:focus {
       border: 1px solid #ddd;
     }
 
     &::placeholder {
       color: rgba(#222, 0.5);
-      font-family: var(--font-primary);
-      font-size: 15px;
+      font-family: var(--font-secondary);
+      font-size: 14px;
       font-weight: 400;
       letter-spacing: 0.3px;
-      text-transform: capitalize;
     }
   }
   select {
     @extend input;
+    -webkit-appearance: none;
   }
   textarea {
     @extend input;
@@ -613,10 +616,10 @@ input {
   }
 
   label.input-error {
-    color: var(--error) !important;
+    color: rgb(var(--error)) !important;
     span {
       font-size: 12px;
-      font-weight: 400;
+      font-family: var(--font-secondary);
     }
 
     input {
@@ -2691,8 +2694,8 @@ input {
             margin-bottom: 0;
           }
         }
-        .quote{
-          svg{
+        .quote {
+          svg {
             fill: var(--white-color);
           }
         }
@@ -5610,7 +5613,7 @@ Testimonial-Section Css
           display: none;
         }
         svg {
-          fill: rgba(#FFF, 0.05);
+          fill: rgba(#fff, 0.05);
         }
       }
       .date-and-time {

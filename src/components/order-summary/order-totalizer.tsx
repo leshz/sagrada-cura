@@ -19,13 +19,15 @@ const OrderTotalizer = () => {
           <thead>
             <tr>
               <th>Subtotal</th>
-              <th>{currencyFormat.format(totalFullPrice)}</th>
+              <th className="price">{currencyFormat.format(totalFullPrice)}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="tax">Descuentos</td>
-              <td>{currencyFormat.format(totalDiscounted)}</td>
+              <td className="price">
+                {currencyFormat.format(totalDiscounted)}
+              </td>
             </tr>
             <tr>
               <td>Envio</td>
@@ -39,7 +41,9 @@ const OrderTotalizer = () => {
           <thead>
             <tr>
               <th>Total</th>
-              <th>{currencyFormat.format(afterDiscountPrice)}</th>
+              <th className="price">
+                {currencyFormat.format(afterDiscountPrice)}
+              </th>
             </tr>
           </thead>
         </table>
