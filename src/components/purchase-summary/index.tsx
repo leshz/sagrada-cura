@@ -4,7 +4,6 @@ import { useStore } from '@/store'
 import Link from 'next/link'
 import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
 
-
 const PurchaseSummary = ({ labels }) => {
   const { cart_total, summary, total, go_checkout } = labels
   const { cart } = useStore(state => state)
@@ -24,7 +23,7 @@ const PurchaseSummary = ({ labels }) => {
           <tr>
             <th>{cart_total}</th>
             <th aria-label="empty" />
-            <th>{currencyFormat.format(totalFullPrice)}</th>
+            <th className="price">{currencyFormat.format(totalFullPrice)}</th>
           </tr>
         </thead>
         <tbody>
@@ -37,19 +36,23 @@ const PurchaseSummary = ({ labels }) => {
             </td>
             <td>
               <ul className="single-cost text-center">
-                <li>{currencyFormat.format(totalDiscounted)}</li>
+                <li className="price">
+                  {currencyFormat.format(totalDiscounted)}
+                </li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>{total}</td>
             <th aria-label="empty" />
-            <td>{currencyFormat.format(afterDiscountPrice)}</td>
+            <td className="price">
+              {currencyFormat.format(afterDiscountPrice)}
+            </td>
           </tr>
         </tbody>
       </table>
       <Link href="/tienda/checkout">
-        <button type="button" className="primary-btn1 hover-btn3">
+        <button type="button" className="primary-btn3 black-bg hover-btn5 hover-white">
           {go_checkout}
         </button>
       </Link>

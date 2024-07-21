@@ -98,17 +98,23 @@ const Cart = ({ labels }) => {
                 <ul>
                   <li>
                     <span>{sub_total}</span>
-                    <span className="number">{currencyFormat.format(totalFullPrice)}</span>
+                    <span className="number">
+                      {currencyFormat.format(totalFullPrice)}
+                    </span>
                   </li>
-                  <li>
-                    <span>{discount}</span>
-                    <span className="number">{`- ${currencyFormat.format(totalDiscounted)}`}</span>
-                  </li>
+                  {totalDiscounted !== 0 && (
+                    <li>
+                      <span>{discount}</span>
+                      <span className="number">{`- ${currencyFormat.format(totalDiscounted)}`}</span>
+                    </li>
+                  )}
                 </ul>
                 <ul className="total">
                   <li>
                     <span>Total</span>
-                    <span className="number">{currencyFormat.format(totalFullPriceDiscount)}</span>
+                    <span className="number">
+                      {currencyFormat.format(totalFullPriceDiscount)}
+                    </span>
                   </li>
                 </ul>
               </div>

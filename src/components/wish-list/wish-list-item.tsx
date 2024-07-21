@@ -34,7 +34,7 @@ const WishListItem = ({ product }) => {
           </h6>
         </div>
       </td>
-      <td aria-label="precio">
+      <td className='number' aria-label="precio">
         <Price
           price={price}
           with_discount={with_discount}
@@ -49,7 +49,7 @@ const WishListItem = ({ product }) => {
           quantity={quantityCart}
         />
       </td>
-      <td data-label="total">{currencyFormat.format(finalPrice)}</td>
+      <td className='price'  data-label="total">{currencyFormat.format(finalPrice)}</td>
     </tr>
   )
 }

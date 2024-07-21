@@ -74,7 +74,7 @@ const Card = ({ product, labels }: Props) => {
           {stock === 0 && (
             <div className="out-of-stock">
               <Link href={productView}>
-                {request_stock} <span>😭</span>
+                {request_stock} <span>😅</span>
               </Link>
             </div>
           )}
