@@ -10,7 +10,7 @@ const checkout = async checkoutData => {
     })
     return response
   } catch (err: any) {
-    throw new Error(`error to get singles ${err.message}}`)
+    throw new Error(`error to get singles ${err.message}`)
   }
 }
 
