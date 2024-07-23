@@ -21,7 +21,7 @@ input[type='number'] {
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
     border: 1px solid #eee;
     @include sm-down-device() {
-      padding: 25px;
+      padding: 5px;
     }
     legend {
       font-family: var(--font-primary);
@@ -38,6 +38,9 @@ input[type='number'] {
     fieldset {
       padding: 0 40px;
       margin-bottom: 20px;
+      @include sm-down-device {
+        padding: 0 15px;
+      }
       &:last-child {
         margin-bottom: 5px;
       }
