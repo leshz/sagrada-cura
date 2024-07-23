@@ -5670,7 +5670,26 @@ Testimonial-Section Css
   }
 }
 
-// Improvements CSS
-// .swiper-slide {
-//   height: unset !important;
-// }
+.error {
+  &-pages {
+    .error-bg {
+      filter: grayscale(0.7);
+    }
+  }
+
+  &-message {
+    position: relative;
+    text-align: center;
+    h1 {
+      font-size: 50px;
+      color: #fff;
+    }
+    h2 {
+      color: #fff;
+      font-size: 30px;
+    }
+    button {
+      margin-top: 65px;
+    }
+  }
+}

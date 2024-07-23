@@ -78,3 +78,17 @@
     stroke-dashoffset: 0;
   }
 }
+
+.confirmation {
+  &-card {
+    p {
+      font-family: var(--font-secondary);
+    }
+    .buttons-wrap {
+      justify-content: space-between;
+      @include sm-down-device {
+        justify-content: center;
+      }
+    }
+  }
+}
