@@ -12,7 +12,7 @@ export const COLLECTIONS = {
   categories: '/strapi-ecommerce-mercadopago/categories',
   products: '/strapi-ecommerce-mercadopago/products',
   invoices: '/strapi-ecommerce-mercadopago/invoices',
-  tags: '/tags',
+  tags: '/tags'
 }
 
 export const PARAMS_CONFIRMATION = {
@@ -34,3 +34,5 @@ export const PAYMENT_STATUS = {
   PENDING: 'pending',
   FAILED: 'failed'
 }
+
+export const LIST_OF_PRODUCTS = 24

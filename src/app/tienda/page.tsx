@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { CategoryBox } from '@/components/category-box'
 import { getColletions, getSingles } from '@/services'
-import { COLLECTIONS } from '@/utils/constants'
+import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
@@ -30,7 +30,7 @@ const Shop = async ({ searchParams }) => {
   params = {
     ...params,
     sort: 'type:asc',
-    'pagination[pageSize]': 12,
+    'pagination[pageSize]': LIST_OF_PRODUCTS,
     'pagination[page]': searchParams?.page || 1
   }
 
