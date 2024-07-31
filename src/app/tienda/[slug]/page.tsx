@@ -42,7 +42,8 @@ const ProductDefaultPage = async ({ params }) => {
     pictures,
     sku,
     information,
-    stock
+    stock,
+    type
   } = product || {}
 
   const limitedStock = stock >= 0 && stock <= 6
@@ -91,7 +92,7 @@ const ProductDefaultPage = async ({ params }) => {
                     </li>
                   </ul>
                 </div>
-                <ShippingInfo promises={promises} />
+                <ShippingInfo promises={promises} type={type} />
                 <PaymentsInformation message={payment_message} />
                 <Accordion information={information} />
               </div>

@@ -73,6 +73,7 @@ export interface ProductsDatum {
   pictures: imagesType[]
   categories: Categories
   promotion: Promotion
+  type: 'producto' | 'servicio'
   quantityCart?: number
   information?: BlocksContent[]
 }

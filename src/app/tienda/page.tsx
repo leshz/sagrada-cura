@@ -29,6 +29,7 @@ const Shop = async ({ searchParams }) => {
   }
   params = {
     ...params,
+    sort: 'type:asc',
     'pagination[pageSize]': 12,
     'pagination[page]': searchParams?.page || 1
   }
