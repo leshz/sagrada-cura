@@ -22,9 +22,10 @@ const Shop = async ({ searchParams }) => {
       'filters[promotion][recommended][$eq]': true
     }
   }
+
   if (category) {
     params = {
-      'filters[categories][slug][$eq]': category.replace(/^[a-z0-9]+(?:-[a-z0-9]+)*$/gm, '')
+      'filters[categories][slug][$eq]': category
     }
   }
   params = {

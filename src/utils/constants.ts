@@ -36,3 +36,5 @@ export const PAYMENT_STATUS = {
 }
 
 export const LIST_OF_PRODUCTS = 24
+
+export const SLUG_REGEX = /^[a-z0-9]+(?:-[a-z0-9]+)*$/gm
