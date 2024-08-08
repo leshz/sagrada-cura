@@ -4,12 +4,12 @@ import { ImageWrapper } from '@/components/Image'
 import { useState } from 'react'
 import type { Swiper as SwiperType } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Thumbs, Pagination } from 'swiper/modules'
+import { Thumbs, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import SwiperCore from 'swiper'
 
 import 'swiper/css/bundle'
 
-SwiperCore.use([Pagination])
+SwiperCore.use([Pagination, Autoplay, EffectFade])
 
 const Slider = ({ pictures }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
@@ -17,6 +17,7 @@ const Slider = ({ pictures }) => {
     modules: [Thumbs],
     thumbs: { swiper: thumbsSwiper },
     spaceBetween: 10,
+    autoPlay: true,
     loop: true,
     slidesPerView: 1,
     speed: 1000,
@@ -41,11 +42,7 @@ const Slider = ({ pictures }) => {
               {pictures.map(picture => (
                 <SwiperSlide key={picture.id} className="swiper-slide">
                   <div className="shop-details-tab-img">
-                    <ImageWrapper
-                      image={picture}
-                      fill
-                      priority
-                    />
+                    <ImageWrapper image={picture} fill priority />
                   </div>
                 </SwiperSlide>
               ))}

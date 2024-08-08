@@ -734,6 +734,7 @@ Shop Details page Css
       display: block;
       .exclusive-slider {
         position: relative;
+        border-radius: var(--radius);
         .slider-btn {
           display: block;
           cursor: pointer;
@@ -768,10 +769,13 @@ Shop Details page Css
           rgba(255, 255, 255, 0) 100%
         );
         z-index: 2;
+        
         @include lg-device() {
           gap: 20px;
         }
         @include sm-down-device() {
+          position: relative;
+          background: none;
           gap: 20px;
           justify-content: center;
         }
