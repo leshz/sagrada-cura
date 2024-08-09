@@ -627,7 +627,7 @@ Shop Details page Css
       aspect-ratio: 636/803 auto;
 
       @include md-down-device() {
-        aspect-ratio: 1 / 1 auto;
+        aspect-ratio: 3 / 4 auto;
       }
       img {
         object-fit: cover;
