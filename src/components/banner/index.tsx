@@ -92,7 +92,7 @@ const DoubleBanner = ({ data }) => {
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div className="banner-2-right-img-bg">
-                          <ImageWrapper image={image} format="large" priority />
+                          <ImageWrapper image={image} fill priority />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
