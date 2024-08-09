@@ -17,7 +17,7 @@ const BlogPreview = ({ blog }) => {
       <div className="article-card">
         <div className="article-image">
           <Link className="article-card-img hover-img" href={urlBlog}>
-            <ImageWrapper image={image} />
+            <ImageWrapper image={image} format='medium'  width={414}  height={414} />
           </Link>
           <div className="blog-date">
             <Link href={urlBlog}>{dateFormat(publishedAt)}</Link>

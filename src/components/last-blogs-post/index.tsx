@@ -20,7 +20,7 @@ const PreviewArticle = ({ article, readlabel }) => {
       <div className="article-card style-2">
         <div className="article-image">
           <Link className="article-card-img hover-img" href={linkBlogPage}>
-            <ImageWrapper image={image}  />
+            <ImageWrapper image={image}  format='small'/>
           </Link>
         </div>
         <div className="article-card-content">
