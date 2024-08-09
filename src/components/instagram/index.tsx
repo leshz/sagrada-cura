@@ -20,7 +20,7 @@ const Instagram = ({ feed }) => {
       loop: true,
       speed: 2500,
       autoplay: {
-        delay: 2000,
+        delay: 5000,
         disableOnInteraction: true
       },
       breakpoints: {
