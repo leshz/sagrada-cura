@@ -8,9 +8,8 @@ import { Cormorant, Fauna_One } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Analytics } from '@vercel/analytics/react'
+import { GoogleAnalytics } from '@/providers/analitycs'
 import type { Metadata } from 'next'
-import { CSPostHogProvider } from '../providers/posthog'
 import Error from './error'
 
 import 'react-toastify/dist/ReactToastify.css'
@@ -70,26 +69,24 @@ const RootLayout = async ({ children }) => {
       className={`${cormorant.variable} ${Secondary.variable} `}
       lang="es-CO"
     >
-      <CSPostHogProvider>
-        <Analytics />
-        <body>
-          <ErrorBoundary errorComponent={Error}>
-            <Topbar data={data} />
-            <Suspense>
-              <Header data={data} menuLinks={menu} />
-            </Suspense>
-            {children}
-            <ToastContainer
-              pauseOnHover={false}
-              position="bottom-right"
-              transition={Slide}
-              pauseOnFocusLoss={false}
-            />
-            <FooterLayout data={data} />
-          </ErrorBoundary>
-          <SpeedInsights />
-        </body>
-      </CSPostHogProvider>
+      <GoogleAnalytics />
+      <body>
+        <ErrorBoundary errorComponent={Error}>
+          <Topbar data={data} />
+          <Suspense>
+            <Header data={data} menuLinks={menu} />
+          </Suspense>
+          {children}
+          <ToastContainer
+            pauseOnHover={false}
+            position="bottom-right"
+            transition={Slide}
+            pauseOnFocusLoss={false}
+          />
+          <FooterLayout data={data} />
+        </ErrorBoundary>
+        <SpeedInsights />
+      </body>
     </html>
   )
 }

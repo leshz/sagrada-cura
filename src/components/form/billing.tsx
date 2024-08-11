@@ -82,14 +82,12 @@ const BillingForm = () => {
     )
     const cities = getcities?.ciudades || []
     return cities.map((city, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <option key={index} value={city} label={city} />
+      <option key={`${index + 1}-city`} value={city} label={city} />
     ))
   }
 
   return (
     <div className="form-wrap mb-30">
-   
       <form onSubmit={handleSubmit} method="POST">
         <fieldset>
           <legend>Detalles de facturación</legend>
