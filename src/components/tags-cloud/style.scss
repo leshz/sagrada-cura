@@ -1,0 +1,272 @@
+@import '@/styles/mixins.scss';
+
+.sidebar-area {
+    .shop-widget-title {
+      color: var(--primary-color1);
+      font-family: var(--font-primary);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.4px;
+      border-bottom: 2px solid var(--primary-color1);
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    .shop-widget {
+      padding: 25px;
+      border: 1px solid rgba(#222, 0.3);
+      .shop-item {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+          margin-bottom: 15px;
+          position: relative;
+          padding-left: 25px;
+          transition: 0.5s;
+          &.selected {
+            &::before {
+              background-color: var(--primary-color1);
+            }
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+          a {
+            color: var(--primary-color1);
+            font-family: var(--font-primary);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0.3px;
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid var(--primary-color1);
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.5s;
+          }
+  
+          &:hover {
+            &::before {
+              background-color: var(--primary-color1);
+            }
+          }
+          &.brand-list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
+              flex-wrap: wrap;
+              gap: 5px;
+              span {
+                color: var(--primary-color1);
+                font-family: var(--font-primary);
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 1;
+                padding: 2px 6px;
+                border: 1px solid var(--text-color);
+                border-radius: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+      .top-product-widget {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+  
+        .top-product-img {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            border-radius: 5px;
+          }
+        }
+  
+        .top-product-content {
+          max-width: 200px;
+          width: 100%;
+  
+          h6 {
+            margin-bottom: 10px;
+  
+            a {
+              color: var(--text-color);
+              font-family: var(--font-primary);
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 20px;
+              letter-spacing: 0.32px;
+              text-transform: capitalize;
+            }
+          }
+  
+          span {
+            color: var(--text-color);
+            font-family: var(--font-primary);
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0;
+  
+            del {
+              color: var(--text-color2);
+              font-family: var(--font-primary);
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 1;
+            }
+          }
+        }
+      }
+      .recent-post-widget {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+  
+        .recent-post-img {
+          img {
+            min-width: 92px;
+            max-width: 92px;
+            height: 71px;
+          }
+        }
+  
+        .recent-post-content {
+          > a {
+            color: rgba(#222, 0.5);
+            font-family: var(--font-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: capitalize;
+            margin-bottom: 3px;
+          }
+  
+          h6 {
+            a {
+              color: var(--text-color);
+              font-family: var(--font-primary);
+              font-size: 20px;
+              font-weight: 500;
+              line-height: 20px;
+              letter-spacing: 0.32px;
+              transition: 0.5s;
+  
+              &:hover {
+                color: var(--text-color3);
+              }
+            }
+          }
+        }
+      }
+      .tag-list {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+  
+        @include lg-device() {
+          gap: 14px;
+        }
+  
+        li {
+          a {
+            color: rgba(#222, 0.5);
+            font-family: var(--font-secondary);
+            font-size: 14px;
+            font-weight: 400;
+            display: block;
+            padding: 6px 21px;
+            border: 1px solid rgba(#222, 0.4);
+            transition: 0.5s;
+          }
+          &:hover {
+            a {
+              border: 1px solid var(--primary-color1);
+              color: var(--primary-color1);
+            }
+          }
+        }
+      }
+      .search-box {
+        display: flex;
+        align-items: center;
+  
+        input {
+          width: 100%;
+          padding: 8px 20px;
+          font-family: var(--font-primary);
+          font-size: 14px;
+          height: 50px;
+          border: 1px solid var(--primary-color1);
+          &:focus {
+            border: 1px solid #ddd;
+          }
+        }
+  
+        button {
+          background-color: var(--primary-color1);
+          min-width: 90px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          i {
+            color: var(--white-color);
+            font-size: 22px;
+          }
+  
+          @include sm-down-device() {
+            min-width: 70px;
+          }
+        }
+      }
+      &.two {
+        padding: 35px 20px;
+        border: unset;
+        @include lg-device() {
+          padding: 25px 10px;
+        }
+      }
+    }
+    &.style-2 {
+      border: 1px solid rgba(#222, 0.30000001192092896);
+  
+      .filter-divider {
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 1px;
+          height: 100%;
+          background-color: rgba(#222, 0.30000001192092896);
+          top: 0;
+          right: 0;
+          @include lg-down-device() {
+            display: none;
+          }
+        }
+      }
+    }
+  }

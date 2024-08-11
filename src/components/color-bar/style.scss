@@ -1,0 +1,34 @@
+@import '@/styles/mixins.scss';
+
+.color-bar {
+  height: 250px;
+  margin-bottom: -150px;
+  width: 100%;
+
+  @include sm-down-device() {
+    margin-bottom: -210px ;
+  }
+
+  &.approved {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--success), 0.3),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+  &.pending {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--warning), 0.3),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  &.failed {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--error), 0.3),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}

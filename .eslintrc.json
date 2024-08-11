@@ -1,3 +1,41 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb",
+    "next/core-web-vitals",
+    "next",
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "camelcase": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "jsx-a11y/anchor-is-valid": ["warn"],
+    "react/no-unstable-nested-components": ["off"],
+    "react/jsx-props-no-spreading": [
+      2,
+      {
+        "exceptions": ["Swiper", "Img"]
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "import/prefer-default-export": ["off", { "target": "any" }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "tsx": "never",
+        "js": "never",
+        "ts": "never",
+        "jsx": "never"
+      }
+    ]
+  }
 }
