@@ -4,10 +4,8 @@ export const paymentMethods = [
     name: 'Efecty',
     payment_type_id: 'ticket',
     status: 'active',
-    secure_thumbnail:
-      'https://http2.mlstatic.com/storage/logos-api-admin/e5ee1d00-f39b-11eb-8e0d-6f4af49bf82e-l.png',
-    thumbnail:
-      'https://http2.mlstatic.com/storage/logos-api-admin/e5ee1d00-f39b-11eb-8e0d-6f4af49bf82e-l.png',
+    secure_thumbnail: '/logos/effecty.png',
+    thumbnail: '/logos/effecty.png',
     deferred_capture: 'does_not_apply',
     settings: [],
     additional_info_needed: [],
@@ -22,9 +20,8 @@ export const paymentMethods = [
     name: 'Crédito Fácil Codensa',
     payment_type_id: 'credit_card',
     status: 'active',
-    secure_thumbnail:
-      'https://www.mercadopago.com/org-img/MP3/API/logos/codensa.gif',
-    thumbnail: 'http://img.mlstatic.com/org-img/MP3/API/logos/codensa.gif',
+    secure_thumbnail: '/logos/codensa.gif',
+    thumbnail: '/logos/codensa.gif',
     deferred_capture: 'unsupported',
     settings: [
       {
@@ -138,8 +135,7 @@ export const paymentMethods = [
     name: 'PSE',
     payment_type_id: 'bank_transfer',
     status: 'active',
-    secure_thumbnail:
-      '/logos/pse-logo.svg',
+    secure_thumbnail: '/logos/pse-logo.svg',
     thumbnail: '/logos/pse-logo.svg',
     deferred_capture: 'does_not_apply',
     settings: [],
@@ -303,8 +299,7 @@ export const paymentMethods = [
     id: 'mercado-pago',
     name: 'MELI',
     status: 'active',
-    secure_thumbnail:
-      '/logos/mercado-pago.svg',
+    secure_thumbnail: '/logos/mercado-pago.svg',
     thumbnail: '/logos/mercado-pago.svg'
   }
 ]

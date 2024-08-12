@@ -31,7 +31,7 @@ const Slider = ({ pictures }) => {
     }
   }
 
-  const picsPerView = pictures?.length > 6 ? 6 : pictures?.length || 0
+  const picsPerView = pictures?.length > 6 ? 6 : pictures?.length || null
 
   return (
     <div className="shop-details-img style-2">
