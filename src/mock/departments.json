@@ -1,6 +1,11 @@
 {
   "colombia": [
     {
+      "id": 32,
+      "departamento": "Bogota",
+      "ciudades": ["Bogota D.C."]
+    },
+    {
       "id": 0,
       "departamento": "Amazonas",
       "ciudades": ["Leticia", "Puerto Nariño"]
@@ -567,7 +572,6 @@
         "Arbeláez",
         "Beltrán",
         "Bituima",
-        "Bogotá",
         "Bojacá",
         "Cabrera",
         "Cachipay",
