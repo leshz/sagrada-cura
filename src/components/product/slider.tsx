@@ -31,7 +31,7 @@ const Slider = ({ pictures }) => {
     }
   }
 
-  const picsPerView = pictures.length > 6 ? 6 : pictures.length || 0
+  const picsPerView = pictures?.length > 6 ? 6 : pictures?.length || 0
 
   return (
     <div className="shop-details-img style-2">
@@ -39,7 +39,7 @@ const Slider = ({ pictures }) => {
         <div className="tab-pane fade show active">
           <Swiper {...slideSettings} className="swiper exclusive-slider">
             <div className="swiper-wrapper">
-              {pictures.map(picture => (
+              {pictures?.map(picture => (
                 <SwiperSlide key={picture.id} className="swiper-slide">
                   <div className="shop-details-tab-img">
                     <ImageWrapper image={picture} fill priority />
