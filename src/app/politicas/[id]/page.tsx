@@ -5,18 +5,18 @@ import { getSingles } from '@/services'
 
 import '../../nuestra-marca/page.scss'
 
-// export const dynamic = 'force-static'
+export const dynamic = 'force-static'
 
-// export const generateStaticParams = async () => {
-//   const ids = [
-//     'condiciones-de-envio',
-//     'derecho-de-retracto',
-//     'paquetes-corporativos',
-//     'politicas-de-devolucion',
-//     'tratamiento-de-datos'
-//   ]
-//   return ids
-// }
+export const generateStaticParams = async () => {
+  const ids = [
+    'condiciones-de-envio',
+    'derecho-de-retracto',
+    'paquetes-corporativos',
+    'politicas-de-devolucion',
+    'tratamiento-de-datos'
+  ]
+  return ids
+}
 
 const Docs = async ({ params }) => {
   const { id } = params
@@ -30,9 +30,7 @@ const Docs = async ({ params }) => {
   }
 
   try {
-    const { content, image, title } = await getSingles(availablePages[id], {
-      next: { revalidate: process.env.REVALIDATE_CONTENT }
-    })
+    const { content, image, title } = await getSingles(availablePages[id])
 
     return (
       <div className="about-us-banner mb-40">

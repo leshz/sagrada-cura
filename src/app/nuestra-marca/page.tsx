@@ -4,10 +4,10 @@ import { getSingles } from '@/services'
 
 import './page.scss'
 
+export const dynamic = 'force-static'
+
 const AboutUs = async () => {
-  const { title, article, image, blogs_title } = await getSingles('about-us', {
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })
+  const { title, article, image, blogs_title } = await getSingles('about-us')
 
   return (
     <>

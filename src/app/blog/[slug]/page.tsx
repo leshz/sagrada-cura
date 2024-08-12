@@ -10,6 +10,8 @@ import { ImageWrapper } from '@/components/Image'
 
 import './page.scss'
 
+export const dynamic = 'force-static'
+
 export const generateStaticParams = async () => {
   const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
@@ -19,8 +21,7 @@ export const generateStaticParams = async () => {
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
   const { data } = await getColletions(COLLECTIONS.blogs, {
-    slug,
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
+    slug
   })
 
   if (data === null) return notFound()

@@ -6,7 +6,7 @@ const checkout = async checkoutData => {
     const response = await api(`${process.env.CHECKOUT}`, {
       method: 'POST',
       body: data,
-      next: { revalidate: process.env.REVALIDATE_PRODUCTS }
+      cache: 'no-store'
     })
     return response
   } catch (err: any) {
