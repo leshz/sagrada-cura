@@ -28,15 +28,7 @@ const FixedBanner = ({ content }) => {
             <BlocksRenderer
               content={title}
               blocks={{
-                paragraph: ({ children }) => <p className="">{children}</p>,
-                link: ({ children, url: path }) => (
-                  <Link
-                    href={path}
-                    className="primary-btn3 black-bg hover-btn5 hover-white"
-                  >
-                    {children}
-                  </Link>
-                )
+                paragraph: ({ children }) => <p className="">{children}</p>
               }}
               modifiers={{
                 bold: ({ children }) => <strong>{children}</strong>,
@@ -64,7 +56,7 @@ const DoubleBanner = ({ data }) => {
       spaceBetween: 30,
       speed: 2000,
       loop: true,
-      autoplay: true,
+      autoplay: false,
       effect: 'fade',
 
       fadeEffect: {
@@ -92,7 +84,11 @@ const DoubleBanner = ({ data }) => {
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
                         <div className="banner-2-right-img-bg">
-                          <ImageWrapper image={image} width={2000} height={1333} />
+                          <ImageWrapper
+                            image={image}
+                            width={2000}
+                            height={1333}
+                          />
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
