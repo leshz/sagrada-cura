@@ -9,6 +9,9 @@
   transition: 0.5s;
   height: 100%;
   border-radius: 5px;
+  @include md-down-device {
+    padding: 0;
+  }
   .product-card-img {
     display: flex;
     align-items: center;
@@ -232,6 +235,11 @@
 
     p {
       margin-bottom: 20px;
+      @include md-down-device {
+        &.short_description {
+          display: none;
+        }
+      }
 
       a {
         color: #878585;
@@ -254,7 +262,7 @@
         font-weight: 600;
         margin-bottom: 5px;
       }
-      span{
+      span {
         display: block;
       }
 
