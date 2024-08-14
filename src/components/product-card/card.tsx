@@ -51,7 +51,7 @@ const Card = ({ product, labels }: Props) => {
   }
 
   return (
-    <div className={`col${gridClass}`}>
+    <div className={`col-6 col${gridClass}`}>
       <div className="product-card style-3 hover-btn">
         <div
           className={`product-card-img ${
