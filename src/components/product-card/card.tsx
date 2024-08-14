@@ -64,7 +64,7 @@ const Card = ({ product, labels }: Props) => {
                 key={image.id}
                 image={image}
                 fill
-                format='medium'
+                format="medium"
                 className={`img${index + 1}`}
               />
             ))}
@@ -120,7 +120,7 @@ const Card = ({ product, labels }: Props) => {
               {name}
             </Link>
           </h6>
-          <p>
+          <p className="short_description">
             <Link href={productView}>{short_description}</Link>
           </p>
           <Price
