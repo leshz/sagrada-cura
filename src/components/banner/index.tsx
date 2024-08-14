@@ -56,7 +56,7 @@ const DoubleBanner = ({ data }) => {
       spaceBetween: 30,
       speed: 2000,
       loop: true,
-      autoplay: false,
+      autoplay: true,
       effect: 'fade',
 
       fadeEffect: {

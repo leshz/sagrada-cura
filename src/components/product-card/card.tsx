@@ -63,8 +63,7 @@ const Card = ({ product, labels }: Props) => {
               <ImageWrapper
                 key={image.id}
                 image={image}
-                width={457}
-                height={457}
+                fill
                 format='medium'
                 className={`img${index + 1}`}
               />
