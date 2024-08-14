@@ -60,6 +60,9 @@ const Shop = async ({ searchParams }) => {
               <div className="all-products list-grid-product-wrap">
                 <div className="shop-columns-title-section mb-40">
                   <p>{`Productos totales: ${total}`}</p>
+                  {/* <Link href="/tienda" className="primary-btn3 hover-btn3">
+                    Limpiar filtros
+                  </Link> */}
                   <div className="filter-selector">
                     <GridSelector />
                   </div>
