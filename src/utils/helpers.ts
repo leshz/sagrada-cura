@@ -13,7 +13,7 @@ export const getIcons = (icon: string): string => {
   return iconName
 }
 
-export const dateFormat = (date: Date, type = 'medium') =>
+export const dateFormat = (date, type = 'medium') =>
   format({
     date,
     format: type,
