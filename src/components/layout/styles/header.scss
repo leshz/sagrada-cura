@@ -1364,6 +1364,10 @@ header {
       justify-content: center !important;
     }
 
+    .mobile-logo-wrap {
+      max-width: 130px;
+    }
+
     .dropdown-icon {
       color: var(--white-color);
     }
@@ -1401,7 +1405,7 @@ header {
       }
 
       .menu-list {
-        padding-top: 50px;
+        padding-top: 30px;
         padding-bottom: 50px;
         .menu-item-has-children {
           > a {

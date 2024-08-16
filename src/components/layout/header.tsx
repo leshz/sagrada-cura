@@ -43,7 +43,7 @@ const Header = ({ data, menuLinks }) => {
   return (
     <Menu.Root>
       <Menu.Logo logo={logo} />
-      <Menu.NavBar isOpen={menu.isSidebarOpen} data={data}>
+      <Menu.NavBar isOpen={menu.isSidebarOpen} logo={logo}>
         {items?.map((section: any) => {
           const { title, url, children = [], id } = section
           const hasChildren = children.length > 1

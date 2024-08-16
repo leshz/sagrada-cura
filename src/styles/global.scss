@@ -1226,18 +1226,7 @@ input {
   .choose-product-card {
     position: relative;
     height: 280px;
-    @include lg-up-device() {
-      filter: grayscale(0.8);
-    }
     transition: all 0.6s ease-in-out;
-    &:hover {
-      @include lg-up-device() {
-        filter: grayscale(0);
-        img {
-          filter: blur(0);
-        }
-      }
-    }
 
     @include lg-up-device() {
       height: 520px;
@@ -1247,9 +1236,6 @@ input {
       width: 100%;
       height: 100%;
       transition: all 1s ease-in-out;
-      @include lg-up-device() {
-        filter: blur(2px);
-      }
     }
 
     .choose-product-card-content {
@@ -1264,9 +1250,8 @@ input {
         font-size: 26px;
         line-height: 1;
         text-transform: uppercase;
-        color: var(--white-color);
+        color: var(--important-color2);
         margin-bottom: 10px;
-
         &.style-2 {
           color: var(--white-color);
           margin-left: -65px;
@@ -3899,9 +3884,6 @@ input {
     margin-bottom: 30px;
   }
   .shop-widget {
-    @include xl-down-device {
-      display: none;
-    }
     padding: 25px;
     border: 1px solid rgba(#222, 0.30000001192092896);
     .shop-item {
@@ -4941,9 +4923,6 @@ home2 Banner Css
         height: 550px;
       }
     }
-    @include xl-down-device() {
-      display: none;
-    }
     .banner-2-left-img {
       height: 100%;
 
@@ -5074,7 +5053,10 @@ home2 Banner Css
       width: unset;
       gap: 14px;
       @include md-down-device() {
-        display: none;
+        justify-content: center;
+        left: 0;
+        right: 0;
+        width: 100%;
       }
       .swiper-pagination-bullet {
         width: 13px;
@@ -5083,6 +5065,7 @@ home2 Banner Css
         background-color: transparent;
         opacity: 1;
         margin: 0;
+        transition: .5s ease-in-out all;
 
         &.swiper-pagination-bullet-active {
           background: var(--primary-color1);
