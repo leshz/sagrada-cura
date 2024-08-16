@@ -1,18 +1,18 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useStore } from '@/store'
 import { productsPricesSummary, currencyFormat } from '@/utils/helpers'
 import { useChangePath } from '@/hooks/use-change-path'
 import { useRouter } from 'next/navigation'
+import { useOutsideClick } from '@/hooks/use-click-outside'
 import { CartItem } from './cart-item'
 
 const Cart = ({ labels }) => {
   const router = useRouter()
   const [showCart, setShowCart] = useState(false)
-  const cartButtonRef: any = useRef()
-  const cartMenuRef: any = useRef()
+  const cartButtonRef = useOutsideClick(() => setShowCart(false))
   const { sub_total, discount, continue_shopping, got_checkout } = labels || {}
   const { cart } = useStore(state => state)
   const cartHasItems: boolean = cart.length > 0
@@ -25,7 +25,6 @@ const Cart = ({ labels }) => {
     0
   )
 
-  // Handle cart button click
   const handleCartButtonClick = () => {
     if (cartHasItems) {
       setShowCart(!showCart)
@@ -34,26 +33,6 @@ const Cart = ({ labels }) => {
     }
   }
 
-  // Close the cart when a click occurs outside of the cart area
-  const handleOutsideClick = event => {
-    if (
-      cartMenuRef.current &&
-      !cartMenuRef.current.contains(event.target) &&
-      cartButtonRef.current !== event.target
-    ) {
-      setShowCart(false)
-    }
-  }
-
-  useEffect(() => {
-    // Add event listeners when the component mounts
-    document.addEventListener('click', handleOutsideClick)
-    // Clean up the event listeners when the component unmounts
-    return () => {
-      document.removeEventListener('click', handleOutsideClick)
-    }
-  }, [])
-
   useEffect(() => {
     if (!cartHasItems) {
       setShowCart(false)
@@ -61,9 +40,8 @@ const Cart = ({ labels }) => {
   }, [cartHasItems])
 
   return (
-    <>
+    <div ref={cartButtonRef}>
       <button
-        ref={cartButtonRef.current}
         onClick={handleCartButtonClick}
         type="button"
         className="modal-btn header-cart-btn"
@@ -79,10 +57,7 @@ const Cart = ({ labels }) => {
         </svg>
         {!!quantity && <span>{quantity}</span>}
       </button>
-      <div
-        ref={cartMenuRef.current}
-        className={`cart-menu ${showCart ? 'active' : ''}`}
-      >
+      <div className={`cart-menu ${showCart ? 'active' : ''}`}>
         {cartHasItems && (
           <>
             <div className="cart-body">
@@ -142,7 +117,7 @@ const Cart = ({ labels }) => {
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }
 
