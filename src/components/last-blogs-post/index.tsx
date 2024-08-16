@@ -16,7 +16,7 @@ const PreviewArticle = ({ article, readlabel }) => {
   const linkBlogPage = `/blog/${slug}`
 
   return (
-    <div className="col-lg-6">
+    <div className="col-lg-6 col-6 col-sm-12">
       <div className="article-card style-2">
         <div className="article-image">
           <Link className="article-card-img hover-img" href={linkBlogPage}>
@@ -62,7 +62,7 @@ const LastBlogsPost = async ({ blog }) => {
             {title} {sub_title && <span>{sub_title}</span>}
           </h3>
         </div>
-        <div className="row g-4">
+        <div className="row g-2 g-sm-4 g-lg-4">
           {data.map(article => (
             <PreviewArticle
               key={article.id}

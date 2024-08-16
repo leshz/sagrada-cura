@@ -31,9 +31,6 @@
           @include lg-down-device() {
             width: 100%;
           }
-          @include sm-down-device() {
-            aspect-ratio: unset;
-          }
         }
 
         &::before {
@@ -194,7 +191,7 @@
         padding: 20px 35px 20px 35px;
 
         @include sm-down-device() {
-          padding: 20px;
+          padding: 10px;
         }
       }
     }
@@ -224,14 +221,10 @@
       .article-image {
         @include xxl-down-device() {
           .article-card-img {
-            width: 258px;
+            width: 100%;
           }
         }
-        @include xl-down-device() {
-          .article-card-img {
-            width: unset;
-          }
-        }
+
         @include lg-device() {
           max-width: 208px;
         }
@@ -248,7 +241,7 @@
         }
 
         @include sm-down-device() {
-          padding: 20px;
+          padding: 10px;
         }
 
         .tag {
@@ -306,13 +299,7 @@
 
         img {
           max-width: 290px;
-
-          @include lg-down-device() {
-            width: unset;
-          }
-
           @include sm-down-device() {
-            max-width: unset;
             width: 100%;
           }
         }

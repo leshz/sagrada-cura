@@ -25,29 +25,32 @@ const Instagram = ({ feed }) => {
       },
       breakpoints: {
         280: {
-          slidesPerView: 1,
-          spaceBetween: 15
+          slidesPerView: 2,
+          spaceBetween: 0
         },
         386: {
-          slidesPerView: 2
+          slidesPerView: 4,
+          spaceBetween: 0
         },
         576: {
           slidesPerView: 4,
-          spaceBetween: 15
+          spaceBetween: 0
         },
         768: {
           slidesPerView: 5,
-          spaceBetween: 15
+          spaceBetween: 0
         },
         992: {
           slidesPerView: 6,
-          spaceBetween: 15
+          spaceBetween: 0
         },
         1200: {
-          slidesPerView: 7
+          slidesPerView: 7,
+          spaceBetween: 0
         },
         1400: {
-          slidesPerView: 8
+          slidesPerView: 8,
+          spaceBetween: 0
         }
       }
     }),
@@ -77,7 +80,7 @@ const Instagram = ({ feed }) => {
                     return (
                       <SwiperSlide key={id} className="swiper-slide">
                         <a target="_blank" href={profile_url} aria-label="link">
-                          <ImageWrapper format='small' image={item} />
+                          <ImageWrapper format="small" image={item} />
                         </a>
                       </SwiperSlide>
                     )
