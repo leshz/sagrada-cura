@@ -975,17 +975,19 @@ header {
         }
 
         &.menu-item-has-children {
-          &::after {
-            content: '\f282';
-            font-family: bootstrap-icons;
-            font-weight: 400;
-            position: absolute;
-            top: 18px;
-            right: -15px;
-            font-size: 13px;
-            color: var(--title-color1);
-            @include lg-down-device() {
-              display: none;
+          &:has(.sub-menu) {
+            &::after {
+              content: '\f282';
+              font-family: bootstrap-icons;
+              font-weight: 400;
+              position: absolute;
+              top: 18px;
+              right: -15px;
+              font-size: 13px;
+              color: var(--title-color1);
+              @include lg-down-device() {
+                display: none;
+              }
             }
           }
           &.position-inherit {
