@@ -59,7 +59,7 @@ const HightLights = ({ highlights }) => {
                   return (
                     <SwiperSlide key={id} className="swiper-slide">
                       <div className="row g-4">
-                        <div className="col-lg-6">
+                        <div className="col-lg-8">
                           <div className="exclusive-product-left">
                             <h2>{sliderTitle}</h2>
                             <BlocksRenderer
@@ -88,7 +88,7 @@ const HightLights = ({ highlights }) => {
                             </Link>
                           </div>
                         </div>
-                        <div className="col-lg-6 d-none d-sm-none d-lg-block">
+                        <div className="col-lg-4 d-none d-sm-none d-lg-block">
                           <div className="exclusive-product-right">
                             <div className="product-right-img hover-img">
                               {/* <Link href="/shop/product-default"> */}

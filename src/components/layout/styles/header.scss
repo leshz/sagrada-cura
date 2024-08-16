@@ -289,10 +289,11 @@ header {
         top: 44px;
         padding: 20px;
         z-index: 99;
-        display: none;
-        transform: scaleY(0);
+        // display: none;
+        // transform: scaleY(0);
         transform-origin: top;
         margin-right: -2.5rem;
+        animation: fadeup 0.3s forwards;
         @include sm-down-device() {
           padding: 15px;
           right: -45px;
@@ -315,13 +316,25 @@ header {
               visibility: visible;
             }
           }
+          @keyframes fadeup {
+            0% {
+              opacity: 1;
+              transform: scaleY(1);
+              visibility: visible;
+            }
+            100% {
+              opacity: 0;
+              transform: scaleY(0);
+              visibility: hidden;
+            }
+          }
         }
 
         .cart-body {
           padding: 0 0 20px;
           min-width: 290px;
           max-height: 250px;
-          overflow-y: scroll;
+          overflow-y: auto;
 
           ul {
             .single-item {
@@ -495,7 +508,7 @@ header {
 
                 .primary-btn1 {
                   padding: 17px 20px;
-                  font-size: 15px;
+                  font-size: 16px;
                   display: flex;
                   justify-content: center;
                   line-height: 1;

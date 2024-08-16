@@ -29,7 +29,7 @@ const Instagram = ({ feed }) => {
           spaceBetween: 0
         },
         386: {
-          slidesPerView: 4,
+          slidesPerView: 2,
           spaceBetween: 0
         },
         576: {

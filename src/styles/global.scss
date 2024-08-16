@@ -577,9 +577,9 @@ input {
   input {
     border: 1px solid var(--primary-color1);
     font-family: var(--font-secondary);
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-radius: unset;
     border-radius: var(--radius);
     &:focus {
@@ -1255,7 +1255,6 @@ input {
         margin-bottom: 10px;
         padding: 5px 20px 5px 25px;
         border-radius: 0 5px 5px 0;
-   
 
         @include lg-device() {
           font-size: 27px;
@@ -2038,7 +2037,7 @@ input {
   }
 
   .exclusive-product-left {
-    max-width: 516px;
+    // max-width: 516px;
 
     h2 {
       color: var(--white-color);
@@ -5673,3 +5672,25 @@ Testimonial-Section Css
     }
   }
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #828282 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #828282;
+    border-radius: 5px;
+    border: 3px solid #ffffff;
+  }
