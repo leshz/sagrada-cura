@@ -1247,7 +1247,7 @@ input {
         font-family: var(--font-primary);
         font-style: normal;
         font-weight: 700;
-        font-size: 26px;
+        font-size: 27px;
         line-height: 1;
         text-transform: uppercase;
         color: var(--important-color2);
@@ -1258,7 +1258,7 @@ input {
         }
 
         @include lg-device() {
-          font-size: 50px;
+          font-size: 27px;
         }
       }
 
