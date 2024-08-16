@@ -37,7 +37,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: {
       template: '%s | Sanación Natural',
-      default: 'Sagrada Cura'
+      default: 'Sagrada Cura | Sanación Natural',
     },
     keywords: seo?.keywords || '',
     description: seo?.metaDescription || '',

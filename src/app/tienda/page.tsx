@@ -52,14 +52,14 @@ const Shop = async ({ searchParams }) => {
   const hasProducts = data?.length >= 1
 
   return (
-    <div className="right-sidebar-section column-sidebar-padding mt-40 mb-40">
+    <div className="right-sidebar-section column-sidebar-padding mt-50 mb-40">
       <div className="container-fluid">
         <div className="row gy-5 justify-content-center">
           <div className="col-xl-9 order-xl-1 order-2">
             {hasProducts && (
               <div className="all-products list-grid-product-wrap">
                 <div className="shop-columns-title-section mb-40">
-                  <p>{`Productos totales: ${total}`}</p>
+                  <p>{`${total} Productos`}</p>
                   {/* <Link href="/tienda" className="primary-btn3 hover-btn3">
                     Limpiar filtros
                   </Link> */}
@@ -87,7 +87,7 @@ const Shop = async ({ searchParams }) => {
 
             {hasProducts && <Paginator meta={meta} />}
           </div>
-          <div className="col-xl-3 col-md-8 order-xl-2 order-1">
+          <div className="col-xl-3 col-md-8 order-xl-2 order-1 d-none d-xl-block">
             <div className="sidebar-area">
               <CategoryBox />
             </div>

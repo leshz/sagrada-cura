@@ -17,7 +17,7 @@ const FixedBanner = ({ content }) => {
 
   const { text = '', link: url = '' } = link
   return (
-    <div className="col-xxl-3 col-xl-4">
+    <div className="col-xxl-3 col-xl-4 col-lg-4 d-none d-lg-block d-xl-block">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
           {image && <ImageWrapper image={image} format="medium" priority />}
@@ -74,7 +74,7 @@ const DoubleBanner = ({ data }) => {
       <div className="container-fluid p-0 full-height">
         <div className="row">
           <FixedBanner content={data} />
-          <div className="col-xxl-9 col-xl-8">
+          <div className="col-xxl-9 col-xl-8 col-lg-8">
             <div className="banner-2-right">
               <Swiper {...configBanner} className="swiper banner2-slider">
                 <div className="swiper-wrapper">

@@ -3884,9 +3884,6 @@ input {
     margin-bottom: 30px;
   }
   .shop-widget {
-    @include xl-down-device {
-      display: none;
-    }
     padding: 25px;
     border: 1px solid rgba(#222, 0.30000001192092896);
     .shop-item {
@@ -4926,9 +4923,6 @@ home2 Banner Css
         height: 550px;
       }
     }
-    @include xl-down-device() {
-      display: none;
-    }
     .banner-2-left-img {
       height: 100%;
 
@@ -5059,7 +5053,10 @@ home2 Banner Css
       width: unset;
       gap: 14px;
       @include md-down-device() {
-        display: none;
+        justify-content: center;
+        left: 0;
+        right: 0;
+        width: 100%;
       }
       .swiper-pagination-bullet {
         width: 13px;
@@ -5068,6 +5065,7 @@ home2 Banner Css
         background-color: transparent;
         opacity: 1;
         margin: 0;
+        transition: .5s ease-in-out all;
 
         &.swiper-pagination-bullet-active {
           background: var(--primary-color1);
