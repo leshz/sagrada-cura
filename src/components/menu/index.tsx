@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { Cart } from '@/components/cart'
 import { ImageWrapper } from '@/components/Image'
+import { useEffect, useState } from 'react'
 
 const SingleItemMenu = ({ link, text, path = '' }) => {
   const active = path === link ? 'active' : ''
@@ -93,13 +94,30 @@ const RightSideMenu = ({ click, isOpen, labels }) => (
   </div>
 )
 
-const MainMenuRoot = ({ children }) => (
-    <header className="header-area style-2 sticky">
+const MainMenuRoot = ({ children }) => {
+  const [position, setposition] = useState('')
+
+  const handlerScroll = () => {
+    const { scrollY } = window
+    if (scrollY >= 56) {
+      setposition('sticky')
+    } else {
+      setposition('')
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('scroll', handlerScroll)
+    return () => document.removeEventListener('scroll', handlerScroll)
+  })
+
+  return (
+    <header className={`header-area style-2 ${position}`}>
       <div className="container-md position-relative  d-flex flex-nowrap align-items-center justify-content-between">
         {children}
       </div>
     </header>
   )
+}
 
 export const Menu = {
   Single: SingleItemMenu,

@@ -54,9 +54,9 @@ const DoubleBanner = ({ data }) => {
     () => ({
       slidesPerView: 1,
       spaceBetween: 30,
-      speed: 2000,
+      speed: 3000,
       loop: true,
-      autoplay: true,
+      autoplay: false,
       effect: 'fade',
 
       fadeEffect: {
@@ -70,7 +70,7 @@ const DoubleBanner = ({ data }) => {
     []
   )
   return (
-    <div className="banner-2-section mb-110">
+    <div className="banner-2-section mb-50">
       <div className="container-fluid p-0 full-height">
         <div className="row">
           <FixedBanner content={data} />
