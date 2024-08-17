@@ -1,6 +1,10 @@
 import { format } from '@formkit/tempo'
 import { ProductsDatum } from '@/types/products'
-import { availableIcons } from './constants'
+import { Shipment } from '@/types/shipment'
+import { availableIcons, ITEM_TYPES } from './constants'
+
+import departments from '@/mock/departments.json'
+import { number } from 'yup'
 
 export const phoneFormmater = (phone: string) =>
   phone.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
@@ -17,7 +21,7 @@ export const dateFormat = (date, type = 'medium') =>
   format({
     date,
     format: type,
-    tz: "America/Bogota",
+    tz: 'America/Bogota'
   })
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
@@ -88,6 +92,52 @@ export const productsPricesSummary = (products: ProductsDatum[]) => {
     totalFullPriceDiscount,
     totalDiscounted,
     afterDiscountPrice
+  }
+}
+
+const calculateShipmentPrice = (
+  shipment: Shipment[],
+  departmentCode: string | undefined
+): number => {
+  const foundShipment = shipment.find(({ code }) => code === departmentCode)
+  return foundShipment?.price || 0
+}
+
+const getDepartmentCode = (
+  departments,
+  departmentId: number | null
+): string | undefined => {
+  const department = departments?.find(({ id }) => id === departmentId)
+  return department?.code
+}
+
+interface PriceCalculationResult {
+  total: number
+  isShippable: boolean
+  deliveryValue: number
+}
+
+export const totalPriceWithShipment = (
+  total: number,
+  cart: ProductsDatum[],
+  departmentId: number | null,
+  shipment: Shipment[],
+  departments
+): PriceCalculationResult => {
+  const isShippable = cart.some(({ type }) => type === ITEM_TYPES.PRODUCT)
+
+  if (!isShippable || !departmentId) {
+    return { total, isShippable, deliveryValue: 0 }
+  }
+
+  const departmentCode = getDepartmentCode(departments, departmentId)
+  const deliveryValue = calculateShipmentPrice(shipment, departmentCode)
+  const totalWithShipping = total + deliveryValue
+
+  return {
+    total: totalWithShipping,
+    isShippable,
+    deliveryValue
   }
 }
 

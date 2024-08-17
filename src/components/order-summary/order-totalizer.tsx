@@ -1,13 +1,33 @@
 'use client'
 
-import { currencyFormat, productsPricesSummary } from '@/utils/helpers'
+import {
+  currencyFormat,
+  productsPricesSummary,
+  totalPriceWithShipment
+} from '@/utils/helpers'
 import { useStore } from '@/store'
+import { type Shipment } from '@/types/shipment'
+import data from '@/mock/departments.json'
 
-const OrderTotalizer = () => {
-  const { cart } = useStore(store => store)
+const OrderTotalizer = ({ shipment }: { shipment: Shipment[] }) => {
+  const { cart, department } = useStore(store => store)
+  const { colombia } = data
 
   const { afterDiscountPrice, totalDiscounted, totalFullPrice } =
     productsPricesSummary(cart)
+
+  const { total, isShippable, deliveryValue } = totalPriceWithShipment(
+    afterDiscountPrice,
+    cart,
+    department,
+    shipment,
+    colombia
+  )
+
+  const shippingInfo =
+    isShippable && deliveryValue > 0
+      ? currencyFormat.format(deliveryValue)
+      : 'por definir'
 
   if (cart.length === 0) {
     return null
@@ -26,12 +46,12 @@ const OrderTotalizer = () => {
             <tr>
               <td className="tax">Descuentos</td>
               <td className="price">
-                {currencyFormat.format(totalDiscounted)}
+                - {currencyFormat.format(totalDiscounted)}
               </td>
             </tr>
             <tr>
               <td>Envio</td>
-              <td>por definir</td>
+              <td className="price">{shippingInfo}</td>
             </tr>
           </tbody>
         </table>
@@ -41,9 +61,7 @@ const OrderTotalizer = () => {
           <thead>
             <tr>
               <th>Total</th>
-              <th className="price">
-                {currencyFormat.format(afterDiscountPrice)}
-              </th>
+              <th className="price">{currencyFormat.format(total)}</th>
             </tr>
           </thead>
         </table>
