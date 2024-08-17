@@ -3,9 +3,6 @@ import { ProductsDatum } from '@/types/products'
 import { Shipment } from '@/types/shipment'
 import { availableIcons, ITEM_TYPES } from './constants'
 
-import departments from '@/mock/departments.json'
-import { number } from 'yup'
-
 export const phoneFormmater = (phone: string) =>
   phone.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
 
