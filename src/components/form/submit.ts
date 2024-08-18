@@ -1,11 +1,15 @@
 import { checkout } from '@/services'
+import deparmentList from '@/mock/departments.json'
+import { getDepartmentCode } from '@/utils/helpers'
+import { toast } from 'react-toastify'
 
 export const submitForm = async (
   valSubmit,
   actions,
   cart,
   resetCart,
-  router
+  router,
+  departmentId
 ) => {
   const {
     dni,
@@ -24,6 +28,8 @@ export const submitForm = async (
     quantity: quantityCart
   }))
 
+  const shipCode = getDepartmentCode(deparmentList.colombia, departmentId)
+
   const buyer = {
     dni,
     name,
@@ -36,7 +42,8 @@ export const submitForm = async (
     department,
     city,
     postalCode,
-    message
+    message,
+    type: shipCode
   }
   try {
     const { init_point } = await checkout({ items, buyer, ship })
@@ -44,6 +51,9 @@ export const submitForm = async (
     resetCart()
     router.push(init_point)
   } catch (e) {
-    console.log(e)
+    toast('😓 No podemos generar la orden de pago, intenta mas tarde', {
+      toastId: 'error',
+      type: 'error'
+    })
   }
 }

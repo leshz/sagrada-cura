@@ -1,34 +1,41 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
-import departments from '@/mock/departments.json'
 import { formSchema } from '@/schema/form'
 import { useStore } from '@/store'
-import { useRouter } from 'next/navigation'
+import departmentsList from '@/mock/departments.json'
 import { INITIAL_CHECKOUT_FORM } from '@/utils/constants'
+import { useRouter } from 'next/navigation'
 import { submitForm } from './submit'
 
 const BillingForm = () => {
-  const { cart, resetCart, setDepartment } = useStore()
+  const { cart, resetCart, setDepartment, department } = useStore()
   const router = useRouter()
-  const { colombia } = departments
+  const { colombia } = departmentsList
   const formik = useFormik({
     initialValues: INITIAL_CHECKOUT_FORM,
     validationSchema: formSchema,
     onSubmit: async (valSubmit, actions) => {
-      await submitForm(valSubmit, actions, cart, resetCart, router)
+      await submitForm(valSubmit, actions, cart, resetCart, router, department)
     }
   })
 
   const renderOptions = (departmentName: string) => {
     const getcities = colombia.find(
-      department => department.departamento === departmentName
+      departmentsInfo => departmentsInfo.departamento === departmentName
     )
     const cities = getcities?.ciudades || []
     return cities.map((city, index) => (
       <option key={`${index + 1}-city`} value={city} label={city} />
     ))
   }
+
+  useEffect(() => {
+    if (department) {
+      setDepartment(null)
+    }
+  }, [])
 
   const {
     handleChange,

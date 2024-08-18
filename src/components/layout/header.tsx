@@ -43,8 +43,11 @@ const Header = ({ data, menuLinks }) => {
   return (
     <Menu.Root>
       <Menu.Logo logo={logo} />
-      <Menu.NavBar isOpen={menu.isSidebarOpen} logo={logo}>
-        {items?.map((section) => {
+      <Menu.NavBar
+        isOpen={menu.isSidebarOpen}
+        logo={logo}
+      >
+        {items?.map(section => {
           const { title, url, children = [], id } = section
           const hasChildren = children.length > 1
           return !hasChildren ? (
@@ -63,7 +66,10 @@ const Header = ({ data, menuLinks }) => {
       </Menu.NavBar>
       <Menu.Right
         labels={cart_menu}
-        click={() => toggleMobile()}
+        click={e => {
+          e.stopPropagation()
+          toggleMobile()
+        }}
         isOpen={menu.isSidebarOpen}
       />
     </Menu.Root>

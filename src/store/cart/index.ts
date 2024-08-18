@@ -14,7 +14,7 @@ export interface CartSlice {
   addToCart: (item: addCart) => void
   resetCart: () => void
   department: number | null
-  setDepartment: (departmentId: number) => void
+  setDepartment: (departmentId: number | null) => void
 }
 
 export const cartSlice: StateCreator<

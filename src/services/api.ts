@@ -22,6 +22,8 @@ export const api = async (url: string, options?: any) => {
     }
     throw new Error(`${response.status} || ${response.url}`)
   } catch (error: any) {
+    console.log(error)
+
     throw new Error(`Failed to connect api ${error.message}`)
   }
 }

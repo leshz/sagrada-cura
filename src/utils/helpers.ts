@@ -92,7 +92,7 @@ export const productsPricesSummary = (products: ProductsDatum[]) => {
   }
 }
 
-const calculateShipmentPrice = (
+export const calculateShipmentPrice = (
   shipment: Shipment[],
   departmentCode: string | undefined
 ): number => {
@@ -100,7 +100,7 @@ const calculateShipmentPrice = (
   return foundShipment?.price || 0
 }
 
-const getDepartmentCode = (
+export const getDepartmentCode = (
   departments,
   departmentId: number | null
 ): string | undefined => {
@@ -129,6 +129,7 @@ export const totalPriceWithShipment = (
 
   const departmentCode = getDepartmentCode(departments, departmentId)
   const deliveryValue = calculateShipmentPrice(shipment, departmentCode)
+
   const totalWithShipping = total + deliveryValue
 
   return {

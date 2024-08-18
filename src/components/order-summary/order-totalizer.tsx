@@ -23,10 +23,10 @@ const OrderTotalizer = ({ shipment }: { shipment: Shipment[] }) => {
     shipment,
     colombia
   )
-
+  
   const shippingInfo =
     isShippable && deliveryValue > 0
-      ? currencyFormat.format(deliveryValue)
+      ? ` + ${currencyFormat.format(deliveryValue)}`
       : 'por definir'
 
   if (cart.length === 0) {
@@ -43,16 +43,21 @@ const OrderTotalizer = ({ shipment }: { shipment: Shipment[] }) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="tax">Descuentos</td>
-              <td className="price">
-                - {currencyFormat.format(totalDiscounted)}
-              </td>
-            </tr>
-            <tr>
-              <td>Envio</td>
-              <td className="price">{shippingInfo}</td>
-            </tr>
+            {totalDiscounted > 0 && (
+              <tr>
+                <td className="tax">Descuentos</td>
+                <td className="price">
+                  {`- ${currencyFormat.format(totalDiscounted)}`}
+                </td>
+              </tr>
+            )}
+
+            {isShippable && (
+              <tr>
+                <td>Envio</td>
+                <td className="price">{shippingInfo}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
