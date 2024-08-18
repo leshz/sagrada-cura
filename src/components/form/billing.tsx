@@ -1,29 +1,42 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
-import departments from '@/mock/departments.json'
 import { formSchema } from '@/schema/form'
 import { useStore } from '@/store'
-import { checkout } from '@/services'
+import departmentsList from '@/mock/departments.json'
+import { INITIAL_CHECKOUT_FORM } from '@/utils/constants'
 import { useRouter } from 'next/navigation'
-
-const initialValues = () => ({
-  dni: '',
-  name: '',
-  lastName: '',
-  address: '',
-  department: '',
-  city: '',
-  postalCode: '',
-  phone: '',
-  email: '',
-  message: ''
-})
+import { submitForm } from './submit'
 
 const BillingForm = () => {
-  const { cart, resetCart } = useStore()
+  const { cart, resetCart, setDepartment, department } = useStore()
   const router = useRouter()
-  const { colombia } = departments
+  const { colombia } = departmentsList
+  const formik = useFormik({
+    initialValues: INITIAL_CHECKOUT_FORM,
+    validationSchema: formSchema,
+    onSubmit: async (valSubmit, actions) => {
+      await submitForm(valSubmit, actions, cart, resetCart, router, department)
+    }
+  })
+
+  const renderOptions = (departmentName: string) => {
+    const getcities = colombia.find(
+      departmentsInfo => departmentsInfo.departamento === departmentName
+    )
+    const cities = getcities?.ciudades || []
+    return cities.map((city, index) => (
+      <option key={`${index + 1}-city`} value={city} label={city} />
+    ))
+  }
+
+  useEffect(() => {
+    if (department) {
+      setDepartment(null)
+    }
+  }, [])
+
   const {
     handleChange,
     values,
@@ -32,63 +45,11 @@ const BillingForm = () => {
     touched,
     handleSubmit,
     isSubmitting
-  } = useFormik({
-    initialValues: initialValues(),
-    validationSchema: formSchema,
-    onSubmit: async (valSubmit, actions) => {
-      const {
-        dni,
-        name,
-        lastName,
-        address,
-        department,
-        city,
-        postalCode,
-        phone,
-        email,
-        message
-      } = valSubmit
-      const items = cart.map(({ sku, quantityCart }) => ({
-        sku,
-        quantity: quantityCart
-      }))
-
-      const buyer = {
-        dni,
-        name,
-        lastName,
-        email,
-        phone
-      }
-      const ship = {
-        address,
-        department,
-        city,
-        postalCode,
-        message
-      }
-
-      const { init_point } = await checkout({ items, buyer, ship })
-
-      actions.resetForm()
-      resetCart()
-      router.push(init_point)
-    }
-  })
-
-  const renderOptions = (departmentName: string) => {
-    const getcities = colombia.find(
-      department => department.departamento === departmentName
-    )
-    const cities = getcities?.ciudades || []
-    return cities.map((city, index) => (
-      <option key={`${index + 1}-city`} value={city} label={city} />
-    ))
-  }
+  } = formik
 
   return (
     <div className="form-wrap mb-30">
-      <form onSubmit={handleSubmit} method="POST">
+      <form onSubmit={handleSubmit} method="POST" autoComplete="on">
         <fieldset>
           <legend>Detalles de facturación</legend>
           <div className="row">
@@ -233,11 +194,24 @@ const BillingForm = () => {
                     id="department"
                     value={values.department}
                     onChange={handleChange}
-                    onBlur={handleBlur}
+                    onBlur={(e: React.FocusEvent<HTMLSelectElement>) => {
+                      const {
+                        target: {
+                          options: { selectedIndex: selected },
+                          options
+                        }
+                      } = e
+
+                      const id =
+                        options[selected].getAttribute('data-id') ?? null
+                      setDepartment(Number(id))
+                      handleBlur(e)
+                    }}
                   >
                     <option value="" label="Elige una opcion" />
                     {colombia.map(({ id, departamento }) => (
                       <option
+                        data-id={id}
                         key={id}
                         value={departamento}
                         label={departamento}

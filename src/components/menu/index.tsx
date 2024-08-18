@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
+import { useEffect, useState } from 'react'
 import { Cart } from '@/components/cart'
 import { ImageWrapper } from '@/components/Image'
-import { useEffect, useState } from 'react'
 
 const SingleItemMenu = ({ link, text, path = '' }) => {
   const active = path === link ? 'active' : ''
@@ -64,18 +64,18 @@ const LogoMenu = ({ logo }) => (
 )
 
 const NavBarRoot = ({ children, isOpen, logo }) => (
-  <div className={`main-menu ${isOpen ? 'show-menu' : ''}`}>
-    <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
-      <div className="mobile-logo-wrap">
-        <Link href="/">
-          <ImageWrapper alt="Logo sagrada cura" image={logo} />
-        </Link>
+    <div className={`main-menu ${isOpen ? 'show-menu' : ''}`}>
+      <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
+        <div className="mobile-logo-wrap">
+          <Link href="/">
+            <ImageWrapper alt="Logo sagrada cura" image={logo} />
+          </Link>
+        </div>
       </div>
+      <ul className="menu-list">{children}</ul>
+      <div className="d-lg-none d-block" />
     </div>
-    <ul className="menu-list">{children}</ul>
-    <div className="d-lg-none d-block" />
-  </div>
-)
+  )
 
 const RightSideMenu = ({ click, isOpen, labels }) => (
   <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">

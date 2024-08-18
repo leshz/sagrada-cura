@@ -3,12 +3,14 @@
     {
       "id": 32,
       "departamento": "Bogota",
-      "ciudades": ["Bogota D.C."]
+      "ciudades": ["Bogota D.C."],
+      "code": "SW01"
     },
     {
-      "id": 0,
+      "id": 33,
       "departamento": "Amazonas",
-      "ciudades": ["Leticia", "Puerto Nariño"]
+      "ciudades": ["Leticia", "Puerto Nariño"],
+      "code": "SW02"
     },
     {
       "id": 1,
@@ -139,7 +141,8 @@
         "Yolombó",
         "Yondó",
         "Zaragoza"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 2,
@@ -152,7 +155,8 @@
         "Puerto Rondón",
         "Saravena",
         "Tame"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 3,
@@ -181,7 +185,8 @@
         "Suán",
         "Tubará",
         "Usiacurí"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 4,
@@ -234,7 +239,8 @@
         "Turbaná",
         "Villanueva",
         "Zambrano"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 5,
@@ -363,7 +369,8 @@
         "Villa de Leyva",
         "Viracachá",
         "Zetaquira"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 6,
@@ -396,7 +403,8 @@
         "Victoria",
         "Villamaría",
         "Viterbo"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 7,
@@ -418,7 +426,8 @@
         "Solano",
         "Solita",
         "Valparaíso"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 8,
@@ -443,7 +452,8 @@
         "Trinidad",
         "Villanueva",
         "Yopal"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 9,
@@ -491,7 +501,8 @@
         "Toribío",
         "Totoró",
         "Villa Rica"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 10,
@@ -522,7 +533,8 @@
         "San Martín",
         "Tamalameque",
         "Valledupar"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 11,
@@ -558,7 +570,8 @@
         "Tadó",
         "Unión Panamericana",
         "Unguía"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 12,
@@ -680,7 +693,8 @@
         "Yacopí",
         "Zipacón",
         "Zipaquirá"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 13,
@@ -716,12 +730,14 @@
         "Tierralta",
         "Tuchín",
         "Valencia"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 14,
       "departamento": "Guainía",
-      "ciudades": ["Inírida"]
+      "ciudades": ["Inírida"],
+      "code": "SW02"
     },
     {
       "id": 15,
@@ -731,7 +747,8 @@
         "El Retorno",
         "Miraflores",
         "San José del Guaviare"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 16,
@@ -774,7 +791,8 @@
         "Timaná",
         "Villavieja",
         "Yaguará"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 17,
@@ -795,7 +813,8 @@
         "Uribia",
         "Urumita",
         "Villanueva"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 18,
@@ -832,7 +851,8 @@
         "Tenerife",
         "Zapayán",
         "Zona Bananera"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 19,
@@ -867,7 +887,8 @@
         "San Martín",
         "Villavicencio",
         "Vista Hermosa"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 20,
@@ -937,7 +958,8 @@
         "Tumaco",
         "Túquerres",
         "Yacuanquer"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 21,
@@ -983,7 +1005,8 @@
         "Toledo",
         "Villa Caro",
         "Villa del Rosario"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 22,
@@ -1002,7 +1025,8 @@
         "Sibundoy",
         "Valle del Guamuez",
         "Villagarzón"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 23,
@@ -1020,7 +1044,8 @@
         "Pijao",
         "Quimbaya",
         "Salento"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 24,
@@ -1040,12 +1065,14 @@
         "Quinchía",
         "Santa Rosa de Cabal",
         "Santuario"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 25,
       "departamento": "San Andrés y Providencia",
-      "ciudades": ["Providencia y Santa Catalina Islas", "San Andrés"]
+      "ciudades": ["Providencia y Santa Catalina Islas", "San Andrés"],
+      "code": "SW02"
     },
     {
       "id": 26,
@@ -1138,7 +1165,8 @@
         "Vetas",
         "Villanueva",
         "Zapatoca"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 27,
@@ -1170,7 +1198,8 @@
         "Sucre",
         "Tolú",
         "Tolú Viejo"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 28,
@@ -1223,7 +1252,8 @@
         "Venadillo",
         "Villahermosa",
         "Villarrica"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 29,
@@ -1271,12 +1301,14 @@
         "Yotoco",
         "Yumbo",
         "Zarzal"
-      ]
+      ],
+      "code": "SW02"
     },
     {
       "id": 30,
       "departamento": "Vaupés",
-      "ciudades": ["Carurú", "Mitú", "Taraira"]
+      "ciudades": ["Carurú", "Mitú", "Taraira"],
+      "code": "SW02"
     },
     {
       "id": 31,
@@ -1286,7 +1318,8 @@
         "La Primavera",
         "Puerto Carreño",
         "Santa Rosalía"
-      ]
+      ],
+      "code": "SW02"
     }
   ]
 }

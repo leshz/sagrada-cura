@@ -25,7 +25,8 @@ const Cart = ({ labels }) => {
     0
   )
 
-  const handleCartButtonClick = () => {
+  const handleCartButtonClick = e => {
+    e.stopPropagation()
     if (cartHasItems) {
       setShowCart(!showCart)
     } else {

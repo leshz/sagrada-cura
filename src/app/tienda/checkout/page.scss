@@ -21,7 +21,7 @@ input[type='number'] {
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
     border: 1px solid #eee;
     @include sm-down-device() {
-      padding: 5px;
+      padding: 40px 15px;
     }
     legend {
       font-family: var(--font-primary);
@@ -229,6 +229,9 @@ input[type='number'] {
     background-color: #fff;
     padding: 23px 30px;
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
+    @include sm-down-device() {
+      padding: 23px 15px;
+    }
     .cost-summary-table {
       margin-bottom: 0;
       .price {
@@ -277,11 +280,10 @@ input[type='number'] {
       }
     }
     &.total-cost {
-      padding: 18px 30px;
       thead {
         tr {
           th {
-            padding-bottom: 0;
+            padding: 8px 0;
           }
         }
       }
@@ -386,11 +388,6 @@ input[type='number'] {
     }
     .payment-form-bottom {
       padding-top: 10px;
-      // input[type=checkbox] {
-      //     margin-right: 10px;
-      //     margin-left: 2px;
-      //     margin-top: 4px;
-      // }
       .custom-check-box {
         opacity: 0;
         display: none;

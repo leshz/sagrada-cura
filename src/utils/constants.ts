@@ -12,6 +12,7 @@ export const COLLECTIONS = {
   categories: '/strapi-ecommerce-mercadopago/categories',
   products: '/strapi-ecommerce-mercadopago/products',
   invoices: '/strapi-ecommerce-mercadopago/invoices',
+  shipment: '/strapi-ecommerce-mercadopago/shipments',
   tags: '/tags'
 }
 
@@ -38,3 +39,21 @@ export const PAYMENT_STATUS = {
 export const LIST_OF_PRODUCTS = 24
 
 export const SLUG_REGEX = /^[a-z0-9]+(?:-[a-z0-9]+)*$/gm
+
+export const INITIAL_CHECKOUT_FORM = {
+  dni: '',
+  name: '',
+  lastName: '',
+  address: '',
+  department: '',
+  city: '',
+  postalCode: '',
+  phone: '',
+  email: '',
+  message: ''
+}
+
+export const ITEM_TYPES = {
+  PRODUCT: 'producto',
+  SERVICE: 'servicio'
+}
