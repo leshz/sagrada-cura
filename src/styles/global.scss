@@ -4959,7 +4959,7 @@ home2 Banner Css
 
     .swiper-wrapper {
       @include md-up-device {
-        height: 550px;
+        // height: 550px;
       }
       @include sm-down-device() {
         height: 555px;
