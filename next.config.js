@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'strapi-aws-develop-bucket.s3.us-east-2.amazonaws.com'
+        hostname: `${process.env.CDN}`
       },
       {
         protocol: 'http',

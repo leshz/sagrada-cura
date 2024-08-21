@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next'
 
-const domain = process.env.DOMAIN
+const website = process.env.WEBPATH
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: domain as string,
+      url: website as string,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1

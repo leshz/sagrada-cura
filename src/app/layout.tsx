@@ -48,7 +48,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
       url: 'https://sagradacura.com/',
-      images: seo?.metaImage.url,
+      images: seo?.metaImage?.url,
       type: 'website'
     }
   }
