@@ -7,7 +7,6 @@ export const submitForm = async (
   valSubmit,
   actions,
   cart,
-  resetCart,
   router,
   departmentId
 ) => {
@@ -48,7 +47,6 @@ export const submitForm = async (
   try {
     const { init_point } = await checkout({ items, buyer, ship })
     actions.resetForm()
-    resetCart()
     router.push(init_point)
   } catch (e) {
     toast('😓 No podemos generar la orden de pago, intenta mas tarde', {
