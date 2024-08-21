@@ -17,7 +17,7 @@ const BillingForm = () => {
     initialValues: INITIAL_CHECKOUT_FORM,
     validationSchema: formSchema,
     onSubmit: async (valSubmit, actions) => {
-      await submitForm(valSubmit, actions, cart, resetCart, router, department)
+      await submitForm(valSubmit, actions, cart, router, department)
     }
   })
 
@@ -34,6 +34,10 @@ const BillingForm = () => {
   useEffect(() => {
     if (department) {
       setDepartment(null)
+    }
+
+    return () => {
+      resetCart()
     }
   }, [])
 
