@@ -75,7 +75,7 @@ const Instagram = ({ feed }) => {
             <div className="col-12">
               <Swiper {...sldieSettings} className="swiper instagram-slider">
                 <div className="swiper-wrapper">
-                  {images.map(item => {
+                  {images?.map(item => {
                     const { id } = item
                     return (
                       <SwiperSlide key={id} className="swiper-slide">
