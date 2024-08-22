@@ -20,7 +20,7 @@ const FixedBanner = ({ content }) => {
     <div className="col-xxl-3 col-xl-4 col-lg-4 d-none d-lg-block d-xl-block">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {image && <ImageWrapper image={image} format="medium" priority />}
+          {image && <ImageWrapper image={image} format='large' priority />}
         </div>
 
         <div className="banner-2-left-content">
