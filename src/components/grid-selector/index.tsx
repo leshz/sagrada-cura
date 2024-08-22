@@ -25,40 +25,6 @@ const GridSelector = () => {
       <button
         aria-label="button"
         type="button"
-        className={grid === 2 ? 'active' : ''}
-        onClick={() => toggleGrid(2)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={12}
-          height={20}
-          viewBox="0 0 12 20"
-        >
-          <g>
-            <rect width="4.88136" height="5.10638" rx="2.44068" />
-            <rect y="7.44678" width="4.88136" height="5.10638" rx="2.44068" />
-            <rect y="14.8937" width="4.88136" height="5.10638" rx="2.44068" />
-            <rect x="7.11865" width="4.88136" height="5.10638" rx="2.44068" />
-            <rect
-              x="7.11865"
-              y="7.44678"
-              width="4.88136"
-              height="5.10638"
-              rx="2.44068"
-            />
-            <rect
-              x="7.11865"
-              y="14.8937"
-              width="4.88136"
-              height="5.10638"
-              rx="2.44068"
-            />
-          </g>
-        </svg>
-      </button>
-      <button
-        aria-label="button"
-        type="button"
         className={grid === 3 ? 'active' : ''}
         onClick={() => toggleGrid(3)}
       >

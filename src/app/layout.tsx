@@ -8,7 +8,7 @@ import { Cormorant, Fauna_One } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { GoogleAnalytics } from '@/providers/analitycs'
+import { Analytics } from '@/providers/analitycs'
 import type { Metadata } from 'next'
 import Error from './error'
 
@@ -37,7 +37,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: {
       template: '%s | Sanación Natural',
-      default: 'Sagrada Cura | Sanación Natural',
+      default: 'Sagrada Cura | Sanación Natural'
     },
     keywords: seo?.keywords || '',
     description: seo?.metaDescription || '',
@@ -69,7 +69,6 @@ const RootLayout = async ({ children }) => {
       className={`${cormorant.variable} ${Secondary.variable} `}
       lang="es-CO"
     >
-      <GoogleAnalytics />
       <body>
         <ErrorBoundary errorComponent={Error}>
           <Topbar data={data} />
@@ -86,6 +85,7 @@ const RootLayout = async ({ children }) => {
           <FooterLayout data={data} />
         </ErrorBoundary>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
