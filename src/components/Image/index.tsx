@@ -24,6 +24,7 @@ const ImageWrapper: FC<ImageProps> = ({
       width: !fill ? imageFormat?.width || 100 : undefined,
       height: !fill ? imageFormat?.height || 100 : undefined,
       alt: source?.alternativeText || '',
+      quality: 90,
       fill
     }
   } else {
@@ -33,6 +34,7 @@ const ImageWrapper: FC<ImageProps> = ({
       width: !fill ? source?.width || 100 : undefined,
       height: !fill ? source?.height || 100 : undefined,
       alt: source?.alternativeText || '',
+      quality: 90,
       fill
     }
   }
