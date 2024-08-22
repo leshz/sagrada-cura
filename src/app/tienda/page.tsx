@@ -30,7 +30,8 @@ const Shop = async ({ searchParams }) => {
   }
   params = {
     ...params,
-    sort: 'type:asc',
+    'sort[0]': 'price:asc',
+    'sort[1]': 'type:asc',
     'pagination[pageSize]': LIST_OF_PRODUCTS,
     'pagination[page]': searchParams?.page || 1
   }
