@@ -2,6 +2,7 @@
 const path = require('path')
 
 const nextConfig = {
+  reactStrictMode: false,
   images: {
     unoptimized: false,
     remotePatterns: [
