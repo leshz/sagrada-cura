@@ -117,7 +117,7 @@ Shop Details page Css
       color: var(--text-color);
       font-family: var(--font-secondary);
       font-size: 26px;
-      font-weight: bold;
+      font-weight: normal;
       line-height: 1;
       margin-bottom: 0;
 
@@ -769,7 +769,7 @@ Shop Details page Css
           rgba(255, 255, 255, 0) 100%
         );
         z-index: 2;
-        
+
         @include lg-device() {
           gap: 20px;
         }
