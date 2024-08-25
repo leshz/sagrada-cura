@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { BlogAuthor, BlogContent } from '@/components/blog'
 import { RecentPost } from '@/components/recent-post'
@@ -5,7 +6,7 @@ import { TagsCloud } from '@/components/tags-cloud'
 import { TagBar } from '@/components/tag-bar'
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { dateFormat } from '@/utils/helpers'
+import { dateFormat, getImagePath } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
 import './page.scss'
@@ -16,6 +17,28 @@ export const generateStaticParams = async () => {
   const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
   return slugs
+}
+
+export const generateMetadata = async ({ params }): Promise<Metadata> => {
+  const { slug } = params
+  const { data } = await getColletions(COLLECTIONS.blogs, {
+    slug
+  })
+
+  const { title, image, short_description, slug: slugPost } = data
+
+  const imgUrl = getImagePath(image, 'small')
+
+  return {
+    title,
+    openGraph: {
+      title,
+      description: short_description,
+      url: `https://sagradacura.com/blog/${slugPost}`,
+      images: imgUrl,
+      type: 'website'
+    }
+  }
 }
 
 const BlogDetailsPage = async ({ params }) => {

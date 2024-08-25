@@ -8,12 +8,12 @@ import '../../nuestra-marca/page.scss'
 export const dynamic = 'force-static'
 
 export const generateStaticParams = async () => [
-    'condiciones-de-envio',
-    'derecho-de-retracto',
-    'paquetes-corporativos',
-    'politicas-de-devolucion',
-    'tratamiento-de-datos'
-  ]
+  { id: 'condiciones-de-envio' },
+  { id: 'derecho-de-retracto' },
+  { id: 'paquetes-corporativos' },
+  { id: 'politicas-de-devolucion' },
+  { id: 'tratamiento-de-datos' }
+]
 
 const Docs = async ({ params }) => {
   const { id } = params

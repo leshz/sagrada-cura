@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+import Script from 'next/script'
 import {
   Slider,
   PaymentsInformation,
@@ -9,18 +11,34 @@ import { Price } from '@/components/price'
 import { getColletions, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { ProductsDatum } from '@/types/products'
-import Script from 'next/script'
+import { getImagePath } from '@/utils/helpers'
 
 import './page.scss'
 
+export const generateMetadata = async ({ params }): Promise<Metadata> => {
+  const { slug = '' } = params
+  const { data } = await getColletions(COLLECTIONS.products, {
+    slug
+  })
+
+  const { name, middle_description, pictures, slug: slugProduct } = data
+  return {
+    title: name,
+    openGraph: {
+      title: name,
+      description: middle_description,
+      images: getImagePath(pictures, 'medium'),
+      url: `https://sagradacura.com/tienda/${slugProduct}`,
+      type: 'website'
+    }
+  }
+}
+
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
-  const single = getSingles('product-detail', {
-    // next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })
+  const single = getSingles('product-detail')
   const collection = getColletions(COLLECTIONS.products, {
-    slug,
-    next: { revalidate: process.env.REVALIDATE_PRODUCTS }
+    slug
   })
 
   const [singleReq, collectionReq] = await Promise.all([single, collection])

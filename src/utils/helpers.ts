@@ -167,3 +167,20 @@ export const getConfirmationCopys = (key: string) => {
       }
   }
 }
+
+export const getImagePath = (
+  image: any,
+  formatImage: 'thumbnail' | 'medium' | 'small' | 'large'
+) => {
+  const source = image?.data || image || {}
+
+  if (
+    Object.prototype.hasOwnProperty.call(source, 'formats') &&
+    source.formats?.[formatImage]
+  ) {
+    const imageFormat = source.formats?.[formatImage]
+    return imageFormat?.url
+  }
+
+  return source.url
+}
