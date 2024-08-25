@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { BlogSection, BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
@@ -5,6 +6,15 @@ import { getSingles } from '@/services'
 import './page.scss'
 
 export const dynamic = 'force-static'
+
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Nuestra marca',
+  openGraph: {
+    title: 'Nuestra marca',
+    url: `https://sagradacura.com/nuestra-marca`,
+    type: 'website'
+  }
+})
 
 const AboutUs = async () => {
   const { title, article, image, blogs_title } = await getSingles('about-us')

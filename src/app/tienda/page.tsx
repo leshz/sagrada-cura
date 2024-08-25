@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CategoryBox } from '@/components/category-box'
 import { getColletions, getSingles } from '@/services'
@@ -5,6 +6,15 @@ import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
+
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Nuestra tienda',
+  openGraph: {
+    title: 'Nuestra tienda',
+    url: `https://sagradacura.com/tienda`,
+    type: 'website'
+  }
+})
 
 const Shop = async ({ searchParams }) => {
   let params = {}
@@ -42,7 +52,9 @@ const Shop = async ({ searchParams }) => {
 
   const collection = getColletions(COLLECTIONS.products, {
     params,
-    next: { tags: ['ecommerce'] }
+    fetch: {
+      cache: 'no-store'
+    }
   })
   const [labels, rescollect] = await Promise.all([single, collection])
 

@@ -5,9 +5,11 @@ import Link from 'next/link'
 import { ImageWrapper } from '@/components/Image'
 import { WishListItem } from './wish-list-item'
 
+import './styles.scss'
+
 const WishList = ({ labels, empty }) => {
   const { product, quantity, price, total } = labels
-  const { title, description, image, button } = empty  
+  const { title, description, image, button } = empty
   const { cart } = useStore()
   const hasItems = cart.length > 0
 
@@ -35,18 +37,15 @@ const WishList = ({ labels, empty }) => {
           <div className="row">
             <div className="col-md-12">
               <div className="card-body cart">
-                <div className="col-sm-12 empty-cart-cls text-center">
-                  <h3>
-                    <strong>{title}</strong>
-                  </h3>
+                <div className="col-12 col-md-3 mx-auto empty-cart-cls text-center">
+                  <h2>{title}</h2>
                   <h4>{description}</h4>
-                  <ImageWrapper image={image} width={400} height={400} />
-                  <Link
-                    className="primary-btn1 style-2 hover-btn3"
-                    href="/tienda"
-                  >
-                    {button}
-                  </Link>
+                  <div className="d-flex flex-column justify-content-center align-items-center">
+                    <ImageWrapper image={image} width={150} height={150} />
+                    <Link className="primary-btn3 hover-btn5" href="/tienda">
+                      {button}
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

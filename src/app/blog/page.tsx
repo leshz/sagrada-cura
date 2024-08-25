@@ -1,7 +1,17 @@
+import type { Metadata } from 'next'
 import { getColletions } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { BlogPreview } from '@/components/blog/blog-preview'
 import { Paginator } from '@/components/paginator'
+
+export const generateMetadata = async (): Promise<Metadata> => ({
+    title: 'Blog',
+    openGraph: {
+      title: 'Conoce nuestros blogs',
+      url: `https://sagradacura.com/blog/`,
+      type: 'website'
+    }
+  })
 
 const BlogMasonaryPage = async ({ searchParams }) => {
   const { tag = '', page = 1 } = searchParams
@@ -9,7 +19,7 @@ const BlogMasonaryPage = async ({ searchParams }) => {
   const params = {
     sort: 'publishedAt:desc',
     'pagination[pageSize]': '6',
-    'pagination[page]': page 
+    'pagination[page]': page
   }
 
   if (tag) {
@@ -17,8 +27,7 @@ const BlogMasonaryPage = async ({ searchParams }) => {
   }
 
   const { data = [], meta = {} } = await getColletions(COLLECTIONS.blogs, {
-    params,
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
+    params
   })
 
   //! TODO: Add EMPY PAGE

@@ -1,5 +1,5 @@
+import type { Metadata } from 'next'
 import { WishList } from '@/components/wish-list'
-import { Cupons } from '@/components/cupons-area'
 import { PurchaseSummary } from '@/components/purchase-summary'
 import { getSingles } from '@/services'
 
@@ -7,11 +7,17 @@ import './page.scss'
 
 export const dynamic = 'force-static'
 
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Carrito de compras',
+  openGraph: {
+    title: 'Carrito de compras',
+    url: `https://sagradacura.com/tienda`,
+    type: 'website'
+  }
+})
+
 const Cart = async () => {
-  const { table, summary, empty } =
-    (await getSingles('cart', {
-      next: { revalidate: process.env.REVALIDATE_CONTENT }
-    })) || {}
+  const { table, summary, empty } = await getSingles('cart')
   return (
     <div className="whistlist-section cart mt-40 mb-110">
       <div className="container">
@@ -21,7 +27,6 @@ const Cart = async () => {
           </div>
         </div>
         <div className="row g-4">
-          <div className="col-lg-4">{false && <Cupons />}</div>
           <div className="col-lg-8">
             <PurchaseSummary labels={summary} />
           </div>

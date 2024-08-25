@@ -6,9 +6,7 @@ import { COLLECTIONS } from '@/utils/constants'
 import { getColletions } from '@/services'
 
 const Checkout = async () => {
-  const { data: shipment } = await getColletions(COLLECTIONS.shipment, {
-    next: { revalidate: process.env.REVALIDATE_PRODUCTS }
-  })
+  const { data: shipment } = await getColletions(COLLECTIONS.shipment)
 
   return (
     <div className="checkout-section pt-25 mb-110">

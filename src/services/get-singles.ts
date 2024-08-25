@@ -2,7 +2,10 @@ import { api } from './api'
 
 const getSingles = async (singleType = '', options = {}) => {
   try {
-    const response = await api(`/${singleType}`, options)
+    const response = await api(`/${singleType}`, {
+      ...options,
+      cache: 'force-cache'
+    })
     const { data } = response
 
     return data

@@ -14,9 +14,7 @@ const Home = async () => {
     last_blogposts,
     testimonial,
     instagram
-  }: { [key: string]: any } = await getSingles('home', {
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })  
+  }: { [key: string]: any } = await getSingles('home')  
 
   return (
     <main>
