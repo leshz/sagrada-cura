@@ -7,16 +7,13 @@ import '../../nuestra-marca/page.scss'
 
 export const dynamic = 'force-static'
 
-export const generateStaticParams = async () => {
-  const ids = [
+export const generateStaticParams = async () => [
     'condiciones-de-envio',
     'derecho-de-retracto',
     'paquetes-corporativos',
     'politicas-de-devolucion',
     'tratamiento-de-datos'
   ]
-  return ids
-}
 
 const Docs = async ({ params }) => {
   const { id } = params

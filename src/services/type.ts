@@ -3,4 +3,5 @@ export type optionsCollection = {
   fetch?: any
   slug?: string
   next?: any
+  cache?: string
 }

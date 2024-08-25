@@ -10,7 +10,7 @@ export const api = async (url: string, options?: any) => {
   const config = {
     ...options,
     method: options?.method || 'GET',
-    headers: headerAuth,
+    headers: headerAuth
   }
 
   try {
@@ -19,8 +19,8 @@ export const api = async (url: string, options?: any) => {
       const data = await response.json()
       return data
     }
-    throw new Error(`${response.status} || ${response.url}`)
-  } catch (error: any) {
+    return new Error(`${response.status} || ${response.url}`)
+  } catch (error:any) {
     throw new Error(`Failed to connect api ${error.message}`)
   }
 }

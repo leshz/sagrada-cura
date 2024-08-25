@@ -42,7 +42,9 @@ const Shop = async ({ searchParams }) => {
 
   const collection = getColletions(COLLECTIONS.products, {
     params,
-    next: { tags: ['ecommerce'] }
+    fetch: {
+      cache: 'no-store'
+    }
   })
   const [labels, rescollect] = await Promise.all([single, collection])
 

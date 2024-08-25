@@ -31,9 +31,7 @@ export const Secondary = Fauna_One({
 })
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles('general', {
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })
+  const { seo } = await getSingles('general')
   return {
     title: {
       template: '%s | Sanación Natural',
@@ -55,12 +53,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const RootLayout = async ({ children }) => {
-  const generes = getSingles('general', {
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })
-  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`, {
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
-  })
+  const generes = getSingles('general')
+  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`)
 
   const [data, menu] = await Promise.all([generes, menures])
 

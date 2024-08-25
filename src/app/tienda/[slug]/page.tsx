@@ -16,7 +16,7 @@ import './page.scss'
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
   const single = getSingles('product-detail', {
-    next: { revalidate: process.env.REVALIDATE_CONTENT }
+    // next: { revalidate: process.env.REVALIDATE_CONTENT }
   })
   const collection = getColletions(COLLECTIONS.products, {
     slug,

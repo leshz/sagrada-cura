@@ -10,7 +10,7 @@ export const dynamic = 'force-static'
 const Cart = async () => {
   const { table, summary, empty } =
     (await getSingles('cart', {
-      next: { revalidate: process.env.REVALIDATE_CONTENT }
+      // next: { revalidate: process.env.REVALIDATE_CONTENT }
     })) || {}
   return (
     <div className="whistlist-section cart mt-40 mb-110">
