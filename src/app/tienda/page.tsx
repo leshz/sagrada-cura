@@ -53,7 +53,7 @@ const Shop = async ({ searchParams }) => {
   const collection = getColletions(COLLECTIONS.products, {
     params,
     fetch: {
-      cache: 'no-store'
+      next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
     }
   })
   const [labels, rescollect] = await Promise.all([single, collection])

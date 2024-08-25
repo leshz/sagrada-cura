@@ -38,7 +38,10 @@ const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
   const single = getSingles('product-detail')
   const collection = getColletions(COLLECTIONS.products, {
-    slug
+    slug,
+    fetch: {
+      next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
+    }
   })
 
   const [singleReq, collectionReq] = await Promise.all([single, collection])
