@@ -19,7 +19,7 @@ const Botton = ({ data }) => {
           <div className="footer-left">
             <p>
               ©Copyright 2024 {copyright} | made with <i className="bi bi-heart" /> By{' '}
-              <a href="https://shzcode.tech/">Shz Code</a>
+              <a href="https://shztech.dev">Shz Tech</a>
             </p>
           </div>
         </div>
