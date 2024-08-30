@@ -15,6 +15,13 @@ import { getImagePath } from '@/utils/helpers'
 
 import './page.scss'
 
+
+export const generateStaticParams = async () => {
+  const { data: products = [] } = await getColletions(COLLECTIONS.products)
+  const slugs = products.map(entry => ({ slug: entry.slug }))
+  return slugs
+}
+
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { slug = '' } = params
   const { data } = await getColletions(COLLECTIONS.products, {
