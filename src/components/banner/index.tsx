@@ -20,7 +20,7 @@ const FixedBanner = ({ content }) => {
     <div className="col-xxl-3 col-xl-4 col-lg-4 d-none d-lg-block d-xl-block">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {image && <ImageWrapper image={image} format='large' priority />}
+          {image && <ImageWrapper image={image} priority />}
         </div>
 
         <div className="banner-2-left-content">
@@ -56,7 +56,7 @@ const DoubleBanner = ({ data }) => {
       spaceBetween: 30,
       speed: 3000,
       loop: true,
-      autoplay: false,
+      autoplay: true,
       effect: 'fade',
 
       fadeEffect: {
@@ -88,6 +88,7 @@ const DoubleBanner = ({ data }) => {
                             image={image}
                             width={2000}
                             height={1333}
+                            priority
                           />
                           {text && (
                             <div className="banner-2-right-content">
@@ -108,19 +109,19 @@ const DoubleBanner = ({ data }) => {
                                   heading: ({ children, level }) => {
                                     switch (level) {
                                       case 1:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                       case 2:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                       case 3:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                       case 4:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                       case 5:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                       case 6:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                       default:
-                                        return <h2 className="">{children}</h2>
+                                        return <h1 className="">{children}</h1>
                                     }
                                   }
                                 }}

@@ -1226,12 +1226,8 @@ input {
 .choose-product-section {
   .choose-product-card {
     position: relative;
-    height: 280px;
     transition: all 0.6s ease-in-out;
 
-    @include lg-up-device() {
-      height: 520px;
-    }
 
     img {
       width: 100%;
@@ -5030,7 +5026,7 @@ home2 Banner Css
         p {
           color: var(--primary-color1);
           font-family: var(--font-primary);
-          font-size: 18px;
+          font-size: 25px;
           font-weight: 400;
           line-height: 1.6;
           letter-spacing: 0.54px;
