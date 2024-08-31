@@ -58,7 +58,7 @@ const Instagram = ({ feed }) => {
   )
 
   return (
-    <div className="instagram-section mb-110">
+    <div className="instagram-section">
       <div className="container">
         <div className="section-title style-3">
           <h3>{title}</h3>
