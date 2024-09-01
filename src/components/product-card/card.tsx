@@ -18,9 +18,10 @@ type Props = {
     add_to_cart: string
     request_stock: string
   }
+  isTag?: boolean
 }
 
-const Card = ({ product, labels }: Props) => {
+const Card = ({ product, labels, isTag }: Props) => {
   const { addToCart } = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
@@ -48,6 +49,28 @@ const Card = ({ product, labels }: Props) => {
     default:
       gridClass = '-lg-3'
       break
+  }
+
+  const PreviewAction = ({ tag }) => {
+    if (!tag) {
+      return (
+        <button
+          type="button"
+          className="primary-btn3 hover-btn3 add-cart-btn"
+          onClick={() => addToCart({ product })}
+        >
+          <span>
+            <i className="bi bi-bag-check" />
+          </span>
+          {add_to_cart}
+        </button>
+      )
+    }
+    return (
+      <Link className="primary-btn3 hover-btn3 add-cart-btn" href={productView}>
+        Ver detalles
+      </Link>
+    )
   }
 
   return (
@@ -81,18 +104,7 @@ const Card = ({ product, labels }: Props) => {
 
           <div className="overlay">
             <div className="cart-area">
-              {stock !== 0 ? (
-                <button
-                  type="button"
-                  className="primary-btn3 hover-btn3 add-cart-btn"
-                  onClick={() => addToCart({ product })}
-                >
-                  <span>
-                    <i className="bi bi-bag-check" />
-                  </span>
-                  {add_to_cart}
-                </button>
-              ) : null}
+              {stock !== 0 ? <PreviewAction tag={isTag} /> : null}
             </div>
           </div>
           <div className="view-and-favorite-area">
@@ -123,16 +135,20 @@ const Card = ({ product, labels }: Props) => {
           <p className="short_description">
             <Link href={productView}>{short_description}</Link>
           </p>
-          <Price
-            price={price}
-            discountPrice={price_with_discount || 0}
-            with_discount={with_discount}
-          />
+          {!isTag && (
+            <Price
+              price={price}
+              discountPrice={price_with_discount || 0}
+              with_discount={with_discount}
+            />
+          )}
         </div>
         <span className="for-border" />
       </div>
     </div>
   )
 }
+
+Card.defaultProps = { isTag: false }
 
 export { Card }

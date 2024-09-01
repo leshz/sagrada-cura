@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "linter:fix": "next lint --fix",
-    "prepare": "husky install"
+    "linter:fix": "next lint --fix"
   },
   "engines": {
     "node": "18.x"

@@ -1,5 +1,5 @@
 export type optionsCollection = {
-  params?: { [key: string]: string }
+  params?: { [key: string]: string | number}
   fetch?: any
   slug?: string
   next?: any
