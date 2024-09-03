@@ -21,7 +21,7 @@ type Props = {
   isTag?: boolean
 }
 
-const Card = ({ product, labels, isTag }: Props) => {
+const Card = ({ product, labels, isTag = false }: Props) => {
   const { addToCart } = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
@@ -148,7 +148,5 @@ const Card = ({ product, labels, isTag }: Props) => {
     </div>
   )
 }
-
-Card.defaultProps = { isTag: false }
 
 export { Card }

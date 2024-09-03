@@ -36,6 +36,12 @@
         "ts": "never",
         "jsx": "never"
       }
+    ],
+    "react/require-default-props": [
+      1,
+      {
+        "functions": "defaultArguments"
+      }
     ]
   }
 }
