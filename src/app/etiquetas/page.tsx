@@ -17,7 +17,7 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 const Shop = async () => {
   const params = {
     'filters[type][$eq]': 'producto',
-    'pagination[pageSize]': LIST_OF_PRODUCTS
+    'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
   }
 
   const single = getSingles('shop', {
@@ -53,7 +53,12 @@ const Shop = async () => {
                 </div>
                 <div className="row gy-4 mb-80 ">
                   {data?.map(product => (
-                    <Card key={product.id} product={product} labels={labels} isTag/>
+                    <Card
+                      key={product.id}
+                      product={product}
+                      labels={labels}
+                      isTag
+                    />
                   ))}
                 </div>
               </div>
