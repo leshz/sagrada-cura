@@ -111,17 +111,12 @@ const DoubleBanner = ({ data }) => {
                                       case 1:
                                         return <h1 className="">{children}</h1>
                                       case 2:
-                                        return <h1 className="">{children}</h1>
+                                        return <h2 className="">{children}</h2>
                                       case 3:
-                                        return <h1 className="">{children}</h1>
-                                      case 4:
-                                        return <h1 className="">{children}</h1>
-                                      case 5:
-                                        return <h1 className="">{children}</h1>
-                                      case 6:
-                                        return <h1 className="">{children}</h1>
+                                        return <h3 className="">{children}</h3>
+
                                       default:
-                                        return <h1 className="">{children}</h1>
+                                        return <p className="">{children}</p>
                                     }
                                   }
                                 }}
