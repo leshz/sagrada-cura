@@ -41,6 +41,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogs = [
     {
+      id: 'encuentro-frecuencia-fluye-con-la-energia-del-universo'
+    },
+    {
       id: 'descubre-la-luz-en-la-oscuridad-como-las-velas-pueden-ayudar-en-el-manejo-de-la-ansiedad'
     },
     {

@@ -24,10 +24,6 @@ const Slider = ({ pictures }) => {
     effect: 'fade',
     fadeEffect: {
       crossFade: true
-    },
-    navigation: {
-      nextEl: '.exclusive-next-btn',
-      prevEl: '.exclusive-prev-btn'
     }
   }
 
@@ -42,19 +38,19 @@ const Slider = ({ pictures }) => {
               {pictures?.map(picture => (
                 <SwiperSlide key={picture.id} className="swiper-slide">
                   <div className="shop-details-tab-img">
-                    <ImageWrapper image={picture} fill priority />
+                    <ImageWrapper image={picture} priority />
                   </div>
                 </SwiperSlide>
               ))}
             </div>
-            <div className="slider-btn">
+            {/* <div className="slider-btn">
               <div className="exclusive-prev-btn">
                 <i className="bi bi-chevron-left" />
               </div>
               <div className="exclusive-next-btn">
                 <i className="bi bi-chevron-right" />
               </div>
-            </div>
+            </div> */}
           </Swiper>
         </div>
       </div>
