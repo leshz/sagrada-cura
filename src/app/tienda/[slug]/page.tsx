@@ -34,7 +34,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
     openGraph: {
       title: name,
       description: middle_description,
-      images: getImagePath(pictures, 'medium'),
+      images: getImagePath(pictures, 'small'),
       url: `https://sagradacura.com/tienda/${slugProduct}`,
       type: 'website'
     }
