@@ -15,7 +15,6 @@ import { getImagePath } from '@/utils/helpers'
 
 import './page.scss'
 
-
 export const generateStaticParams = async () => {
   const { data: products = [] } = await getColletions(COLLECTIONS.products)
   const slugs = products.map(entry => ({ slug: entry.slug }))
@@ -29,12 +28,13 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
   })
 
   const { name, middle_description, pictures, slug: slugProduct } = data
+
   return {
     title: name,
     openGraph: {
       title: name,
       description: middle_description,
-      images: getImagePath(pictures, 'small'),
+      images: getImagePath(pictures[0], 'medium'),
       url: `https://sagradacura.com/tienda/${slugProduct}`,
       type: 'website'
     }
