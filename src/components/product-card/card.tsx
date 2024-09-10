@@ -8,6 +8,7 @@ import { Price } from '@/components/price'
 import { Batch } from '@/components/product-card/batch'
 import { useSearchParams } from 'next/navigation'
 import { useStore } from '@/store'
+import { sendGAEvent } from '@next/third-parties/google'
 
 import './styles/card.scss'
 
@@ -57,7 +58,10 @@ const Card = ({ product, labels, isTag = false }: Props) => {
         <button
           type="button"
           className="primary-btn3 hover-btn3 add-cart-btn"
-          onClick={() => addToCart({ product })}
+          onClick={() => {
+            addToCart({ product })
+            sendGAEvent('event', 'add_to_cart', { value: name })
+          }}
         >
           <span>
             <i className="bi bi-bag-check" />
