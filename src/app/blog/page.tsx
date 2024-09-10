@@ -6,6 +6,9 @@ import { Paginator } from '@/components/paginator'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
     title: 'Blog',
+    alternates: {
+      canonical: 'https://sagradacura.com/blog'
+    },
     openGraph: {
       title: 'Conoce nuestros blogs',
       url: `https://sagradacura.com/blog/`,
