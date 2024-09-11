@@ -9,7 +9,7 @@ const Page = async ({ searchParams }: { searchParams: confirmation }) => {
 
   const invoice = await getColletions(COLLECTIONS.invoices, {
     slug: external_reference,
-    next: { revalidate: process.env.REVALIDATE_PRODUCTS }
+    fetch: { cache: 'no-store' }
   })
 
   return (

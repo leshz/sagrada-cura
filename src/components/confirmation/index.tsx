@@ -5,6 +5,7 @@ import {
   dateFormat
 } from '@/utils/helpers'
 import { IconAnimation } from './animation'
+import { EventsGa } from './ga-events'
 import { ConfirmationProps } from './types'
 
 import './style.scss'
@@ -12,13 +13,31 @@ import './style.scss'
 const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
   const { payment_id, status } = result
   const {
-    data: { total = 0, createdAt }
+    data: { total = 0, createdAt, products }
   } = invoice
 
   const { title, subtitle, state } = getConfirmationCopys(status)
 
+  const items = (products || []).map(
+    ({ id, title: name, category_id = 0, quantity, unit_price }) => ({
+      item_id: id,
+      item_name: name,
+      item_category: category_id,
+      price: unit_price,
+      quantity
+    })
+  )
+
+  const gaData = {
+    transaction_id: payment_id,
+    value: total,
+    currency: 'COP',
+    items
+  }
+
   return (
     <div className="d-flex flex-column align-items-center flex-wrap justify-content-center min-vh-10">
+      {status === 'approved' && <EventsGa event="purchase" data={gaData} />}
       <div className="confirmation-card shadow">
         <div className="d-flex flex-column flex-wrap align-items-center">
           <IconAnimation status={status} />
@@ -47,7 +66,10 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
             </div>
           </div>
           <div className="d-flex gap-4 mt-40 w-100 flex-wrap buttons-wrap">
-            <button type="button" className="primary-btn3 black-bg hover-btn5 hover-white">
+            <button
+              type="button"
+              className="primary-btn3 black-bg hover-btn5 hover-white"
+            >
               Imprimir recibo
             </button>
             <Link href="/" className="primary-btn3 hover-btn5">

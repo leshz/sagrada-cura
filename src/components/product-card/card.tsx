@@ -60,7 +60,8 @@ const Card = ({ product, labels, isTag = false }: Props) => {
           className="primary-btn3 hover-btn3 add-cart-btn"
           onClick={() => {
             addToCart({ product })
-            sendGAEvent('event', 'add_to_cart', { value: name })
+            //TODO:  REview this structure
+            sendGAEvent('event', 'add_to_cart', { item_name: name })
           }}
         >
           <span>
