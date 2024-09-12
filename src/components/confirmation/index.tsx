@@ -1,11 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import {
   currencyFormat,
   getConfirmationCopys,
-  dateFormat
+  dateFormat,
+  productsGABuilder
 } from '@/utils/helpers'
+import { useGATrack } from '@/hooks/use-ga-track'
 import { IconAnimation } from './animation'
-import { EventsGa } from './ga-events'
 import { ConfirmationProps } from './types'
 
 import './style.scss'
@@ -18,15 +21,7 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
 
   const { title, subtitle, state } = getConfirmationCopys(status)
 
-  const items = (products || []).map(
-    ({ id, title: name, category_id = 0, quantity, unit_price }) => ({
-      item_id: id,
-      item_name: name,
-      item_category: category_id,
-      price: unit_price,
-      quantity
-    })
-  )
+  const items = productsGABuilder(products)
 
   const gaData = {
     transaction_id: payment_id,
@@ -35,9 +30,10 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
     items
   }
 
+  useGATrack('purchase', gaData)
+
   return (
     <div className="d-flex flex-column align-items-center flex-wrap justify-content-center min-vh-10">
-      {status === 'approved' && <EventsGa event="purchase" data={gaData} />}
       <div className="confirmation-card shadow">
         <div className="d-flex flex-column flex-wrap align-items-center">
           <IconAnimation status={status} />

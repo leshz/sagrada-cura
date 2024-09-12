@@ -3,8 +3,17 @@ import { ColorBar } from '@/components/color-bar'
 import { confirmation } from '@/types/confirmation'
 import { getColletions } from '@/services/get-colletions'
 import { COLLECTIONS } from '@/utils/constants'
+import type { Metadata } from 'next'
 
-const Page = async ({ searchParams }: { searchParams: confirmation }) => {
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Confirmación'
+})
+
+const Confirmation = async ({
+  searchParams
+}: {
+  searchParams: confirmation
+}) => {
   const { status, external_reference } = searchParams
 
   const invoice = await getColletions(COLLECTIONS.invoices, {
@@ -20,4 +29,4 @@ const Page = async ({ searchParams }: { searchParams: confirmation }) => {
   )
 }
 
-export default Page
+export default Confirmation

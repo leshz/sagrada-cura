@@ -184,3 +184,31 @@ export const getImagePath = (
 
   return source.url
 }
+
+export const productsGABuilder = (products: any[]) => {
+  try {
+    const items = (products || []).map(
+      ({
+        id,
+        sku,
+        name,
+        title,
+        categories,
+        category_id = 0,
+        quantityCart,
+        quantity,
+        unit_price,
+        price
+      }) => ({
+        item_id: sku || id,
+        item_name: name || title,
+        item_category: categories?.[0]?.id || category_id,
+        price: price || unit_price,
+        quantity: quantityCart || quantity
+      })
+    )
+    return items
+  } catch (error) {
+    return []
+  }
+}
