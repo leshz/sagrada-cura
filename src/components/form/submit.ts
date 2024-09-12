@@ -1,6 +1,7 @@
 import { checkout } from '@/services'
 import deparmentList from '@/mock/departments.json'
-import { getDepartmentCode } from '@/utils/helpers'
+import { getDepartmentCode, productsGABuilder } from '@/utils/helpers'
+import { sendGAEvent } from '@next/third-parties/google'
 import { toast } from 'react-toastify'
 
 export const submitForm = async (
@@ -46,10 +47,12 @@ export const submitForm = async (
   }
   try {
     const { init_point } = await checkout({ items, buyer, ship })
+    const gaproducts = productsGABuilder(cart)
+    sendGAEvent('event', 'begin_checkout', { items: gaproducts })
     actions.resetForm()
     router.push(init_point)
   } catch (e) {
-    toast('😓 No podemos generar la orden de pago, intenta mas tarde', {
+    toast('😓 No podemos generar la orden de pago, intenta más tarde', {
       toastId: 'error',
       type: 'error'
     })

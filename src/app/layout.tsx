@@ -39,9 +39,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     keywords: seo?.keywords || '',
     description: seo?.metaDescription || '',
-    alternates: {
-      canonical: 'https://sagradacura.com/'
-    },
     openGraph: {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
@@ -79,8 +76,8 @@ const RootLayout = async ({ children }) => {
           <FooterLayout data={data} />
         </ErrorBoundary>
         <SpeedInsights />
-        <Analytics />
       </body>
+      <Analytics />
     </html>
   )
 }

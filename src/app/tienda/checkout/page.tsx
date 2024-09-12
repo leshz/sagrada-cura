@@ -4,6 +4,11 @@ import { OrdenSumary, OrderTotalizer } from '@/components/order-summary'
 import './page.scss'
 import { COLLECTIONS } from '@/utils/constants'
 import { getColletions } from '@/services'
+import type { Metadata } from 'next'
+
+export const generateMetadata = async (): Promise<Metadata> => ({
+    title: 'Checkout'
+  })
 
 const Checkout = async () => {
   const { data: shipment } = await getColletions(COLLECTIONS.shipment)

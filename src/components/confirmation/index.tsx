@@ -1,9 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import {
   currencyFormat,
   getConfirmationCopys,
-  dateFormat
+  dateFormat,
+  productsGABuilder
 } from '@/utils/helpers'
+import { useGATrack } from '@/hooks/use-ga-track'
 import { IconAnimation } from './animation'
 import { ConfirmationProps } from './types'
 
@@ -12,10 +16,21 @@ import './style.scss'
 const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
   const { payment_id, status } = result
   const {
-    data: { total = 0, createdAt }
+    data: { total = 0, createdAt, products }
   } = invoice
 
   const { title, subtitle, state } = getConfirmationCopys(status)
+
+  const items = productsGABuilder(products)
+
+  const gaData = {
+    transaction_id: payment_id,
+    value: total,
+    currency: 'COP',
+    items
+  }
+
+  useGATrack('purchase', gaData)
 
   return (
     <div className="d-flex flex-column align-items-center flex-wrap justify-content-center min-vh-10">
@@ -47,7 +62,10 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
             </div>
           </div>
           <div className="d-flex gap-4 mt-40 w-100 flex-wrap buttons-wrap">
-            <button type="button" className="primary-btn3 black-bg hover-btn5 hover-white">
+            <button
+              type="button"
+              className="primary-btn3 black-bg hover-btn5 hover-white"
+            >
               Imprimir recibo
             </button>
             <Link href="/" className="primary-btn3 hover-btn5">
