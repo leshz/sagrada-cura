@@ -30,7 +30,10 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
     items
   }
 
-  useGATrack('purchase', gaData)
+  if (status === 'approved') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useGATrack('purchase', gaData)
+  }
 
   return (
     <div className="d-flex flex-column align-items-center flex-wrap justify-content-center min-vh-10">

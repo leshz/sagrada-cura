@@ -153,17 +153,11 @@ export const getConfirmationCopys = (key: string) => {
         subtitle: 'Estamos verificando tu pago',
         state: 'Pendiente'
       }
-    case 'failed':
+    default:
       return {
         title: '¡Oops! Algo salió mal',
         subtitle: ' Lamentablemente, no pudimos procesar tu pago.',
         state: 'Fallido'
-      }
-    default:
-      return {
-        title: '',
-        subtitle: '',
-        state: ''
       }
   }
 }
