@@ -58,10 +58,8 @@ const IconAnimation = ({ status }) => {
       return <Pending />
     case PAYMENT_STATUS.APPROVED:
       return <ApprovedIcon />
-    case PAYMENT_STATUS.FAILED:
-      return <ErrorIcon />
     default:
-      return null
+      return <ErrorIcon />
   }
 }
 
