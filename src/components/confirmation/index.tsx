@@ -7,7 +7,8 @@ import {
   dateFormat,
   productsGABuilder
 } from '@/utils/helpers'
-import { useGATrack } from '@/hooks/use-ga-track'
+import { sendGAEvent } from '@next/third-parties/google'
+// import { useGATrack } from '@/hooks/use-ga-track'
 import { IconAnimation } from './animation'
 import { ConfirmationProps } from './types'
 
@@ -32,7 +33,8 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
 
   if (status === 'approved') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useGATrack('purchase', gaData)
+    // useGATrack('purchase', gaData)
+    sendGAEvent('event', 'purchase', gaData)
   }
 
   return (
