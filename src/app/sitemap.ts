@@ -1,5 +1,5 @@
 import { getColletions } from '@/services'
-import { COLLECTIONS } from '@/utils/constants'
+import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { MetadataRoute } from 'next'
 
 const website = process.env.WEBPATH
@@ -14,8 +14,16 @@ type change =
   | 'never'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { data: productsData } = await getColletions(COLLECTIONS.products, {})
-  const { data: blogData = [] } = await getColletions(COLLECTIONS.blogs, {})
+  const params = {
+    'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
+  }
+
+  const { data: productsData } = await getColletions(COLLECTIONS.products, {
+    params
+  })
+  const { data: blogData = [] } = await getColletions(COLLECTIONS.blogs, {
+    params
+  })
 
   const products = productsData.map(({ slug }) => ({
     url: `${website}/tienda/${slug}` as string,
