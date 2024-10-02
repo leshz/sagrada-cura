@@ -16,11 +16,12 @@ const FixedBanner = ({ content }) => {
   const { title = {}, image = {}, link = {} } = content || {}
 
   const { text = '', link: url = '' } = link
+  console.log(image)
   return (
     <div className="col-xxl-3 col-xl-4 col-lg-4 d-none d-lg-block d-xl-block">
       <div className="banner-2-left">
         <div className="banner-2-left-img">
-          {image && <ImageWrapper image={image} priority />}
+          {image && <ImageWrapper image={image} width={600} height={1000} priority />}
         </div>
 
         <div className="banner-2-left-content">
