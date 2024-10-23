@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const { redirect } = require('next/dist/server/api-utils')
 const path = require('path')
 
 const nextConfig = {
@@ -24,6 +25,16 @@ const nextConfig = {
     fetches: {
       fullUrl: false
     }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: `${process.env.ADMIN_PATH}`,
+        basePath: false,
+        permanent: false
+      }
+    ]
   }
 }
 
