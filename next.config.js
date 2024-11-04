@@ -15,7 +15,7 @@ const prodCSP = `
   .trim()
   .replace(/(\r\n|\n|\r)/g, '')
 
-const contentSecurityPolicy = process.VERCEL === '1' ? prodCSP : ''
+const contentSecurityPolicy = process.env.VERCEL === '1' ? prodCSP : ''
 
 const nextConfig = {
   reactStrictMode: false,
