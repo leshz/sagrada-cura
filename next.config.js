@@ -5,10 +5,10 @@ const path = require('path')
 
 const prodCSP = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com https://vercel.live;
   style-src 'self' 'unsafe-inline';
   connect-src 'self' https://analytics.google.com/;
-  img-src 'self' https://www.googletagmanager.com ${process.env.CDN};
+  img-src 'self' https://www.googletagmanager.com ${process.env.CDN} data:;
   font-src 'self' data:;
   frame-src 'self';
 `
@@ -53,6 +53,18 @@ const nextConfig = {
           {
             key: 'X-Frame-Options',
             value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          }, 
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
           }
         ]
       }
