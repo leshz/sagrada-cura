@@ -7,7 +7,7 @@ const prodCSP = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com https://vercel.live;
   style-src 'self' 'unsafe-inline';
-  connect-src 'self' https://analytics.google.com/;
+  connect-src 'self' https://analytics.google.com https://www.mercadopago.com.co;
   img-src 'self' https://www.googletagmanager.com ${process.env.CDN} data:;
   font-src 'self' data:;
   frame-src 'self';
