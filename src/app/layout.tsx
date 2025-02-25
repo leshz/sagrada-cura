@@ -42,7 +42,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     openGraph: {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
-      url: 'https://sagradacura.com/',
+      url: 'https://sagradacura.com',
       images: seo?.metaImage?.url,
       type: 'website'
     }

@@ -11,7 +11,7 @@ export const generateMetadata = async (): Promise<Metadata> => ({
     },
     openGraph: {
       title: 'Conoce nuestros blogs',
-      url: `https://sagradacura.com/blog/`,
+      url: `https://sagradacura.com/blog`,
       type: 'website'
     }
   })
