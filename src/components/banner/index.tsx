@@ -78,11 +78,9 @@ const DoubleBanner = ({ data }) => {
                 <div className="swiper-wrapper">
                   {dinamic_banner.map(slide => {
                     const { image, text } = slide || {}
-                    console.log(image)
-
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
-                        <div className="banner-2-right-img-bg" style={{ backgroundImage: `url(${image.url})`}}>
+                        <div className="banner-2-right-img-bg" style={{ backgroundImage: `url(${image.url})` }}>
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
