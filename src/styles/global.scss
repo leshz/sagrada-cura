@@ -45,6 +45,7 @@ ul {
   margin: 0;
   list-style: none;
 }
+
 .plain-text {
   display: none;
 }
@@ -60,6 +61,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+
   &.style-2 {
     background: #fbf8f1;
   }
@@ -226,10 +228,12 @@ blockquote {
   @include lg-down-device() {
     padding-top: 90px;
   }
+
   @include sm-down-device() {
     padding-top: 70px;
   }
 }
+
 .pt-100 {
   padding-top: 100px;
 
@@ -293,15 +297,19 @@ blockquote {
 .pb-65 {
   padding-bottom: 65px;
 }
+
 .pt-40 {
   padding-top: 40px;
 }
+
 .pt-30 {
   padding-top: 30px;
 }
+
 .pt-20 {
   padding-top: 20px;
 }
+
 .mt-120 {
   margin-top: 120px;
 
@@ -344,25 +352,32 @@ blockquote {
 
 .mb-100 {
   margin-bottom: 100px;
+
   @include lg-down-device() {
     margin-bottom: 90px;
   }
+
   @include md-down-device() {
     margin-bottom: 80px;
   }
+
   @include sm-down-device() {
     margin-bottom: 70px;
   }
 }
+
 .mb-90 {
   margin-bottom: 90px;
+
   @include lg-down-device() {
     margin-bottom: 70px;
   }
+
   @include md-down-device() {
     margin-bottom: 50px;
   }
 }
+
 .mb-80 {
   margin-bottom: 80px;
 
@@ -382,6 +397,7 @@ blockquote {
 .pt-70 {
   padding-top: 70px;
 }
+
 .pt-25 {
   padding-top: 25px;
 }
@@ -464,6 +480,7 @@ blockquote {
 
 .mb-40 {
   margin-bottom: 40px;
+
   @include sm-down-device() {
     margin-bottom: 30px;
   }
@@ -566,14 +583,17 @@ blockquote {
   border: 1px solid var(--primary-color1);
   border-radius: 200px;
   transition: 0.5s;
+
   &.black-bg {
     background-color: var(--primary-color1);
     color: var(--white-color);
   }
 }
+
 input {
   border-radius: unset;
 }
+
 .form-inner {
   input {
     border: 1px solid var(--primary-color1);
@@ -583,6 +603,7 @@ input {
     padding: 12px 20px;
     border-radius: unset;
     border-radius: var(--radius);
+
     &:focus {
       border: 1px solid #ddd;
     }
@@ -595,14 +616,17 @@ input {
       letter-spacing: 0.3px;
     }
   }
+
   select {
     @extend input;
     -webkit-appearance: none;
   }
+
   textarea {
     @extend input;
     height: unset;
     min-height: 100px;
+
     &::placeholder {
       color: rgba(#222, 0.5);
       font-family: var(--font-primary);
@@ -611,6 +635,7 @@ input {
       letter-spacing: 0.3px;
       text-transform: capitalize;
     }
+
     &:focus {
       border: 1px solid #ddd;
     }
@@ -618,6 +643,7 @@ input {
 
   label.input-error {
     color: rgb(var(--error)) !important;
+
     span {
       font-size: 12px;
       font-family: var(--font-secondary);
@@ -639,6 +665,7 @@ input {
     height: 100%;
   }
 }
+
 .banner-section {
   overflow: hidden;
   display: flex;
@@ -648,6 +675,7 @@ input {
     .banner-content {
       h1 {
         animation: leftRight 1s;
+
         @keyframes leftRight {
           0% {
             opacity: 0;
@@ -660,7 +688,8 @@ input {
           }
         }
       }
-      > p {
+
+      >p {
         animation: leftRight 2s;
       }
 
@@ -803,6 +832,7 @@ input {
           @include xl-down-device() {
             font-size: 42px;
           }
+
           @include sm-down-device() {
             font-size: 38px;
           }
@@ -863,12 +893,10 @@ input {
           position: absolute;
           left: 0;
           top: 0;
-          background: linear-gradient(
-            47.51deg,
-            rgba(252, 247, 238, 0.54) 2.73%,
-            rgba(252, 247, 238, 0.511018) 9.17%,
-            rgba(252, 247, 238, 0) 15.47%
-          );
+          background: linear-gradient(47.51deg,
+              rgba(252, 247, 238, 0.54) 2.73%,
+              rgba(252, 247, 238, 0.511018) 9.17%,
+              rgba(252, 247, 238, 0) 15.47%);
           width: 100%;
           height: 100%;
           z-index: 11;
@@ -887,9 +915,11 @@ input {
     align-items: center;
     width: unset;
     gap: 14px;
+
     @include sm-down-device() {
       display: none;
     }
+
     .swiper-pagination-bullet {
       width: 13px;
       height: 13px;
@@ -942,6 +972,7 @@ input {
       .banner-footer-content {
         max-width: 270px;
         width: 100%;
+
         h5 {
           color: var(--primary-color1);
           font-size: 22px;
@@ -949,10 +980,12 @@ input {
           font-weight: 600;
           margin-bottom: 8px;
           line-height: 1;
+
           @include lg-device() {
             font-size: 20px;
           }
         }
+
         p {
           color: var(--primary-color1);
           font-size: 15px;
@@ -961,14 +994,17 @@ input {
           line-height: 1.8;
           letter-spacing: 0.45px;
           margin: 0;
+
           @include xxl-down-device() {
             font-size: 14px;
           }
         }
       }
+
       &:hover {
         .banner-footer-icon {
           animation: topBottom 1.5s;
+
           @keyframes topBottom {
             0% {
               opacity: 0;
@@ -984,33 +1020,42 @@ input {
       }
     }
   }
+
   &.style-2 {
     background: transparent;
     border-top: 1px solid var(--primary-color1);
+
     .banner-footer-wrapper {
       padding: 40px 8%;
+
       @include lg-device() {
         padding: 35px 15px;
       }
+
       @include lg-down-device() {
         padding: 35px 15px;
       }
+
       .banner-footer-item {
         .banner-footer-content {
           @include lg-device() {
             max-width: 175px;
           }
+
           h5 {
             font-size: 20px;
           }
+
           p {
             font-size: 16px;
             line-height: 1.3;
           }
         }
       }
+
       .divider {
         position: relative;
+
         &::after {
           content: '';
           position: absolute;
@@ -1020,9 +1065,11 @@ input {
           width: 1px;
           height: 130px;
           background-color: var(--primary-color1);
+
           @include lg-device() {
             height: 140px;
           }
+
           @include lg-down-device() {
             display: none;
           }
@@ -1078,9 +1125,11 @@ input {
 
   &.style-3 {
     margin-bottom: 50px;
+
     @include sm-down-device() {
       margin-bottom: 40px;
     }
+
     h3 {
       margin-bottom: 25px;
 
@@ -1115,9 +1164,11 @@ input {
     flex-direction: column;
     align-items: flex-start;
   }
+
   @include sm-down-device() {
     margin-bottom: 30px;
   }
+
   h3 {
     font-family: var(--font-primary);
     font-style: normal;
@@ -1144,6 +1195,7 @@ input {
       height: 2px;
       background: var(--primary-color1);
       border-radius: 5px;
+
       @include md-down-device() {
         width: 40%;
       }
@@ -1162,9 +1214,11 @@ input {
       align-items: center;
       gap: 10px;
     }
+
     svg {
       fill: var(--text-color);
     }
+
     &.hover-underline {
       display: inline-flex;
     }
@@ -1361,6 +1415,7 @@ input {
   }
 
   &:hover {
+
     // border: 0.5px solid transparent;
     &::before {
       width: 100%;
@@ -1441,6 +1496,7 @@ input {
 
   &:hover {
     color: var(--primary-color1);
+
     &::after {
       transform: skewX(45deg) scale(1, 1);
       height: 150%;
@@ -1488,6 +1544,7 @@ input {
   position: relative;
   overflow: hidden;
   z-index: 1;
+
   &::after {
     content: '';
     position: absolute;
@@ -1502,17 +1559,21 @@ input {
     transform: scalex(0);
     transition: transform 0.7s;
   }
+
   &:hover {
     color: var(--white-color);
+
     &::after {
       transform: scalex(1);
       transform-origin: left;
     }
   }
+
   &.hover-white {
     &::after {
       background: var(--white-color);
     }
+
     &:hover {
       color: var(--primary-color1);
     }
@@ -1525,6 +1586,7 @@ input {
   background-repeat: no-repeat;
   background-position: right 100%;
   transition: background-size 0.75s;
+
   &:hover {
     background-size: 100% 2px;
     background-position: 0% 100%;
@@ -1539,6 +1601,7 @@ input {
   padding: 100px 0 100px 0;
   position: relative;
   z-index: 1;
+
   .vector1 {
     position: absolute;
     bottom: 0;
@@ -1573,6 +1636,7 @@ input {
       background-repeat: no-repeat;
       background-position: right 100%;
       transition: background-size 0.8s;
+
       span {
         font-size: 13px;
       }
@@ -1703,11 +1767,13 @@ input {
 .offer-banner {
   .offer-banner-left {
     position: relative;
+
     img {
       @include lg-down-device() {
         width: 100%;
       }
     }
+
     .offer-banner-left-content {
       position: absolute;
       left: 0;
@@ -1717,6 +1783,7 @@ input {
       justify-content: space-between;
       align-items: center;
       width: 100%;
+
       @include lg-device() {
         padding: 25px 20px 0 25px;
       }
@@ -1724,6 +1791,7 @@ input {
       @include sm-down-device() {
         padding: 20px 15px 0 10px;
       }
+
       .left-text {
         h5 {
           color: var(--white-color);
@@ -1749,11 +1817,13 @@ input {
           }
         }
       }
+
       .buy-btn2 {
         padding: 9px 31px;
       }
     }
   }
+
   .offer-banner-right {
     position: relative;
 
@@ -1840,15 +1910,18 @@ input {
           margin-bottom: 10px;
         }
       }
+
       .buy-btn2 {
         padding: 9px 31px;
       }
     }
   }
+
   &.two {
     img {
       border-radius: 10px;
     }
+
     .offer-banner-left {
       .offer-banner-left-content {
         display: block;
@@ -1856,17 +1929,21 @@ input {
         width: 100%;
         padding: 70px 0 0 25px;
         text-align: center;
+
         @include lg-device() {
           padding-top: 35px;
         }
+
         @include md-down-device() {
           padding-top: 35px;
         }
+
         @include sm-down-device() {
           padding: 20px 0 0 10px;
           max-width: 200px;
           text-align: start;
         }
+
         h3 {
           color: rgba(255, 255, 255, 0.7);
           font-family: var(--font-primary);
@@ -1874,31 +1951,38 @@ input {
           font-weight: 600;
           line-height: 1.4;
           margin-bottom: 20px;
+
           span {
             color: var(--white-color);
             font-size: 40px;
             font-style: italic;
             font-weight: 600;
+
             @include md-down-device() {
               font-size: 36px;
             }
+
             @include sm-down-device() {
               font-size: 28px;
             }
           }
+
           @include lg-device() {
             font-size: 32px;
             margin-bottom: 15px;
           }
+
           @include md-down-device() {
             font-size: 32px;
             margin-bottom: 15px;
           }
+
           @include sm-down-device() {
             font-size: 25px;
             margin-bottom: 10px;
           }
         }
+
         a {
           color: var(--white-color);
           font-family: var(--font-primary);
@@ -1908,22 +1992,27 @@ input {
         }
       }
     }
+
     .offer-banner-right {
       .offer-banner-right-content {
         max-width: 285px;
         width: 100%;
         padding: 70px 0 0 20px;
+
         @include lg-device() {
           padding-top: 35px;
         }
+
         @include md-down-device() {
           padding-top: 35px;
         }
+
         @include sm-down-device() {
           padding: 20px 0 0 10px;
           text-align: start;
           max-width: 200px;
         }
+
         h3 {
           color: var(--primary-color1);
           font-family: Kalam;
@@ -1932,16 +2021,20 @@ input {
           line-height: 1.4;
           text-transform: capitalize;
           margin-bottom: 20px;
+
           span {
             color: var(--white-color);
           }
+
           @include sm-down-device() {
             font-size: 26px;
             margin-bottom: 10px;
           }
         }
+
         .primary-btn3 {
           padding: 9px 33px;
+
           @include sm-down-device() {
             padding: 8px 25px;
             font-size: 15px;
@@ -1989,11 +2082,14 @@ input {
   padding: 100px 0 100px 0;
   position: relative;
   z-index: 1;
+
   @include sm-down-device() {
     padding: 80px 0 80px 0;
   }
+
   h3 {
     color: var(--white-color);
+
     &:after {
       background: var(--white-color);
     }
@@ -2005,19 +2101,24 @@ input {
     top: 50%;
     transform: translateY(-50%);
     right: 165px;
+
     @include seventeen-down-device() {
       right: 100px;
     }
+
     @include xxl-device() {
       right: 10px;
     }
+
     @include xl-device() {
       right: 8px;
     }
+
     @include xl-down-device() {
       display: none;
     }
   }
+
   .vector3 {
     position: absolute;
     top: 0;
@@ -2043,6 +2144,7 @@ input {
       line-height: 1.5;
       letter-spacing: 0.8px;
       margin-bottom: 15px;
+
       @include sm-down-device() {
         font-size: 35px;
       }
@@ -2053,6 +2155,7 @@ input {
       font-size: 16px;
       font-family: var(--font-secondary);
       margin-bottom: 30px;
+
       @include sm-down-device() {
         margin-bottom: 25px;
       }
@@ -2067,10 +2170,12 @@ input {
       gap: 20px;
       flex-wrap: wrap;
       margin-bottom: 45px;
+
       @include sm-down-device() {
         gap: 15px;
         margin-bottom: 35px;
       }
+
       li {
         color: var(--white-color);
         font-size: 16px;
@@ -2080,9 +2185,11 @@ input {
         display: flex;
         align-items: center;
         gap: 10px;
+
         @include sm-down-device() {
           font-size: 16px;
         }
+
         svg {
           fill: var(--white-color);
         }
@@ -2284,10 +2391,12 @@ input {
                 font-size: 15px;
                 font-weight: 400;
                 line-height: 1;
+
                 &:last-child {
                   display: none;
                   visibility: hidden;
                 }
+
                 @include lg-device() {
                   font-size: 13px;
                 }
@@ -2409,9 +2518,11 @@ input {
 .best-brand-section {
   .best-brand-wrapper {
     padding: 0 8%;
+
     @include seventeen-down-device() {
       padding: 0 5%;
     }
+
     .brand-icon {
       width: 100%;
       border: 1px solid rgba(#222, 0.20000000298023224);
@@ -2527,10 +2638,12 @@ input {
 
   h3 {
     color: var(--white-color);
+
     &:after {
       background: var(--white-color);
     }
   }
+
   .slider-btn {
     i {
       color: var(--white-color);
@@ -2545,11 +2658,13 @@ input {
   @include lg-down-device() {
     padding: 90px 0;
   }
+
   .vector3 {
     position: absolute;
     top: 0;
     right: 0;
     z-index: -1;
+
     @include md-down-device() {
       display: none;
       visibility: hidden;
@@ -2561,11 +2676,13 @@ input {
     bottom: 0;
     left: 0;
     z-index: -1;
+
     @include md-down-device() {
       display: none;
       visibility: hidden;
     }
   }
+
   .say-about-wrapper {
     padding: 0 5%;
 
@@ -2634,10 +2751,12 @@ input {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         .author-area {
           display: flex;
           align-items: center;
           gap: 15px;
+
           .author-img {
             height: 75px;
             width: 75px;
@@ -2646,6 +2765,7 @@ input {
             display: flex;
             align-items: center;
             justify-content: center;
+
             img {
               height: 65px;
               width: 65px;
@@ -2654,6 +2774,7 @@ input {
             }
           }
         }
+
         .author {
           h5 {
             color: var(--white-color);
@@ -2673,6 +2794,7 @@ input {
             margin-bottom: 0;
           }
         }
+
         .quote {
           svg {
             fill: var(--white-color);
@@ -2710,14 +2832,13 @@ input {
 ........................*/
 .newsletter-section {
   .newsletter-banner {
-    background-image: linear-gradient(
-        rgba(#222, 0.699999988079071),
-        rgba(#222, 0.699999988079071)
-      ),
+    background-image: linear-gradient(rgba(#222, 0.699999988079071),
+        rgba(#222, 0.699999988079071)),
       url('/img/newsletter-bg.png');
     object-fit: cover;
     background-repeat: no-repeat;
     padding: 110px 10px 110px 10px;
+
     .newsletter-content {
       text-align: center;
       max-width: 570px;
@@ -2766,10 +2887,12 @@ input {
           font-family: var(--font-primary);
           text-transform: capitalize;
           width: 100%;
+
           &::placeholder {
             color: var(--white-color);
           }
         }
+
         .from-arrow {
           i {
             color: var(--white-color);
@@ -2778,48 +2901,58 @@ input {
       }
     }
   }
+
   &.style-2 {
     .newsletter-banner {
       background-color: #f4f0d7;
       background-image: none;
       position: relative;
       border-radius: 10px;
+
       .top-left {
         position: absolute;
         top: 0;
         left: 0;
         border-radius: 10px 0 0 0;
       }
+
       .bottom-left {
         position: absolute;
         bottom: 0;
         left: 0;
         border-radius: 0 0 0 10px;
       }
+
       .top-right {
         position: absolute;
         top: 0;
         right: 0;
         border-radius: 0 10px 0 0;
       }
+
       .bottom-right {
         position: absolute;
         bottom: 0;
         right: 0;
         border-radius: 0 0 10px 0;
       }
+
       .newsletter-content {
         h2 {
           color: var(--primary-color1);
         }
+
         .from-inner {
           border-bottom: 1px solid var(--primary-color1);
+
           input {
             color: var(--primary-color1);
+
             &::placeholder {
               color: var(--primary-color1);
             }
           }
+
           .from-arrow {
             i {
               color: var(--primary-color1);
@@ -3008,6 +3141,7 @@ input {
       font-weight: 400;
       line-height: normal;
       text-transform: capitalize;
+
       a {
         color: #6c757d;
         font-family: var(--font-primary);
@@ -3023,7 +3157,8 @@ input {
       }
     }
   }
-  .breadcrumb-item + .breadcrumb-item::before {
+
+  .breadcrumb-item+.breadcrumb-item::before {
     float: left;
     padding-right: 0.5rem;
     color: var(--title-color);
@@ -3190,12 +3325,15 @@ input {
       transform: scaleX(0);
       transform-origin: right;
       cursor: pointer;
+
       svg {
         fill: var(--white-color);
         transition: 0.5s;
       }
+
       &:hover {
         background-color: var(--white-color);
+
         svg {
           fill: var(--primary-color1);
         }
@@ -3336,6 +3474,7 @@ input {
         transition: 0.5s ease-in-out;
       }
     }
+
     .category-card-content {
       a {
         font-size: 17px;
@@ -3438,6 +3577,7 @@ input {
     }
   }
 }
+
 /*........................ 
  Category on top section
 ........................*/
@@ -3445,19 +3585,23 @@ input {
   background-color: #cee5d2;
   padding: 90px 0;
   position: relative;
+
   .ct-vector1 {
     position: absolute;
     left: 0;
     bottom: 0;
   }
+
   .ct-vector2 {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .nav-pills {
     display: flex;
     align-items: center;
+
     .nav-link {
       background-color: transparent;
       border: 1px solid rgba(#222, 0.2);
@@ -3466,24 +3610,29 @@ input {
       height: 170px;
       border-radius: 50%;
       margin: 0 auto;
+
       @include lg-down-device() {
         width: 150px;
         height: 150px;
         padding: 10px;
       }
+
       img {
         width: 140px;
         height: 140px;
         border-radius: 50%;
+
         @include lg-down-device() {
           width: 130px;
           height: 130px;
         }
       }
+
       &.active {
         border: 1px solid var(--primary-color1);
       }
     }
+
     h6 {
       color: var(--primary-color1);
       text-align: center;
@@ -3497,45 +3646,56 @@ input {
       margin-top: 15px;
     }
   }
+
   .slider-btn {
     cursor: pointer;
     display: block;
     cursor: pointer;
+
     @include xl-down-device() {
       display: none;
     }
+
     .ct-top-prev-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       left: -12%;
+
       @include seventeen-down-device() {
         left: -50px;
       }
+
       @include xxl-device() {
         left: -30px;
       }
+
       @include xl-device() {
         left: -20px;
       }
     }
+
     .ct-top-next-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       right: -12%;
+
       @include seventeen-down-device() {
         right: -50px;
       }
+
       @include xxl-device() {
         right: -30px;
       }
+
       @include xl-device() {
         right: -20px;
       }
     }
   }
 }
+
 /*........................ 
  Filter Sidebar Css
 ........................*/
@@ -3555,17 +3715,21 @@ input {
   transition: all 0.6s ease 0s;
   transform-origin: left;
   transform: translateX(-100%);
+
   @include sm-down-device() {
     max-width: 300px;
     padding: 30px 10px;
   }
+
   &.slide {
     transform: translate(0);
   }
+
   &::-webkit-scrollbar {
     width: 0;
   }
 }
+
 /*........................ 
  Shop column page section
 ........................*/
@@ -3578,6 +3742,7 @@ input {
     flex-wrap: wrap;
     gap: 20px;
   }
+
   p {
     color: rgba(#222, 0.5);
     font-family: var(--font-secondary);
@@ -3594,21 +3759,25 @@ input {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+
     .filter {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-right: 20px;
       cursor: pointer;
+
       .filter-icon {
         cursor: pointer;
         line-height: 1;
         transition: 0.5s;
+
         svg {
           fill: var(--primary-color1);
           transition: 0.5s;
         }
       }
+
       &:hover {
         .filter-icon {
           svg {
@@ -3625,11 +3794,14 @@ input {
         letter-spacing: 0.3px;
       }
     }
+
     .selector {
       margin-right: 20px;
+
       @include md-down-device() {
         margin-right: 0;
       }
+
       .nice-select {
         width: 195px;
         height: 40px;
@@ -3643,9 +3815,11 @@ input {
         padding-left: 25px;
         display: flex;
         align-items: center;
+
         &:focus {
           border: 1px solid #ddd;
         }
+
         @include sm-down-device() {
           width: 200px;
           height: 35px;
@@ -3669,42 +3843,52 @@ input {
         &.open {
           .list {
             width: 100%;
+
             .option {
               padding-left: 25px;
             }
           }
         }
       }
+
       &.two {
         padding-right: 15px;
+
         @include lg-down-device() {
           margin: 0;
         }
+
         .nice-select {
           border: unset;
           height: unset;
           line-height: 1;
           width: 120px;
           padding: 0;
+
           @include lg-down-device() {
             width: 100%;
             border: 1px solid #222;
             padding: 10px 40px 10px 20px;
           }
+
           &::after {
             right: -15px;
+
             @include lg-down-device() {
               right: 22px;
             }
           }
+
           &.open {
             .list {
               margin-top: 25px;
               width: unset;
+
               @include lg-down-device() {
                 left: unset;
                 right: 0;
               }
+
               @include sm-down-device() {
                 right: unset;
                 left: 0;
@@ -3714,25 +3898,31 @@ input {
         }
       }
     }
+
     .grid-view {
       display: flex;
       align-items: center;
       gap: 20px;
+
       @include sm-down-device {
         display: none;
       }
+
       button {
         background: unset;
         line-height: 1;
         cursor: pointer;
+
         svg {
           fill: rgba(#222, 0.4);
         }
+
         &.active {
           svg {
             fill: var(--primary-color1);
           }
         }
+
         &.column-4 {
           @include md-device() {
             display: none;
@@ -3754,6 +3944,7 @@ input {
 
     li {
       margin-right: 20px;
+
       .shop-pagi-btn {
         width: 25px;
         height: 25px;
@@ -3791,9 +3982,11 @@ input {
           color: var(--text-color);
         }
       }
+
       &:first-child {
         margin-right: 30px;
       }
+
       &:last-child {
         padding-left: 10px;
         margin-right: 0;
@@ -3833,35 +4026,43 @@ input {
       width: 50%;
     }
   }
+
   &.column-3-wrapper {
     .item {
       width: 33.33%;
+
       @include md-down-device() {
         display: none;
       }
     }
   }
+
   &.column-4-wrapper {
     .item {
       width: 25%;
+
       @include lg-down-device() {
         display: none;
       }
     }
   }
 }
+
 /*........................ 
  3-column right section
 ........................*/
 .column-sidebar-padding {
   padding: 0 8%;
+
   @include seventeen-down-device() {
     padding: 0 2%;
   }
+
   @include xxl-down-device() {
     padding: 0;
   }
 }
+
 /*........................ 
  Shop Sidebar section
 ........................*/
@@ -3877,26 +4078,32 @@ input {
     display: inline-block;
     margin-bottom: 30px;
   }
+
   .shop-widget {
     padding: 25px;
     border: 1px solid rgba(#222, 0.30000001192092896);
+
     .shop-item {
       padding: 0;
       margin: 0;
       list-style: none;
+
       li {
         margin-bottom: 15px;
         position: relative;
         padding-left: 25px;
         transition: 0.5s;
+
         &.selected {
           &::before {
             background-color: var(--primary-color1);
           }
         }
+
         &:last-child {
           margin-bottom: 0;
         }
+
         a {
           color: var(--primary-color1);
           font-family: var(--font-primary);
@@ -3905,6 +4112,7 @@ input {
           line-height: 1;
           letter-spacing: 0.3px;
         }
+
         &::before {
           content: '';
           position: absolute;
@@ -3923,13 +4131,16 @@ input {
             background-color: var(--primary-color1);
           }
         }
+
         &.brand-list {
           display: flex;
           align-items: center;
           margin-bottom: 25px;
+
           &:last-child {
             margin-bottom: 0;
           }
+
           a {
             display: flex;
             align-items: center;
@@ -3937,6 +4148,7 @@ input {
             width: 100%;
             flex-wrap: wrap;
             gap: 5px;
+
             span {
               color: var(--primary-color1);
               font-family: var(--font-primary);
@@ -3954,6 +4166,7 @@ input {
         }
       }
     }
+
     .top-product-widget {
       display: flex;
       align-items: center;
@@ -3963,6 +4176,7 @@ input {
         display: flex;
         align-items: center;
         justify-content: center;
+
         img {
           border-radius: 5px;
         }
@@ -4004,6 +4218,7 @@ input {
         }
       }
     }
+
     .recent-post-widget {
       display: flex;
       align-items: center;
@@ -4018,7 +4233,7 @@ input {
       }
 
       .recent-post-content {
-        > a {
+        >a {
           color: rgba(#222, 0.5);
           font-family: var(--font-secondary);
           font-size: 12px;
@@ -4044,6 +4259,7 @@ input {
         }
       }
     }
+
     .tag-list {
       display: flex;
       align-items: center;
@@ -4065,6 +4281,7 @@ input {
           border: 1px solid rgba(#222, 0.4000000059604645);
           transition: 0.5s;
         }
+
         &:hover {
           a {
             border: 1px solid var(--primary-color1);
@@ -4073,6 +4290,7 @@ input {
         }
       }
     }
+
     .search-box {
       display: flex;
       align-items: center;
@@ -4084,6 +4302,7 @@ input {
         font-size: 16px;
         height: 50px;
         border: 1px solid var(--primary-color1);
+
         &:focus {
           border: 1px solid #ddd;
         }
@@ -4107,19 +4326,23 @@ input {
         }
       }
     }
+
     &.two {
       padding: 35px 20px;
       border: unset;
+
       @include lg-device() {
         padding: 25px 10px;
       }
     }
   }
+
   &.style-2 {
     border: 1px solid rgba(#222, 0.30000001192092896);
 
     .filter-divider {
       position: relative;
+
       &::after {
         content: '';
         position: absolute;
@@ -4128,6 +4351,7 @@ input {
         background-color: rgba(#222, 0.30000001192092896);
         top: 0;
         right: 0;
+
         @include lg-down-device() {
           display: none;
         }
@@ -4135,6 +4359,7 @@ input {
     }
   }
 }
+
 .filter-top {
   display: none;
   transform-origin: top;
@@ -4142,6 +4367,7 @@ input {
   margin-bottom: 25px;
   transition: transform 0.35s ease-in-out;
   animation: fadeInUp 0.45s linear;
+
   &.slide {
     display: block;
     transform: scaleY(1);
@@ -4149,8 +4375,10 @@ input {
     position: relative;
     z-index: 9;
   }
+
   .selector {
     position: relative;
+
     .nice-select {
       width: 100%;
       height: 44px;
@@ -4165,12 +4393,15 @@ input {
       display: flex;
       align-items: center;
       position: relative;
+
       @include lg-device() {
         height: 40px;
       }
+
       &:focus {
         border: 1px solid #ddd;
       }
+
       &::after {
         border-bottom: 2px solid var(--primary-color1);
         border-right: 2px solid var(--primary-color1);
@@ -4185,9 +4416,11 @@ input {
           top: 45%;
         }
       }
+
       &.open {
         .list {
           width: 100%;
+
           .option {
             padding-left: 25px;
           }
@@ -4195,13 +4428,16 @@ input {
       }
     }
   }
+
   .primary-btn3 {
     padding: 9px 30px;
     font-size: 16px;
+
     @include lg-device() {
       padding: 7px 30px;
     }
   }
+
   .price-filter-dropdown {
     .price-selector {
       width: 100%;
@@ -4218,9 +4454,11 @@ input {
       align-items: center;
       position: relative;
       cursor: pointer;
+
       @include lg-device() {
         height: 40px;
       }
+
       p {
         color: var(--primary-color1);
         font-family: var(--font-primary);
@@ -4230,6 +4468,7 @@ input {
         text-transform: capitalize;
         margin-bottom: 0;
       }
+
       &::after {
         content: '';
         position: absolute;
@@ -4243,6 +4482,7 @@ input {
         transform-origin: 66% 66%;
         transition: all 0.15s ease-in-out;
       }
+
       &.slide {
         &::after {
           transform: rotate(-135deg);
@@ -4251,17 +4491,21 @@ input {
     }
   }
 }
+
 /*........................ 
  Shop Full Width css
 ........................*/
 .full-width-section {
   padding: 0 9%;
+
   @include xl-device() {
     padding: 0 5%;
   }
+
   @include xl-down-device() {
     padding: 0 3%;
   }
+
   @include sm-down-device() {
     padding: 0;
   }
@@ -4281,11 +4525,13 @@ input {
     }
   }
 }
+
 /*=======================================
  Range Slider
 =======================================*/
 .range-wrap {
   padding-top: 10px;
+
   .slider-labels {
     display: flex;
     align-items: center;
@@ -4308,6 +4554,7 @@ input {
       letter-spacing: 0.3px;
     }
   }
+
   .noUi-target,
   .range-wrap .noUi-target * {
     -webkit-touch-callout: none;
@@ -4317,10 +4564,12 @@ input {
     user-select: none;
     box-sizing: border-box;
   }
+
   .noUi-target {
     position: relative;
     direction: ltr;
   }
+
   .noUi-base {
     width: 100%;
     height: 100%;
@@ -4328,6 +4577,7 @@ input {
     z-index: 1;
     /* Fix 401 */
   }
+
   .noUi-origin {
     position: absolute;
     right: 0;
@@ -4335,15 +4585,18 @@ input {
     left: 0;
     bottom: 0;
   }
+
   .noUi-handle {
     position: relative;
     z-index: 1;
   }
+
   .noUi-stacking .noUi-handle {
     /* This class is applied to the lower origin when
        its values is > 50%. */
     z-index: 10;
   }
+
   .noUi-state-tap {
     .noUi-origin {
       transition:
@@ -4351,13 +4604,16 @@ input {
         top 0.3s;
     }
   }
+
   .noUi-state-drag * {
     cursor: inherit !important;
   }
+
   .noUi-base,
   .range-wrap .noUi-handle {
     transform: translate3d(0, 0, 0);
   }
+
   .noUi-horizontal {
     height: 4px;
 
@@ -4384,20 +4640,24 @@ input {
       }
     }
   }
+
   .noUi-background {
     background: rgba(33, 33, 33, 0.5);
     height: 5px;
     border-radius: 10px;
   }
+
   .noUi-connect {
     background: var(--primary-color1);
     transition: background 450ms;
     border-radius: 10px;
     height: 5px;
   }
+
   .noUi-target {
     border-radius: 10px;
   }
+
   &.style-2 {
     box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);
     padding: 20px;
@@ -4411,6 +4671,7 @@ input {
     transform: scaleY(0);
     transform-origin: top;
     z-index: 9;
+
     &.slide {
       display: block;
       transform: scaleY(1);
@@ -4666,15 +4927,18 @@ input {
         @include xxl-device() {
           width: 170px;
           height: 35px;
+
           ul {
             li {
               font-size: 14px;
             }
           }
         }
+
         @include xl-device() {
           width: 160px;
           height: 30px;
+
           ul {
             li {
               font-size: 14px;
@@ -4682,18 +4946,22 @@ input {
             }
           }
         }
+
         @include lg-device() {
           width: 170px;
           height: 35px;
+
           ul {
             li {
               font-size: 14px;
             }
           }
         }
+
         @include md-device() {
           width: 170px;
           height: 35px;
+
           ul {
             li {
               font-size: 14px;
@@ -4702,14 +4970,17 @@ input {
         }
       }
     }
+
     .product-card-content {
       .product-size {
         @include xxl-device() {
           flex-wrap: wrap;
         }
+
         @include xxl-down-device() {
           flex-wrap: wrap;
         }
+
         @include sm-device() {
           flex-wrap: nowrap;
         }
@@ -4717,6 +4988,7 @@ input {
     }
   }
 }
+
 .shop-list-section {
   .product-card {
     .product-card-img {
@@ -4724,15 +4996,18 @@ input {
         @include lg-device() {
           width: 170px;
           height: 35px;
+
           ul {
             li {
               font-size: 14px;
             }
           }
         }
+
         @include md-device() {
           width: 170px;
           height: 35px;
+
           ul {
             li {
               font-size: 14px;
@@ -4741,14 +5016,17 @@ input {
         }
       }
     }
+
     .product-card-content {
       .product-size {
         @include xxl-device() {
           flex-wrap: wrap;
         }
+
         @include xxl-down-device() {
           flex-wrap: wrap;
         }
+
         @include sm-device() {
           flex-wrap: nowrap;
         }
@@ -4763,9 +5041,11 @@ home2 Topbar Css
 .top-bar2 {
   background-color: var(--important-color2);
   padding: 15px 0;
+
   @include sm-down-device() {
     display: none;
   }
+
   .top-bar-left {
     display: flex;
     align-items: center;
@@ -4794,10 +5074,12 @@ home2 Topbar Css
     margin-bottom: 0;
     margin: 0 auto;
     padding-left: 102px;
+
     @include lg-down-device() {
       display: none;
       visibility: hidden;
     }
+
     a {
       color: rgba(255, 255, 255, 0.5);
       font-weight: 500;
@@ -4859,10 +5141,12 @@ home2 Banner Css
 =======================================*/
 .banner-2-section {
   overflow: hidden;
+
   .swiper-slide-active {
     .banner-2-right-content {
       h1 {
         animation: fade-In-Down 1.5s;
+
         @keyframes fade-In-Down {
           0% {
             opacity: 0;
@@ -4875,11 +5159,14 @@ home2 Banner Css
           }
         }
       }
+
       p {
         animation: fade-In-Down 1.5s;
       }
+
       .primary-btn3 {
         animation: fade-up 1.5s;
+
         @keyframes fade-up {
           0% {
             opacity: 0;
@@ -4892,8 +5179,10 @@ home2 Banner Css
           }
         }
       }
+
       strong {
         animation: zoom-In-effect 1s;
+
         @keyframes zoom-In-effect {
           0% {
             transform: scale(0.5);
@@ -4906,18 +5195,11 @@ home2 Banner Css
       }
     }
   }
+
   .banner-2-left {
     position: relative;
-    height: 100%;
 
-    .swiper-wrapper {
-      @include md-up-device {
-        height: 550px;
-      }
-    }
     .banner-2-left-img {
-      height: 100%;
-
       img {
         height: 100%;
         width: 100%;
@@ -4939,6 +5221,7 @@ home2 Banner Css
         font-weight: 600;
         line-height: 1.3;
         margin-bottom: 30px;
+
         strong {
           color: #c76b6b;
           font-weight: 700;
@@ -4953,19 +5236,23 @@ home2 Banner Css
     height: 100%;
 
     .swiper-wrapper {
-      @include md-up-device {
-        // height: 550px;
-      }
-      @include sm-down-device() {
+
+      @include lg-down-device {
         height: 555px;
       }
     }
 
     .banner-2-right-img-bg {
-      position: relative;
-      object-fit: cover;
+      align-items: center;
+      background-position: top;
       background-repeat: no-repeat;
-      height: inherit;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      position: relative;
+
       img {
         object-fit: cover;
         object-position: right;
@@ -4974,16 +5261,17 @@ home2 Banner Css
       }
 
       .banner-2-right-content {
-        top: 0;
-        display: flex;
-        bottom: 0;
-        max-width: 500px;
-        flex-direction: column;
         align-items: center;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        position: absolute;
+        max-width: 500px;
+        padding: 50px;
+        position: relative;
         text-align: center;
         width: 100%;
+
         h1,
         h2 {
           color: var(--primary-color1);
@@ -4994,12 +5282,15 @@ home2 Banner Css
           margin-bottom: 15px;
           text-shadow: 2px 2px 2px orange;
           filter: invert(1) grayscale(1) contrast(9);
+
           @include sm-down-device() {
             font-size: 50px;
           }
+
           span {
             font-size: 45px;
             font-weight: 600;
+
             @include sm-down-device() {
               font-size: 40px;
             }
@@ -5016,6 +5307,7 @@ home2 Banner Css
             padding: 0 30px;
             margin-left: 10px;
             background-position: center center;
+
             @include sm-down-device() {
               font-size: 40px;
             }
@@ -5049,12 +5341,14 @@ home2 Banner Css
       flex-direction: row;
       width: unset;
       gap: 14px;
+
       @include md-down-device() {
         justify-content: center;
         left: 0;
         right: 0;
         width: 100%;
       }
+
       .swiper-pagination-bullet {
         width: 13px;
         height: 13px;
@@ -5081,10 +5375,12 @@ home2 Section title Css
   align-items: center;
   justify-content: space-between;
   margin-bottom: 50px;
+
   @include md-down-device() {
     display: block;
     margin-bottom: 40px;
   }
+
   h3 {
     color: var(--primary-color1);
     font-family: var(--font-primary);
@@ -5094,11 +5390,13 @@ home2 Section title Css
     text-transform: uppercase;
     line-height: 1;
     margin-bottom: 0;
+
     span {
       font-size: 25px;
       font-weight: 400;
       position: relative;
       display: inline-block;
+
       &::after {
         content: '';
         position: absolute;
@@ -5108,13 +5406,16 @@ home2 Section title Css
         width: 100%;
         height: 45%;
       }
+
       @include sm-down-device() {
         font-size: 22px;
       }
     }
+
     @include md-down-device() {
       margin-bottom: 20px;
     }
+
     @include sm-down-device() {
       font-size: 25px;
       display: flex;
@@ -5123,6 +5424,7 @@ home2 Section title Css
       gap: 5px;
     }
   }
+
   .view-all {
     a {
       color: var(--primary-color1);
@@ -5150,11 +5452,13 @@ home2 Section title Css
       fill: var(--text-color);
     }
   }
+
   .slider-btn2 {
     display: flex;
     cursor: pointer;
     align-items: center;
     gap: 30px;
+
     i {
       width: 35px;
       height: 35px;
@@ -5166,6 +5470,7 @@ home2 Section title Css
       justify-content: center;
       font-size: 24px;
       transition: 0.5s;
+
       &:hover {
         background-color: var(--primary-color1);
         color: var(--white-color);
@@ -5173,6 +5478,7 @@ home2 Section title Css
     }
   }
 }
+
 /*=======================================
 Product-Banner-Section Css
 =======================================*/
@@ -5181,28 +5487,36 @@ Product-Banner-Section Css
     border-radius: 10px;
     background: #f4efeb;
     position: relative;
+
     @include sm-down-device() {
       padding: 50px 20px;
     }
+
     .product-banner-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       @include sm-down-device() {
         justify-content: center;
       }
+
       .product-banner-left-img {
         border-radius: 10px 0 0 10px;
+
         @include sm-down-device() {
           display: none;
         }
+
         img {
           border-radius: 10px 0 0 10px;
         }
       }
+
       .product-banner-content {
         text-align: center;
         max-width: 413px;
+
         h2 {
           color: var(--primary-color1);
           font-family: var(--font-secondary);
@@ -5210,42 +5524,52 @@ Product-Banner-Section Css
           font-weight: 700;
           text-transform: capitalize;
           margin-bottom: 20px;
+
           @include lg-down-device() {
             font-size: 32px;
           }
+
           @include md-down-device() {
             font-size: 22px;
             margin-bottom: 15px;
           }
+
           @include sm-down-device() {
             font-size: 26px;
             margin-bottom: 15px;
           }
         }
+
         .primary-btn3 {
           @include lg-down-device() {
             padding: 7px 25px;
             font-size: 16px;
           }
+
           @include md-down-device() {
             font-size: 14px;
           }
         }
       }
+
       .product-banner-right-img {
         border-radius: 0 10px 10px 0;
+
         @include sm-down-device() {
           display: none;
         }
+
         img {
           border-radius: 0 10px 10px 0;
         }
       }
     }
+
     .product-banner-slider-btn {
       @include sm-down-device() {
         display: none;
       }
+
       .slider-btn-bg {
         width: 35px;
         height: 81px;
@@ -5255,28 +5579,35 @@ Product-Banner-Section Css
         align-items: center;
         justify-content: center;
         transition: 0.5s;
+
         @include md-down-device() {
           width: 25px;
           height: 70px;
         }
+
         @include sm-down-device() {
           width: 20px;
           height: 55px;
         }
+
         i {
           font-size: 24px;
+
           @include sm-down-device() {
             font-size: 20px;
           }
         }
+
         &.two {
           border-radius: 20px 0px 0px 20px;
         }
+
         &:hover {
           background: var(--primary-color1);
           color: var(--white-color);
         }
       }
+
       .pd-banner-prev-btn {
         position: absolute;
         top: 50%;
@@ -5284,6 +5615,7 @@ Product-Banner-Section Css
         left: 0;
         z-index: 1;
       }
+
       .pd-banner-next-btn {
         position: absolute;
         top: 50%;
@@ -5293,15 +5625,19 @@ Product-Banner-Section Css
       }
     }
   }
+
   .swiper-slide-active {
     .product-banner-left-img {
       animation: leftRight 1s;
     }
+
     .product-banner-content {
       animation: fadeInUp 1.5s;
     }
+
     .product-banner-right-img {
       animation: RightLeft 1s;
+
       @keyframes RightLeft {
         0% {
           opacity: 0;
@@ -5316,6 +5652,7 @@ Product-Banner-Section Css
     }
   }
 }
+
 /*=======================================
 Suggest-Section Css
 =======================================*/
@@ -5325,14 +5662,18 @@ Suggest-Section Css
       display: flex;
       align-items: center;
       gap: 20px;
+
       @include lg-down-device() {
         gap: 10px;
       }
+
       .nav-item {
         margin-right: 20px;
+
         &:last-child {
           margin-right: 0;
         }
+
         .nav-link {
           color: var(--primary-color1);
           font-family: var(--font-primary);
@@ -5341,6 +5682,7 @@ Suggest-Section Css
           letter-spacing: 0.32px;
           text-transform: capitalize;
           padding: 0;
+
           &.active {
             background-color: unset;
             font-weight: 500;
@@ -5350,12 +5692,15 @@ Suggest-Section Css
       }
     }
   }
+
   .sg-slider-wrapper {
     position: relative;
+
     .sg-slider-btn {
       @include sm-down-device() {
         display: none;
       }
+
       i {
         width: 35px;
         height: 35px;
@@ -5367,11 +5712,13 @@ Suggest-Section Css
         justify-content: center;
         font-size: 24px;
         transition: 0.5s;
+
         &:hover {
           background-color: var(--primary-color1);
           color: var(--white-color);
         }
       }
+
       .sg-prev-btn {
         position: absolute;
         top: 50%;
@@ -5379,6 +5726,7 @@ Suggest-Section Css
         left: -17px;
         z-index: 1;
       }
+
       .sg-next-btn {
         position: absolute;
         top: 50%;
@@ -5389,51 +5737,65 @@ Suggest-Section Css
     }
   }
 }
+
 /*=======================================
 Brand-Section Css
 =======================================*/
 .brand-section {
   background-color: #f7ecd7;
   padding: 60px 10%;
+
   @include xxl-device() {
     padding: 60px 5%;
   }
+
   @include xl-device() {
     padding: 60px 2%;
   }
+
   @include xl-down-device() {
     padding: 50px 3%;
   }
+
   @include md-down-device() {
     padding: 50px 2%;
   }
+
   .pb-35 {
     padding-bottom: 35px;
+
     @include md-down-device() {
       padding: 0;
     }
   }
+
   .pt-35 {
     padding-top: 35px;
+
     @include md-down-device() {
       padding: 0;
     }
   }
+
   .section-title3 {
     width: 100%;
     height: 100%;
     border-right: 1px solid var(--primary-color1);
     margin-bottom: 0;
+
     @include xl-down-device() {
       border: unset;
       margin-bottom: 40px;
     }
+
     @include md-down-device() {
       margin-bottom: 10px;
     }
   }
+
   .brand-border-bottom {
     position: relative;
+
     &::after {
       content: '';
       position: absolute;
@@ -5443,13 +5805,16 @@ Brand-Section Css
       width: 100%;
       height: 1px;
       background-color: var(--primary-color1);
+
       @include md-down-device() {
         display: none;
       }
     }
   }
+
   .brand-divider {
     position: relative;
+
     &::after {
       content: '';
       position: absolute;
@@ -5458,11 +5823,13 @@ Brand-Section Css
       background-color: var(--primary-color1);
       right: 0;
       top: 0;
+
       @include md-down-device() {
         display: none;
       }
     }
   }
+
   .brand-img {
     @include md-down-device() {
       border: 1px solid var(--primary-color1);
@@ -5473,12 +5840,14 @@ Brand-Section Css
     }
   }
 }
+
 /*=======================================
 Testimonial-Section Css
 =======================================*/
 .testimonial-section {
   .testimonial-slider {
     position: relative;
+
     &::before {
       content: '';
       position: absolute;
@@ -5486,16 +5855,16 @@ Testimonial-Section Css
       top: 0;
       width: 20%;
       height: 100%;
-      background: linear-gradient(
-        84deg,
-        #fbf8f1 0%,
-        rgba(251, 248, 241, 0) 100%
-      );
+      background: linear-gradient(84deg,
+          #fbf8f1 0%,
+          rgba(251, 248, 241, 0) 100%);
       z-index: 9;
+
       @include md-down-device() {
         display: none;
       }
     }
+
     &::after {
       content: '';
       position: absolute;
@@ -5503,12 +5872,11 @@ Testimonial-Section Css
       top: 0;
       width: 20%;
       height: 100%;
-      background: linear-gradient(
-        98deg,
-        rgba(251, 248, 241, 0) 0%,
-        #fbf8f1 100%
-      );
+      background: linear-gradient(98deg,
+          rgba(251, 248, 241, 0) 0%,
+          #fbf8f1 100%);
       z-index: 9;
+
       @include md-down-device() {
         display: none;
       }
@@ -5521,10 +5889,12 @@ Testimonial-Section Css
         opacity: 1;
       }
     }
+
     .author-img-and-rating {
       opacity: 1;
     }
   }
+
   .testimonial-card {
     background-color: var(--white-color);
     border: 1px solid var(--primary-color1);
@@ -5532,16 +5902,20 @@ Testimonial-Section Css
     padding: 40px 35px;
     position: relative;
     margin-bottom: 45px;
+
     @include sm-down-device() {
       padding: 30px 20px;
     }
+
     .testimonial-content {
       .author-rating {
         margin-bottom: 10px;
+
         i {
           color: #ffc107;
         }
       }
+
       p {
         color: var(--primary-color1);
         font-family: var(--font-primary);
@@ -5550,18 +5924,22 @@ Testimonial-Section Css
         line-height: 1.9;
         letter-spacing: 0.54px;
         margin-bottom: 35px;
+
         @include lg-down-device() {
           font-size: 16px;
         }
+
         @include sm-down-device() {
           font-size: 15px;
         }
       }
     }
+
     .testimonial-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       .author-area {
         h5 {
           color: var(--primary-color1);
@@ -5569,10 +5947,12 @@ Testimonial-Section Css
           font-size: 23px;
           font-weight: 600;
           line-height: 1;
+
           @include sm-down-device() {
             font-size: 20px;
           }
         }
+
         p {
           color: rgba(#222, 0.5);
           font-family: var(--font-primary);
@@ -5581,19 +5961,23 @@ Testimonial-Section Css
           line-height: 1;
           letter-spacing: 0.32px;
           margin-bottom: 0;
+
           @include sm-down-device() {
             font-size: 15px;
           }
         }
       }
+
       .testimonial-qoute {
         @include sm-down-device() {
           display: none;
         }
+
         svg {
           fill: rgba(#fff, 0.05);
         }
       }
+
       .date-and-time {
         p {
           color: var(--primary-color1);
@@ -5603,6 +5987,7 @@ Testimonial-Section Css
           line-height: 1;
           margin-bottom: 5px;
         }
+
         span {
           color: rgba(#222, 0.5);
           font-family: var(--font-primary);
@@ -5612,6 +5997,7 @@ Testimonial-Section Css
         }
       }
     }
+
     &::after {
       content: '';
       width: 40px;
@@ -5627,6 +6013,7 @@ Testimonial-Section Css
       transition: 0.35s;
     }
   }
+
   .author-img-and-rating {
     display: flex;
     align-items: center;
@@ -5634,11 +6021,13 @@ Testimonial-Section Css
     flex-direction: column;
     transition: 0.35s;
     opacity: 0;
+
     .author-img {
       width: 110px;
       height: 110px;
       border-radius: 50%;
       margin-bottom: 10px;
+
       img {
         width: 110px;
         height: 110px;
@@ -5658,14 +6047,17 @@ Testimonial-Section Css
   &-message {
     position: relative;
     text-align: center;
+
     h1 {
       font-size: 50px;
       color: #fff;
     }
+
     h2 {
       color: #fff;
       font-size: 30px;
     }
+
     button {
       margin-top: 65px;
     }
