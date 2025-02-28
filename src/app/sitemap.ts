@@ -18,14 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
   }
 
-  const availablePages = [
-    'condiciones-de-envio',
-    'derecho-de-retracto',
-    'paquetes-corporativos',
-    'politicas-de-devolucion',
-    'tratamiento-de-datos'
-  ]
-
   const { data: productsData } = await getColletions(COLLECTIONS.products, {
     params
   })
@@ -45,13 +37,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${website}/blog/${slug}` as string,
     lastModified: new Date(),
     changeFrequency: 'weekly' as change,
-    priority: 0.5
-  }))
-
-  const politicas = availablePages.map(id => ({
-    url: `${website}/politicas/${id}` as string,
-    lastModified: new Date(),
-    changeFrequency: 'yearly' as change,
     priority: 0.5
   }))
 
@@ -82,6 +67,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1
     },
     ...products,
-    ...politicas
   ]
 }
