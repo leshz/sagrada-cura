@@ -57,7 +57,6 @@ const DoubleBanner = ({ data }) => {
       loop: true,
       autoplay: true,
       effect: 'fade',
-
       fadeEffect: {
         crossFade: true
       },
@@ -70,7 +69,7 @@ const DoubleBanner = ({ data }) => {
   )
   return (
     <div className="banner-2-section mb-50">
-      <div className="container-fluid p-0 full-height">
+      <div className="container-fluid p-0">
         <div className="row">
           <FixedBanner content={data} />
           <div className="col-xxl-9 col-xl-8 col-lg-8">
@@ -79,16 +78,11 @@ const DoubleBanner = ({ data }) => {
                 <div className="swiper-wrapper">
                   {dinamic_banner.map(slide => {
                     const { image, text } = slide || {}
+                    console.log(image)
 
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
-                        <div className="banner-2-right-img-bg">
-                          <ImageWrapper
-                            image={image}
-                            width={2000}
-                            height={1333}
-                            priority
-                          />
+                        <div className="banner-2-right-img-bg" style={{ backgroundImage: `url(${image.url})`}}>
                           {text && (
                             <div className="banner-2-right-content">
                               <BlocksRenderer
