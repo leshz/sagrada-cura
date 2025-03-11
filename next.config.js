@@ -20,7 +20,7 @@ const contentSecurityPolicy = process.env.VERCEL === '1' ? prodCSP : ''
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    unoptimized: false,
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
