@@ -1,0 +1,27 @@
+{
+  "name": "Node18",
+  "image": "node:18-slim",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.iconTheme": "city-lights-icons-vsc-light"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "usernamehw.errorlens",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-typescript-next",
+        "Yummygum.city-lights-icon-vsc"
+      ]
+    }
+  },
+  "postCreateCommand": "yarn",
+  "remoteUser": "node"
+}
