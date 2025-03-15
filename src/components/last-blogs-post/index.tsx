@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
@@ -52,7 +52,7 @@ const LastBlogsPost = async ({ blog }) => {
     sort: 'publishedAt:desc',
     'pagination[limit]': get_last
   }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, { params })
+  const { data = [] } = await getCollections(COLLECTIONS.blogs, { params })
 
   return (
     <div className="latest-article-section mb-110">

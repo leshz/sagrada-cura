@@ -8,7 +8,7 @@ import {
   QuantityArea
 } from '@/components/product'
 import { Price } from '@/components/price'
-import { getColletions, getSingles } from '@/services'
+import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { ProductsDatum } from '@/types/products'
 import { getImagePath } from '@/utils/helpers'
@@ -16,14 +16,14 @@ import { getImagePath } from '@/utils/helpers'
 import './page.scss'
 
 export const generateStaticParams = async () => {
-  const { data: products = [] } = await getColletions(COLLECTIONS.products)
+  const { data: products = [] } = await getCollections(COLLECTIONS.products)
   const slugs = products.map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { slug = '' } = params
-  const { data } = await getColletions(COLLECTIONS.products, {
+  const { data } = await getCollections(COLLECTIONS.products, {
     slug
   })
 
@@ -44,7 +44,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
   const single = getSingles('product-detail')
-  const collection = getColletions(COLLECTIONS.products, {
+  const collection = getCollections(COLLECTIONS.products, {
     slug,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }

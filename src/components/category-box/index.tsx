@@ -1,9 +1,9 @@
-import { getColletions, getSingles } from '@/services'
+import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { Item } from './item'
 
 const CategoryBox = async () => {
-  const collection = await getColletions(COLLECTIONS.categories)
+  const collection = await getCollections(COLLECTIONS.categories)
   const single = await getSingles('shop')
   const [resCollect, resSingle] = await Promise.all([collection, single])
   const { data = [] } = resCollect

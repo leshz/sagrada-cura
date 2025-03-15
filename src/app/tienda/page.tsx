@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CategoryBox } from '@/components/category-box'
-import { getColletions, getSingles } from '@/services'
+import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
@@ -50,7 +50,7 @@ const Shop = async ({ searchParams }) => {
     next: { tags: ['content'] }
   })
 
-  const collection = getColletions(COLLECTIONS.products, {
+  const collection = getCollections(COLLECTIONS.products, {
     params,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }

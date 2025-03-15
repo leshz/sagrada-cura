@@ -1,4 +1,4 @@
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { BlogPreview } from './blog-preview'
 
@@ -9,7 +9,7 @@ const BlogSection = async ({ title }) => {
     sort: 'publishedAt:desc',
     'pagination[limit]': '3'
   }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, { params })
+  const { data = [] } = await getCollections(COLLECTIONS.blogs, { params })
 
   return (
     <div className="beauty-article-section mt-40 mb-110">

@@ -1,15 +1,22 @@
 {
   "name": "Node18",
-  "image": "node:18-slim",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
     }
   },
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+  ],
+  "appPort": 3000,
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "workbench.iconTheme": "city-lights-icons-vsc-light"
       },
       "extensions": [

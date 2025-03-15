@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getColletions, getSingles } from '@/services'
+import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
@@ -25,7 +25,7 @@ const TagsCatalog = async () => {
     next: { tags: ['content'] }
   })
 
-  const collection = getColletions(COLLECTIONS.products, {
+  const collection = getCollections(COLLECTIONS.products, {
     params,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
