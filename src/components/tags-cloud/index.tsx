@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 
 import './style.scss'
@@ -9,7 +9,7 @@ const TagsCloud = async () => {
   const params = {
     'pagination[limit]': '15'
   }
-  const { data = [] } = await getColletions(COLLECTIONS.tags, { params })
+  const { data = [] } = await getCollections(COLLECTIONS.tags, { params })
 
   return (
     <div className="shop-widget">

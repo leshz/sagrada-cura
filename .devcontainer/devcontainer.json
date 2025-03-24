@@ -1,18 +1,40 @@
 {
   "name": "Node18",
-  "image": "node:18-slim",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
     }
   },
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+  ],
+  "appPort": 3000,
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "workbench.iconTheme": "city-lights-icons-vsc-light"
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "workbench.iconTheme": "city-lights-icons-vsc-light",
+        "cSpell.ignorePaths":[
+          "package-lock.json",
+          "node_modules",
+          "vscode-extension",
+          ".git/{info,lfs,logs,refs,objects}/**",
+          ".git/{index,*refs,*HEAD}",
+          ".vscode",
+          ".devcontainer/**"
+        ]
       },
       "extensions": [
+        "vivaxy.vscode-conventional-commits",
         "dbaeumer.vscode-eslint",
         "usernamehw.errorlens",
         "esbenp.prettier-vscode",
@@ -22,6 +44,5 @@
       ]
     }
   },
-  "postCreateCommand": "yarn",
-  "remoteUser": "node"
+  "postCreateCommand": "yarn"
 }

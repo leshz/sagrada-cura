@@ -1,22 +1,22 @@
 import type { Metadata } from 'next'
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { BlogPreview } from '@/components/blog/blog-preview'
 import { Paginator } from '@/components/paginator'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
-    title: 'Blog',
-    alternates: {
-      canonical: 'https://sagradacura.com/blog'
-    },
-    openGraph: {
-      title: 'Conoce nuestros blogs',
-      url: `https://sagradacura.com/blog`,
-      type: 'website'
-    }
-  })
+  title: 'Blog',
+  alternates: {
+    canonical: 'https://sagradacura.com/blog'
+  },
+  openGraph: {
+    title: 'Conoce nuestros blogs',
+    url: `https://sagradacura.com/blog`,
+    type: 'website'
+  }
+})
 
-const BlogMasonaryPage = async ({ searchParams }) => {
+const BlogMasonryPage = async ({ searchParams }) => {
   const { tag = '', page = 1 } = searchParams
 
   const params = {
@@ -29,7 +29,7 @@ const BlogMasonaryPage = async ({ searchParams }) => {
     params['filters[tags][slug][$eq]'] = tag
   }
 
-  const { data = [], meta = {} } = await getColletions(COLLECTIONS.blogs, {
+  const { data = [], meta = {} } = await getCollections(COLLECTIONS.blogs, {
     params
   })
 
@@ -49,4 +49,4 @@ const BlogMasonaryPage = async ({ searchParams }) => {
   )
 }
 
-export default BlogMasonaryPage
+export default BlogMasonryPage

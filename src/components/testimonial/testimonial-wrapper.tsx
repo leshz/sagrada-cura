@@ -1,10 +1,10 @@
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { Slider } from './slider'
 
 const Testimonial = async ({ labels }) => {
   const { title } = labels
-  const { data } = await getColletions(COLLECTIONS.testimonials)
+  const { data } = await getCollections(COLLECTIONS.testimonials)
   return (
     <div className="say-about-section mb-110">
       <div className="container-fluid p-0">

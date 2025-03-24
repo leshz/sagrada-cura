@@ -1,7 +1,7 @@
 import { api } from './api'
 import type { optionsCollection } from './type'
 
-const getColletions = async (url, options?: optionsCollection) => {
+const getCollections = async (url, options?: optionsCollection) => {
   const { slug = '', fetch = {}, params = {} } = options || {}
   try {
     const parsedParams = new URLSearchParams(params)
@@ -16,4 +16,4 @@ const getColletions = async (url, options?: optionsCollection) => {
   }
 }
 
-export { getColletions }
+export { getCollections }

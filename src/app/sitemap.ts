@@ -1,4 +1,4 @@
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { MetadataRoute } from 'next'
 
@@ -18,11 +18,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
   }
 
-  const { data: productsData } = await getColletions(COLLECTIONS.products, {
+  const { data: productsData } = await getCollections(COLLECTIONS.products, {
     params
   })
 
-  const { data: blogData = [] } = await getColletions(COLLECTIONS.blogs, {
+  const { data: blogData = [] } = await getCollections(COLLECTIONS.blogs, {
     params
   })
 

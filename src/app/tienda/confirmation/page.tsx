@@ -1,7 +1,7 @@
 import { ConfirmationCard } from '@/components/confirmation'
 import { ColorBar } from '@/components/color-bar'
 import { confirmation } from '@/types/confirmation'
-import { getColletions } from '@/services/get-colletions'
+import { getCollections } from '@/services/get-collections'
 import { COLLECTIONS } from '@/utils/constants'
 import type { Metadata } from 'next'
 
@@ -16,7 +16,7 @@ const Confirmation = async ({
 }) => {
   const { status, external_reference } = searchParams
 
-  const invoice = await getColletions(COLLECTIONS.invoices, {
+  const invoice = await getCollections(COLLECTIONS.invoices, {
     slug: external_reference,
     fetch: { cache: 'no-store' }
   })

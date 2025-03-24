@@ -4,7 +4,7 @@ import { BlogAuthor, BlogContent } from '@/components/blog'
 import { RecentPost } from '@/components/recent-post'
 import { TagsCloud } from '@/components/tags-cloud'
 import { TagBar } from '@/components/tag-bar'
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { dateFormat, getImagePath } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
@@ -14,14 +14,14 @@ import './page.scss'
 export const dynamic = 'force-static'
 
 export const generateStaticParams = async () => {
-  const { data: blogs = [] } = await getColletions(COLLECTIONS.blogs)
+  const { data: blogs = [] } = await getCollections(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { slug } = params
-  const { data } = await getColletions(COLLECTIONS.blogs, {
+  const { data } = await getCollections(COLLECTIONS.blogs, {
     slug
   })
 
@@ -43,7 +43,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
-  const { data } = await getColletions(COLLECTIONS.blogs, {
+  const { data } = await getCollections(COLLECTIONS.blogs, {
     slug
   })
 

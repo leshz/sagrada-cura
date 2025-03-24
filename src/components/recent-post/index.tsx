@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { getColletions } from '@/services'
+import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import Link from 'next/link'
 import { dateFormat } from '@/utils/helpers'
@@ -10,7 +10,7 @@ const RecentPost = async () => {
     sort: 'publishedAt:asc',
     'pagination[limit]': '3'
   }
-  const { data = [] } = await getColletions(COLLECTIONS.blogs, { params })
+  const { data = [] } = await getCollections(COLLECTIONS.blogs, { params })
 
   return (
     <div className="shop-widget mb-30">
