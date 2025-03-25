@@ -7,7 +7,7 @@ const FooterRoot = ({ children }) => (
   </footer>
 )
 
-const Botton = ({ data }) => {
+const Bottom = ({ data }) => {
   const {
     footer: { botton: { copyright = '' } = {} } = {}
   } = data
@@ -50,7 +50,7 @@ const LastItem = () => (
 
 export const Footer = {
   Root: FooterRoot,
-  Bottom: Botton,
+  Bottom,
   Columns,
   NewsLetter,
   LastItem,

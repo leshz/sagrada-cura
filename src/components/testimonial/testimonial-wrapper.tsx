@@ -2,6 +2,8 @@ import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { Slider } from './slider'
 
+import './styles.scss'
+
 const Testimonial = async ({ labels }) => {
   const { title } = labels
   const { data } = await getCollections(COLLECTIONS.testimonials)

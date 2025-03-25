@@ -23,7 +23,7 @@
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
         "workbench.iconTheme": "city-lights-icons-vsc-light",
-        "cSpell.ignorePaths":[
+        "cSpell.ignorePaths": [
           "package-lock.json",
           "node_modules",
           "vscode-extension",
