@@ -8,7 +8,7 @@ import { Cormorant, Fauna_One } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Analytics } from '@/providers/analitycs'
+import { Analytics } from '@/providers/analytics'
 import type { Metadata } from 'next'
 import Error from './error'
 
