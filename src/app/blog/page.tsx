@@ -3,6 +3,7 @@ import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { BlogPreview } from '@/components/blog/blog-preview'
 import { Paginator } from '@/components/paginator'
+import Link from 'next/link'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Blog',
@@ -33,7 +34,28 @@ const BlogMasonryPage = async ({ searchParams }) => {
     params
   })
 
-  //! TODO: Add EMPY PAGE
+  if (data.length === 0) {
+    return (
+      <div className="container-fluid mt-100">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card-body">
+              <div className="col-12 col-md-3 mx-auto text-center">
+                <div className="d-flex flex-column justify-content-center align-items-center mt-5">
+                  <h2>😅</h2>
+                </div>
+                <h2>No hay artículos</h2>
+                <p>Por favor, vuelve más tarde para ver nuevos artículos.</p>
+                <Link className="primary-btn3 hover-btn5 m-5" href="/blog">
+                  Volver al blogs
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="blog-grid-section mb-40">
