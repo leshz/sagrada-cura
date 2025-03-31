@@ -49,7 +49,7 @@ const FixedBanner = ({ content }) => {
 }
 
 const DoubleBanner = ({ data }) => {
-  const { dinamic_banner = [] } = data
+  const { dynamic_banner = [] } = data
 
   const configBanner = useMemo(
     () => ({
@@ -78,7 +78,7 @@ const DoubleBanner = ({ data }) => {
             <div className="banner-2-right">
               <Swiper {...configBanner} className="swiper banner2-slider">
                 <div className="swiper-wrapper">
-                  {dinamic_banner.map(slide => {
+                  {dynamic_banner.map(slide => {
                     const { image, text } = slide || {}
                     return (
                       <SwiperSlide key={slide.id} className="swiper-slide">
