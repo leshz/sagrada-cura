@@ -25,7 +25,10 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
     slug
   })
 
-  const { title, image, short_description, slug: slugPost } = data
+
+  
+
+  const { title, image, short_description, slug: slugPost } = data || {}
 
   const imgUrl = getImagePath(image, 'small')
 
