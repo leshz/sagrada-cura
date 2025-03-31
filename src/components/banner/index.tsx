@@ -49,7 +49,7 @@ const FixedBanner = ({ content }) => {
 }
 
 const DoubleBanner = ({ data }) => {
-  const { dynamic_banner = [] } = data
+  const { dinamic_banner: dynamic_banner = [] } = data
 
   const configBanner = useMemo(
     () => ({
