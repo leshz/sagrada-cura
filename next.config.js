@@ -36,11 +36,6 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
-  logging: {
-    fetches: {
-      fullUrl: false
-    }
-  },
   async headers() {
     return [
       {
@@ -61,7 +56,7 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
-          }, 
+          },
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'

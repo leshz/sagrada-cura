@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Header } from '@/components/layout/header'
 import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
@@ -30,8 +29,32 @@ export const Secondary = Fauna_One({
   variable: '--font-secondary-next'
 })
 
+type generalSingle = {
+  seo: {
+    keywords: string
+    metaDescription: string
+    metaTitle: string
+    metaImage: {
+      url: string
+    }
+  }
+  footer: any
+}
+
+type menuSingle = {
+  data: any
+  menu: {
+    id: number
+    title: string
+    url: string
+  }[]
+}
+
+
+
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles('general')
+  const { seo } = await getSingles<generalSingle>('general')
+
   return {
     title: {
       template: '%s | Sanación Natural',
@@ -50,10 +73,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const RootLayout = async ({ children }) => {
-  const generes = getSingles('general')
-  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`)
-
-  const [data, menu] = await Promise.all([generes, menures])
+  const generalRes = await getSingles<generalSingle>('general')
+  const menuRes = await getSingles<menuSingle>(`menus/${process.env.MENU}?nested&populate=*`)
 
   return (
     <html
@@ -62,9 +83,9 @@ const RootLayout = async ({ children }) => {
     >
       <body>
         <ErrorBoundary errorComponent={Error}>
-          <Topbar data={data} />
+          <Topbar data={generalRes} />
           <Suspense>
-            <Header data={data} menuLinks={menu} />
+            <Header data={generalRes} menuLinks={menuRes} />
           </Suspense>
           {children}
           <ToastContainer
@@ -73,7 +94,7 @@ const RootLayout = async ({ children }) => {
             transition={Slide}
             pauseOnFocusLoss={false}
           />
-          <FooterLayout data={data} />
+          <FooterLayout data={generalRes} />
         </ErrorBoundary>
         <SpeedInsights />
       </body>

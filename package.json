@@ -1,7 +1,7 @@
 {
   "name": "sagrada-cura",
   "version": "0.1.2",
-  "description": "Sagrada Cura is a web to find you balace in life",
+  "description": "Sagrada Cura is a web to find you balance in life",
   "private": true,
   "scripts": {
     "dev": "next dev",

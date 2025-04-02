@@ -1,16 +1,26 @@
-import { api } from './api'
+import { fetchApi } from './api'
 
-const getSingles = async (singleType = '', options = {}) => {
+type SingleType = string
+
+interface FetchOptions {
+  cache?: 'force-cache' | 'no-store'
+  next?: { revalidate?: number }
+}
+
+const getSingles = async <T = Record<string, unknown>>(
+  singleType: SingleType,
+  options: FetchOptions = {}
+): Promise<T> => {
   try {
-    const response = await api(`/${singleType}`, {
+    const response = await fetchApi<T>(`/${singleType}`, {
       ...options,
       cache: 'force-cache'
     })
-    const { data } = response
+    const { data = {} as T } = response
 
     return data
-  } catch (error: any) {
-    throw new Error(`error to get singles ${error.message}}`)
+  } catch (error) {
+    throw new Error(`trying to get singles ${error instanceof Error ? error.message : 'unknown error'}`)
   }
 }
 

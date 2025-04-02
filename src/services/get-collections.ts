@@ -1,4 +1,4 @@
-import { api } from './api'
+import { fetchApi } from './api'
 import type { optionsCollection } from './type'
 
 const getCollections = async (url, options?: optionsCollection) => {
@@ -7,7 +7,7 @@ const getCollections = async (url, options?: optionsCollection) => {
     const parsedParams = new URLSearchParams(params)
     const path = slug ? `${url}/${slug}` : url
     const urlwithparams = `${path}?${parsedParams.toString()}`
-    const response = await api(urlwithparams, {
+    const response = await fetchApi(urlwithparams, {
       ...fetch
     })
     return response

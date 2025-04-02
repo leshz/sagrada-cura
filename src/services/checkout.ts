@@ -1,9 +1,9 @@
-import { api } from './api'
+import { fetchApi } from './api'
 
 const checkout = async checkoutData => {
   try {
     const data = JSON.stringify(checkoutData)
-    const response = await api(`${process.env.CHECKOUT}`, {
+    const response = await fetchApi(`${process.env.CHECKOUT}`, {
       method: 'POST',
       body: data,
       cache: 'no-store'

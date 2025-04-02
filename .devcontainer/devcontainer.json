@@ -13,6 +13,9 @@
     "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
   ],
   "appPort": 3000,
+  "runArgs": [
+    "--network=backend_devcontainer_app-network"
+  ],
   "customizations": {
     "vscode": {
       "settings": {
@@ -22,7 +25,7 @@
           }
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
-        "workbench.iconTheme": "city-lights-icons-vsc-light",
+        "workbench.iconTheme": "bearded-icons",
         "cSpell.ignorePaths": [
           "package-lock.json",
           "node_modules",
