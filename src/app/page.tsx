@@ -1,14 +1,19 @@
-import type { Metadata } from 'next'
-import { ChooseProduct } from '@/components/choose-product'
+import { ChooseProduct } from '@components/home/choose-product'
+import { DoubleBanner } from '@components/home/banner'
+import { HightLights } from '@components/home/highlight-product'
+import { LastBlogsPost } from '@components/home/last-blogs-post'
+import { Testimonial } from '@/components/pages/home/testimonial/testimonials'
+
+import { Instagram } from '@components/home/instagram'
 import { getSingles } from '@/services'
-import { DoubleBanner } from '@/components/banner'
-import { HightLights } from '@/components/highlight-product'
-import { LastBlogsPost } from '@/components/last-blogs-post'
-import { Testimonial } from '@/components/testimonial/testimonial-wrapper'
-import { Instagram } from '@/components/instagram'
+
+import type { Metadata } from 'next'
+import { ApiGeneralGeneral, ApiHomeHome } from '@/types/contentTypes'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles('general')
+
+  const { seo } = await getSingles<ApiGeneralGeneral>('general')
+
   return {
     title: {
       template: '%s | Sanación Natural',
@@ -17,7 +22,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     alternates: {
       canonical: 'https://sagradacura.com'
     },
-    keywords: seo?.keywords || '',
+    keywords: seo?.metaKeywords || '',
     description: seo?.metaDescription || '',
     openGraph: {
       title: seo?.metaTitle,
@@ -31,21 +36,22 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 
 const Home = async () => {
+
   const {
     banners,
     product_categories,
     highlight_products,
-    last_blogposts,
+    last_blogs,
     testimonial,
     instagram
-  }: { [key: string]: any } = await getSingles('home')
+  } = await getSingles<ApiHomeHome>('home')
 
   return (
     <main>
       <DoubleBanner data={banners} />
       <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
-      <LastBlogsPost blog={last_blogposts} />
+      <LastBlogsPost blog={last_blogs} />
       <Testimonial labels={testimonial} />
       <Instagram feed={instagram} />
     </main>
