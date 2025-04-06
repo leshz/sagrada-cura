@@ -6,6 +6,7 @@ interface ApiResponse<T> {
   data: T;
   status: number;
   statusText: string;
+  meta: object | null
 }
 
 export const fetchApi = async <T>(
@@ -37,11 +38,12 @@ export const fetchApi = async <T>(
       throw new Error(`${endpoint} - ${response.statusText}`);
     }
 
-    const { data } = await response.json();
+    const { data, meta = {} } = await response.json();
     return {
       data,
       status: response.status,
-      statusText: response.statusText
+      statusText: response.statusText,
+      meta
     };
   } catch (error) {
     throw new Error(`request failed: ${error instanceof Error ? error.message : 'unknown error'}`);

@@ -26,7 +26,7 @@ const WishListItem = ({ product }) => {
       </td>
       <td className="table-product">
         <div className="product-img">
-          <ImageWrapper image={pictures[0]} width={100} height={100} />
+          <ImageWrapper image={pictures?.[0]} width={100} height={100} />
         </div>
         <div className="product-content">
           <h6>

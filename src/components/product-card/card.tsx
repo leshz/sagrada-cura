@@ -1,7 +1,5 @@
 'use client'
 
-import type { ProductsDatum } from '@/types/products'
-
 import Link from 'next/link'
 import { ImageWrapper } from '@/components/Image'
 import { Price } from '@/components/price'
@@ -11,9 +9,10 @@ import { useStore } from '@/store'
 import { sendGAEvent } from '@next/third-parties/google'
 
 import './styles/card.scss'
+import { GetValues } from '@/types/types'
 
 type Props = {
-  product: ProductsDatum
+  product: GetValues<"plugin::strapi-ecommerce-mercadopago.product">
   labels: {
     out_of_stock: string
     add_to_cart: string

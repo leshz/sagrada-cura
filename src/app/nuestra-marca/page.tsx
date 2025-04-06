@@ -3,6 +3,8 @@ import { BlogSection, BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
 
+import { APIResponseData } from '@/types/types'
+
 import './page.scss'
 
 export const dynamic = 'force-static'
@@ -17,7 +19,7 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 })
 
 const AboutUs = async () => {
-  const { title, article, image, blogs_title } = await getSingles('about-us')
+  const { title, article, image, blogs_title } = await getSingles<APIResponseData<"api::about-us.about-us">>('about-us')
 
   return (
     <>

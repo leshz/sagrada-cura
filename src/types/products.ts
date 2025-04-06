@@ -60,7 +60,7 @@ export interface ProductsDatum {
   id: number
   name: string
   price: number
-  full_description: FullDescription[]
+  full_description?: FullDescription[]
   slug: string
   stock: number
   middle_description: string

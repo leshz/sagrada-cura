@@ -10,11 +10,11 @@ import {
 import { sendGAEvent } from '@next/third-parties/google'
 // import { useGATrack } from '@/hooks/use-ga-track'
 import { IconAnimation } from './animation'
-import { ConfirmationProps } from './types'
+
 
 import './style.scss'
 
-const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
+const ConfirmationCard = ({ result, invoice }) => {
   const { payment_id, status } = result
   const {
     data: { total = 0, createdAt, products }

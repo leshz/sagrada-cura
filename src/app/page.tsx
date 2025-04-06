@@ -8,11 +8,12 @@ import { Instagram } from '@components/home/instagram'
 import { getSingles } from '@/services'
 
 import type { Metadata } from 'next'
-import { ApiGeneralGeneral, ApiHomeHome } from '@/types/contentTypes'
+import { APIResponseData } from '@/types/types'
+import { getImagePath } from '@/utils/helpers'
 
 export const generateMetadata = async (): Promise<Metadata> => {
 
-  const { seo } = await getSingles<ApiGeneralGeneral>('general')
+  const { seo } = await getSingles<APIResponseData<"api::general.general">>('general')
 
   return {
     title: {
@@ -22,13 +23,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
     alternates: {
       canonical: 'https://sagradacura.com'
     },
-    keywords: seo?.metaKeywords || '',
+    keywords: seo?.keywords || '',
     description: seo?.metaDescription || '',
     openGraph: {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
       url: 'https://sagradacura.com',
-      images: seo?.metaImage?.url,
+      images: getImagePath(seo?.metaImage, 'medium'),
       type: 'website'
     }
   }
@@ -44,7 +45,7 @@ const Home = async () => {
     last_blogs,
     testimonial,
     instagram
-  } = await getSingles<ApiHomeHome>('home')
+  } = await getSingles<APIResponseData<"api::home.home">>('home')
 
   return (
     <main>

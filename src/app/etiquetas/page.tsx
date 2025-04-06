@@ -5,6 +5,7 @@ import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
+import { APIResponseCollection, APIResponseData } from '@/types/types'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Etiquetas de nuestros productos',
@@ -21,19 +22,17 @@ const TagsCatalog = async () => {
     'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
   }
 
-  const single = getSingles('shop', {
-    next: { tags: ['content'] }
-  })
+  const single = getSingles<APIResponseData<"api::shop.shop">>('shop')
 
-  const collection = getCollections(COLLECTIONS.products, {
+  const collection = getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
     params,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
     }
   })
-  const [labels, rescollect] = await Promise.all([single, collection])
+  const [labels, productsRes] = await Promise.all([single, collection])
 
-  const { meta = {}, data = [] } = rescollect
+  const { meta, data } = productsRes
   const {
     pagination: { total }
   } = meta
