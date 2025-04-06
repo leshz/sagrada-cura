@@ -4,6 +4,7 @@ import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
 
 import '../../nuestra-marca/page.scss'
+import { APIResponseData } from '@/types/types'
 
 export const dynamic = 'force-static'
 
@@ -27,7 +28,7 @@ const Docs = async ({ params }) => {
   }
 
   try {
-    const { content, image, title } = await getSingles(availablePages[id])
+    const { content, image, title } = await getSingles<APIResponseData<"api::planes-corporativo.planes-corporativo">>(availablePages[id])
 
     return (
       <div className="about-us-banner mb-40">

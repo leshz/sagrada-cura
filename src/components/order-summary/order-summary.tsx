@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { currencyFormat } from '@/utils/helpers'
 
-const OrdenSumary = () => {
+const OrderSummary = () => {
   const router = useRouter()
   const { cart, addToCart, removeToCart, deleteToCart } = useStore(
     store => store
@@ -75,4 +75,4 @@ const OrdenSumary = () => {
   )
 }
 
-export { OrdenSumary }
+export { OrderSummary }

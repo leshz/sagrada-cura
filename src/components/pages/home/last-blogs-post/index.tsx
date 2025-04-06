@@ -7,6 +7,7 @@ import { ImageWrapper } from '@/components/Image'
 import { TagBar } from '@/components/tag-bar'
 
 import './styles.scss'
+import { APIResponseCollection } from '@/types/types'
 
 const PreviewArticle = ({ article, readlabel }) => {
   const { title, short_description, slug, image, tags, publishedAt } = article
@@ -20,7 +21,7 @@ const PreviewArticle = ({ article, readlabel }) => {
       <div className="article-card style-2">
         <div className="article-image">
           <Link className="article-card-img hover-img" href={linkBlogPage}>
-            <ImageWrapper image={image}  format='small'/>
+            <ImageWrapper image={image} format='small' />
           </Link>
         </div>
         <div className="article-card-content">
@@ -52,7 +53,7 @@ const LastBlogsPost = async ({ blog }) => {
     sort: 'publishedAt:desc',
     'pagination[limit]': get_last
   }
-  const { data = [] } = await getCollections(COLLECTIONS.blogs, { params })
+  const { data = [] } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs, { params })
 
   return (
     <div className="latest-article-section mb-110">

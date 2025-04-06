@@ -1,7 +1,7 @@
 {
   "name": "sagrada-cura",
   "version": "0.1.2",
-  "description": "Sagrada Cura is a web to find you balace in life",
+  "description": "Sagrada Cura is a web to find you balance in life",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -30,6 +30,7 @@
     "zustand": "4.5.6"
   },
   "devDependencies": {
+    "@strapi/strapi": "4.25.13",
     "@types/node": "20.12.14",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",

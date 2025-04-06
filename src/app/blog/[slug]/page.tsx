@@ -10,23 +10,21 @@ import { dateFormat, getImagePath } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
 
 import './page.scss'
+import { APIResponse, APIResponseCollection } from '@/types/types'
 
 export const dynamic = 'force-static'
 
 export const generateStaticParams = async () => {
-  const { data: blogs = [] } = await getCollections(COLLECTIONS.blogs)
+  const { data: blogs = [] } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { slug } = params
-  const { data } = await getCollections(COLLECTIONS.blogs, {
+  const { data } = await getCollections<APIResponse<"api::blog.blog">>(COLLECTIONS.blogs, {
     slug
   })
-
-
-  
 
   const { title, image, short_description, slug: slugPost } = data || {}
 
@@ -46,7 +44,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = params
-  const { data } = await getCollections(COLLECTIONS.blogs, {
+  const { data } = await getCollections<APIResponse<"api::blog.blog">>(COLLECTIONS.blogs, {
     slug
   })
 
@@ -98,11 +96,6 @@ const BlogDetailsPage = async ({ params }) => {
                   <i className="bi bi-twitter" />
                 </a>
               </li>
-              {/* <li>
-                <a href="https://www.instagram.com/" aria-label="go to">
-                  <i className="bi bi-instagram" />
-                </a>
-              </li> */}
             </ul>
           </div>
         </div>

@@ -14,6 +14,7 @@ import 'swiper/css/bundle'
 
 SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
+
 const FixedBanner = ({ content }) => {
   const { title = {}, image = {}, link = {} } = content || {}
   const { text = '', link: url = '' } = link
@@ -34,7 +35,7 @@ const FixedBanner = ({ content }) => {
               modifiers={{
                 bold: ({ children }) => <strong>{children}</strong>,
                 italic: ({ children }) => <span>{children}</span>
-              }}
+              }} 
             />
           )}
           {url && (
@@ -49,7 +50,7 @@ const FixedBanner = ({ content }) => {
 }
 
 const DoubleBanner = ({ data }) => {
-  const { dinamic_banner: dynamic_banner = [] } = data
+  const { dynamic_banner = [] } = data
 
   const configBanner = useMemo(
     () => ({

@@ -6,10 +6,9 @@ import {
   totalPriceWithShipment
 } from '@/utils/helpers'
 import { useStore } from '@/store'
-import { type Shipment } from '@/types/shipment'
 import data from '@/mock/departments.json'
 
-const OrderTotalizer = ({ shipment }: { shipment: Shipment[] }) => {
+const OrderTotalizer = ({ shipment }) => {
   const { cart, department } = useStore(store => store)
   const { colombia } = data
 
@@ -23,7 +22,7 @@ const OrderTotalizer = ({ shipment }: { shipment: Shipment[] }) => {
     shipment,
     colombia
   )
-  
+
   const shippingInfo =
     isShippable && deliveryValue > 0
       ? ` + ${currencyFormat.format(deliveryValue)}`

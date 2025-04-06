@@ -1,16 +1,16 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import Link from 'next/link'
 import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
+import { APIResponseCollection } from '@/types/types'
 
 const RecentPost = async () => {
   const params = {
     sort: 'publishedAt:asc',
     'pagination[limit]': '3'
   }
-  const { data = [] } = await getCollections(COLLECTIONS.blogs, { params })
+  const { data = [] } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs, { params })
 
   return (
     <div className="shop-widget mb-30">

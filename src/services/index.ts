@@ -1,8 +1,8 @@
 'use server'
 
-import { api } from './api'
-import { getCollections } from './get-collections'
-import { getSingles } from './get-singles'
+import { fetchApi } from './api'
+import { getCollections } from './collections'
+import { getSingles } from './singles'
 import { checkout } from './checkout'
 
-export { api, getCollections, getSingles, checkout }
+export { fetchApi, getCollections, getSingles, checkout }

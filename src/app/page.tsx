@@ -1,14 +1,20 @@
-import type { Metadata } from 'next'
-import { ChooseProduct } from '@/components/choose-product'
+import { ChooseProduct } from '@components/home/choose-product'
+import { DoubleBanner } from '@components/home/banner'
+import { HightLights } from '@components/home/highlight-product'
+import { LastBlogsPost } from '@components/home/last-blogs-post'
+import { Testimonial } from '@/components/pages/home/testimonial/testimonials'
+
+import { Instagram } from '@components/home/instagram'
 import { getSingles } from '@/services'
-import { DoubleBanner } from '@/components/banner'
-import { HightLights } from '@/components/highlight-product'
-import { LastBlogsPost } from '@/components/last-blogs-post'
-import { Testimonial } from '@/components/testimonial/testimonial-wrapper'
-import { Instagram } from '@/components/instagram'
+
+import type { Metadata } from 'next'
+import { APIResponseData } from '@/types/types'
+import { getImagePath } from '@/utils/helpers'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles('general')
+
+  const { seo } = await getSingles<APIResponseData<"api::general.general">>('general')
+
   return {
     title: {
       template: '%s | Sanación Natural',
@@ -23,7 +29,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
       url: 'https://sagradacura.com',
-      images: seo?.metaImage?.url,
+      images: getImagePath(seo?.metaImage, 'medium'),
       type: 'website'
     }
   }
@@ -31,21 +37,22 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 
 const Home = async () => {
+
   const {
     banners,
     product_categories,
     highlight_products,
-    last_blogposts,
+    last_blogs,
     testimonial,
     instagram
-  }: { [key: string]: any } = await getSingles('home')
+  } = await getSingles<APIResponseData<"api::home.home">>('home')
 
   return (
     <main>
       <DoubleBanner data={banners} />
       <ChooseProduct products={product_categories} />
       <HightLights highlights={highlight_products} />
-      <LastBlogsPost blog={last_blogposts} />
+      <LastBlogsPost blog={last_blogs} />
       <Testimonial labels={testimonial} />
       <Instagram feed={instagram} />
     </main>

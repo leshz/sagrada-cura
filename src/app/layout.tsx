@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Header } from '@/components/layout/header'
 import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
@@ -10,6 +9,8 @@ import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@/providers/analytics'
 import type { Metadata } from 'next'
+import { APIResponseData } from '@/types/types'
+import { getImagePath } from '@/utils/helpers'
 import Error from './error'
 
 import 'react-toastify/dist/ReactToastify.css'
@@ -31,7 +32,8 @@ export const Secondary = Fauna_One({
 })
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles('general')
+  const { seo } = await getSingles<APIResponseData<"api::general.general">>('general')
+
   return {
     title: {
       template: '%s | Sanación Natural',
@@ -43,17 +45,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
       url: 'https://sagradacura.com',
-      images: seo?.metaImage?.url,
+      images: getImagePath(seo?.metaImage, 'medium'),
       type: 'website'
     }
   }
 }
 
 const RootLayout = async ({ children }) => {
-  const generes = getSingles('general')
-  const menures = getSingles(`menus/${process.env.MENU}?nested&populate=*`)
-
-  const [data, menu] = await Promise.all([generes, menures])
+  const generalRes = await getSingles<APIResponseData<"api::general.general">>('general')
+  const menuRes = await getSingles<APIResponseData<"plugin::menus.menu">>(`menus/${process.env.MENU}?nested&populate=*`)
 
   return (
     <html
@@ -62,9 +62,9 @@ const RootLayout = async ({ children }) => {
     >
       <body>
         <ErrorBoundary errorComponent={Error}>
-          <Topbar data={data} />
+          <Topbar data={generalRes} />
           <Suspense>
-            <Header data={data} menuLinks={menu} />
+            <Header data={generalRes} menuLinks={menuRes} />
           </Suspense>
           {children}
           <ToastContainer
@@ -73,7 +73,7 @@ const RootLayout = async ({ children }) => {
             transition={Slide}
             pauseOnFocusLoss={false}
           />
-          <FooterLayout data={data} />
+          <FooterLayout data={generalRes} />
         </ErrorBoundary>
         <SpeedInsights />
       </body>
