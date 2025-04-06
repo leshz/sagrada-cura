@@ -37,8 +37,8 @@ export const fetchApi = async <T>(
     if (!response.ok) {
       throw new Error(`${endpoint} - ${response.statusText}`);
     }
-
     const { data, meta = {} } = await response.json();
+
     return {
       data,
       status: response.status,

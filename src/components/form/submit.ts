@@ -46,7 +46,7 @@ export const submitForm = async (
     type: shipCode
   }
   try {
-    const { data: { init_point } } = await checkout({ items, buyer, ship })
+    const { init_point } = await checkout({ items, buyer, ship })
     const gaproducts = productsGABuilder(cart)
     sendGAEvent('event', 'begin_checkout', { items: gaproducts })
     actions.resetForm()

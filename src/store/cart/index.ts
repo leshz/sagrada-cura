@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { StateCreator } from 'zustand'
-import type { ProductsDatum } from '@/types/products'
-import type { Shipment } from '@/types/shipment'
 import { toast } from 'react-toastify'
+import { Product } from '@/types/types'
 
-type addCart = { product: ProductsDatum; quantitymod?: number }
+type addCart = { product: Product; quantitymod?: number }
 
 export interface CartSlice {
-  cart: ProductsDatum[]
-  removeToCart: (product: ProductsDatum) => void
-  deleteToCart: (product: ProductsDatum) => void
+  cart: Product[]
+  removeToCart: (product: Product) => void
+  deleteToCart: (product: Product) => void
   addToCart: (item: addCart) => void
   resetCart: () => void
   department: number | null

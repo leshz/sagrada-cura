@@ -1,9 +1,10 @@
 import { fetchApi } from './api'
 
 interface CheckoutResponse {
-  data: {
-    init_point: string
-  }
+  init_point: string,
+  invoiceId: string,
+  collector_id: string,
+  preferenceId: string
 }
 
 const checkout = async (checkoutData): Promise<CheckoutResponse> => {

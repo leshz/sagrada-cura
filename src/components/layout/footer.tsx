@@ -2,11 +2,7 @@ import { Footer } from '@/components/footer'
 import './styles/footer.scss'
 
 const FooterLayout = ({ data }) => {
-
-
-  // console.log(data);
   const { footer } = data
-  // console.log("footer", footer);
   const { news_letter: letter, columns } = footer
 
   return (

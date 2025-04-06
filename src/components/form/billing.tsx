@@ -139,6 +139,7 @@ const BillingForm = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
+                    autoComplete="email"  
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}

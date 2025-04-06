@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Attribute, Common, Utils } from "@strapi/strapi";
 
 type IDProperty = { id: number };
@@ -134,4 +136,8 @@ export interface APIResponseCollection<
 > {
   data: APIResponseData<TContentTypeUID>[];
   meta: APIResponseCollectionMetadata;
+}
+
+export type Product = GetValues<"plugin::strapi-ecommerce-mercadopago.product"> & {
+  quantityCart?: number
 }

@@ -10,6 +10,7 @@ import { sendGAEvent } from '@next/third-parties/google'
 
 import './styles/card.scss'
 import { GetValues } from '@/types/types'
+import { Picture } from '@/types/contentTypes'
 
 type Props = {
   product: GetValues<"plugin::strapi-ecommerce-mercadopago.product">
@@ -20,19 +21,19 @@ type Props = {
   }
   isTag?: boolean
 }
-
 const Card = ({ product, labels, isTag = false }: Props) => {
   const { addToCart } = useStore()
   const params = useSearchParams()
   const gridParam = Number(params.get('grid'))
   const grid = Number.isNaN(gridParam) ? 4 : gridParam
   let gridClass = ''
-  const { slug, pictures, promotion, price, name, stock, short_description } =
+  const { slug, promotion, price, name, stock, short_description } =
     product
+
+  const pictures = product.pictures as unknown as Picture[]
   const { with_discount = false, price_with_discount = 0 } = promotion || {}
   const { add_to_cart, request_stock } = labels
-
-  const previews = pictures?.length > 2 ? pictures.slice(0, 2) : pictures || []
+  const previews = pictures?.length > 2 ? pictures.slice(0, 2) : []
   const productView = `/tienda/${slug}`
 
   switch (grid) {
@@ -80,14 +81,13 @@ const Card = ({ product, labels, isTag = false }: Props) => {
     <div className={`col-6 col${gridClass}`}>
       <div className="product-card style-3 hover-btn">
         <div
-          className={`product-card-img ${
-            previews.length === 2 ? 'double-img' : ''
-          }`}
+          className={`product-card-img ${previews.length === 2 ? 'double-img' : ''
+            }`}
         >
           <Link href={productView}>
             {previews.map((image, index) => (
               <ImageWrapper
-                key={image.id}
+                key={image?.id}
                 image={image}
                 fill
                 format="medium"
