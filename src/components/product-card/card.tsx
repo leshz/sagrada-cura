@@ -31,9 +31,10 @@ const Card = ({ product, labels, isTag = false }: Props) => {
     product
 
   const pictures = product.pictures as unknown as Picture[]
+
   const { with_discount = false, price_with_discount = 0 } = promotion || {}
   const { add_to_cart, request_stock } = labels
-  const previews = pictures?.length > 2 ? pictures.slice(0, 2) : []
+  const previews = pictures?.length > 2 ? pictures.slice(0, 2) : pictures
   const productView = `/tienda/${slug}`
 
   switch (grid) {
