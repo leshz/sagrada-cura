@@ -1,10 +1,4 @@
-import type { Promotion } from '@/types/products'
-
-type Props = {
-  info: Promotion | undefined
-}
-
-const Batch = ({ info }: Props) => {
+const Batch = ({ info }) => {
   const {
     with_discount,
     best_seller,

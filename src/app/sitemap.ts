@@ -26,14 +26,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     params
   })
 
-  const products = productsData.map(({ slug }) => ({
+  const products = (productsData as any[]).map(({ slug }) => ({
     url: `${website}/tienda/${slug}` as string,
     lastModified: new Date(),
     changeFrequency: 'weekly' as change,
     priority: 1
   }))
 
-  const blogs = blogData.map(({ slug }) => ({
+  const blogs = (blogData as any[]).map(({ slug }) => ({
     url: `${website}/blog/${slug}` as string,
     lastModified: new Date(),
     changeFrequency: 'weekly' as change,

@@ -10,31 +10,31 @@ import {
 import { Price } from '@/components/price'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { ProductsDatum } from '@/types/products'
 import { getImagePath } from '@/utils/helpers'
+import { APIResponse, APIResponseCollection, APIResponseData, } from '@/types/types'
 
 import './page.scss'
 
 export const generateStaticParams = async () => {
-  const { data: products = [] } = await getCollections(COLLECTIONS.products)
+  const { data: products = [] } = await getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products)
   const slugs = products.map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { slug = '' } = params
-  const { data } = await getCollections(COLLECTIONS.products, {
+  const data = await getCollections<APIResponseData<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
     slug
   })
 
-  const { name, middle_description, pictures, slug: slugProduct } = data
+  const { name, middle_description, pictures, slug: slugProduct, } = data
 
   return {
     title: name,
     openGraph: {
       title: name,
-      description: middle_description,
-      images: getImagePath(pictures[0], 'medium'),
+      description: `${name} ${middle_description}`,
+      images: getImagePath(pictures?.[0], 'medium'),
       url: `https://sagradacura.com/tienda/${slugProduct}`,
       type: 'website'
     }
@@ -43,18 +43,16 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
-  const single = getSingles('product-detail')
-  const collection = getCollections(COLLECTIONS.products, {
+  const single = getSingles<APIResponseData<"api::product-detail.product-detail">>('product-detail')
+  const collection = getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
     slug,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
     }
   })
 
-  const [singleReq, collectionReq] = await Promise.all([single, collection])
+  const [singleReq, { data: product }] = await Promise.all([single, collection])
   const { payment_message, no_stock, promises = [] } = singleReq || {}
-
-  const product: ProductsDatum = collectionReq.data || {}
 
   const {
     name,
@@ -66,7 +64,7 @@ const ProductDefaultPage = async ({ params }) => {
     information,
     stock,
     type
-  } = product || {}
+  } = product
 
   const limitedStock = stock >= 0 && stock <= 6
 
@@ -110,7 +108,7 @@ const ProductDefaultPage = async ({ params }) => {
                 <div className="product-info">
                   <ul className="product-info-list">
                     <li>
-                      <span>SKU:</span> {sku.toUpperCase()}
+                      <span>SKU:</span> {sku?.toUpperCase()}
                     </li>
                   </ul>
                 </div>

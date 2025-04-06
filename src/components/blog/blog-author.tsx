@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { TagBar } from '@/components/tag-bar'
 
-const BlogAuthor = ({ author, tags = [] }) => {
+const BlogAuthor = ({ author, tags }) => {
   const { username = '' } = author || {}
 
   if (!username) {

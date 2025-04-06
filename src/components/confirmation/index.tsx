@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import {
   currencyFormat,
@@ -8,13 +9,12 @@ import {
   productsGABuilder
 } from '@/utils/helpers'
 import { sendGAEvent } from '@next/third-parties/google'
-// import { useGATrack } from '@/hooks/use-ga-track'
 import { IconAnimation } from './animation'
-import { ConfirmationProps } from './types'
+
 
 import './style.scss'
 
-const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
+const ConfirmationCard = ({ result, invoice }) => {
   const { payment_id, status } = result
   const {
     data: { total = 0, createdAt, products }
@@ -24,18 +24,19 @@ const ConfirmationCard = ({ result, invoice }: ConfirmationProps) => {
 
   const items = productsGABuilder(products)
 
-  const gaData = {
-    transaction_id: payment_id,
-    value: total,
-    currency: 'COP',
-    items
-  }
+  useEffect(() => {
+    const gaData = {
+      transaction_id: payment_id,
+      value: total,
+      currency: 'COP',
+      items
+    }
 
-  if (status === 'approved') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    // useGATrack('purchase', gaData)
-    sendGAEvent('event', 'purchase', gaData)
-  }
+    if (status === 'approved') {
+      sendGAEvent('event', 'purchase', gaData)
+    }
+  }, [status])
+
 
   return (
     <div className="d-flex flex-column align-items-center flex-wrap justify-content-center min-vh-10">

@@ -5,6 +5,8 @@ import { BlogPreview } from '@/components/blog/blog-preview'
 import { Paginator } from '@/components/paginator'
 import Link from 'next/link'
 
+import { APIResponseCollection } from '@/types/types'
+
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Blog',
   alternates: {
@@ -30,11 +32,13 @@ const BlogMasonryPage = async ({ searchParams }) => {
     params['filters[tags][slug][$eq]'] = tag
   }
 
-  const { data = [], meta = {} } = await getCollections(COLLECTIONS.blogs, {
-    params
+  const { data = [], meta = {} } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs, {
+    params,
   })
 
-  if (data.length === 0) {
+  const blogs = data?.length ? data : []
+
+  if (blogs.length === 0) {
     return (
       <div className="container-fluid mt-100">
         <div className="row">
@@ -61,7 +65,7 @@ const BlogMasonryPage = async ({ searchParams }) => {
     <div className="blog-grid-section mb-40">
       <div className="container-md container-fluid">
         <div className="row g-4 mb-80 ">
-          {data.map(item => (
+          {blogs.map(item => (
             <BlogPreview key={item.id} blog={item} />
           ))}
         </div>

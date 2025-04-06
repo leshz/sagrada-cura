@@ -7,6 +7,8 @@ import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
 
+import { APIResponseCollection, APIResponseData } from '@/types/types'
+
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Nuestra tienda',
   openGraph: {
@@ -46,19 +48,20 @@ const Shop = async ({ searchParams }) => {
     'pagination[page]': searchParams?.page || 1
   }
 
-  const single = getSingles('shop', {
-    next: { tags: ['content'] }
-  })
+  const single = getSingles<APIResponseData<"api::shop.shop">>('shop')
 
-  const collection = getCollections(COLLECTIONS.products, {
+  const collection = getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
     params,
     fetch: {
-      next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
+      next: {
+        revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10),
+      }
     }
   })
-  const [labels, rescollect] = await Promise.all([single, collection])
 
-  const { meta = {}, data = [] } = rescollect
+  const [labels, collectionApi] = await Promise.all([single, collection])
+
+  const { data, meta } = collectionApi;
   const {
     pagination: { total }
   } = meta
@@ -73,9 +76,6 @@ const Shop = async ({ searchParams }) => {
               <div className="all-products list-grid-product-wrap">
                 <div className="shop-columns-title-section mb-40">
                   <p>{`${total} Productos`}</p>
-                  {/* <Link href="/tienda" className="primary-btn3 hover-btn3">
-                    Limpiar filtros
-                  </Link> */}
                   <div className="filter-selector">
                     <GridSelector />
                   </div>

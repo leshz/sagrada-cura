@@ -1,6 +1,6 @@
 import { format } from '@formkit/tempo'
-import { ProductsDatum } from '@/types/products'
 import { Shipment } from '@/types/shipment'
+import { Product } from '@/types/types'
 import { availableIcons, ITEM_TYPES } from './constants'
 
 export const phoneFormmater = (phone: string) =>
@@ -28,7 +28,7 @@ export const currencyFormat = new Intl.NumberFormat('es-CO', {
   maximumFractionDigits: 0
 })
 
-export const productPriceSummary = (product: ProductsDatum) => {
+export const productPriceSummary = (product: Product) => {
   const { quantityCart = 1, price, promotion } = product
   const { price_with_discount = 0, with_discount = false } = promotion || {}
 
@@ -49,7 +49,7 @@ export const productPriceSummary = (product: ProductsDatum) => {
   return { fullPrice, fullPriceDiscount, totalDiscounted, finalPrice }
 }
 
-export const productsPricesSummary = (products: ProductsDatum[]) => {
+export const productsPricesSummary = (products: Product[]) => {
   const pricingInfo = products.map(product => {
     const { fullPrice, fullPriceDiscount, totalDiscounted, finalPrice } =
       productPriceSummary(product)
@@ -116,7 +116,7 @@ interface PriceCalculationResult {
 
 export const totalPriceWithShipment = (
   total: number,
-  cart: ProductsDatum[],
+  cart: Product[],
   departmentId: number | null,
   shipment: Shipment[],
   departments
