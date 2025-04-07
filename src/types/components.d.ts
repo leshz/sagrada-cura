@@ -37,6 +37,23 @@ export interface UiUtilityFooterDescription extends Schema.Component {
   };
 }
 
+export interface ShippingShipping extends Schema.Component {
+  collectionName: 'components_shipping_shippings';
+  info: {
+    displayName: 'Shipping';
+    icon: 'wheelchair';
+    description: '';
+  };
+  attributes: {
+    price: Attribute.Integer & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    type: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.DefaultTo<'SW00'>;
+  };
+}
+
 export interface UiTopMain extends Schema.Component {
   collectionName: 'components_ui_top_mains';
   info: {
@@ -235,20 +252,20 @@ export interface UiBottom extends Schema.Component {
   };
 }
 
-export interface ShippingShipping extends Schema.Component {
-  collectionName: 'components_shipping_shippings';
+export interface PromotionsPromotion extends Schema.Component {
+  collectionName: 'components_promotions_promotions';
   info: {
-    displayName: 'Shipping';
-    icon: 'wheelchair';
+    displayName: 'Promotion';
+    icon: 'walk';
     description: '';
   };
   attributes: {
-    price: Attribute.Integer & Attribute.Required;
-    name: Attribute.String & Attribute.Required;
-    type: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.DefaultTo<'SW00'>;
+    with_discount: Attribute.Boolean & Attribute.DefaultTo<false>;
+    price_with_discount: Attribute.Integer;
+    recommended: Attribute.Boolean & Attribute.DefaultTo<false>;
+    best_seller: Attribute.Boolean & Attribute.DefaultTo<false>;
+    new: Attribute.Boolean & Attribute.DefaultTo<false>;
+    discount_tag: Attribute.String;
   };
 }
 
@@ -300,23 +317,6 @@ export interface SharedMetaSocial extends Schema.Component {
         maxLength: 65;
       }>;
     image: Attribute.Media<'images' | 'files' | 'videos'>;
-  };
-}
-
-export interface PromotionsPromotion extends Schema.Component {
-  collectionName: 'components_promotions_promotions';
-  info: {
-    displayName: 'Promotion';
-    icon: 'walk';
-    description: '';
-  };
-  attributes: {
-    with_discount: Attribute.Boolean & Attribute.DefaultTo<false>;
-    price_with_discount: Attribute.Integer;
-    recommended: Attribute.Boolean & Attribute.DefaultTo<false>;
-    best_seller: Attribute.Boolean & Attribute.DefaultTo<false>;
-    new: Attribute.Boolean & Attribute.DefaultTo<false>;
-    discount_tag: Attribute.String;
   };
 }
 
@@ -526,6 +526,7 @@ declare module '@strapi/types' {
       'ui-utility.news-letter': UiUtilityNewsLetter;
       'ui-utility.link': UiUtilityLink;
       'ui-utility.footer-description': UiUtilityFooterDescription;
+      'shipping.shipping': ShippingShipping;
       'ui.top-main': UiTopMain;
       'ui.testimonial': UiTestimonial;
       'ui.product-categories': UiProductCategories;
@@ -541,10 +542,9 @@ declare module '@strapi/types' {
       'ui.dinamic-banner': UiDinamicBanner;
       'ui.categories': UiCategories;
       'ui.bottom': UiBottom;
-      'shipping.shipping': ShippingShipping;
+      'promotions.promotion': PromotionsPromotion;
       'shared.seo': SharedSeo;
       'shared.meta-social': SharedMetaSocial;
-      'promotions.promotion': PromotionsPromotion;
       'product.promises': ProductPromises;
       'product.information': ProductInformation;
       'mercadopago.shopper': MercadopagoShopper;
