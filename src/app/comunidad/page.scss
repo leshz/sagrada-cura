@@ -224,6 +224,13 @@
     padding: 45px 35px 50px;
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
 
+    p {
+      font-family: var(--font-secondary);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 26px;
+    }
+
     .success-message {
       display: flex;
       flex-direction: column;

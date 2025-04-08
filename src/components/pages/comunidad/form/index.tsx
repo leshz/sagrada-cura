@@ -48,7 +48,7 @@ const CommunityForm = () => {
             <div className="col-md-12 d-flex flex-column align-items-center justify-content-center">
               <div className="success-message">
                 <h2>😊 😊 😊</h2>
-                <h3>Gracias por suscribirte a nuestra comunidad</h3>
+                <p>Gracias por suscribirte a nuestra comunidad</p>
               </div>
               <Link href="/" className="primary-btn3 hover-btn5">Volver al Inicio</Link>
             </div>
@@ -60,7 +60,10 @@ const CommunityForm = () => {
 
   return (<div className="inquiry-form">
     <div className="section-title mb-20">
-      <h4>¡Escríbenos cuando quieras!</h4>
+      <h3>Únete a Sagrada Cura</h3>
+      <p>Abre la puerta a un espacio de conexión profunda, donde cada ritual honra tu camino y cada creación nace desde la intención.</p>
+      <p>Forma parte de nuestra comunidad y recibe contenido exclusivo, acceso anticipado a lanzamientos y experiencias pensadas para tu expansión interior.</p>
+
     </div>
     <form onSubmit={handleSubmit} autoComplete="on">
       <div className="row">
