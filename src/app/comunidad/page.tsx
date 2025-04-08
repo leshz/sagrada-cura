@@ -35,7 +35,7 @@ const ContactPage = async () => {
       </div>
       <div className="container">
         <div className="row justify-content-center g-4 mb-100">
-          <div className="col-4">
+          <div className="col-12 col-sm-12 col-md-8 col-lg-6">
             <CommunityForm />
           </div>
         </div>
