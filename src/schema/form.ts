@@ -18,3 +18,15 @@ export const formSchema = yup.object().shape({
   email: yup.string().email('Email invalido').required(requiredText),
   message: yup.string()
 })
+
+export const contactFormSchema = yup.object().shape({
+  name: yup.string().required(requiredText),
+  phone: yup
+    .string()
+    .matches(phoneValidation, { message: 'telefono invalido' })
+    .required(requiredText),
+  email: yup.string().email('Email invalido').required(requiredText),
+  subject: yup.string().required(requiredText),
+  message: yup.string().required(requiredText),
+  termsAccepted: yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones').required('Debes aceptar los términos y condiciones')
+})

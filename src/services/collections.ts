@@ -1,3 +1,5 @@
+import type { ContactFormData, StrapiBodyFormContact } from '@/types/types'
+import { transformData } from '@/utils/helpers'
 import { fetchApi } from './api'
 import type { optionsCollection } from './type'
 
@@ -47,4 +49,22 @@ const getCollections = async <T = Record<string, unknown>>(
   }
 }
 
-export { getCollections }
+const sendContactForm = async (data: ContactFormData): Promise<boolean> => {
+  const url = '/contactos'
+
+  const body = transformData(data)
+
+  try {
+    const { statusText } = await fetchApi<StrapiBodyFormContact>(url, {
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+    return statusText === 'OK'
+  } catch (error) {
+    console.error(error);
+    return false
+
+  }
+}
+
+export { getCollections, sendContactForm }

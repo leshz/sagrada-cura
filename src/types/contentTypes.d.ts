@@ -1,5 +1,15 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface Picture  {
+  id: number
+  name: string
+  alternativeText: string
+  caption: string
+  width: number
+  height: number
+  url: string
+}
+
 export interface AdminPermission extends Schema.CollectionType {
   collectionName: 'admin_permissions';
   info: {
@@ -19,15 +29,15 @@ export interface AdminPermission extends Schema.CollectionType {
   };
   attributes: {
     action: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     actionParameters: Attribute.JSON & Attribute.DefaultTo<unknown>;
     subject: Attribute.String &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     properties: Attribute.JSON & Attribute.DefaultTo<unknown>;
     conditions: Attribute.JSON & Attribute.DefaultTo<[]>;
     role: Attribute.Relation<'admin::permission', 'manyToOne', 'admin::role'>;
@@ -38,36 +48,16 @@ export interface AdminPermission extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'admin::permission',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
-export interface Picture {
-  id: number;
-  url: string;
-  width: number;
-  height: number;
-  alternativeText: null;
-  formats: {
-    thumbnail: {
-      ext: string;
-      url: string;
-      hash: string;
-      mime: string;
-      name: string;
-      path: null;
-      size: number;
-      width: number;
-      height: number;
-    }
-  };
-}
 export interface AdminUser extends Schema.CollectionType {
   collectionName: 'admin_users';
   info: {
@@ -87,41 +77,41 @@ export interface AdminUser extends Schema.CollectionType {
   };
   attributes: {
     firstname: Attribute.String &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     lastname: Attribute.String &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     username: Attribute.String;
     email: Attribute.Email &
-    Attribute.Required &
-    Attribute.Private &
-    Attribute.Unique &
-    Attribute.SetMinMaxLength<{
-      minLength: 6;
-    }>;
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 6;
+      }>;
     password: Attribute.Password &
-    Attribute.Private &
-    Attribute.SetMinMaxLength<{
-      minLength: 6;
-    }>;
+      Attribute.Private &
+      Attribute.SetMinMaxLength<{
+        minLength: 6;
+      }>;
     resetPasswordToken: Attribute.String & Attribute.Private;
     registrationToken: Attribute.String & Attribute.Private;
     isActive: Attribute.Boolean &
-    Attribute.Private &
-    Attribute.DefaultTo<false>;
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
     roles: Attribute.Relation<'admin::user', 'manyToMany', 'admin::role'> &
-    Attribute.Private;
+      Attribute.Private;
     blocked: Attribute.Boolean & Attribute.Private & Attribute.DefaultTo<false>;
     preferedLanguage: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -144,17 +134,17 @@ export interface AdminRole extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.Unique &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     code: Attribute.String &
-    Attribute.Required &
-    Attribute.Unique &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     description: Attribute.String;
     users: Attribute.Relation<'admin::role', 'manyToMany', 'admin::user'>;
     permissions: Attribute.Relation<
@@ -165,9 +155,9 @@ export interface AdminRole extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'admin::role', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'admin::role', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -190,24 +180,24 @@ export interface AdminApiToken extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.Unique &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     description: Attribute.String &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }> &
-    Attribute.DefaultTo<''>;
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }> &
+      Attribute.DefaultTo<''>;
     type: Attribute.Enumeration<['read-only', 'full-access', 'custom']> &
-    Attribute.Required &
-    Attribute.DefaultTo<'read-only'>;
+      Attribute.Required &
+      Attribute.DefaultTo<'read-only'>;
     accessKey: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     lastUsedAt: Attribute.DateTime;
     permissions: Attribute.Relation<
       'admin::api-token',
@@ -223,13 +213,13 @@ export interface AdminApiToken extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'admin::api-token',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -252,10 +242,10 @@ export interface AdminApiTokenPermission extends Schema.CollectionType {
   };
   attributes: {
     action: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     token: Attribute.Relation<
       'admin::api-token-permission',
       'manyToOne',
@@ -268,13 +258,13 @@ export interface AdminApiTokenPermission extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'admin::api-token-permission',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -297,21 +287,21 @@ export interface AdminTransferToken extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.Unique &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     description: Attribute.String &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }> &
-    Attribute.DefaultTo<''>;
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }> &
+      Attribute.DefaultTo<''>;
     accessKey: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     lastUsedAt: Attribute.DateTime;
     permissions: Attribute.Relation<
       'admin::transfer-token',
@@ -327,13 +317,13 @@ export interface AdminTransferToken extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'admin::transfer-token',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -356,10 +346,10 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
   attributes: {
     action: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 1;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     token: Attribute.Relation<
       'admin::transfer-token-permission',
       'manyToOne',
@@ -372,13 +362,13 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'admin::transfer-token-permission',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -419,16 +409,16 @@ export interface PluginUploadFile extends Schema.CollectionType {
       'manyToOne',
       'plugin::upload.folder'
     > &
-    Attribute.Private;
+      Attribute.Private;
     folderPath: Attribute.String &
-    Attribute.Required &
-    Attribute.Private &
-    Attribute.SetMinMax<
-      {
-        min: 1;
-      },
-      number
-    >;
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -436,13 +426,13 @@ export interface PluginUploadFile extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::upload.file',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -463,13 +453,13 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMax<
-      {
-        min: 1;
-      },
-      number
-    >;
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     pathId: Attribute.Integer & Attribute.Required & Attribute.Unique;
     parent: Attribute.Relation<
       'plugin::upload.folder',
@@ -487,13 +477,13 @@ export interface PluginUploadFolder extends Schema.CollectionType {
       'plugin::upload.file'
     >;
     path: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMax<
-      {
-        min: 1;
-      },
-      number
-    >;
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -501,13 +491,13 @@ export interface PluginUploadFolder extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::upload.folder',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -537,7 +527,7 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
     status: Attribute.Enumeration<
       ['ready', 'blocked', 'failed', 'done', 'empty']
     > &
-    Attribute.Required;
+      Attribute.Required;
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -550,13 +540,13 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -600,13 +590,13 @@ export interface PluginContentReleasesReleaseAction
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::content-releases.release-action',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -629,20 +619,20 @@ export interface PluginStrapiEcommerceMercadopagoCategory
   };
   attributes: {
     name: Attribute.String &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Attribute.UID<
       'plugin::strapi-ecommerce-mercadopago.category',
       'name'
     > &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -651,13 +641,13 @@ export interface PluginStrapiEcommerceMercadopagoCategory
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.category',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.category',
       'oneToMany',
@@ -685,61 +675,60 @@ export interface PluginStrapiEcommerceMercadopagoProduct
     };
   };
   attributes: {
-    id: Attribute.Integer & Attribute.Required & Attribute.Unique;
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.Unique &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     price: Attribute.Integer &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }> &
-    Attribute.SetMinMax<
-      {
-        min: 1000;
-      },
-      number
-    >;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 1000;
+        },
+        number
+      >;
     pictures: Attribute.Media<'images', true> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     short_description: Attribute.Text &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Attribute.UID<
       'plugin::strapi-ecommerce-mercadopago.product',
       'name'
     > &
-    Attribute.Required;
+      Attribute.Required;
     stock: Attribute.Integer &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: false;
-      };
-    }> &
-    Attribute.SetMinMax<
-      {
-        max: 100;
-      },
-      number
-    > &
-    Attribute.DefaultTo<0>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          max: 100;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     sku: Attribute.UID<
       undefined,
       undefined,
@@ -748,50 +737,50 @@ export interface PluginStrapiEcommerceMercadopagoProduct
         'disable-regenerate': true;
       }
     > &
-    Attribute.CustomField<
-      'plugin::strapi-advanced-uuid.uuid',
-      {
-        'uuid-format': '^SGWP[A-Z]{2}\\d{5}$';
-        'disable-regenerate': true;
-      }
-    > &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: false;
-      };
-    }>;
+      Attribute.CustomField<
+        'plugin::strapi-advanced-uuid.uuid',
+        {
+          'uuid-format': '^SGWP[A-Z]{2}\\d{5}$';
+          'disable-regenerate': true;
+        }
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     promotion: Attribute.Component<'promotions.promotion'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     categories: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.product',
       'oneToMany',
       'plugin::strapi-ecommerce-mercadopago.category'
     >;
     middle_description: Attribute.Text &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     information: Attribute.Component<'product.information', true> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     type: Attribute.Enumeration<['producto', 'servicio']> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: false;
-      };
-    }> &
-    Attribute.DefaultTo<'producto'>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'producto'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -800,13 +789,13 @@ export interface PluginStrapiEcommerceMercadopagoProduct
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.product',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.product',
       'oneToMany',
@@ -836,8 +825,8 @@ export interface PluginStrapiEcommerceMercadopagoConfiguration
     webhook_pass: Attribute.String & Attribute.Required & Attribute.Private;
     notification_url: Attribute.String & Attribute.Required & Attribute.Private;
     bussiness_description: Attribute.String &
-    Attribute.Required &
-    Attribute.Private;
+      Attribute.Required &
+      Attribute.Private;
     send_emails: Attribute.Boolean & Attribute.Required & Attribute.Private;
     email: Attribute.String & Attribute.Required & Attribute.Private;
     createdAt: Attribute.DateTime;
@@ -847,13 +836,13 @@ export interface PluginStrapiEcommerceMercadopagoConfiguration
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.configuration',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -916,8 +905,8 @@ export interface PluginStrapiEcommerceMercadopagoInvoice
     paid_with: Attribute.String;
     preference_id: Attribute.String;
     payment_status: Attribute.Text &
-    Attribute.Required &
-    Attribute.CustomField<'plugin::content-tags.content-tags'>;
+      Attribute.Required &
+      Attribute.CustomField<'plugin::content-tags.content-tags'>;
     shipping_status: Attribute.Enumeration<
       [
         'initial',
@@ -937,13 +926,13 @@ export interface PluginStrapiEcommerceMercadopagoInvoice
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.invoice',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -970,13 +959,13 @@ export interface PluginStrapiEcommerceMercadopagoShipment
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::strapi-ecommerce-mercadopago.shipment',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1015,13 +1004,13 @@ export interface PluginMenusMenu extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::menus.menu',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1055,7 +1044,7 @@ export interface PluginMenusMenuItem extends Schema.CollectionType {
       'manyToOne',
       'plugin::menus.menu'
     > &
-    Attribute.Required;
+      Attribute.Required;
     parent: Attribute.Relation<
       'plugin::menus.menu-item',
       'oneToOne',
@@ -1068,13 +1057,13 @@ export interface PluginMenusMenuItem extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::menus.menu-item',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1100,13 +1089,13 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.SetMinMax<
-      {
-        min: 1;
-        max: 50;
-      },
-      number
-    >;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
     code: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1115,13 +1104,13 @@ export interface PluginI18NLocale extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::i18n.locale',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1157,13 +1146,13 @@ export interface PluginUsersPermissionsPermission
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.permission',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1186,10 +1175,10 @@ export interface PluginUsersPermissionsRole extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 3;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+      }>;
     description: Attribute.String;
     type: Attribute.String & Attribute.Unique;
     permissions: Attribute.Relation<
@@ -1209,13 +1198,13 @@ export interface PluginUsersPermissionsRole extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.role',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1233,22 +1222,22 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   attributes: {
     username: Attribute.String &
-    Attribute.Required &
-    Attribute.Unique &
-    Attribute.SetMinMaxLength<{
-      minLength: 3;
-    }>;
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+      }>;
     email: Attribute.Email &
-    Attribute.Required &
-    Attribute.SetMinMaxLength<{
-      minLength: 6;
-    }>;
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 6;
+      }>;
     provider: Attribute.String;
     password: Attribute.Password &
-    Attribute.Private &
-    Attribute.SetMinMaxLength<{
-      minLength: 6;
-    }>;
+      Attribute.Private &
+      Attribute.SetMinMaxLength<{
+        minLength: 6;
+      }>;
     resetPasswordToken: Attribute.String & Attribute.Private;
     confirmationToken: Attribute.String & Attribute.Private;
     confirmed: Attribute.Boolean & Attribute.DefaultTo<false>;
@@ -1266,13 +1255,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1294,31 +1283,31 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
   attributes: {
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     article: Attribute.Blocks &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     blogs_title: Attribute.String &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1327,13 +1316,13 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::about-us.about-us',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::about-us.about-us',
       'oneToMany',
@@ -1370,9 +1359,9 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1394,31 +1383,31 @@ export interface ApiCartCart extends Schema.SingleType {
   };
   attributes: {
     table: Attribute.Component<'cart.table'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     summary: Attribute.Component<'cart.summary'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     empty: Attribute.Component<'cart.empty-cart'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::cart.cart',
       'oneToMany',
@@ -1446,26 +1435,26 @@ export interface ApiCondicionesDeEnvioCondicionesDeEnvio
   };
   attributes: {
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: false;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     title: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     content: Attribute.Blocks &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1474,19 +1463,52 @@ export interface ApiCondicionesDeEnvioCondicionesDeEnvio
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::condiciones-de-envio.condiciones-de-envio',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::condiciones-de-envio.condiciones-de-envio',
       'oneToMany',
       'api::condiciones-de-envio.condiciones-de-envio'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiContactoContacto extends Schema.CollectionType {
+  collectionName: 'contactos';
+  info: {
+    singularName: 'contacto';
+    pluralName: 'contactos';
+    displayName: 'contacto';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    nombre: Attribute.String & Attribute.Required;
+    telefono: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+    asunto: Attribute.String;
+    nota: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contacto.contacto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contacto.contacto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1509,26 +1531,26 @@ export interface ApiDerechoDeRetractoDerechoDeRetracto
   };
   attributes: {
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     content: Attribute.Blocks &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1537,13 +1559,13 @@ export interface ApiDerechoDeRetractoDerechoDeRetracto
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::derecho-de-retracto.derecho-de-retracto',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::derecho-de-retracto.derecho-de-retracto',
       'oneToMany',
@@ -1576,13 +1598,13 @@ export interface ApiGeneralGeneral extends Schema.SingleType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::general.general',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1604,52 +1626,105 @@ export interface ApiHomeHome extends Schema.SingleType {
   };
   attributes: {
     banners: Attribute.Component<'ui.fixed-banner'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product_categories: Attribute.Component<'ui.product-categories'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     highlight_products: Attribute.Component<'ui.hightlights-products'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     last_blogs: Attribute.Component<'ui.last-blogposts'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     testimonial: Attribute.Component<'ui.testimonial'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     instagram: Attribute.Component<'ui.instagram'> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::home.home',
       'oneToMany',
       'api::home.home'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPaginaContactoPaginaContacto extends Schema.SingleType {
+  collectionName: 'pagina_contactos';
+  info: {
+    singularName: 'pagina-contacto';
+    pluralName: 'pagina-contactos';
+    displayName: 'Pagina Contacto';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pagina-contacto.pagina-contacto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pagina-contacto.pagina-contacto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::pagina-contacto.pagina-contacto',
+      'oneToMany',
+      'api::pagina-contacto.pagina-contacto'
     >;
     locale: Attribute.String;
   };
@@ -1673,25 +1748,25 @@ export interface ApiPlanesCorporativoPlanesCorporativo
   };
   attributes: {
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     content: Attribute.Blocks &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1700,13 +1775,13 @@ export interface ApiPlanesCorporativoPlanesCorporativo
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::planes-corporativo.planes-corporativo',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::planes-corporativo.planes-corporativo',
       'oneToMany',
@@ -1735,26 +1810,26 @@ export interface ApiPoliticasDeDevolucionPoliticasDeDevolucion
   };
   attributes: {
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     content: Attribute.Blocks &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1763,13 +1838,13 @@ export interface ApiPoliticasDeDevolucionPoliticasDeDevolucion
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::politicas-de-devolucion.politicas-de-devolucion',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::politicas-de-devolucion.politicas-de-devolucion',
       'oneToMany',
@@ -1797,24 +1872,24 @@ export interface ApiProductDetailProductDetail extends Schema.SingleType {
   };
   attributes: {
     promises: Attribute.Component<'product.promises', true> &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     payment_message: Attribute.Text &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     no_stock: Attribute.String &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1823,13 +1898,13 @@ export interface ApiProductDetailProductDetail extends Schema.SingleType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product-detail.product-detail',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::product-detail.product-detail',
       'oneToMany',
@@ -1857,40 +1932,40 @@ export interface ApiShopShop extends Schema.SingleType {
   };
   attributes: {
     out_of_stock: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     add_to_cart: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     request_stock: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     categories: Attribute.Component<'categories.categories'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::shop.shop', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'api::shop.shop', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::shop.shop',
       'oneToMany',
@@ -1917,9 +1992,9 @@ export interface ApiTagTag extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
-    Attribute.Private;
+      Attribute.Private;
   };
 }
 
@@ -1941,47 +2016,47 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     job_title: Attribute.String &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     starts: Attribute.Integer &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }> &
-    Attribute.SetMinMax<
-      {
-        min: 1;
-        max: 5;
-      },
-      number
-    > &
-    Attribute.DefaultTo<4>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 5;
+        },
+        number
+      > &
+      Attribute.DefaultTo<4>;
     testimonial: Attribute.Text &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1990,13 +2065,13 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::testimonial.testimonial',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::testimonial.testimonial',
       'oneToMany',
@@ -2024,26 +2099,26 @@ export interface ApiTratamientoDeDatoTratamientoDeDato
   };
   attributes: {
     image: Attribute.Media<'images'> &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Attribute.String &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     content: Attribute.Blocks &
-    Attribute.Required &
-    Attribute.SetPluginOptions<{
-      i18n: {
-        localized: true;
-      };
-    }>;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2052,13 +2127,13 @@ export interface ApiTratamientoDeDatoTratamientoDeDato
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::tratamiento-de-dato.tratamiento-de-dato',
       'oneToOne',
       'admin::user'
     > &
-    Attribute.Private;
+      Attribute.Private;
     localizations: Attribute.Relation<
       'api::tratamiento-de-dato.tratamiento-de-dato',
       'oneToMany',
@@ -2097,9 +2172,11 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::cart.cart': ApiCartCart;
       'api::condiciones-de-envio.condiciones-de-envio': ApiCondicionesDeEnvioCondicionesDeEnvio;
+      'api::contacto.contacto': ApiContactoContacto;
       'api::derecho-de-retracto.derecho-de-retracto': ApiDerechoDeRetractoDerechoDeRetracto;
       'api::general.general': ApiGeneralGeneral;
       'api::home.home': ApiHomeHome;
+      'api::pagina-contacto.pagina-contacto': ApiPaginaContactoPaginaContacto;
       'api::planes-corporativo.planes-corporativo': ApiPlanesCorporativoPlanesCorporativo;
       'api::politicas-de-devolucion.politicas-de-devolucion': ApiPoliticasDeDevolucionPoliticasDeDevolucion;
       'api::product-detail.product-detail': ApiProductDetailProductDetail;
@@ -2107,7 +2184,6 @@ declare module '@strapi/types' {
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::tratamiento-de-dato.tratamiento-de-dato': ApiTratamientoDeDatoTratamientoDeDato;
-      'image::parse.image': Picture;
     }
   }
 }
