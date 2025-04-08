@@ -1,16 +1,5 @@
 @import '@/styles/mixins.scss';
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
 /*================================================
   Checkout page
 =================================================*/
@@ -20,9 +9,11 @@ input[type='number'] {
     padding: 40px 0;
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
     border: 1px solid #eee;
+
     @include sm-down-device() {
       padding: 40px 15px;
     }
+
     legend {
       font-family: var(--font-primary);
       font-weight: 600;
@@ -30,6 +21,7 @@ input[type='number'] {
       color: var(--primary-color1);
       line-height: 1;
       margin-bottom: 30px;
+
       @include sm-down-device() {
         font-size: 23px;
       }
@@ -38,15 +30,19 @@ input[type='number'] {
     fieldset {
       padding: 0 40px;
       margin-bottom: 20px;
+
       @include sm-down-device {
         padding: 0 15px;
       }
+
       &:last-child {
         margin-bottom: 5px;
       }
     }
+
     .form-inner {
       margin-bottom: 25px;
+
       label {
         font-size: 18px;
         font-weight: bold;
@@ -55,6 +51,7 @@ input[type='number'] {
         margin-bottom: 10px;
         width: 100%;
       }
+
       .nice-select {
         width: 100%;
         height: 50px;
@@ -62,9 +59,11 @@ input[type='number'] {
         float: unset;
         border: 1px solid var(--primary-color1);
         border-radius: unset;
+
         &:focus {
           border: 1px solid #ddd;
         }
+
         .list {
           width: 100%;
         }
@@ -80,15 +79,18 @@ input[type='number'] {
       }
     }
   }
+
   .added-product-summary {
     border: 1px solid #eee;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 30px;
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
+
     @include sm-down-device() {
       padding: 25px 15px;
     }
+
     h5 {
       font-family: var(--font-primary);
       font-weight: 600;
@@ -97,37 +99,46 @@ input[type='number'] {
       line-height: 1;
       margin-bottom: 25px;
     }
+
     .added-products {
       padding: 0;
       margin: 0;
       list-style: none;
+
       .single-product {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 25px;
+
         .product-area {
           display: flex;
           align-items: center;
           gap: 25px;
+
           @include sm-down-device() {
             gap: 10px;
           }
+
           img {
             width: 90px;
             height: 90px;
             border-radius: 5px;
+
             @include sm-down-device() {
               width: 80px;
               height: 80px;
             }
           }
+
           .product-info {
             h5 {
               margin-bottom: 20px;
+
               @include sm-down-device() {
                 margin-bottom: 10px;
               }
+
               a {
                 font-family: var(--font-primary);
                 font-weight: 600;
@@ -135,18 +146,22 @@ input[type='number'] {
                 color: var(--primary-color1);
                 line-height: 1;
                 margin-bottom: 25px;
+
                 @include sm-down-device() {
                   font-size: 18px;
                 }
               }
             }
+
             .product-total {
               display: flex;
               align-items: center;
               gap: 20px;
+
               @include sm-down-device() {
                 gap: 10px;
               }
+
               .quantity-counter {
                 display: flex;
                 align-items: center;
@@ -156,6 +171,7 @@ input[type='number'] {
                 border-radius: 30px;
                 border: 1px solid var(--primary-color1);
                 padding: 0 10px;
+
                 button {
                   width: 40px;
                   height: 40px;
@@ -166,6 +182,7 @@ input[type='number'] {
                   background: transparent;
                   cursor: pointer;
                 }
+
                 .quantity__input {
                   width: 100%;
                   text-align: center;
@@ -178,12 +195,14 @@ input[type='number'] {
                   border: unset;
                 }
               }
+
               strong {
                 @include sm-down-device() {
                   i {
                     font-size: 12px;
                   }
                 }
+
                 .product-price {
                   font-size: 14px;
                   font-family: var(--font-secondary);
@@ -192,6 +211,7 @@ input[type='number'] {
             }
           }
         }
+
         .delete-btn {
           height: 35px;
           width: 35px;
@@ -204,17 +224,21 @@ input[type='number'] {
           align-items: center;
           cursor: pointer;
           transition: 0.4s ease;
+
           @include md-down-device() {
             margin: 0 0 0 auto;
           }
+
           i {
             font-size: 16px;
             transition: 0.4s ease;
           }
+
           &:hover {
             background-color: var(--primary-color1);
             box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.19);
             transition: 0.4s ease;
+
             i {
               color: var(--white-color);
             }
@@ -223,22 +247,27 @@ input[type='number'] {
       }
     }
   }
+
   .cost-summary {
     border-radius: 5px;
     border: 1px solid #eee;
     background-color: #fff;
     padding: 23px 30px;
     box-shadow: 4px 8px 30px rgba(141, 141, 141, 0.1);
+
     @include sm-down-device() {
       padding: 23px 15px;
     }
+
     .cost-summary-table {
       margin-bottom: 0;
+
       .price {
         font-family: var(--font-secondary);
         font-size: 14px;
         padding: 8px 0;
       }
+
       thead {
         tr {
           th {
@@ -249,12 +278,14 @@ input[type='number'] {
             font-family: var(--font-primary);
             padding: 0;
             padding-bottom: 10px;
+
             &:last-child {
               text-align: right;
             }
           }
         }
       }
+
       tbody {
         tr {
           .tax {
@@ -264,6 +295,7 @@ input[type='number'] {
             font-family: var(--font-primary);
             padding-left: 0;
           }
+
           td {
             border: none;
             font-size: 16px;
@@ -272,6 +304,7 @@ input[type='number'] {
             color: #838383;
             font-family: var(--font-primary);
             padding-left: 0;
+
             &:last-child {
               text-align: right;
             }
@@ -279,6 +312,7 @@ input[type='number'] {
         }
       }
     }
+
     &.total-cost {
       thead {
         tr {
@@ -289,24 +323,29 @@ input[type='number'] {
       }
     }
   }
+
   .payment-methods {
     border: 1px solid #eee;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 30px;
+
     .payment-list {
       padding: 0;
       margin: 0;
       list-style: none;
+
       li {
         position: relative;
         margin-left: 25px;
+
         h6 {
           font-size: 18px;
           font-weight: 600;
           color: var(--primary-color1);
           font-family: var(--font-primary);
         }
+
         .checked {
           position: absolute;
           top: 3.5px;
@@ -316,6 +355,7 @@ input[type='number'] {
           border: 1px solid rgba(0, 0, 0, 0.25);
           border-radius: 50%;
         }
+
         &.active {
           .checked {
             background: #848484;
@@ -323,11 +363,13 @@ input[type='number'] {
         }
       }
     }
+
     .form-check {
       display: block;
       min-height: 24px;
       padding-left: 0;
       margin-bottom: 15px;
+
       .form-check-input {
         min-width: 8px;
         min-height: 8px;
@@ -342,8 +384,10 @@ input[type='number'] {
         box-shadow: none;
         appearance: none;
       }
+
       .form-check-input[type='radio'] {
         border-radius: 50%;
+
         &:checked {
           background: #848484;
           border-color: transparent;
@@ -352,31 +396,38 @@ input[type='number'] {
           margin-top: 8px;
         }
       }
+
       .form-check-label {
         font-size: 18px;
         font-weight: 600;
         color: var(--primary-color1);
         font-family: var(--font-primary);
       }
+
       .para {
         font-size: 14px;
         font-weight: 400;
         color: var(--primary-color1);
         font-family: var(--font-primary);
       }
+
       &.paypal {
         display: flex;
         align-items: center;
         gap: 10px;
+
         @include lg-device() {
           flex-wrap: wrap;
         }
+
         @include sm-down-device() {
           flex-wrap: wrap;
         }
+
         .form-check-input[type='radio'] {
           margin-top: 0;
         }
+
         .about-paypal {
           color: var(--primary-color1);
           font-weight: 400;
@@ -386,23 +437,27 @@ input[type='number'] {
         }
       }
     }
+
     .payment-form-bottom {
       padding-top: 10px;
+
       .custom-check-box {
         opacity: 0;
         display: none;
       }
 
-      .custom-check-box + label {
+      .custom-check-box+label {
         position: relative;
         display: flex;
         align-items: center;
         gap: 10px;
         margin-left: 2px;
         flex-wrap: wrap;
+
         @include sm-down-device() {
           gap: 5px;
         }
+
         &::before {
           content: '';
           width: 13px;
@@ -411,7 +466,7 @@ input[type='number'] {
         }
       }
 
-      .custom-check-box:checked + label {
+      .custom-check-box:checked+label {
         &::before {
           content: '\F26E';
           color: var(--white-color);
@@ -423,11 +478,13 @@ input[type='number'] {
           justify-content: center;
         }
       }
+
       label {
         font-size: 14px;
         font-weight: 400;
         color: var(--primary-color1);
         font-family: var(--font-primary);
+
         a {
           color: var(--primary-color1);
           font-weight: 600;
@@ -436,6 +493,7 @@ input[type='number'] {
       }
     }
   }
+
   .place-order-btn {
     .header-btn {
       color: #fff;
@@ -449,8 +507,10 @@ input[type='number'] {
       background: var(--primary-color1);
       cursor: pointer;
       white-space: nowrap;
+
       &:hover {
         background: #191a1c;
+
         a {
           color: var(--white-color);
         }
@@ -458,6 +518,7 @@ input[type='number'] {
     }
   }
 }
+
 .choose-payment-method {
   h5 {
     font-size: 18px;
@@ -466,6 +527,7 @@ input[type='number'] {
     font-family: var(--font-primary);
     margin-bottom: 20px;
   }
+
   .payment-option {
     ul {
       padding: 0;
@@ -474,6 +536,7 @@ input[type='number'] {
       display: flex;
       align-items: center;
       gap: 21px;
+
       li {
         border: 1px solid #eeeeee;
         max-width: 101px;
@@ -484,12 +547,15 @@ input[type='number'] {
         justify-content: center;
         border-radius: 5px;
         position: relative;
+
         &.active {
           border: 1px solid var(--primary-color1);
+
           .checked {
             opacity: 1;
           }
         }
+
         .checked {
           position: absolute;
           top: -8px;
@@ -502,6 +568,7 @@ input[type='number'] {
           justify-content: center;
           align-items: center;
           opacity: 0;
+
           i {
             color: var(--white-color);
           }
@@ -509,8 +576,10 @@ input[type='number'] {
       }
     }
   }
+
   .input-area {
     position: relative;
+
     label {
       font-size: 16px;
       font-weight: 500;
@@ -518,6 +587,7 @@ input[type='number'] {
       font-family: var(--font-primary);
       margin-bottom: 10px;
     }
+
     input {
       display: block;
       transition: 0.3s ease;
@@ -531,12 +601,15 @@ input[type='number'] {
       width: 100%;
       height: 50px;
       padding: 15px 20px;
+
       &:focus {
         border: 1px solid #ddd;
       }
     }
+
     .input-field {
       position: relative;
+
       img {
         position: absolute;
         top: 50%;
@@ -545,18 +618,22 @@ input[type='number'] {
         width: 70px;
       }
     }
+
     .nice-select {
       width: 100%;
       height: 50px;
       line-height: 50px;
       border: 1px solid var(--primary-color1);
       border-radius: unset;
+
       &:focus {
         border: 1px solid #ddd;
       }
+
       .list {
         width: 100%;
       }
+
       &::after {
         border-bottom: 2px solid var(--primary-color1);
         border-right: 2px solid var(--primary-color1);

@@ -59,7 +59,7 @@ const ContactForm = () => {
     <div className="section-title mb-20">
       <h4>¡Escríbenos cuando quieras!</h4>
     </div>
-    <form onSubmit={handleSubmit} autoComplete="on">
+    <form onSubmit={handleSubmit} autoComplete="on" className="form-inner">
       <div className="row">
         <div className="col-md-12">
           <div className="form-inner required">

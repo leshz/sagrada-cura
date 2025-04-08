@@ -111,6 +111,7 @@ const CommunityForm = () => {
                 type="date"
                 id='birthDate'
                 name="birthDate"
+                placeholder="DD/MM/AAAA"
                 max={new Date().toISOString().split('T')[0]}
                 onChange={handleChange}
                 onBlur={handleBlur}
