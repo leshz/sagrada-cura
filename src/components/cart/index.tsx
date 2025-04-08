@@ -65,7 +65,7 @@ const Cart = ({ labels }) => {
               <ul>
                 {cart.length > 0 &&
                   cart.map(product => (
-                    <CartItem key={product.sku} product={product} />
+                    <CartItem key={product.id} product={product} />
                   ))}
               </ul>
             </div>

@@ -140,6 +140,7 @@ export interface APIResponseCollection<
 
 export type Product = GetValues<"plugin::strapi-ecommerce-mercadopago.product"> & {
   quantityCart?: number
+  id: string
 }
 
 export type StrapiBodyFormContact = {
