@@ -660,6 +660,33 @@ input {
   }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+input[type="date"],
+.input-checkbox {
+  -webkit-appearance: none;
+}
+
+input[type="date"], select{
+  background: white;
+  color: black;
+  min-height: 50px;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 /*........................ 
   Choose Product section
 ........................*/
