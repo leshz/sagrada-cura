@@ -1,6 +1,6 @@
 import { format } from '@formkit/tempo'
 import { Shipment } from '@/types/shipment'
-import { Product } from '@/types/types'
+import { ContactFormData, Product, StrapiBodyFormContact } from '@/types/types'
 import { availableIcons, ITEM_TYPES } from './constants'
 
 export const phoneFormmater = (phone: string) =>
@@ -206,3 +206,13 @@ export const productsGABuilder = (products: any[]) => {
     return []
   }
 }
+
+export const transformData = (form: ContactFormData): StrapiBodyFormContact => ({
+    data: {
+      nombre: form.name,
+      telefono: form.phone,
+      email: form.email,
+      asunto: form.subject,
+      nota: form.message
+    }
+  })

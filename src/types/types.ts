@@ -115,7 +115,7 @@ export type GetValue<TAttribute extends Attribute.Attribute> =
     unknown
   >;
 
-export type APIResponseData<TContentTypeUID extends Common.UID.ContentType> = 
+export type APIResponseData<TContentTypeUID extends Common.UID.ContentType> =
   IDProperty & GetValues<TContentTypeUID>;
 
 export interface APIResponseCollectionMetadata {
@@ -140,4 +140,22 @@ export interface APIResponseCollection<
 
 export type Product = GetValues<"plugin::strapi-ecommerce-mercadopago.product"> & {
   quantityCart?: number
+}
+
+export type StrapiBodyFormContact = {
+  data: {
+    nombre: string;
+    telefono: string;
+    email: string;
+    asunto: string;
+    nota: string;
+  }
+}
+
+export type ContactFormData = {
+  name: string;
+  phone: string;
+  email: string;
+  subject: string;
+  message: string;
 }

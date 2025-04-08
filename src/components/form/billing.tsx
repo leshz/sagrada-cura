@@ -139,7 +139,7 @@ const BillingForm = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    autoComplete="email"  
+                    autoComplete="email"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
@@ -329,7 +329,25 @@ const BillingForm = () => {
                   type="submit"
                   disabled={isSubmitting}
                   className="primary-btn3 hover-btn5"
+                  style={{
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}
                 >
+                  {isSubmitting && (
+                    <div
+                      style={{
+                        width: '20px',
+                        height: '20px',
+                        border: '2px solid #fff',
+                        borderTop: '2px solid transparent',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite'
+                      }}
+                    />
+                  )}
                   Realizar pedido
                 </button>
               </div>

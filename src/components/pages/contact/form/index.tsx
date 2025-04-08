@@ -2,8 +2,12 @@
 
 import { useFormik } from 'formik'
 import { contactFormSchema } from '@/schema/form'
+import { sendContactForm } from '@/services';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const ContactForm = () => {
+  const [successfulSubmit, setSuccessfulSubmit] = useState(false);
 
   const {
     handleChange,
@@ -19,19 +23,43 @@ const ContactForm = () => {
       phone: '',
       email: '',
       subject: '',
-      message: ''
+      message: '',
+      termsAccepted: false
     },
     validationSchema: contactFormSchema,
-    onSubmit: async () => { }
-  })
+    onSubmit: async (data) => {
+      const response = await sendContactForm(data);
+      if (response) {
+        setSuccessfulSubmit(true);
+      } else {
+        toast('😓 Puedes intentar de nuevo en unos minutos o escribirnos directamente a cx@sagradacura.com', {
+          toastId: 'error',
+          type: 'error'
+        });
+      }
+    }
+  });
 
-
+  if (successfulSubmit) {
+    return (
+      <div className="inquiry-form mt-40">
+        <div className="section-title mt-40">
+          <div className="success-message">
+            <h3>😊 Gracias por contactarnos</h3>
+            <h4>
+              nos pondremos en contacto contigo en la brevedad
+            </h4>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (<div className="inquiry-form">
     <div className="section-title mb-20">
       <h4>¡Escríbenos cuando quieras!</h4>
     </div>
-    <form onSubmit={handleSubmit} method="POST" autoComplete="on">
+    <form onSubmit={handleSubmit} autoComplete="on">
       <div className="row">
         <div className="col-md-12">
           <div className="form-inner required">
@@ -75,33 +103,105 @@ const ContactForm = () => {
         </div>
         <div className="col-md-6">
           <div className="form-inner mb-20">
-            <label>Email <span>(Optional)</span></label>
-            <input type="email" placeholder="Ex- info@gmail.com" />
+            <label htmlFor='email'
+              className={errors.email && touched.email ? 'input-error' : ''}
+            >Email
+              <input
+                type="email"
+                id='email'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="x@gmail.com" />
+              {errors.email && touched.email && <span>{errors.email}</span>}
+            </label>
           </div>
         </div>
         <div className="col-md-12">
           <div className="form-inner mb-20">
-            <label>Subject*</label>
-            <input type="email" placeholder="Subject" />
+            <label htmlFor='subject'
+              className={errors.subject && touched.subject ? 'input-error' : ''}
+            >Asunto*
+              <input
+                id='subject'
+                type="text"
+                placeholder="Cuéntanos el motivo de tu mensaje"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.subject}
+              />
+              {errors.subject && touched.subject && <span>{errors.subject}</span>}
+            </label>
           </div>
         </div>
         <div className="col-md-12">
           <div className="form-inner mb-30">
-            <label>Short Notes*</label>
-            <textarea placeholder="Write Something..." defaultValue="" />
+            <label htmlFor='message'
+              className={errors.message && touched.message ? 'input-error' : ''}
+            >Mensaje*
+              <textarea id='message'
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.message}
+                placeholder="¿Qué te gustaría compartir con nosotros?" />
+              {errors.message && touched.message && <span>{errors.message}</span>}
+            </label>
           </div>
         </div>
+
         <div className="col-md-12">
-          <div className="col-md-12">
-            <div className="form-inner">
-              <button type="submit" className="primary-btn3 hover-btn5">Enviar</button>
-            </div>
+          <div className="form-inner mb-20">
+            <label
+              htmlFor="termsAccepted"
+              className={errors.termsAccepted && touched.termsAccepted ? 'input-error' : ''}
+            >
+              <div className="checkbox-wrapper">
+                <input
+                  id="termsAccepted"
+                  type="checkbox"
+                  name="termsAccepted"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  checked={values.termsAccepted}
+                />
+                <span>Acepto la <a href="/politicas/tratamiento-de-datos" target="_blank">politica de tratamiento de datos</a></span>
+              </div>
+              {errors.termsAccepted && touched.termsAccepted && <span>{errors.termsAccepted}</span>}
+            </label>
+          </div>
+        </div>
+
+        <div className="col-md-12">
+          <div className="form-inner">
+            <button
+              disabled={isSubmitting}
+              style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px'
+              }}
+              type="submit"
+              className="primary-btn3 hover-btn5">
+              {isSubmitting && (
+                <div
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                    border: '2px solid #fff',
+                    borderTop: '2px solid transparent',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite'
+                  }}
+                />
+              )}
+              Enviar</button>
           </div>
         </div>
       </div>
     </form>
   </div>
-  )
+  );
 }
 
 export { ContactForm }
