@@ -67,4 +67,27 @@ const sendContactForm = async (data: ContactFormData): Promise<boolean> => {
   }
 }
 
-export { getCollections, sendContactForm }
+const sendCommunityForm = async (data: { name: string; email: string; birthDate: string; gender: string; termsAccepted: boolean }): Promise<boolean> => {
+  const url = '/comunidads'
+
+  const body = {
+    data: {
+      nombre: data.name,
+      email: data.email,
+      fecha_nacimiento: data.birthDate,
+      genero: data.gender,
+    }
+  }
+
+  try {
+    const { statusText } = await fetchApi(url, {
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+    return statusText === 'OK'
+  } catch (error) {
+    return false
+  }
+}
+
+export { getCollections, sendContactForm, sendCommunityForm }

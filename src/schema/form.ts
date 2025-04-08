@@ -30,3 +30,11 @@ export const contactFormSchema = yup.object().shape({
   message: yup.string().required(requiredText),
   termsAccepted: yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones').required('Debes aceptar los términos y condiciones')
 })
+
+export const communityFormSchema = yup.object().shape({
+  name: yup.string().required(requiredText),
+  email: yup.string().email('Email invalido').required(requiredText),
+  birthDate: yup.date().required(requiredText),
+  gender: yup.string().required(requiredText),
+  termsAccepted: yup.boolean().oneOf([true], 'Debes aceptar los términos y condiciones').required('Debes aceptar los términos y condiciones')
+})
