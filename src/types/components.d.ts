@@ -1,5 +1,52 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface UtilitySingle extends Schema.Component {
+  collectionName: 'components_utility_singles';
+  info: {
+    displayName: 'single';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
+export interface UtilityMultilink extends Schema.Component {
+  collectionName: 'components_utility_multilinks';
+  info: {
+    displayName: 'multilink';
+    icon: 'bulletList';
+  };
+  attributes: {
+    multi_link: Attribute.Component<'utility.multi-link', true>;
+  };
+}
+
+export interface UtilityMultiLink extends Schema.Component {
+  collectionName: 'components_utility_multi_links';
+  info: {
+    displayName: 'multi-link';
+  };
+  attributes: {
+    label: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
+export interface UtilityColumnLinks extends Schema.Component {
+  collectionName: 'components_utility_column_links';
+  info: {
+    displayName: 'columnLinks';
+    icon: 'stack';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    column: Attribute.Blocks;
+  };
+}
+
 export interface UiUtilityNewsLetter extends Schema.Component {
   collectionName: 'components_ui_utility_news_letters';
   info: {
@@ -48,9 +95,9 @@ export interface ShippingShipping extends Schema.Component {
     price: Attribute.Integer & Attribute.Required;
     name: Attribute.String & Attribute.Required;
     type: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.DefaultTo<'SW00'>;
+    Attribute.Required &
+    Attribute.Unique &
+    Attribute.DefaultTo<'SW00'>;
   };
 }
 
@@ -252,23 +299,6 @@ export interface UiBottom extends Schema.Component {
   };
 }
 
-export interface PromotionsPromotion extends Schema.Component {
-  collectionName: 'components_promotions_promotions';
-  info: {
-    displayName: 'Promotion';
-    icon: 'walk';
-    description: '';
-  };
-  attributes: {
-    with_discount: Attribute.Boolean & Attribute.DefaultTo<false>;
-    price_with_discount: Attribute.Integer;
-    recommended: Attribute.Boolean & Attribute.DefaultTo<false>;
-    best_seller: Attribute.Boolean & Attribute.DefaultTo<false>;
-    new: Attribute.Boolean & Attribute.DefaultTo<false>;
-    discount_tag: Attribute.String;
-  };
-}
-
 export interface SharedSeo extends Schema.Component {
   collectionName: 'components_shared_seos';
   info: {
@@ -277,16 +307,16 @@ export interface SharedSeo extends Schema.Component {
   };
   attributes: {
     metaTitle: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
+    Attribute.Required &
+    Attribute.SetMinMaxLength<{
+      maxLength: 60;
+    }>;
     metaDescription: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 50;
-        maxLength: 160;
-      }>;
+    Attribute.Required &
+    Attribute.SetMinMaxLength<{
+      minLength: 50;
+      maxLength: 160;
+    }>;
     metaImage: Attribute.Media<'images' | 'files' | 'videos'>;
     metaSocial: Attribute.Component<'shared.meta-social', true>;
     keywords: Attribute.Text;
@@ -305,46 +335,35 @@ export interface SharedMetaSocial extends Schema.Component {
   };
   attributes: {
     socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
-      Attribute.Required;
+    Attribute.Required;
     title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
+    Attribute.Required &
+    Attribute.SetMinMaxLength<{
+      maxLength: 60;
+    }>;
     description: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 65;
-      }>;
+    Attribute.Required &
+    Attribute.SetMinMaxLength<{
+      maxLength: 65;
+    }>;
     image: Attribute.Media<'images' | 'files' | 'videos'>;
   };
 }
 
-export interface ProductPromises extends Schema.Component {
-  collectionName: 'components_product_promises';
+export interface PromotionsPromotion extends Schema.Component {
+  collectionName: 'components_promotions_promotions';
   info: {
-    displayName: 'Promises';
+    displayName: 'Promotion';
+    icon: 'walk';
     description: '';
   };
   attributes: {
-    icon: Attribute.Enumeration<['bi-truck', 'bi-box2-heart']>;
-    message: Attribute.Blocks;
-    type: Attribute.Enumeration<['producto', 'servicio']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'producto'>;
-  };
-}
-
-export interface ProductInformation extends Schema.Component {
-  collectionName: 'components_product_information';
-  info: {
-    displayName: 'information';
-    icon: 'bell';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    information: Attribute.Blocks & Attribute.Required;
+    with_discount: Attribute.Boolean & Attribute.DefaultTo<false>;
+    price_with_discount: Attribute.Integer;
+    recommended: Attribute.Boolean & Attribute.DefaultTo<false>;
+    best_seller: Attribute.Boolean & Attribute.DefaultTo<false>;
+    new: Attribute.Boolean & Attribute.DefaultTo<false>;
+    discount_tag: Attribute.String;
   };
 }
 
@@ -377,6 +396,34 @@ export interface MercadopagoShipping extends Schema.Component {
     address: Attribute.String & Attribute.Required;
     postal_code: Attribute.BigInteger;
     message: Attribute.Text;
+  };
+}
+
+export interface ProductPromises extends Schema.Component {
+  collectionName: 'components_product_promises';
+  info: {
+    displayName: 'Promises';
+    description: '';
+  };
+  attributes: {
+    icon: Attribute.Enumeration<['bi-truck', 'bi-box2-heart']>;
+    message: Attribute.Blocks;
+    type: Attribute.Enumeration<['producto', 'servicio']> &
+    Attribute.Required &
+    Attribute.DefaultTo<'producto'>;
+  };
+}
+
+export interface ProductInformation extends Schema.Component {
+  collectionName: 'components_product_information';
+  info: {
+    displayName: 'information';
+    icon: 'bell';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    information: Attribute.Blocks & Attribute.Required;
   };
 }
 
@@ -418,50 +465,15 @@ export interface MenuCart extends Schema.Component {
   };
 }
 
-export interface UtilitySingle extends Schema.Component {
-  collectionName: 'components_utility_singles';
+export interface CategoriesCategories extends Schema.Component {
+  collectionName: 'components_categories_categories';
   info: {
-    displayName: 'single';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
-export interface UtilityMultilink extends Schema.Component {
-  collectionName: 'components_utility_multilinks';
-  info: {
-    displayName: 'multilink';
-    icon: 'bulletList';
-  };
-  attributes: {
-    multi_link: Attribute.Component<'utility.multi-link', true>;
-  };
-}
-
-export interface UtilityMultiLink extends Schema.Component {
-  collectionName: 'components_utility_multi_links';
-  info: {
-    displayName: 'multi-link';
-  };
-  attributes: {
-    label: Attribute.String;
-    link: Attribute.String;
-  };
-}
-
-export interface UtilityColumnLinks extends Schema.Component {
-  collectionName: 'components_utility_column_links';
-  info: {
-    displayName: 'columnLinks';
-    icon: 'stack';
-    description: '';
+    displayName: 'categories';
+    icon: 'cloud';
   };
   attributes: {
     title: Attribute.String;
-    column: Attribute.Blocks;
+    all_products: Attribute.String;
   };
 }
 
@@ -508,21 +520,13 @@ export interface CartEmptyCart extends Schema.Component {
   };
 }
 
-export interface CategoriesCategories extends Schema.Component {
-  collectionName: 'components_categories_categories';
-  info: {
-    displayName: 'categories';
-    icon: 'cloud';
-  };
-  attributes: {
-    title: Attribute.String;
-    all_products: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'utility.single': UtilitySingle;
+      'utility.multilink': UtilityMultilink;
+      'utility.multi-link': UtilityMultiLink;
+      'utility.column-links': UtilityColumnLinks;
       'ui-utility.news-letter': UiUtilityNewsLetter;
       'ui-utility.link': UiUtilityLink;
       'ui-utility.footer-description': UiUtilityFooterDescription;
@@ -542,24 +546,20 @@ declare module '@strapi/types' {
       'ui.dinamic-banner': UiDinamicBanner;
       'ui.categories': UiCategories;
       'ui.bottom': UiBottom;
-      'promotions.promotion': PromotionsPromotion;
       'shared.seo': SharedSeo;
       'shared.meta-social': SharedMetaSocial;
-      'product.promises': ProductPromises;
-      'product.information': ProductInformation;
+      'promotions.promotion': PromotionsPromotion;
       'mercadopago.shopper': MercadopagoShopper;
       'mercadopago.shipping': MercadopagoShipping;
+      'product.promises': ProductPromises;
+      'product.information': ProductInformation;
       'menu.single-item': MenuSingleItem;
       'menu.multiple-item': MenuMultipleItem;
       'menu.cart': MenuCart;
-      'utility.single': UtilitySingle;
-      'utility.multilink': UtilityMultilink;
-      'utility.multi-link': UtilityMultiLink;
-      'utility.column-links': UtilityColumnLinks;
+      'categories.categories': CategoriesCategories;
       'cart.table': CartTable;
       'cart.summary': CartSummary;
       'cart.empty-cart': CartEmptyCart;
-      'categories.categories': CategoriesCategories;
     }
   }
 }

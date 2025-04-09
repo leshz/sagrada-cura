@@ -15,15 +15,18 @@ import { APIResponse, APIResponseCollection, APIResponseData, } from '@/types/ty
 
 import './page.scss'
 
+type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
+
 export const generateStaticParams = async () => {
-  const { data: products = [] } = await getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products)
-  const slugs = products.map(entry => ({ slug: entry.slug }))
+  const { data: products } = await getCollections<Product>(COLLECTIONS.products)
+  const slugs = (products || []).map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
+  type ProductFind = APIResponse<"plugin::strapi-ecommerce-mercadopago.product">['data']
   const { slug = '' } = params
-  const data = await getCollections<APIResponseData<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
+  const { data } = await getCollections<ProductFind>(COLLECTIONS.products, {
     slug
   })
 
@@ -44,7 +47,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
   const single = getSingles<APIResponseData<"api::product-detail.product-detail">>('product-detail')
-  const collection = getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
+  const collection = getCollections<APIResponseData<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
     slug,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
@@ -87,7 +90,7 @@ const ProductDefaultPage = async ({ params }) => {
                 {limitedStock && (
                   <div className="stock-area">
                     <h6>
-                      Unidades disponibles:{'  '}
+                      Unidades disponibles:{' '}
                       {noStock ? (
                         <span className="out-of-stock"> {no_stock}</span>
                       ) : (

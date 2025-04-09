@@ -160,3 +160,13 @@ export type ContactFormData = {
   subject: string;
   message: string;
 }
+
+export interface Picture  {
+  id: number
+  name: string
+  alternativeText: string
+  caption: string
+  width: number
+  height: number
+  url: string
+}

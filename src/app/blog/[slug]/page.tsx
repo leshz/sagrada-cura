@@ -15,18 +15,21 @@ import { APIResponse, APIResponseCollection } from '@/types/types'
 export const dynamic = 'force-static'
 
 export const generateStaticParams = async () => {
-  const { data: blogs = [] } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs)
+  type Blogs = APIResponseCollection<"api::blog.blog">['data']
+  const { data: blogs } = await getCollections<Blogs>(COLLECTIONS.blogs)
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
+
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
+  type Blog = APIResponse<"api::blog.blog">['data']
   const { slug } = params
-  const { data } = await getCollections<APIResponse<"api::blog.blog">>(COLLECTIONS.blogs, {
+  const { data } = await getCollections<Blog>(COLLECTIONS.blogs, {
     slug
   })
 
-  const { title, image, short_description, slug: slugPost } = data || {}
+  const { title, image, short_description, slug: slugPost } = data
 
   const imgUrl = getImagePath(image, 'small')
 
@@ -43,8 +46,9 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 }
 
 const BlogDetailsPage = async ({ params }) => {
+  type Blog = APIResponse<"api::blog.blog">['data']
   const { slug } = params
-  const { data } = await getCollections<APIResponse<"api::blog.blog">>(COLLECTIONS.blogs, {
+  const { data } = await getCollections<Blog>(COLLECTIONS.blogs, {
     slug
   })
 

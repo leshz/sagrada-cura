@@ -1,12 +1,7 @@
+import { ApiResponse } from "./type";
+
 interface ApiOptions extends RequestInit {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-}
-
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  statusText: string;
-  meta: object | null
 }
 
 export const fetchApi = async <T>(
@@ -37,7 +32,7 @@ export const fetchApi = async <T>(
     if (!response.ok) {
       throw new Error(`${endpoint} - ${response.statusText}`);
     }
-    const { data, meta = {} } = await response.json();
+    const { data, meta } = await response.json(); 
 
     return {
       data,

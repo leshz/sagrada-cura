@@ -17,6 +17,8 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 })
 
 const TagsCatalog = async () => {
+
+  type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
   const params = {
     'filters[type][$eq]': 'producto',
     'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
@@ -24,7 +26,7 @@ const TagsCatalog = async () => {
 
   const single = getSingles<APIResponseData<"api::shop.shop">>('shop')
 
-  const collection = getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
+  const collection = getCollections<Product>(COLLECTIONS.products, {
     params,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }
@@ -35,7 +37,8 @@ const TagsCatalog = async () => {
   const { meta, data } = productsRes
   const {
     pagination: { total }
-  } = meta
+  } = meta as any;
+
   const hasProducts = data?.length >= 1
 
   return (

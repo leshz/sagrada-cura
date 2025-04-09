@@ -18,15 +18,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
   }
 
-  const { data: productsData } = await getCollections(COLLECTIONS.products, {
+  const { data: productsData } = await getCollections<any[]>(COLLECTIONS.products, {
     params
   })
 
-  const { data: blogData = [] } = await getCollections(COLLECTIONS.blogs, {
+  const { data: blogData } = await getCollections<any[]>(COLLECTIONS.blogs, {
     params
   })
 
-  const products = (productsData as any[]).map(({ slug }) => ({
+  const products = productsData.map(({ slug }) => ({
     url: `${website}/tienda/${slug}` as string,
     lastModified: new Date(),
     changeFrequency: 'weekly' as change,
@@ -67,5 +67,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1
     },
     ...products,
+    {
+      url: `${website}/contacto`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1
+    },
   ]
 }

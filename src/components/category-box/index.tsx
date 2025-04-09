@@ -4,7 +4,8 @@ import { APIResponseCollection, APIResponseData } from '@/types/types'
 import { Item } from './item'
 
 const CategoryBox = async () => {
-  const collection = await getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.category">>(COLLECTIONS.categories)
+  type Category = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.category">['data']
+  const collection = getCollections<Category>(COLLECTIONS.categories)
   const single = await getSingles<APIResponseData<"api::shop.shop">>('shop')
   const [resCollect, resSingle] = await Promise.all([collection, single])
   const { data = [] } = resCollect

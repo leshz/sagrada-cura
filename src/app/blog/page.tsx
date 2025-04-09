@@ -12,10 +12,17 @@ export const generateMetadata = async (): Promise<Metadata> => ({
   alternates: {
     canonical: 'https://sagradacura.com/blog'
   },
+  authors: {
+    name: 'Sagrada Cura',
+    url: 'https://sagradacura.com'
+  },
   openGraph: {
     title: 'Conoce nuestros blogs',
+    description: 'Explora artículos sobre bienestar, sanación natural, espiritualidad y crecimiento personal en el blog de Sagrada Cura. Encuentra inspiración para una vida equilibrada y consciente.',
     url: `https://sagradacura.com/blog`,
-    type: 'website'
+    type: 'website',
+    locale: 'es',
+    siteName: 'Sagrada Cura',
   }
 })
 
@@ -31,8 +38,8 @@ const BlogMasonryPage = async ({ searchParams }) => {
   if (tag) {
     params['filters[tags][slug][$eq]'] = tag
   }
-
-  const { data = [], meta = {} } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs, {
+  type Blogs = APIResponseCollection<"api::blog.blog">['data']
+  const { data = [], meta = {} } = await getCollections<Blogs>(COLLECTIONS.blogs, {
     params,
   })
 
