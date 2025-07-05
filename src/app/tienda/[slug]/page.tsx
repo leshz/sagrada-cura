@@ -8,6 +8,7 @@ import {
   QuantityArea
 } from '@/components/product'
 import { Price } from '@/components/price'
+import { ProductStructuredData } from '@/components/structured-data/product-schema'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { getImagePath } from '@/utils/helpers'
@@ -76,6 +77,7 @@ const ProductDefaultPage = async ({ params }) => {
   const { price_with_discount, with_discount } = promotion || {}
   return (
     <>
+      <ProductStructuredData product={product} />
       <Script src="/js/bootstrap.min.js" />
       <div className="shop-details-top-section mt-40 mb-110">
         <div className="container-xl container-fluid-lg container">

@@ -4,6 +4,7 @@ import { BlogAuthor, BlogContent } from '@/components/blog'
 import { RecentPost } from '@/components/recent-post'
 import { TagsCloud } from '@/components/tags-cloud'
 import { TagBar } from '@/components/tag-bar'
+import { BlogStructuredData } from '@/components/structured-data/blog-schema'
 import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { dateFormat, getImagePath } from '@/utils/helpers'
@@ -59,9 +60,11 @@ const BlogDetailsPage = async ({ params }) => {
   const { publishedAt, article, title, image, tags, author } = data
 
   return (
-    <div className="blog-details-section mb-40">
-      <div className="container">
-        <div className="row g-lg-4 gy-5">
+    <>
+      <BlogStructuredData blog={data} />
+      <div className="blog-details-section mb-40">
+        <div className="container">
+          <div className="row g-lg-4 gy-5">
           <div className="col-lg-8">
             <BlogAuthor author={author} tags={tags} />
             <div className="blog-thumb">
@@ -105,6 +108,7 @@ const BlogDetailsPage = async ({ params }) => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
