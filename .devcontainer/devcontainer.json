@@ -14,9 +14,9 @@
     "source=${localEnv:HOME}/.wakatime.cfg,target=/home/vscode/.wakatime.cfg,type=bind,consistency=delegated"
   ],
   "appPort": 3000,
-  "runArgs": [
-    "--network=backend_devcontainer_app-network"
-  ],
+  // "runArgs": [
+  //   "--network=backend_devcontainer_app-network"
+  // ],
   "customizations": {
     "vscode": {
       "settings": {
