@@ -1,4 +1,5 @@
 import { getImagePath } from '@/utils/helpers'
+import Script from 'next/script'
 
 interface HomeStructuredDataProps {
   generalData: any
@@ -85,18 +86,27 @@ export const HomeStructuredData = ({ generalData }: HomeStructuredDataProps) => 
 
   return (
     <>
-      <script
+      <Script
+        id="organization-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(organizationSchema)}
+      </Script>
+      <Script
+        id="local-business-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(localBusinessSchema)}
+      </Script>
+      <Script
+        id="website-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(websiteSchema)}
+      </Script>
     </>
   )
 } 

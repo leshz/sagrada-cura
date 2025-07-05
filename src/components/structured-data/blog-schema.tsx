@@ -1,4 +1,5 @@
 import { getImagePath } from '@/utils/helpers'
+import Script from 'next/script'
 
 interface BlogStructuredDataProps {
   blog: any
@@ -61,14 +62,20 @@ export const BlogStructuredData = ({ blog }: BlogStructuredDataProps) => {
 
   return (
     <>
-      <script
+      <Script
+        id="blog-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
-      />
-      <script
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(blogSchema)}
+      </Script>
+      <Script
+        id="blog-organization-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(organizationSchema)}
+      </Script>
     </>
   )
 } 

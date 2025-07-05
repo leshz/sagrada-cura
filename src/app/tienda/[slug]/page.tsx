@@ -9,6 +9,7 @@ import {
 } from '@/components/product'
 import { Price } from '@/components/price'
 import { ProductStructuredData } from '@/components/structured-data/product-schema'
+import { ProductBreadcrumbs } from '@/components/breadcrumbs/product-breadcrumbs'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { getImagePath } from '@/utils/helpers'
@@ -31,16 +32,67 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
     slug
   })
 
-  const { name, middle_description, pictures, slug: slugProduct, } = data
+  const {
+    name,
+    middle_description,
+    short_description,
+    pictures,
+    slug: slugProduct,
+    categories,
+    price,
+    promotion
+  } = data
+
+  const categoryNames = categories?.data?.map((cat: any) => cat.name).join(', ') || 'Productos Naturales'
+  const keywords = `${name}, ${categoryNames}, productos naturales, sanación, Sagrada Cura, Colombia`
+  const description = short_description || middle_description || `Descubre ${name} - Producto natural para tu bienestar y sanación espiritual. ${categoryNames}.`
+  const priceText = promotion?.with_discount ? `Desde $${promotion.price_with_discount}` : `$${price}`
 
   return {
-    title: name,
+    title: `${name} | Productos Naturales | Sagrada Cura`,
+    description,
+    keywords,
+    alternates: {
+      canonical: `https://sagradacura.com/tienda/${slugProduct}`
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     openGraph: {
-      title: name,
-      description: `${name} ${middle_description}`,
-      images: getImagePath(pictures?.[0], 'medium'),
+      title: `${name} - ${priceText}`,
+      description,
       url: `https://sagradacura.com/tienda/${slugProduct}`,
+      siteName: 'Sagrada Cura',
+      images: [
+        {
+          url: getImagePath(pictures?.[0], 'medium'),
+          width: 800,
+          height: 600,
+          alt: name
+        }
+      ],
+      locale: 'es_CO',
       type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} - ${priceText}`,
+      description,
+      images: getImagePath(pictures?.[0], 'medium')
+    },
+    other: {
+      'product:price:amount': price?.toString() || '',
+      'product:price:currency': 'COP',
+      'product:availability': 'in stock',
+      'product:category': categoryNames,
     }
   }
 }
@@ -67,7 +119,8 @@ const ProductDefaultPage = async ({ params }) => {
     sku,
     information,
     stock,
-    type
+    type,
+    categories
   } = product
 
   const limitedStock = stock >= 0 && stock <= 6
@@ -79,52 +132,71 @@ const ProductDefaultPage = async ({ params }) => {
     <>
       <ProductStructuredData product={product} />
       <Script src="/js/bootstrap.min.js" />
-      <div className="shop-details-top-section mt-40 mb-110">
-        <div className="container-xl container-fluid-lg container">
-          <div className="row gy-5">
-            <div className="col-lg-6">
-              <Slider pictures={pictures} />
-            </div>
-            <div className="col-lg-6">
-              <div className="shop-details-content">
-                <h1>{name}</h1>
-                <p>{middle_description}</p>
-                {limitedStock && (
-                  <div className="stock-area">
-                    <h6>
-                      Unidades disponibles:{' '}
-                      {noStock ? (
-                        <span className="out-of-stock"> {no_stock}</span>
-                      ) : (
-                        stock
-                      )}
-                    </h6>
-                  </div>
-                )}
+      <main id="main-content">
+        <article itemScope itemType="https://schema.org/Product">
+          <div className="shop-details-top-section mt-40 mb-110">
+            <div className="container-xl container-fluid-lg container">
+              <ProductBreadcrumbs
+                productName={name}
+                categoryName={categories?.data?.[0]?.name}
+                categorySlug={categories?.data?.[0]?.slug}
+              />
+              <div className="row gy-5">
+                <section id="product-gallery" className="col-lg-6" aria-label="Galería de imágenes del producto">
+                  <Slider pictures={pictures} />
+                </section>
+                <section id="product-info" className="col-lg-6" aria-label="Información del producto">
+                  <div className="shop-details-content">
+                    <h1 itemProp="name">{name}</h1>
+                    <p itemProp="description">{middle_description}</p>
+                    {limitedStock && (
+                      <div className="stock-area" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                        <h6>
+                          Unidades disponibles:{' '}
+                          {noStock ? (
+                            <span className="out-of-stock" itemProp="availability" content="https://schema.org/OutOfStock"> {no_stock}</span>
+                          ) : (
+                            <span itemProp="availability" content="https://schema.org/InStock">{stock}</span>
+                          )}
+                        </h6>
+                      </div>
+                    )}
 
-                <div className="price-area">
-                  <Price
-                    price={price}
-                    discountPrice={price_with_discount || 0}
-                    with_discount={with_discount}
-                  />
-                </div>
-                {!noStock && <QuantityArea product={product} />}
-                <div className="product-info">
-                  <ul className="product-info-list">
-                    <li>
-                      <span>SKU:</span> {sku?.toUpperCase()}
-                    </li>
-                  </ul>
-                </div>
-                <ShippingInfo promises={promises} type={type} />
-                <PaymentsInformation message={payment_message} />
-                <Accordion information={information} />
+                    <div className="price-area" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                      <meta itemProp="priceCurrency" content="COP" />
+                      <meta itemProp="price" content={price?.toString()} />
+                      <Price
+                        price={price}
+                        discountPrice={price_with_discount || 0}
+                        with_discount={with_discount}
+                      />
+                    </div>
+                    {!noStock && <QuantityArea product={product} />}
+                    <div className="product-info">
+                      <ul className="product-info-list">
+                        <li>
+                          <span>SKU:</span> <span itemProp="sku">{sku?.toUpperCase()}</span>
+                        </li>
+                        <li>
+                          <span>Tipo:</span> <span itemProp="category">{type}</span>
+                        </li>
+                        {categories?.data?.[0] && (
+                          <li>
+                            <span>Categoría:</span> <span itemProp="category">{categories.data[0].name}</span>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                    <ShippingInfo promises={promises} type={type} />
+                    <PaymentsInformation message={payment_message} />
+                    <Accordion information={information} />
+                  </div>
+                </section>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
+      </main>
     </>
   )
 }
