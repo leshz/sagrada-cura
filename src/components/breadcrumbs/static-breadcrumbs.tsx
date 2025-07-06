@@ -16,7 +16,7 @@ export const StaticBreadcrumbs = ({ currentPage, path }: StaticBreadcrumbsProps)
   <nav aria-label="Breadcrumb" className="blog-breadcrumbs">
     <ol className="breadcrumb-list">
       {path.map((item, index) => (
-        <li key={index} className="breadcrumb-item">
+        <li key={item.href} className="breadcrumb-item">
           {index < path.length - 1 ? (
             <>
               <Link href={item.href} className="breadcrumb-link">
