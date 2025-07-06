@@ -3,6 +3,8 @@ import { Metadata } from "next/types"
 import { getSingles } from "@/services"
 import { APIResponseData } from "@/types/types"
 import { getImagePath } from "@/utils/helpers"
+import { StaticBreadcrumbs } from "@/components/breadcrumbs/static-breadcrumbs"
+import { ContactStructuredData } from "@/components/structured-data/contact-structured-data"
 
 import './page.scss'
 import { ContactForm } from "@/components/pages/contact/form"
@@ -14,6 +16,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: seo?.metaTitle,
     description: seo?.metaDescription,
+    keywords: 'sagrada cura, contacto, productos naturales, bienestar, sanación espiritual, colombia, bogotá',
+    alternates: {
+      canonical: 'https://sagradacura.com/contacto',
+    },
     openGraph: {
       title: seo?.metaTitle,
       description: seo?.metaDescription,
@@ -28,16 +34,31 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const ContactPage = async () => {
   const { banner } = await getSingles<APIResponseData<"api::pagina-contacto.pagina-contacto">>('pagina-contacto')
   return (
-    <div className="contact-page mb-40">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <div className="contact-page-thumb hover-img mb-60">
-              <ImageWrapper image={banner} fill format="large" />
+    <>
+      <ContactStructuredData />
+      <div className="contact-page mb-40">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <StaticBreadcrumbs 
+                currentPage="Contacto"
+                path={[
+                  { name: 'Inicio', href: '/' },
+                  { name: 'Contacto', href: '/contacto' }
+                ]}
+              />
             </div>
           </div>
         </div>
-      </div>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12">
+              <div className="contact-page-thumb hover-img mb-60">
+                <ImageWrapper image={banner} fill format="large" />
+              </div>
+            </div>
+          </div>
+        </div>
       <div className="container">
         <div className="row g-4 mb-100">
           <div className="col-lg-5">
@@ -94,6 +115,7 @@ const ContactPage = async () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
