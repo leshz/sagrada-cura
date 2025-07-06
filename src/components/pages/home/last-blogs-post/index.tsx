@@ -53,7 +53,9 @@ const LastBlogsPost = async ({ blog }) => {
     sort: 'publishedAt:desc',
     'pagination[limit]': get_last
   }
-  const { data = [] } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs, { params })
+
+  type Blog = APIResponseCollection<"api::blog.blog">['data']
+  const { data = [] } = await getCollections<Blog>(COLLECTIONS.blogs, { params })
 
   return (
     <div className="latest-article-section mb-110">

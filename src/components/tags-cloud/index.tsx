@@ -10,7 +10,8 @@ const TagsCloud = async () => {
   const params = {
     'pagination[limit]': '15'
   }
-  const { data = [] } = await getCollections<APIResponseCollection<"api::tag.tag">>(COLLECTIONS.tags, { params })
+  type Tag = APIResponseCollection<"api::tag.tag">['data']
+  const { data = [] } = await getCollections<Tag>(COLLECTIONS.tags, { params })
 
   return (
     <div className="shop-widget">

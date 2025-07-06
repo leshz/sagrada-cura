@@ -1,71 +1,65 @@
-import { getCollections } from '@/services'
-import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { MetadataRoute } from 'next'
-
-const website = process.env.WEBPATH
-
-type change =
-  | 'always'
-  | 'hourly'
-  | 'daily'
-  | 'weekly'
-  | 'monthly'
-  | 'yearly'
-  | 'never'
+import { getCollections } from '@/services'
+import { COLLECTIONS } from '@/utils/constants'
+import { APIResponseCollection } from '@/types/types'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const params = {
-    'pagination[pageSize]': `${LIST_OF_PRODUCTS}`
-  }
+  const baseUrl = 'https://sagradacura.com'
 
-  const { data: productsData } = await getCollections(COLLECTIONS.products, {
-    params
-  })
+  const [productsResponse, blogsResponse] = await Promise.all([
+    getCollections(COLLECTIONS.products),
+    getCollections(COLLECTIONS.blogs)
+  ])
 
-  const { data: blogData = [] } = await getCollections(COLLECTIONS.blogs, {
-    params
-  })
+  const { data: products } = productsResponse as unknown as APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">
+  const { data: blogs } = blogsResponse as unknown as APIResponseCollection<"api::blog.blog">
 
-  const products = (productsData as any[]).map(({ slug }) => ({
-    url: `${website}/tienda/${slug}` as string,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as change,
-    priority: 1
-  }))
-
-  const blogs = (blogData as any[]).map(({ slug }) => ({
-    url: `${website}/blog/${slug}` as string,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as change,
-    priority: 0.5
-  }))
-
-  return [
+  const staticUrls = [
     {
-      url: website as string,
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1
+      changeFrequency: 'daily' as const,
+      priority: 1,
     },
     {
-      url: `${website}/nuestra-marca`,
+      url: `${baseUrl}/tienda`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
     },
     {
-      url: `${website}/blog`,
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
     },
-    ...blogs,
     {
-      url: `${website}/tienda`,
+      url: `${baseUrl}/contacto`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     },
-    ...products,
+    {
+      url: `${baseUrl}/nuestra-marca`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
   ]
+
+  const productUrls = products.map((product) => ({
+    url: `${baseUrl}/tienda/${product.slug}`,
+    lastModified: new Date(product.updatedAt || product.createdAt || new Date()),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
+
+  const blogUrls = (blogs || []).map((blog: any) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(blog.updatedAt || blog.createdAt || new Date()),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }))
+
+  return [...staticUrls, ...productUrls, ...blogUrls]
 }

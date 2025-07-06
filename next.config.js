@@ -20,7 +20,7 @@ const contentSecurityPolicy = process.env.VERCEL === '1' ? prodCSP : ''
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: 'https',
@@ -31,7 +31,11 @@ const nextConfig = {
         hostname: 'localhost',
         port: '1337'
       }
-    ]
+    ],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]

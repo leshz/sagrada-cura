@@ -1,19 +1,44 @@
 import Link from 'next/link'
+import { getCollections } from '@/services'
+import { COLLECTIONS } from '@/utils/constants'
+import { APIResponseCollection } from '@/types/types'
+import './styles/blog-categories.scss'
 
-const BlogCategories = () => (
-  <div className="shop-widget mb-30">
-    <div className="check-box-item">
-      <h5 className="shop-widget-title">Categorias</h5>
-      <ul className="shop-item">
-        <li>
-          <Link href="/blog-grid">All Product</Link>
-        </li>
-        <li>
-          <Link href="/blog-grid">Healthy &amp; Natural</Link>
-        </li>
-      </ul>
+interface BlogCategoriesProps {
+  currentTag?: string
+}
+
+const BlogCategories = async ({ currentTag }: BlogCategoriesProps) => {
+  const params = {
+    'pagination[limit]': '20',
+    'sort': 'name:asc'
+  }
+
+  type Tag = APIResponseCollection<"api::tag.tag">['data']
+  const { data = [] } = await getCollections<Tag>(COLLECTIONS.tags, { params })
+
+  return (
+    <div className="blog-tags-fullwidth">
+      <div className="blog-tags-title">Explora por categorías</div>
+      <div className="blog-tags-list">
+        <Link
+          href="/blog"
+          className={`blog-tag-item${!currentTag ? ' active' : ''}`}
+        >
+          Todos
+        </Link>
+        {data.map(({ name, id, slug }) => (
+          <Link
+            key={id}
+            href={`/blog?tag=${slug}`}
+            className={`blog-tag-item${currentTag === slug ? ' active' : ''}`}
+          >
+            {name}
+          </Link>
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export { BlogCategories }

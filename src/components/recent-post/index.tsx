@@ -10,7 +10,9 @@ const RecentPost = async () => {
     sort: 'publishedAt:asc',
     'pagination[limit]': '3'
   }
-  const { data = [] } = await getCollections<APIResponseCollection<"api::blog.blog">>(COLLECTIONS.blogs, { params })
+
+  type Blog = APIResponseCollection<"api::blog.blog">['data']
+  const { data = [] } = await getCollections<Blog>(COLLECTIONS.blogs, { params })
 
   return (
     <div className="shop-widget mb-30">

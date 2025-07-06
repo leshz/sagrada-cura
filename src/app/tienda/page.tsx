@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CategoryBox } from '@/components/category-box'
@@ -7,16 +8,23 @@ import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
 
-import { APIResponseCollection, APIResponseData } from '@/types/types'
+import { APIResponseCollection, APIResponseCollectionMetadata, APIResponseData } from '@/types/types'
 
-export const generateMetadata = async (): Promise<Metadata> => ({
-  title: 'Nuestra tienda',
-  openGraph: {
+export const generateMetadata = async (): Promise<Metadata> => {
+
+  // const { seo } = await getSingles<APIResponseData<"api::shop.shop">>('shop')
+
+  return {
     title: 'Nuestra tienda',
-    url: `https://sagradacura.com/tienda`,
-    type: 'website'
+    description: 'Nuestra tienda',
+    openGraph: {
+      title: 'Nuestra tienda',
+      description: 'Nuestra tienda',
+      url: `https://sagradacura.com/tienda`,
+      type: 'website'
+    }
   }
-})
+}
 
 const Shop = async ({ searchParams }) => {
   let params = {}
@@ -50,7 +58,9 @@ const Shop = async ({ searchParams }) => {
 
   const single = getSingles<APIResponseData<"api::shop.shop">>('shop')
 
-  const collection = getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
+  type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
+
+  const collection = getCollections<Product>(COLLECTIONS.products, {
     params,
     fetch: {
       next: {
@@ -64,7 +74,8 @@ const Shop = async ({ searchParams }) => {
   const { data, meta } = collectionApi;
   const {
     pagination: { total }
-  } = meta
+  } = meta as APIResponseCollectionMetadata
+  
   const hasProducts = data?.length >= 1
 
   return (

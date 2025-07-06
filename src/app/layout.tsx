@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/header'
 import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
+import { SkipLinks } from '@/components/accessibility/skip-links'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { getSingles } from '@/services'
 import { Cormorant, Fauna_One } from 'next/font/google'
@@ -21,14 +22,18 @@ export const cormorant = Cormorant({
   display: 'swap',
   style: 'normal',
   subsets: ['latin'],
-  variable: '--font-primary-next'
+  variable: '--font-primary-next',
+  preload: true,
+  fallback: ['serif']
 })
 
 export const Secondary = Fauna_One({
   weight: ['400'],
   display: 'swap',
   subsets: ['latin'],
-  variable: '--font-secondary-next'
+  variable: '--font-secondary-next',
+  preload: true,
+  fallback: ['serif']
 })
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -60,8 +65,25 @@ const RootLayout = async ({ children }) => {
       className={`${cormorant.variable} ${Secondary.variable} `}
       lang="es-CO"
     >
+      <head>
+        {/* Preload critical resources */}
+        <link rel="preload" href="/assets/css/bootstrap.min.css" as="style" />
+        <link rel="preload" href="/assets/css/style.css" as="style" />
+
+        {/* Hreflang tags for localization */}
+        <link rel="alternate" hrefLang="es-CO" href="https://sagradacura.com" />
+        <link rel="alternate" hrefLang="es" href="https://sagradacura.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://sagradacura.com" />
+
+        {/* Geo targeting for Colombia */}
+        <meta name="geo.region" content="CO" />
+        <meta name="geo.placename" content="Colombia" />
+        <meta name="geo.position" content="4.5709;-74.2973" />
+        <meta name="ICBM" content="4.5709, -74.2973" />
+      </head>
       <body>
         <ErrorBoundary errorComponent={Error}>
+          <SkipLinks />
           <Topbar data={generalRes} />
           <Suspense>
             <Header data={generalRes} menuLinks={menuRes} />

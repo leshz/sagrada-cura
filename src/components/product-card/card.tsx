@@ -9,8 +9,7 @@ import { useStore } from '@/store'
 import { sendGAEvent } from '@next/third-parties/google'
 
 import './styles/card.scss'
-import { GetValues } from '@/types/types'
-import { Picture } from '@/types/contentTypes'
+import { GetValues, Picture } from '@/types/types'
 
 type Props = {
   product: GetValues<"plugin::strapi-ecommerce-mercadopago.product">

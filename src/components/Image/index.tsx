@@ -40,7 +40,15 @@ const ImageWrapper: FC<ImageProps> = ({
   }
   const propsToImage: any = { ...imagen, ...props }
 
-  return <Img src={propsToImage.src} alt={propsToImage.alt} {...propsToImage} />
+  return (
+    <Img 
+      src={propsToImage.src} 
+      alt={propsToImage.alt} 
+      {...propsToImage}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      loading={propsToImage.priority ? 'eager' : 'lazy'}
+    />
+  )
 }
 
 export { ImageWrapper }

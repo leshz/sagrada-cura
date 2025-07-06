@@ -50,6 +50,107 @@ ul {
   display: none;
 }
 
+/* Accessibility utilities */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Skip links for accessibility */
+.skip-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: var(--primary-color1);
+  padding: 10px;
+  border-radius: 0 0 5px 0;
+}
+
+.skip-link {
+  display: block;
+  color: var(--white-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  margin: 5px 0;
+  background: var(--important-color1);
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--white-color);
+    color: var(--primary-color1);
+    outline: 2px solid var(--important-color1);
+    outline-offset: 2px;
+  }
+}
+
+/* Product breadcrumbs */
+.product-breadcrumbs {
+  margin-bottom: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--bg-color);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-link {
+  color: var(--text-color2);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--important-color1);
+  }
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: var(--text-color2);
+}
+
+.breadcrumb-item.current {
+  color: var(--primary-color1);
+  font-weight: 600;
+}
+
+/* Product-specific skip links */
+.product-skip-links {
+  background: var(--important-color1);
+  
+  .skip-link {
+    background: var(--white-color);
+    color: var(--important-color1);
+    
+    &:hover,
+    &:focus {
+      background: var(--important-color2);
+      color: var(--white-color);
+    }
+  }
+}
+
 /*================================================
 2. Global Css
 =================================================*/
@@ -5497,4 +5598,61 @@ Testimonial-Section Css
   background-color: #828282;
   border-radius: 5px;
   border: 3px solid #ffffff;
+}
+
+/* ===== Product Not Found Styles ===== */
+.product-not-found {
+  padding: 80px 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  
+  h1 {
+    color: var(--primary-color1);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+  
+  p {
+    color: var(--text-color2);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .suggestions {
+    margin: 40px 0;
+    
+    h2 {
+      color: var(--primary-color1);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .suggestion-list {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        margin: 10px 0;
+        
+        .suggestion-link {
+          color: var(--important-color1);
+          text-decoration: none;
+          font-weight: 500;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  
+  .search-suggestion {
+    margin-top: 40px;
+    
+    p {
+      margin-bottom: 20px;
+    }
+  }
 }
