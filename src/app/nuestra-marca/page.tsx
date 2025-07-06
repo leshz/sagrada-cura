@@ -11,24 +11,20 @@ import './page.scss'
 
 export const dynamic = 'force-static'
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  const { title, article } = await getSingles<APIResponseData<"api::about-us.about-us">>('about-us')
-  
-  return {
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Nuestra Marca | Sagrada Cura',
+  description: 'Conoce la historia de Sagrada Cura, nuestra misión de ofrecer productos naturales para tu bienestar y sanación espiritual en Colombia.',
+  keywords: 'sagrada cura, nuestra marca, historia, productos naturales, bienestar, sanación espiritual, colombia',
+  alternates: {
+    canonical: 'https://sagradacura.com/nuestra-marca',
+  },
+  openGraph: {
     title: 'Nuestra Marca | Sagrada Cura',
     description: 'Conoce la historia de Sagrada Cura, nuestra misión de ofrecer productos naturales para tu bienestar y sanación espiritual en Colombia.',
-    keywords: 'sagrada cura, nuestra marca, historia, productos naturales, bienestar, sanación espiritual, colombia',
-    alternates: {
-      canonical: 'https://sagradacura.com/nuestra-marca',
-    },
-    openGraph: {
-      title: 'Nuestra Marca | Sagrada Cura',
-      description: 'Conoce la historia de Sagrada Cura, nuestra misión de ofrecer productos naturales para tu bienestar y sanación espiritual en Colombia.',
-      url: 'https://sagradacura.com/nuestra-marca',
-      type: 'website'
-    }
+    url: 'https://sagradacura.com/nuestra-marca',
+    type: 'website'
   }
-}
+})
 
 const AboutUs = async () => {
   const { title, article, image, blogs_title } = await getSingles<APIResponseData<"api::about-us.about-us">>('about-us')
@@ -51,7 +47,7 @@ const AboutUs = async () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <StaticBreadcrumbs 
+              <StaticBreadcrumbs
                 currentPage="Nuestra Marca"
                 path={[
                   { name: 'Inicio', href: '/' },
