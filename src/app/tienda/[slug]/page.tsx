@@ -9,7 +9,10 @@ import {
 } from '@/components/product'
 import { Price } from '@/components/price'
 import { ProductStructuredData } from '@/components/structured-data/product-schema'
-import { ProductBreadcrumbs } from '@/components/breadcrumbs/product-breadcrumbs'
+// import { ProductBreadcrumbs } from '@/components/breadcrumbs/product-breadcrumbs'
+import { ProductSkipLinks } from '@/components/accessibility/product-skip-links'
+import { ProductTracking } from '@/components/analytics/product-tracking'
+import { ProductNotFound } from '@/components/product/product-not-found'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { getImagePath } from '@/utils/helpers'
@@ -44,16 +47,21 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
   } = data
 
   const categoryNames = categories?.data?.map((cat: any) => cat.name).join(', ') || 'Productos Naturales'
-  const keywords = `${name}, ${categoryNames}, productos naturales, sanación, Sagrada Cura, Colombia`
+  const keywords = `${name}, ${categoryNames}, productos naturales, sanación, Sagrada Cura , Colombia, Bogota`
   const description = short_description || middle_description || `Descubre ${name} - Producto natural para tu bienestar y sanación espiritual. ${categoryNames}.`
-  const priceText = promotion?.with_discount ? `Desde $${promotion.price_with_discount}` : `$${price}`
+  const priceText = promotion?.with_discount ? `en oferta $${promotion.price_with_discount}` : `$${price}`
 
   return {
     title: `${name} | Productos Naturales | Sagrada Cura`,
     description,
     keywords,
     alternates: {
-      canonical: `https://sagradacura.com/tienda/${slugProduct}`
+      canonical: `https://sagradacura.com/tienda/${slugProduct}`,
+      languages: {
+        'es-CO': `https://sagradacura.com/tienda/${slugProduct}`,
+        'es': `https://sagradacura.com/tienda/${slugProduct}`,
+        'x-default': `https://sagradacura.com/tienda/${slugProduct}`
+      }
     },
     robots: {
       index: true,
@@ -110,6 +118,10 @@ const ProductDefaultPage = async ({ params }) => {
   const [singleReq, { data: product }] = await Promise.all([single, collection])
   const { payment_message, no_stock, promises = [] } = singleReq || {}
 
+  if (!product) {
+    return <ProductNotFound slug={slug} />
+  }
+
   const {
     name,
     middle_description,
@@ -130,17 +142,23 @@ const ProductDefaultPage = async ({ params }) => {
   const { price_with_discount, with_discount } = promotion || {}
   return (
     <>
+      <ProductSkipLinks />
       <ProductStructuredData product={product} />
-      <Script src="/js/bootstrap.min.js" />
+      <ProductTracking product={product} />
+      <Script
+        src="/js/bootstrap.min.js"
+        strategy="lazyOnload"
+        defer
+      />
       <main id="main-content">
         <article itemScope itemType="https://schema.org/Product">
           <div className="shop-details-top-section mt-40 mb-110">
             <div className="container-xl container-fluid-lg container">
-              <ProductBreadcrumbs
+              {/* <ProductBreadcrumbs
                 productName={name}
                 categoryName={categories?.data?.[0]?.name}
                 categorySlug={categories?.data?.[0]?.slug}
-              />
+              /> */}
               <div className="row gy-5">
                 <section id="product-gallery" className="col-lg-6" aria-label="Galería de imágenes del producto">
                   <Slider pictures={pictures} />
@@ -162,17 +180,18 @@ const ProductDefaultPage = async ({ params }) => {
                       </div>
                     )}
 
-                    <div className="price-area" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                    <section id="product-price" className="price-area" itemProp="offers" itemScope itemType="https://schema.org/Offer" aria-label="Precio y opciones de compra">
                       <meta itemProp="priceCurrency" content="COP" />
-                      <meta itemProp="price" content={price?.toString()} />
+                      <meta itemProp="price" content={(price_with_discount || price)?.toString()} />
                       <Price
                         price={price}
                         discountPrice={price_with_discount || 0}
                         with_discount={with_discount}
                       />
-                    </div>
+                    </section>
                     {!noStock && <QuantityArea product={product} />}
-                    <div className="product-info">
+                    <section id="product-details" className="product-info" aria-label="Detalles del producto">
+                      <h3 className="visually-hidden">Información del producto</h3>
                       <ul className="product-info-list">
                         <li>
                           <span>SKU:</span> <span itemProp="sku">{sku?.toUpperCase()}</span>
@@ -186,7 +205,7 @@ const ProductDefaultPage = async ({ params }) => {
                           </li>
                         )}
                       </ul>
-                    </div>
+                    </section>
                     <ShippingInfo promises={promises} type={type} />
                     <PaymentsInformation message={payment_message} />
                     <Accordion information={information} />

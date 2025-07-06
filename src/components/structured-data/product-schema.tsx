@@ -14,7 +14,8 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
     price,
     stock,
     categories,
-    promotion
+    promotion,
+    type
   } = product
 
   const productSchema = {
@@ -26,6 +27,7 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
     "url": `https://sagradacura.com/tienda/${slug}`,
     "sku": product?.sku || "",
     "mpn": product?.sku || "",
+    "gtin": product?.sku || "",
     "brand": {
       "@type": "Brand",
       "name": "Sagrada Cura",
@@ -36,12 +38,22 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
       {
         "@type": "PropertyValue",
         "name": "Tipo",
-        "value": product?.type || "producto"
+        "value": type || "producto"
       },
       {
-        "@type": "PropertyValue", 
+        "@type": "PropertyValue",
         "name": "Stock",
         "value": stock?.toString() || "0"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Peso",
+        "value": "Variable"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Material",
+        "value": "Natural"
       }
     ],
     "offers": {
@@ -86,6 +98,19 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
       "reviewCount": "50",
       "bestRating": "5",
       "worstRating": "1"
+    },
+    "warranty": {
+      "@type": "WarrantyPromise",
+      "warrantyScope": "https://schema.org/ComprehensiveWarranty",
+      "warrantyInMonths": 12
+    },
+    "returnPolicy": {
+      "@type": "ReturnPolicy",
+      "applicableCountry": "CO",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
     }
   }
 
@@ -104,6 +129,47 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
     "validThrough": promotion?.end_date || "",
     "description": promotion?.description || ""
   } : null
+
+  // Schema de LocalBusiness específico para Colombia
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sagrada Cura",
+    "description": "Tienda especializada en productos naturales para sanación espiritual y bienestar en Bogotá, Colombia",
+    "url": "https://sagradacura.com",
+    "telephone": "+57-1-XXX-XXXX",
+    "email": "info@sagradacura.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CO",
+      "addressLocality": "Bogotá",
+      "addressRegion": "Cundinamarca",
+      "postalCode": "110000"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "4.5709",
+      "longitude": "-74.2973"
+    },
+    "openingHours": "Mo-Su 09:00-18:00",
+    "priceRange": "$$",
+    "currenciesAccepted": "COP",
+    "paymentAccepted": "Cash, Credit Card, MercadoPago, Transferencia Bancaria",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Bogotá"
+      },
+      {
+        "@type": "Country",
+        "name": "Colombia"
+      }
+    ],
+    "hasMap": "https://sagradacura.com/contacto",
+    "sameAs": [
+      // Redes sociales cuando estén disponibles
+    ]
+  }
 
   // Schema de breadcrumbs
   const breadcrumbSchema = {
@@ -152,6 +218,13 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
         strategy="afterInteractive"
       >
         {JSON.stringify(breadcrumbSchema)}
+      </Script>
+      <Script
+        id="local-business-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(localBusinessSchema)}
       </Script>
       {offerSchema && (
         <Script

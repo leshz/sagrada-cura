@@ -48,6 +48,32 @@ export const BlogStructuredData = ({ blog }: BlogStructuredDataProps) => {
     "inLanguage": "es-CO"
   }
 
+  // Schema para breadcrumbs
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://sagradacura.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sagradacura.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": `https://sagradacura.com/blog/${slug}`
+      }
+    ]
+  }
+
   // Schema para la organización
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -68,6 +94,13 @@ export const BlogStructuredData = ({ blog }: BlogStructuredDataProps) => {
         strategy="afterInteractive"
       >
         {JSON.stringify(blogSchema)}
+      </Script>
+      <Script
+        id="blog-breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(breadcrumbSchema)}
       </Script>
       <Script
         id="blog-organization-schema"
