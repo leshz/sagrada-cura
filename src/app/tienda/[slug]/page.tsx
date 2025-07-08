@@ -81,7 +81,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
       siteName: 'Sagrada Cura',
       images: [
         {
-          url: getImagePath(pictures[0], 'small'),
+          url: getImagePath(pictures?.[0], 'small'),
           width: 800,
           height: 600,
           alt: name
@@ -94,7 +94,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
       card: 'summary_large_image',
       title: `${name} - ${priceText}`,
       description,
-      images: getImagePath(pictures[0], 'small')
+      images: getImagePath(pictures?.[0], 'small')
     },
     other: {
       'product:price:amount': price?.toString() || '',
