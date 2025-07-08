@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { BlogSection, BlogContent } from '@/components/blog'
 import { ImageWrapper } from '@/components/Image'
 import { getSingles } from '@/services'
-import { StaticBreadcrumbs } from '@/components/breadcrumbs/static-breadcrumbs'
+// import { StaticBreadcrumbs } from '@/components/breadcrumbs/static-breadcrumbs'
 import { StaticPageSchema } from '@/components/structured-data/static-page-schema'
 
 import { APIResponseData } from '@/types/types'
@@ -47,13 +47,13 @@ const AboutUs = async () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <StaticBreadcrumbs
+              {/* <StaticBreadcrumbs
                 currentPage="Nuestra Marca"
                 path={[
                   { name: 'Inicio', href: '/' },
                   { name: 'Nuestra Marca', href: '/nuestra-marca' }
                 ]}
-              />
+              /> */}
             </div>
           </div>
         </div>
