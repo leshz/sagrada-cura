@@ -2,6 +2,7 @@
 
 import { useStore } from '@/store'
 import { sendGAEvent } from '@next/third-parties/google'
+import Link from 'next/link'
 
 const Buttons = ({ quantity, product }) => {
   const { addToCart } = useStore(state => state)
@@ -19,9 +20,9 @@ const Buttons = ({ quantity, product }) => {
       >
         Anadir al carrito
       </button>
-      {/* <Link className="primary-btn3 style-3 hover-btn5" href="/tienda/checkout">
-        Comprar
-      </Link> */}
+      <Link className="primary-btn3 style-3 hover-btn5" href="/tienda/checkout">
+        Ir al pago
+      </Link>
     </div>
   )
 }
