@@ -3,7 +3,7 @@ import { Metadata } from "next/types"
 import { getSingles } from "@/services"
 import { APIResponseData } from "@/types/types"
 import { getImagePath } from "@/utils/helpers"
-import { StaticBreadcrumbs } from "@/components/breadcrumbs/static-breadcrumbs"
+// import { StaticBreadcrumbs } from "@/components/breadcrumbs/static-breadcrumbs"
 import { ContactStructuredData } from "@/components/structured-data/contact-structured-data"
 
 import './page.scss'
@@ -40,13 +40,13 @@ const ContactPage = async () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <StaticBreadcrumbs 
+              {/* <StaticBreadcrumbs 
                 currentPage="Contacto"
                 path={[
                   { name: 'Inicio', href: '/' },
                   { name: 'Contacto', href: '/contacto' }
                 ]}
-              />
+              /> */}
             </div>
           </div>
         </div>

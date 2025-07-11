@@ -45,16 +45,6 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
         "name": "Stock",
         "value": stock?.toString() || "0"
       },
-      {
-        "@type": "PropertyValue",
-        "name": "Peso",
-        "value": "Variable"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Material",
-        "value": "Natural"
-      }
     ],
     "offers": {
       "@type": "Offer",
@@ -122,7 +112,7 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
       "@type": "Product",
       "name": name
     },
-    "price": price,
+    "price": promotion?.with_discount ? promotion?.price_with_discount : price,
     "priceCurrency": "COP",
     "availability": stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     "validFrom": promotion?.start_date || "",

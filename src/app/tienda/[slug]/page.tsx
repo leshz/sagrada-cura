@@ -52,7 +52,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const priceText = promotion?.with_discount ? `en oferta $${promotion.price_with_discount}` : `$${price}`
 
   return {
-    title: `${name} | Productos Naturales | Sagrada Cura`,
+    title: `${name} | Productos y Terapias Naturales | Sagrada Cura`,
     description,
     keywords,
     alternates: {
@@ -81,7 +81,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
       siteName: 'Sagrada Cura',
       images: [
         {
-          url: getImagePath(pictures?.[0], 'medium'),
+          url: getImagePath(pictures?.[0], 'small'),
           width: 800,
           height: 600,
           alt: name
@@ -94,7 +94,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
       card: 'summary_large_image',
       title: `${name} - ${priceText}`,
       description,
-      images: getImagePath(pictures?.[0], 'medium')
+      images: getImagePath(pictures?.[0], 'small')
     },
     other: {
       'product:price:amount': price?.toString() || '',
