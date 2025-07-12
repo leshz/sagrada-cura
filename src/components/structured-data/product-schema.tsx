@@ -23,7 +23,7 @@ export const ProductStructuredData = ({ product }: ProductStructuredDataProps) =
     "@type": "Product",
     "name": name,
     "description": middle_description,
-    "image": pictures?.map((pic: any) => getImagePath(pic, 'medium')).filter(Boolean),
+    "image": getImagePath(pictures?.[0], 'small'),
     "url": `https://sagradacura.com/tienda/${slug}`,
     "sku": product?.sku || "",
     "mpn": product?.sku || "",
