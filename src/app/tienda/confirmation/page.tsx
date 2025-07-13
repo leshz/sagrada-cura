@@ -22,9 +22,11 @@ const Confirmation = async ({
     fetch: { cache: 'no-store' }
   })
 
+  const { data: { payment_status } } = invoice
+
   return (
     <>
-      <ColorBar status={status} />
+      <ColorBar status={status || payment_status} />
       <ConfirmationCard result={searchParams} invoice={invoice} />
     </>
   )

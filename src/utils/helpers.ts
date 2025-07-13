@@ -14,12 +14,61 @@ export const getIcons = (icon: string): string => {
   return iconName
 }
 
-export const dateFormat = (date, type = 'medium') =>
-  format({
-    date,
-    format: type,
-    tz: 'America/Bogota'
-  })
+// Función auxiliar para formatear fechas de manera consistente
+const formatDateConsistently = (date: string | Date, formatString: string): string => {
+  try {
+    // Asegurar que la fecha sea un objeto Date válido
+    const dateObj = typeof date === 'string' ? new Date(date) : date
+
+    // Verificar que la fecha sea válida
+    if (Number.isNaN(dateObj.getTime())) {
+      return 'Fecha inválida'
+    }
+
+    // Usar Intl.DateTimeFormat para formateo consistente
+    const formatter = new Intl.DateTimeFormat('es-CO', {
+      timeZone: 'America/Bogota',
+      year: 'numeric',
+      month: formatString.includes('MMMM') ? 'long' : 'numeric',
+      day: 'numeric',
+      hour: formatString.includes('h:mm') ? 'numeric' : undefined,
+      minute: formatString.includes('h:mm') ? 'numeric' : undefined,
+      hour12: formatString.includes('a')
+    })
+
+    return formatter.format(dateObj)
+  } catch (error) {
+    console.error('Error formateando fecha:', error)
+    return 'Fecha inválida'
+  }
+}
+
+export const dateFormat = (date: string | Date, type: string = 'medium'): string => {
+  // Mapeo de tipos de formato a formatos específicos
+  const formatMap: Record<string, string> = {
+    'medium': 'MMMM D, YYYY',
+    'MMMM D, YYYY h:mm a': 'MMMM D, YYYY h:mm a',
+    'short': 'D/M/YYYY',
+    'long': 'MMMM D, YYYY h:mm a'
+  }
+
+  const formatString = formatMap[type] || type
+
+  if (formatString.includes('MMMM') || formatString.includes('h:mm')) {
+    try {
+      return format({
+        date,
+        format: formatString,
+        tz: 'America/Bogota'
+      })
+    } catch (error) {
+
+      return formatDateConsistently(date, formatString)
+    }
+  }
+
+  return formatDateConsistently(date, formatString)
+}
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
   style: 'currency',
@@ -139,7 +188,7 @@ export const totalPriceWithShipment = (
   }
 }
 
-export const getConfirmationCopys = (key: string) => {
+export const getConfirmationCopies = (key: string) => {
   switch (key) {
     case 'approved':
       return {
@@ -208,11 +257,11 @@ export const productsGABuilder = (products: any[]) => {
 }
 
 export const transformData = (form: ContactFormData): StrapiBodyFormContact => ({
-    data: {
-      nombre: form.name,
-      telefono: form.phone,
-      email: form.email,
-      asunto: form.subject,
-      nota: form.message
-    }
-  })
+  data: {
+    nombre: form.name,
+    telefono: form.phone,
+    email: form.email,
+    asunto: form.subject,
+    nota: form.message
+  }
+})
