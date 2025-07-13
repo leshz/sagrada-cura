@@ -14,7 +14,6 @@
     "node": "18.x"
   },
   "dependencies": {
-    "@formkit/tempo": "^0.1.2",
     "@next/third-parties": "15.2.4",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "@vercel/speed-insights": "^1.0.10",

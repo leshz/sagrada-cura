@@ -17,14 +17,16 @@ const Confirmation = async ({
 }) => {
   const { status, external_reference } = searchParams
 
-  const invoice = await getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.invoice">>(COLLECTIONS.invoices, {
+  const invoice = await getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.invoice">['data']>(COLLECTIONS.invoices, {
     slug: external_reference,
     fetch: { cache: 'no-store' }
   })
 
+  const { data: { payment_status } } = invoice
+
   return (
     <>
-      <ColorBar status={status} />
+      <ColorBar status={status || payment_status} />
       <ConfirmationCard result={searchParams} invoice={invoice} />
     </>
   )

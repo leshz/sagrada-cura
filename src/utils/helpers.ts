@@ -1,4 +1,3 @@
-import { format } from '@formkit/tempo'
 import { Shipment } from '@/types/shipment'
 import { ContactFormData, Product, StrapiBodyFormContact } from '@/types/types'
 import { availableIcons, ITEM_TYPES } from './constants'
@@ -14,12 +13,113 @@ export const getIcons = (icon: string): string => {
   return iconName
 }
 
-export const dateFormat = (date, type = 'medium') =>
-  format({
-    date,
-    format: type,
-    tz: 'America/Bogota'
-  })
+// Función auxiliar para formatear fechas de manera consistente
+const formatDateConsistently = (date: string | Date | undefined, formatType: string): string => {
+  try {
+    // Si la fecha es undefined, retornar mensaje de error
+    if (!date) {
+      return 'Fecha inválida'
+    }
+
+    // Asegurar que la fecha sea un objeto Date válido
+    const dateObj = typeof date === 'string' ? new Date(date) : date
+    
+    // Verificar que la fecha sea válida
+    if (Number.isNaN(dateObj.getTime())) {
+      return 'Fecha inválida'
+    }
+
+    // Configuraciones de formato basadas en el tipo
+    let formatOptions: Intl.DateTimeFormatOptions = {
+      timeZone: 'America/Bogota'
+    }
+
+    switch (formatType) {
+      case 'medium':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+        break
+      case 'short':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric'
+        }
+        break
+      case 'long':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }
+        break
+      case 'time':
+        formatOptions = {
+          ...formatOptions,
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }
+        break
+      case 'date':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+        break
+      default:
+        // Para formatos personalizados, intentar parsear el formato
+        if (formatType.includes('h:mm') && formatType.includes('a')) {
+          formatOptions = {
+            ...formatOptions,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+          }
+        } else if (formatType.includes('h:mm')) {
+          formatOptions = {
+            ...formatOptions,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+          }
+        } else {
+          formatOptions = {
+            ...formatOptions,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }
+        }
+    }
+
+    const formatter = new Intl.DateTimeFormat('es-CO', formatOptions)
+    return formatter.format(dateObj)
+  } catch (error) {
+    console.error('Error formateando fecha:', error)
+    return 'Fecha inválida'
+  }
+}
+
+export const dateFormat = (date: string | Date | undefined, type: string = 'medium'): string => 
+  formatDateConsistently(date, type)
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
   style: 'currency',
@@ -139,7 +239,7 @@ export const totalPriceWithShipment = (
   }
 }
 
-export const getConfirmationCopys = (key: string) => {
+export const getConfirmationCopies = (key: string) => {
   switch (key) {
     case 'approved':
       return {
@@ -208,11 +308,11 @@ export const productsGABuilder = (products: any[]) => {
 }
 
 export const transformData = (form: ContactFormData): StrapiBodyFormContact => ({
-    data: {
-      nombre: form.name,
-      telefono: form.phone,
-      email: form.email,
-      asunto: form.subject,
-      nota: form.message
-    }
-  })
+  data: {
+    nombre: form.name,
+    telefono: form.phone,
+    email: form.email,
+    asunto: form.subject,
+    nota: form.message
+  }
+})
