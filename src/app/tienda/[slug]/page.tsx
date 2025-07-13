@@ -20,7 +20,7 @@ import { APIResponse, APIResponseCollection, APIResponseData, } from '@/types/ty
 
 import './page.scss'
 
-type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
+  type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
 
 export const generateStaticParams = async () => {
   const { data: products } = await getCollections<Product>(COLLECTIONS.products)

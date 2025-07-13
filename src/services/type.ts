@@ -6,7 +6,7 @@ export type optionsCollection = {
   cache?: string
 }
 
-export interface ApiResponse<T> {
+export interface APIResponse<T> {
   data: T;
   status: number;
   statusText: string;

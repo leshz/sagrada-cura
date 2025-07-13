@@ -1,12 +1,12 @@
 import type { ContactFormData, StrapiBodyFormContact } from '@/types/types'
 import { transformData } from '@/utils/helpers'
 import { fetchApi } from './api'
-import type { optionsCollection, ApiResponse } from './type'
+import type { optionsCollection, APIResponse } from './type'
 
 const getCollections = async <T = Record<string, unknown>>(
   url: string,
   options?: optionsCollection
-): Promise<ApiResponse<T>> => {
+): Promise<APIResponse<T>> => {
   if (!url) {
     throw new Error('URL is required for getCollections')
   }

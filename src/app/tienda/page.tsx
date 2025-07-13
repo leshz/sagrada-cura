@@ -12,8 +12,6 @@ import { APIResponseCollection, APIResponseCollectionMetadata, APIResponseData }
 
 export const generateMetadata = async (): Promise<Metadata> => {
 
-  // const { seo } = await getSingles<APIResponseData<"api::shop.shop">>('shop')
-
   return {
     title: 'Nuestra tienda',
     description: 'Nuestra tienda',

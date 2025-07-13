@@ -1,4 +1,4 @@
-import { ApiResponse } from "./type";
+import { APIResponse } from "./type";
 
 interface ApiOptions extends RequestInit {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
@@ -7,7 +7,7 @@ interface ApiOptions extends RequestInit {
 export const fetchApi = async <T>(
   endpoint: string,
   options?: ApiOptions
-): Promise<ApiResponse<T>> => {
+): Promise<APIResponse<T>> => {
   const baseUrl = `${process.env.DOMAIN}/api`;
   const url = `${baseUrl}${endpoint}`;
 
