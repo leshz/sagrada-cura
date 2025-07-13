@@ -1,15 +1,10 @@
-'use client'
-
-import { useEffect } from 'react'
 import Link from 'next/link'
 import {
   currencyFormat,
-  getConfirmationCopies,
-  productsGABuilder
+  getConfirmationCopies, dateFormat
 } from '@/utils/helpers'
-import { sendGAEvent } from '@next/third-parties/google'
-import { useDateFormat } from '@/hooks'
 import { IconAnimation } from './animation'
+import { GATracker } from './ga-tracker'
 
 import './style.scss'
 
@@ -21,53 +16,9 @@ const ConfirmationCard = ({ result, invoice }) => {
   } = invoice
 
   const initialPreferenceId = preference_id.match(/\d{0,}/)
-
   const transactionStatus = status || payment_status
-
   const txId = `${external_reference || id}-${initialPreferenceId[0]}`
-
   const { title, subtitle, state } = getConfirmationCopies(transactionStatus)
-
-  const items = productsGABuilder(products)
-
-  const formattedDate = useDateFormat(createdAt, 'MMMM D, YYYY h:mm a')
-
-  useEffect(() => {
-    const eventMapping = {
-      'approved': 'purchase',
-      'rejected': 'purchase_failed',
-      'failed': 'purchase_failed',
-      'pending': 'purchase_pending',
-      'cancelled': 'purchase_cancelled',
-      'expired': 'purchase_failed',
-      'in_process': 'purchase_pending'
-    }
-
-    const eventName = eventMapping[transactionStatus]
-
-    if (eventName) {
-
-      const gaData: any = {
-        transaction_id: txId,
-        value: total,
-        currency: 'COP',
-        items
-      }
-
-      if (eventName !== 'purchase') {
-        gaData.failure_reason = transactionStatus
-        gaData.status = state
-      }
-
-      try {
-        sendGAEvent('event', eventName, gaData)
-      } catch (error) {
-        console.error('Error al enviar evento a Google Analytics:', error)
-      }
-
-    }
-  }, [])
-
 
   return (
     <div className="d-flex flex-column align-items-center flex-wrap justify-content-center min-vh-10">
@@ -80,7 +31,7 @@ const ConfirmationCard = ({ result, invoice }) => {
             <div className="d-flex justify-content-between flex-wrap mb-2">
               <span className="text-muted">Fecha:</span>
               <span className="font-weight-medium">
-                {formattedDate || 'Cargando...'}
+                {dateFormat(createdAt, 'MMMM D, YYYY h:mm a')}
               </span>
             </div>
             <div className="d-flex justify-content-between flex-wrap mb-2">
@@ -115,6 +66,14 @@ const ConfirmationCard = ({ result, invoice }) => {
           </div>
         </div>
       </div>
+
+      <GATracker
+        transactionStatus={transactionStatus}
+        txId={txId}
+        total={total}
+        products={products}
+        state={state}
+      />
     </div>
   )
 }

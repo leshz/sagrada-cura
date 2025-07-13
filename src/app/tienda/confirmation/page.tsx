@@ -17,7 +17,7 @@ const Confirmation = async ({
 }) => {
   const { status, external_reference } = searchParams
 
-  const invoice = await getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.invoice">>(COLLECTIONS.invoices, {
+  const invoice = await getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.invoice">['data']>(COLLECTIONS.invoices, {
     slug: external_reference,
     fetch: { cache: 'no-store' }
   })
