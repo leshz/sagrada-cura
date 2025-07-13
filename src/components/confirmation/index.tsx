@@ -15,9 +15,9 @@ const ConfirmationCard = ({ result, invoice }) => {
     data: { total = 0, createdAt, products, payment_status, id, preference_id = '' }
   } = invoice
 
-  const initialPreferenceId = preference_id.match(/\d{0,}/)
+  const initialPreferenceId = preference_id.match(/^[^-]+/)
   const transactionStatus = status || payment_status
-  const txId = `${external_reference || id}-${initialPreferenceId[0]}`
+  const txId = `${external_reference || id}${initialPreferenceId ? `-${initialPreferenceId[0]}` : ''}`
   const { title, subtitle, state } = getConfirmationCopies(transactionStatus)
 
   return (

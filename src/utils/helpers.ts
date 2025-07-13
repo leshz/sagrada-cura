@@ -14,7 +14,7 @@ export const getIcons = (icon: string): string => {
 }
 
 // Función auxiliar para formatear fechas de manera consistente
-const formatDateConsistently = (date: string | Date | undefined, formatString: string): string => {
+const formatDateConsistently = (date: string | Date | undefined, formatType: string): string => {
   try {
     // Si la fecha es undefined, retornar mensaje de error
     if (!date) {
@@ -29,19 +29,85 @@ const formatDateConsistently = (date: string | Date | undefined, formatString: s
       return 'Fecha inválida'
     }
 
-    // Mapeo de formatos de tempo a opciones de Intl.DateTimeFormat
-    const formatOptions: Intl.DateTimeFormatOptions = {
-      timeZone: 'America/Bogota',
-      year: 'numeric',
-      month: formatString.includes('MMMM') ? 'long' : 'numeric',
-      day: 'numeric'
+    // Configuraciones de formato basadas en el tipo
+    let formatOptions: Intl.DateTimeFormatOptions = {
+      timeZone: 'America/Bogota'
     }
 
-    // Agregar opciones de hora si el formato las incluye
-    if (formatString.includes('h:mm')) {
-      formatOptions.hour = 'numeric'
-      formatOptions.minute = 'numeric'
-      formatOptions.hour12 = formatString.includes('a')
+    switch (formatType) {
+      case 'medium':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+        break
+      case 'short':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric'
+        }
+        break
+      case 'long':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }
+        break
+      case 'time':
+        formatOptions = {
+          ...formatOptions,
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }
+        break
+      case 'date':
+        formatOptions = {
+          ...formatOptions,
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+        break
+      default:
+        // Para formatos personalizados, intentar parsear el formato
+        if (formatType.includes('h:mm') && formatType.includes('a')) {
+          formatOptions = {
+            ...formatOptions,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+          }
+        } else if (formatType.includes('h:mm')) {
+          formatOptions = {
+            ...formatOptions,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+          }
+        } else {
+          formatOptions = {
+            ...formatOptions,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }
+        }
     }
 
     const formatter = new Intl.DateTimeFormat('es-CO', formatOptions)
@@ -52,20 +118,8 @@ const formatDateConsistently = (date: string | Date | undefined, formatString: s
   }
 }
 
-export const dateFormat = (date: string | Date | undefined, type: string = 'medium'): string => {
-  // Mapeo de tipos de formato a formatos específicos
-  const formatMap: Record<string, string> = {
-    'medium': 'MMMM D, YYYY',
-    'MMMM D, YYYY h:mm a': 'MMMM D, YYYY h:mm a',
-    'short': 'D/M/YYYY',
-    'long': 'MMMM D, YYYY h:mm a'
-  }
-
-  const formatString = formatMap[type] || type
-
-  // Usar formateo nativo para todos los casos
-  return formatDateConsistently(date, formatString)
-}
+export const dateFormat = (date: string | Date | undefined, type: string = 'medium'): string => 
+  formatDateConsistently(date, type)
 
 export const currencyFormat = new Intl.NumberFormat('es-CO', {
   style: 'currency',
