@@ -7,11 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint .",
-    "lint:fix": "biome lint --write .",
-    "format": "biome format --write .",
-    "check": "biome check .",
-    "check:fix": "biome check --write ."
+    "lint": "next lint",
+    "linter:fix": "next lint --fix"
   },
   "engines": {
     "node": "20.x"
@@ -32,7 +29,6 @@
     "zustand": "4.5.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.1",
     "@types/node": "20.12.14",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
