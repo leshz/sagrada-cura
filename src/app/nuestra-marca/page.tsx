@@ -5,8 +5,6 @@ import { getSingles } from '@/services'
 // import { StaticBreadcrumbs } from '@/components/breadcrumbs/static-breadcrumbs'
 import { StaticPageSchema } from '@/components/structured-data/static-page-schema'
 
-import { APIResponseData } from '@/types/types'
-
 import './page.scss'
 
 export const dynamic = 'force-static'
@@ -27,7 +25,7 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 })
 
 const AboutUs = async () => {
-  const { title, article, image, blogs_title } = await getSingles<APIResponseData<"api::about-us.about-us">>('about-us')
+  const { title, article, image, blogs_title } = await getSingles<any>('about-us')
 
   const breadcrumbsData = [
     { name: 'Inicio', url: 'https://sagradacura.com' },

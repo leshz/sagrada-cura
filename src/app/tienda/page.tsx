@@ -8,11 +8,9 @@ import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
 
-import { APIResponseCollection, APIResponseCollectionMetadata, APIResponseData } from '@/types/types'
+import { APIResponseCollectionMetadata } from '@/types/types'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-
-  // const { seo } = await getSingles<APIResponseData<"api::shop.shop">>('shop')
 
   return {
     title: 'Nuestra tienda',
@@ -56,11 +54,9 @@ const Shop = async ({ searchParams }) => {
     'pagination[page]': searchParams?.page || 1
   }
 
-  const single = getSingles<APIResponseData<"api::shop.shop">>('shop')
+  const single = getSingles<any>('shop')
 
-  type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
-
-  const collection = getCollections<Product>(COLLECTIONS.products, {
+  const collection = getCollections<any>(COLLECTIONS.products, {
     params,
     fetch: {
       next: {
@@ -75,7 +71,7 @@ const Shop = async ({ searchParams }) => {
   const {
     pagination: { total }
   } = meta as APIResponseCollectionMetadata
-  
+
   const hasProducts = data?.length >= 1
 
   return (

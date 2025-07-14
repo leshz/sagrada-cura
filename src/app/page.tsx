@@ -9,11 +9,10 @@ import { Instagram } from '@components/home/instagram'
 import { getSingles } from '@/services'
 
 import type { Metadata } from 'next'
-import { APIResponseData } from '@/types/types'
 import { getImagePath } from '@/utils/helpers'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles<APIResponseData<"api::general.general">>('general')
+  const { seo } = await getSingles<any>('general')
 
   return {
     title: 'Inicio | Sanación Natural',
@@ -43,8 +42,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Home = async () => {
 
-  const generalRes = await getSingles<APIResponseData<"api::general.general">>('general')
-  
+  const generalRes = await getSingles<any>('general')
+
   const {
     banners,
     product_categories,
@@ -52,7 +51,7 @@ const Home = async () => {
     last_blogs,
     testimonial,
     instagram
-  } = await getSingles<APIResponseData<"api::home.home">>('home')
+  } = await getSingles<any>('home')
 
   return (
     <>
@@ -61,27 +60,27 @@ const Home = async () => {
         <section id="hero-banner" aria-label="Banners principales">
           <DoubleBanner data={banners} />
         </section>
-        
+
         <section id="product-categories" aria-label="Categorías de productos">
           <h2 className="visually-hidden">Categorías de Productos</h2>
           <ChooseProduct products={product_categories} />
         </section>
-        
+
         <section id="featured-products" aria-label="Productos destacados">
           <h2 className="visually-hidden">Productos Destacados</h2>
           <HightLights highlights={highlight_products} />
         </section>
-        
+
         <section id="latest-blogs" aria-label="Últimos artículos del blog">
           <h2 className="visually-hidden">Últimos Artículos</h2>
           <LastBlogsPost blog={last_blogs} />
         </section>
-        
+
         <section id="testimonials" aria-label="Testimonios de clientes">
           <h2 className="visually-hidden">Lo que dicen nuestros clientes</h2>
           <Testimonial labels={testimonial} />
         </section>
-        
+
         <section id="instagram-feed" aria-label="Feed de Instagram">
           <h2 className="visually-hidden">Síguenos en Instagram</h2>
           <Instagram feed={instagram} />

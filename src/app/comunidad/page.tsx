@@ -1,7 +1,6 @@
 import { ImageWrapper } from "@/components/Image"
 import { Metadata } from "next/types"
 import { getSingles } from "@/services"
-import { APIResponseData } from "@/types/types"
 import { getImagePath } from "@/utils/helpers"
 
 import './page.scss'
@@ -21,7 +20,7 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 
 
 const ContactPage = async () => {
-  const { banner } = await getSingles<APIResponseData<"api::pagina-contacto.pagina-contacto">>('pagina-contacto')
+  const { banner } = await getSingles<any>('pagina-contacto')
   return (
     <div className="contact-page mb-40">
       <div className="container-fluid">
