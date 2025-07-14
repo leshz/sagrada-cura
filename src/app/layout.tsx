@@ -10,7 +10,6 @@ import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@/providers/analytics'
 import type { Metadata } from 'next'
-import { APIResponseData } from '@/types/types'
 import { getImagePath } from '@/utils/helpers'
 import Error from './error'
 
@@ -37,7 +36,7 @@ export const Secondary = Fauna_One({
 })
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { seo } = await getSingles<APIResponseData<"api::general.general">>('general')
+  const { seo } = await getSingles<any>('general')
 
   return {
     title: {
@@ -57,8 +56,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const RootLayout = async ({ children }) => {
-  const generalRes = await getSingles<APIResponseData<"api::general.general">>('general')
-  const menuRes = await getSingles<APIResponseData<"plugin::menus.menu">>(`menus/${process.env.MENU}?nested&populate=*`)
+  const generalRes = await getSingles<any>('general')
+  const menuRes = await getSingles<any>(`menus/${process.env.MENU}?nested&populate=*`)
 
   return (
     <html

@@ -16,22 +16,19 @@ import { ProductNotFound } from '@/components/product/product-not-found'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { getImagePath } from '@/utils/helpers'
-import { APIResponse, APIResponseCollection, APIResponseData, } from '@/types/types'
 
 import './page.scss'
 
-  type Product = APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">['data']
 
 export const generateStaticParams = async () => {
-  const { data: products } = await getCollections<Product>(COLLECTIONS.products)
+  const { data: products } = await getCollections<any>(COLLECTIONS.products)
   const slugs = (products || []).map(entry => ({ slug: entry.slug }))
   return slugs
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
-  type ProductFind = APIResponse<"plugin::strapi-ecommerce-mercadopago.product">['data']
   const { slug = '' } = params
-  const { data } = await getCollections<ProductFind>(COLLECTIONS.products, {
+  const { data } = await getCollections<any>(COLLECTIONS.products, {
     slug
   })
 
@@ -107,8 +104,8 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 
 const ProductDefaultPage = async ({ params }) => {
   const { slug = '' } = params
-  const single = getSingles<APIResponseData<"api::product-detail.product-detail">>('product-detail')
-  const collection = getCollections<APIResponseData<"plugin::strapi-ecommerce-mercadopago.product">>(COLLECTIONS.products, {
+  const single = getSingles<any>('product-detail')
+  const collection = getCollections<any>(COLLECTIONS.products, {
     slug,
     fetch: {
       next: { revalidate: parseInt(`${process.env.REVALIDATE_PRODUCTS}`, 10) }

@@ -9,10 +9,9 @@ import { useStore } from '@/store'
 import { sendGAEvent } from '@next/third-parties/google'
 
 import './styles/card.scss'
-import { GetValues, Picture } from '@/types/types'
 
 type Props = {
-  product: GetValues<"plugin::strapi-ecommerce-mercadopago.product">
+  product: any
   labels: {
     out_of_stock: string
     add_to_cart: string
@@ -29,7 +28,7 @@ const Card = ({ product, labels, isTag = false }: Props) => {
   const { slug, promotion, price, name, stock, short_description } =
     product
 
-  const pictures = product.pictures as unknown as Picture[]
+  const pictures = product.pictures as any[]
 
   const { with_discount = false, price_with_discount = 0 } = promotion || {}
   const { add_to_cart, request_stock } = labels

@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+export * from './services';
 
-// Tipos genéricos que mantienen la estructura específica pero retornan any
+
 export interface APIResponseData<T = any> {
   id: number;
-  [key: string]: any;
+  attributes: T;
 }
 
 export interface APIResponseCollectionMetadata {
@@ -24,10 +24,6 @@ export interface APIResponseCollection<T = any> {
   meta: APIResponseCollectionMetadata;
 }
 
-// Importar tipos específicos para servicios
-export * from './services';
-
-// Tipos para formularios
 export type StrapiBodyFormContact = {
   data: {
     nombre: string;
@@ -46,7 +42,6 @@ export type ContactFormData = {
   message: string;
 }
 
-// Tipos para imágenes
 export interface Picture {
   id: number
   name: string
@@ -57,7 +52,6 @@ export interface Picture {
   url: string
 }
 
-// Tipo genérico para productos (mantener compatibilidad)
 export type Product = APIResponseData & {
   name: string;
   price: number;
@@ -67,10 +61,3 @@ export type Product = APIResponseData & {
   id?: string;
   [key: string]: any;
 }
-
-// Aliases para mantener compatibilidad con código existente
-// Estos tipos mantienen la estructura específica pero internamente son any
-export type APIResponseData<TContentTypeUID = any> = APIResponseData<any>;
-export type APIResponse<TContentTypeUID = any> = APIResponse<any>;
-export type APIResponseCollection<TContentTypeUID = any> = APIResponseCollection<any>;
-export type APIResponseCollectionMetadata = APIResponseCollectionMetadata;
