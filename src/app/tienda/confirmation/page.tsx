@@ -4,7 +4,6 @@ import { confirmation } from '@/types/confirmation'
 import { getCollections } from '@/services/collections'
 import { COLLECTIONS } from '@/utils/constants'
 import type { Metadata } from 'next'
-import { APIResponse } from '@/types/types'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Confirmación'
@@ -17,7 +16,7 @@ const Confirmation = async ({
 }) => {
   const { status, external_reference } = searchParams
 
-  const invoice = await getCollections<APIResponse<"plugin::strapi-ecommerce-mercadopago.invoice">['data']>(COLLECTIONS.invoices, {
+  const invoice = await getCollections<any>(COLLECTIONS.invoices, {
     slug: external_reference,
     fetch: { cache: 'no-store' }
   })

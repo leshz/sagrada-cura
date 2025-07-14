@@ -6,7 +6,6 @@ import { BlogCategories } from '@/components/blog/blog-categories'
 import { Paginator } from '@/components/paginator'
 import Link from 'next/link'
 
-import { APIResponseCollection } from '@/types/types'
 import { BlogListingStructuredData } from '@/components/structured-data/blog-listing-schema'
 
 export const generateMetadata = async ({ searchParams }): Promise<Metadata> => {
@@ -22,8 +21,7 @@ export const generateMetadata = async ({ searchParams }): Promise<Metadata> => {
     params['filters[tags][slug][$eq]'] = tag
   }
 
-  type Blogs = APIResponseCollection<"api::blog.blog">['data']
-  const { data = [], meta = {} } = await getCollections<Blogs>(COLLECTIONS.blogs, {
+  const { data = [], meta = {} } = await getCollections<any>(COLLECTIONS.blogs, {
     params,
   })
 
@@ -94,8 +92,7 @@ const BlogMasonryPage = async ({ searchParams }) => {
   if (tag) {
     params['filters[tags][slug][$eq]'] = tag
   }
-  type Blogs = APIResponseCollection<"api::blog.blog">['data']
-  const { data = [], meta = {} } = await getCollections<Blogs>(COLLECTIONS.blogs, {
+  const { data = [], meta = {} } = await getCollections<any>(COLLECTIONS.blogs, {
     params,
   })
 

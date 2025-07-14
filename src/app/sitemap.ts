@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { APIResponseCollection } from '@/types/types'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sagradacura.com'
@@ -11,8 +10,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getCollections(COLLECTIONS.blogs)
   ])
 
-  const { data: products } = productsResponse as unknown as APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.product">
-  const { data: blogs } = blogsResponse as unknown as APIResponseCollection<"api::blog.blog">
+  const { data: products } = productsResponse as any
+  const { data: blogs } = blogsResponse as any
 
   const staticUrls = [
     {

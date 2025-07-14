@@ -4,7 +4,6 @@ import { PurchaseSummary } from '@/components/purchase-summary'
 import { getSingles } from '@/services'
 
 import './page.scss'
-import { APIResponseData } from '@/types/types'
 
 export const dynamic = 'force-static'
 
@@ -18,7 +17,7 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 })
 
 const Cart = async () => {
-  const { table, summary, empty } = await getSingles<APIResponseData<"api::cart.cart">>('cart')
+  const { table, summary, empty } = await getSingles<any>('cart')
   return (
     <div className="whistlist-section cart mt-40 mb-110">
       <div className="container">

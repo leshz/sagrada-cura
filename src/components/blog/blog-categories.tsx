@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
-import { APIResponseCollection } from '@/types/types'
 import './styles/blog-categories.scss'
 
 interface BlogCategoriesProps {
@@ -14,8 +13,7 @@ const BlogCategories = async ({ currentTag }: BlogCategoriesProps) => {
     'sort': 'name:asc'
   }
 
-  type Tag = APIResponseCollection<"api::tag.tag">['data']
-  const { data = [] } = await getCollections<Tag>(COLLECTIONS.tags, { params })
+  const { data = [] } = await getCollections<any>(COLLECTIONS.tags, { params })
 
   return (
     <div className="blog-tags-fullwidth">

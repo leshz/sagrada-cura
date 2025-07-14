@@ -3,7 +3,6 @@ import { COLLECTIONS } from '@/utils/constants'
 import Link from 'next/link'
 import { dateFormat } from '@/utils/helpers'
 import { ImageWrapper } from '@/components/Image'
-import { APIResponseCollection } from '@/types/types'
 
 const RecentPost = async () => {
   const params = {
@@ -11,8 +10,7 @@ const RecentPost = async () => {
     'pagination[limit]': '3'
   }
 
-  type Blog = APIResponseCollection<"api::blog.blog">['data']
-  const { data = [] } = await getCollections<Blog>(COLLECTIONS.blogs, { params })
+  const { data = [] } = await getCollections<any>(COLLECTIONS.blogs, { params })
 
   return (
     <div className="shop-widget mb-30">
