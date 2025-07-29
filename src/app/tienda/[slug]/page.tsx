@@ -21,7 +21,11 @@ import './page.scss'
 
 
 export const generateStaticParams = async () => {
-  const { data: products } = await getCollections<any>(COLLECTIONS.products)
+  const { data: products } = await getCollections<any>(COLLECTIONS.products, {
+    params: {
+      'pagination[pageSize]': '100',
+    },
+  })
   const slugs = (products || []).map(entry => ({ slug: entry.slug }))
   return slugs
 }
