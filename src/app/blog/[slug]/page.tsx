@@ -18,8 +18,14 @@ import './page.scss'
 export const dynamic = 'force-static'
 
 export const generateStaticParams = async () => {
-  const { data: blogs } = await getCollections<any>(COLLECTIONS.blogs)
+  const { data: blogs } = await getCollections<any>(COLLECTIONS.blogs, {
+    params: {
+      'pagination[pageSize]': '100',
+    },
+  })
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
+
+  console.log(slugs)
 
   return slugs
 }
