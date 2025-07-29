@@ -25,8 +25,6 @@ export const generateStaticParams = async () => {
   })
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
 
-  console.log(slugs)
-
   return slugs
 }
 
