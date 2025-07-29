@@ -5,9 +5,15 @@ import { COLLECTIONS } from '@/utils/constants'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sagradacura.com'
 
+  const pages = {
+    params: {
+      'pagination[pageSize]': '100',
+    },
+  }
+
   const [productsResponse, blogsResponse] = await Promise.all([
-    getCollections(COLLECTIONS.products),
-    getCollections(COLLECTIONS.blogs)
+    getCollections(COLLECTIONS.products, pages),
+    getCollections(COLLECTIONS.blogs, pages),
   ])
 
   const { data: products } = productsResponse as any
