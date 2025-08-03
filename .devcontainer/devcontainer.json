@@ -1,5 +1,5 @@
 {
-  "name": "Node20",
+  "name": "Sagrada Cura Frontend",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -11,7 +11,7 @@
   "mounts": [
     "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
     "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
-    "source=${localEnv:HOME}/.wakatime.cfg,target=/home/vscode/.wakatime.cfg,type=bind,consistency=delegated"
+    "source=${localEnv:HOME}/.wakatime.cfg,target=/home/node/.wakatime.cfg,type=bind,consistency=delegated"
   ],
   "appPort": 3000,
   // "runArgs": [
