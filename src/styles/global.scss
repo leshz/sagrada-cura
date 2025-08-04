@@ -5656,3 +5656,281 @@ Testimonial-Section Css
     }
   }
 }
+
+/*===========================
+     CLIENT DATA CAPTURE PAGE
+===========================*/
+
+.client-data-capture {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--bg-color) 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .capture-form-wrapper {
+    background: var(--white-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--important-color1), var(--important-color2));
+    }
+  }
+
+  .form-header {
+    margin-bottom: 40px;
+
+    .section-title {
+      font-family: var(--font-primary);
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--title-color);
+      margin-bottom: 15px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--important-color1);
+        border-radius: 2px;
+      }
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-color2);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .form-container {
+    .client-form {
+      .form-inner {
+        margin-bottom: 25px;
+
+        &.required label::after {
+          content: ' *';
+          color: #e74c3c;
+          font-weight: bold;
+        }
+
+        label {
+          display: block;
+          font-weight: 500;
+          color: var(--title-color);
+          margin-bottom: 8px;
+          font-size: 0.95rem;
+
+          &.input-error {
+            color: #e74c3c;
+          }
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+          width: 100%;
+          padding: 12px 15px;
+          border: 2px solid #e1e1e1;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          background: var(--white-color);
+
+          &:focus {
+            outline: none;
+            border-color: var(--important-color1);
+            box-shadow: 0 0 0 3px rgba(192, 133, 88, 0.1);
+          }
+
+          &.error {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+          }
+
+          &::placeholder {
+            color: var(--text-color3);
+          }
+        }
+
+        &.checkbox-field {
+          margin-top: 20px;
+
+          .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 0;
+
+            input[type="checkbox"] {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+              height: 0;
+              width: 0;
+
+              &:checked ~ .checkmark {
+                background-color: var(--important-color1);
+                border-color: var(--important-color1);
+
+                &::after {
+                  display: block;
+                }
+              }
+
+              &.error ~ .checkmark {
+                border-color: #e74c3c;
+              }
+            }
+
+            .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 20px;
+              width: 20px;
+              background-color: var(--white-color);
+              border: 2px solid #e1e1e1;
+              border-radius: 4px;
+              transition: all 0.3s ease;
+
+              &::after {
+                content: '';
+                position: absolute;
+                display: none;
+                left: 6px;
+                top: 2px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+              }
+            }
+
+            .checkbox-text {
+              font-size: 0.9rem;
+              color: var(--text-color);
+              line-height: 1.5;
+              margin-top: 2px;
+
+              a {
+                color: var(--important-color1);
+                text-decoration: none;
+                font-weight: 500;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .error-message {
+        color: #e74c3c;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: block;
+      }
+
+      .form-submit {
+        margin-top: 30px;
+        text-align: center;
+
+        .btn {
+          background: linear-gradient(135deg, var(--important-color1), var(--important-color2));
+          color: var(--white-color);
+          border: none;
+          padding: 15px 40px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 133, 88, 0.3);
+          }
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .client-data-capture {
+    padding: 40px 0;
+
+    .capture-form-wrapper {
+      padding: 30px 20px;
+      margin: 0 15px;
+    }
+
+    .form-header {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .form-container {
+      .client-form {
+        .form-submit {
+          .btn {
+            width: 100%;
+            padding: 15px 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .client-data-capture {
+    .capture-form-wrapper {
+      padding: 25px 15px;
+    }
+
+    .form-header {
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
