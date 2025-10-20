@@ -1,5 +1,24 @@
+# Robots.txt - Sagrada Cura
+
 User-agent: *
-allow:/*
-Disallow: /politicas/*
-Disallow: /public/
+Allow: /
+
+Disallow: /checkout
+Disallow: /cart
+Disallow: /carrito
+Disallow: /mi-cuenta
+Disallow: /cuenta/*
+
+
+Disallow: /buscar
+Disallow: /search
+Disallow: /*?*
+Allow: /*?page=*
+
+Disallow: /admin
+Disallow: /api/
+
+Allow: /politicas/*
+
+# Sitemap
 Sitemap: https://sagradacura.com/sitemap.xml

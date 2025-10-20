@@ -23,47 +23,47 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/tienda`,
       lastModified: new Date(),
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/contacto`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: 'Never' as const,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/nuestra-marca`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: 'Never' as const,
+      priority: 0.9,
     },
   ]
 
   const productUrls = products.map((product) => ({
     url: `${baseUrl}/tienda/${product.slug}`,
     lastModified: new Date(product.updatedAt || product.createdAt || new Date()),
-    changeFrequency: 'weekly' as const,
+    changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
 
   const blogUrls = (blogs || []).map((blog: any) => ({
     url: `${baseUrl}/blog/${blog.slug}`,
     lastModified: new Date(blog.updatedAt || blog.createdAt || new Date()),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
   }))
 
   return [...staticUrls, ...productUrls, ...blogUrls]
