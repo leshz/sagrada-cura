@@ -29,10 +29,20 @@ export const fetchApi = async <T>(
   try {
     const response = await fetch(url, config);
 
+
+
+
     if (!response.ok) {
-      throw new Error(`${endpoint} - ${response.statusText}`);
+      const { status } = response;
+      if (status >= 400 && status <= 499) {
+        throw new Error(`Client error: ${status} ${response.statusText}`, { cause: status });
+      } else if (status >= 500) {
+        throw new Error(`Server error: ${status} ${response.statusText}`, { cause: status });
+      } else {
+        throw new Error(`HTTP error: ${status} ${response.statusText}`, { cause: status });
+      }
     }
-    const { data, meta } = await response.json(); 
+    const { data, meta } = await response.json();
 
     return {
       data,
