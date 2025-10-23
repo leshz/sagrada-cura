@@ -1,5 +1,6 @@
 import type { ContactFormData, StrapiBodyFormContact } from '@/types/types'
 import { transformData } from '@/utils/helpers'
+import { notFound } from 'next/navigation';
 import { fetchApi } from './api'
 import type { optionsCollection, APIResponse } from './type'
 
@@ -8,7 +9,7 @@ const getCollections = async <T = Record<string, unknown>>(
   options?: optionsCollection
 ): Promise<APIResponse<T>> => {
   if (!url) {
-    throw new Error('URL is required for getCollections')
+    throw new Error('URL is required for getCollections');
   }
 
   const { slug = '', fetch = {}, params = {} } = options || {}
@@ -40,11 +41,7 @@ const getCollections = async <T = Record<string, unknown>>(
     return data
 
   } catch (error) {
-    const errorMessage = error instanceof Error
-      ? error.message
-      : 'Unknown error occurred'
-
-    throw new Error(`Error fetching collection from ${url}: ${errorMessage}`)
+    return notFound()
   }
 }
 
@@ -62,7 +59,6 @@ const sendContactForm = async (data: ContactFormData): Promise<boolean> => {
   } catch (error) {
     console.error(error);
     return false
-
   }
 }
 
