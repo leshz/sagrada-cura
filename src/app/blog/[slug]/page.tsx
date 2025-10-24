@@ -89,9 +89,6 @@ const BlogDetailsPage = async ({ params }) => {
     slug
   })
 
-  console.log(data);
-
-
   if (data === null) return notFound()
 
   const fullPath = `${process.env.WEBPATH}/blog/${slug}`
