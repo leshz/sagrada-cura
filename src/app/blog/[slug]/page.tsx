@@ -33,6 +33,10 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
   const { data } = await getCollections<any>(COLLECTIONS.blogs, {
     slug
   })
+  if (data == null) {
+    return {}
+  }
+
 
   const { title, image, short_description, slug: slugPost, tags } = data
 
@@ -84,6 +88,9 @@ const BlogDetailsPage = async ({ params }) => {
   const { data } = await getCollections<any>(COLLECTIONS.blogs, {
     slug
   })
+
+  console.log(data);
+
 
   if (data === null) return notFound()
 
