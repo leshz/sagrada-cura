@@ -37,7 +37,7 @@ const getCollections = async <T = Record<string, unknown>>(
     const data = await fetchApi<T>(urlWithParams, {
       ...fetch,
     })
-
+  
     return data
 
   } catch (error) {
