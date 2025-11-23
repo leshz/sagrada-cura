@@ -17,4 +17,4 @@ Sagrada Cura es una plataforma digital dedicada a ayudarte a encontrar el balanc
 
 ---
 
-*Versión 0.1.2*
+*Versión 2.0.1*
