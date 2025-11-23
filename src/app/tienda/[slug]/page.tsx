@@ -31,7 +31,7 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
-  const { slug = '' } = params
+  const { slug = '' } = await params
   const { data } = await getCollections<any>(COLLECTIONS.products, {
     slug
   })
@@ -107,7 +107,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 }
 
 const ProductDefaultPage = async ({ params }) => {
-  const { slug = '' } = params
+  const { slug = '' } = await params
   const single = getSingles<any>('product-detail')
   const collection = getCollections<any>(COLLECTIONS.products, {
     slug,

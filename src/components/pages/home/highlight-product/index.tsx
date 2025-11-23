@@ -7,17 +7,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import Link from 'next/link'
-import SwiperCore from 'swiper'
 
 import 'swiper/css/bundle'
-
-SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
 
 const HightLights = ({ highlights }) => {
   const { title, highlight_slider: sliders } = highlights
 
   const exclusiveSlideSettings: SwiperOptions = useMemo(
     () => ({
+      modules: [Pagination, Autoplay, EffectFade, Navigation],
       slidesPerView: 'auto',
       spaceBetween: 30,
       loop: true,

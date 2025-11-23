@@ -16,7 +16,7 @@ export const generateStaticParams = async () => [
 ]
 
 const Docs = async ({ params }) => {
-  const { id } = params
+  const { id } = await params
 
   const availablePages = {
     'condiciones-de-envio': 'condiciones-de-envio',

@@ -40,7 +40,8 @@
         "esbenp.prettier-vscode",
         "streetsidesoftware.code-spell-checker",
         "ms-vscode.vscode-typescript-next",
-        "Yummygum.city-lights-icon-vsc"
+        "Yummygum.city-lights-icon-vsc",
+        "Anthropic.claude-code"
       ]
     }
   },

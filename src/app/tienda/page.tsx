@@ -25,10 +25,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Shop = async ({ searchParams }) => {
+  const searchParamsResolved = await searchParams
   let params = {}
-  const category = searchParams?.category
-  const bestSeller = searchParams?.['best-sellers']
-  const recommended = searchParams?.recommended
+  const category = searchParamsResolved?.category
+  const bestSeller = searchParamsResolved?.['best-sellers']
+  const recommended = searchParamsResolved?.recommended
 
   if (bestSeller) {
     params = {
@@ -51,7 +52,7 @@ const Shop = async ({ searchParams }) => {
     'sort[0]': 'price:asc',
     'sort[1]': 'type:asc',
     'pagination[pageSize]': LIST_OF_PRODUCTS,
-    'pagination[page]': searchParams?.page || 1
+    'pagination[page]': searchParamsResolved?.page || 1
   }
 
   const single = getSingles<any>('shop')

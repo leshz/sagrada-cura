@@ -29,7 +29,7 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
-  const { slug } = params
+  const { slug } = await params
   const { data } = await getCollections<any>(COLLECTIONS.blogs, {
     slug
   })
@@ -84,7 +84,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 }
 
 const BlogDetailsPage = async ({ params }) => {
-  const { slug } = params
+  const { slug } = await params
   const { data } = await getCollections<any>(COLLECTIONS.blogs, {
     slug
   })
