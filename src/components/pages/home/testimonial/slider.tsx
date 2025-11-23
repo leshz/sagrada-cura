@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo } from 'react'
-import SwiperCore from 'swiper'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperOptions } from 'swiper/types'
@@ -10,11 +9,10 @@ import { Starts } from './starts'
 
 import 'swiper/css/bundle'
 
-SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
-
 const Slider = ({ slides }) => {
   const testimonialSlideSettings: SwiperOptions = useMemo(
     () => ({
+      modules: [Pagination, Autoplay, EffectFade, Navigation],
       slidesPerView: 'auto',
       spaceBetween: 40,
       autoplay: true,

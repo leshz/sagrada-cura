@@ -5,16 +5,13 @@ import { useState } from 'react'
 import type { Swiper as SwiperType } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Thumbs, Pagination, Autoplay, EffectFade } from 'swiper/modules'
-import SwiperCore from 'swiper'
 
 import 'swiper/css/bundle'
-
-SwiperCore.use([Pagination, Autoplay, EffectFade])
 
 const Slider = ({ pictures }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
   const slideSettings = {
-    modules: [Thumbs],
+    modules: [Thumbs, Pagination, Autoplay, EffectFade],
     thumbs: { swiper: thumbsSwiper },
     spaceBetween: 10,
     autoPlay: true,

@@ -6,14 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { ImageWrapper } from '@/components/Image'
 import Link from 'next/link'
-import SwiperCore from 'swiper'
 
 import './style.scss'
 
 import 'swiper/css/bundle'
-
-SwiperCore.use([Pagination, Autoplay, EffectFade, Navigation])
-
 
 const FixedBanner = ({ content }) => {
   const { title = {}, image = {}, link = {} } = content || {}
@@ -54,6 +50,7 @@ const DoubleBanner = ({ data }) => {
 
   const configBanner = useMemo(
     () => ({
+      modules: [Pagination, Autoplay, EffectFade, Navigation],
       slidesPerView: 1,
       spaceBetween: 30,
       speed: 3000,
