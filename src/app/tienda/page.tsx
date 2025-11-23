@@ -52,7 +52,7 @@ const Shop = async ({ searchParams }) => {
     'sort[0]': 'price:asc',
     'sort[1]': 'type:asc',
     'pagination[pageSize]': LIST_OF_PRODUCTS,
-    'pagination[page]': searchParams?.page || 1
+    'pagination[page]': searchParamsResolved?.page || 1
   }
 
   const single = getSingles<any>('shop')
