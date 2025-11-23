@@ -17,4 +17,4 @@ Sagrada Cura is a digital platform dedicated to helping you find the perfect bal
 
 ---
 
-*Version 2.0.1*
+*Version 2.1.0*
