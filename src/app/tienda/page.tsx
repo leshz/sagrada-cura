@@ -25,10 +25,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Shop = async ({ searchParams }) => {
+  const searchParamsResolved = await searchParams
   let params = {}
-  const category = searchParams?.category
-  const bestSeller = searchParams?.['best-sellers']
-  const recommended = searchParams?.recommended
+  const category = searchParamsResolved?.category
+  const bestSeller = searchParamsResolved?.['best-sellers']
+  const recommended = searchParamsResolved?.recommended
 
   if (bestSeller) {
     params = {

@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { BlogListingStructuredData } from '@/components/structured-data/blog-listing-schema'
 
 export const generateMetadata = async ({ searchParams }): Promise<Metadata> => {
-  const { tag = '', page = 1 } = searchParams
+  const { tag = '', page = 1 } = await searchParams
 
   const params = {
     sort: 'publishedAt:desc',
@@ -81,7 +81,7 @@ export const generateMetadata = async ({ searchParams }): Promise<Metadata> => {
 }
 
 const BlogMasonryPage = async ({ searchParams }) => {
-  const { tag = '', page = 1 } = searchParams
+  const { tag = '', page = 1 } = await searchParams
 
   const params = {
     sort: 'publishedAt:desc',

@@ -12,9 +12,9 @@ export const generateMetadata = async (): Promise<Metadata> => ({
 const Confirmation = async ({
   searchParams
 }: {
-  searchParams: confirmation
+  searchParams: Promise<confirmation>
 }) => {
-  const { status, external_reference } = searchParams
+  const { status, external_reference } = await searchParams
 
   const invoice = await getCollections<any>(COLLECTIONS.invoices, {
     slug: external_reference,
