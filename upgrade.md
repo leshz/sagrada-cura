@@ -31,29 +31,40 @@ Actualizar a **Next.js 15.x** (última versión estable) con cero tiempo de inac
 
 ## Fases de Actualización
 
-### **FASE 1: Preparación y Análisis** ⏱️
+### **FASE 1: Preparación y Análisis** ⏱️ ~15 min
 
-#### 1.1 Backup y Rama de Trabajo
-- [ ] Crear backup de la rama actual
-- [ ] Verificar que estamos en la rama correcta: `claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n`
+#### 1.1 Verificación Inicial
+- [ ] Verificar rama actual: `claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n`
 - [ ] Asegurar que el código actual compila sin errores
+```bash
+npm run build
+```
 
-#### 1.2 Revisión de Breaking Changes
-Revisar la documentación oficial de Next.js 15:
-- [ ] Leer [Next.js 15 Release Notes](https://nextjs.org/blog/next-15)
-- [ ] Revisar [Upgrade Guide oficial](https://nextjs.org/docs/app/building-your-application/upgrading)
-- [ ] Identificar cambios específicos que afecten al proyecto
+#### 1.2 Breaking Changes Identificados
 
-**Principales Breaking Changes Conocidos en Next.js 15:**
-1. **React 19 RC requerido** (actualmente estamos en React 18)
-2. **Async Request APIs** (ahora `headers()`, `cookies()`, `params` son asíncronos)
-3. **Fetch caching por defecto cambiado** (ahora `no-store` por defecto)
-4. **Cambios en next.config.js** (algunas opciones deprecated)
-5. **TypeScript strict mode recomendado**
+**Principales Breaking Changes en Next.js 15 que nos afectan:**
+
+1. **React 19 RC requerido** (actualmente en React 18.3.1)
+   - Cambios en tipos y APIs
+   - Algunas librerías pueden no ser compatibles aún
+
+2. **Async Request APIs** ⚠️ **CRÍTICO**
+   - `headers()`, `cookies()`, `params` ahora son promesas
+   - Requiere `await` en todos los Server Components
+   - Archivos afectados: ~14 páginas
+
+3. **Fetch caching cambió**
+   - Antes: `cache: 'force-cache'` por defecto
+   - Ahora: `cache: 'no-store'` por defecto
+   - Puede afectar performance si no se ajusta
+
+4. **Cambios en next.config.js**
+   - Algunas opciones deprecated
+   - Imports innecesarios deben eliminarse
 
 ---
 
-### **FASE 2: Actualización de Dependencias** ⏱️
+### **FASE 2: Actualización de Dependencias** ⏱️ ~30 min
 
 #### 2.1 Dependencias Core
 ```json
@@ -98,7 +109,7 @@ npm outdated
 
 ---
 
-### **FASE 3: Ajustes de Código** ⏱️
+### **FASE 3: Ajustes de Código** ⏱️ ~2-3 horas
 
 #### 3.1 Actualizar APIs Asíncronas (Critical)
 
@@ -224,7 +235,7 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 
 ---
 
-### **FASE 4: Testing y Validación** ⏱️
+### **FASE 4: Testing y Validación** ⏱️ ~1-2 horas
 
 #### 4.1 Build y Compilación
 ```bash
@@ -301,7 +312,7 @@ npm run build && npm start
 
 ---
 
-### **FASE 5: Deploy y Monitoreo** ⏱️
+### **FASE 5: Deploy y Monitoreo** ⏱️ ~30 min
 
 #### 5.1 Pre-Deploy
 - [ ] Crear commit con cambios
@@ -323,7 +334,7 @@ npm run build && npm start
 
 ---
 
-### **FASE 6: Optimizaciones Post-Upgrade** ⏱️ (Opcional)
+### **FASE 6: Optimizaciones Post-Upgrade** ⏱️ ~2-3 horas (Opcional)
 
 #### 6.1 Aprovechar Nuevas Features de Next.js 15
 
@@ -359,10 +370,9 @@ npm run dev --turbo
 ## Checklist de Verificación Final
 
 ### Pre-Upgrade
-- [ ] Backup de código actual realizado
-- [ ] Branch de desarrollo creado
-- [ ] Documentación de breaking changes revisada
-- [ ] Plan comunicado al equipo
+- [ ] Verificar rama correcta: `claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n`
+- [ ] Build actual sin errores
+- [ ] Breaking changes identificados
 
 ### Durante Upgrade
 - [ ] Dependencies actualizadas
@@ -462,13 +472,14 @@ git push origin claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n
 
 | Fase | Duración Estimada |
 |------|-------------------|
-| Fase 1: Preparación | 30 minutos |
-| Fase 2: Actualización de Dependencias | 1 hora |
-| Fase 3: Ajustes de Código | 2-4 horas |
-| Fase 4: Testing | 2-3 horas |
-| Fase 5: Deploy y Monitoreo | 1 hora |
-| Fase 6: Optimizaciones (Opcional) | 2-4 horas |
-| **TOTAL** | **6-12 horas** |
+| Fase 1: Preparación y Análisis | 15 minutos |
+| Fase 2: Actualización de Dependencias | 30 minutos |
+| Fase 3: Ajustes de Código | 2-3 horas |
+| Fase 4: Testing y Validación | 1-2 horas |
+| Fase 5: Deploy y Monitoreo | 30 minutos |
+| Fase 6: Optimizaciones (Opcional) | 2-3 horas |
+| **TOTAL (sin optimizaciones)** | **4.5-6.5 horas** |
+| **TOTAL (con optimizaciones)** | **6.5-9.5 horas** |
 
 ---
 
