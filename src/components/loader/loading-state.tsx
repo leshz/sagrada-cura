@@ -10,31 +10,20 @@ interface LoadingStateProps {
 
 export const LoadingState = ({ fullScreen = false, size = 'medium' }: LoadingStateProps) => {
   const [mounted, setMounted] = useState(false)
-  const [shouldRender, setShouldRender] = useState(true)
 
   useEffect(() => {
     // Activar animación de entrada
-    const mountTimer = setTimeout(() => setMounted(true), 10)
-
-    return () => {
-      clearTimeout(mountTimer)
-      // Iniciar fade-out antes del unmount
-      setMounted(false)
-      // Mantener el componente renderizado un poco más para completar la animación
-      const unmountTimer = setTimeout(() => setShouldRender(false), 600)
-      return () => clearTimeout(unmountTimer)
-    }
+    const timer = setTimeout(() => setMounted(true), 10)
+    return () => clearTimeout(timer)
   }, [])
-
-  if (!shouldRender) return null
 
   return (
     <div
-      className={`loader-transition-wrapper ${mounted ? 'mounted' : 'unmounting'}`}
+      className={`loader-transition-wrapper ${mounted ? 'mounted' : ''}`}
       style={{
         opacity: mounted ? 1 : 0,
-        transform: mounted ? 'translateY(0) scale(1)' : 'translateY(-20px) scale(0.95)',
-        transition: 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+        transform: mounted ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.98)',
+        transition: 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
         willChange: 'opacity, transform'
       }}
     >
