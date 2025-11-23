@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const { redirect } = require('next/dist/server/api-utils')
-const { headers } = require('next/headers')
 const path = require('path')
 
 const prodCSP = `
