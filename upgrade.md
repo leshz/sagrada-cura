@@ -334,7 +334,7 @@ en Vercel Preview durante Fase 5, donde no existe la restricción de Google Font
 
 **Estado del repositorio:**
 - Branch: `claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n`
-- Último commit: `74de1c4 - fix: correct searchParams reference in tienda/page.tsx`
+- Último commit: `5632d40 - fix: migrate Swiper initialization to modern API for React 19`
 - Working tree: limpio ✅
 - Todos los cambios pusheados ✅
 
@@ -344,6 +344,17 @@ en Vercel Preview durante Fase 5, donde no existe la restricción de Google Font
 3. `4077d66` - Phase 3: Code adjustments (async APIs)
 4. `e83c90a` - Phase 4: Fix async searchParams
 5. `74de1c4` - Phase 4: Fix searchParams reference
+6. `7c6caea` - Phase 5: Documentation update
+7. `5632d40` - Phase 5: Fix Swiper initialization for React 19
+
+**Errores corregidos durante el deploy:**
+- ✅ **SwiperCore.use() error**: Migrado 5 componentes de Swiper a la API moderna (módulos en props)
+  - `src/components/product/slider.tsx`
+  - `src/components/pages/home/banner/index.tsx`
+  - `src/components/pages/home/highlight-product/index.tsx`
+  - `src/components/pages/home/instagram/index.tsx`
+  - `src/components/pages/home/testimonial/slider.tsx`
+  - Razón: ESLint detectaba `SwiperCore.use()` como React Hook (deprecated pattern)
 
 #### 5.2 Deploy a Preview (Vercel)
 
