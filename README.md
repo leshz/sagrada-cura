@@ -1,20 +1,20 @@
 # Sagrada Cura 🌿
 
-**Encuentra tu equilibrio en la vida**
+**Find your balance in life**
 
-Sagrada Cura es una plataforma digital dedicada a ayudarte a encontrar el balance perfecto en tu día a día. Un espacio donde el bienestar, la espiritualidad y el autocuidado se encuentran.
+Sagrada Cura is a digital platform dedicated to helping you find the perfect balance in your daily life. A space where wellness, spirituality, and self-care meet.
 
-## ¿Qué encontrarás?
+## What you'll find
 
-- **Blog** - Artículos inspiradores sobre bienestar y crecimiento personal
-- **Tienda** - Productos cuidadosamente seleccionados para tu equilibrio
-- **Comunidad** - Conecta con personas que comparten tu camino
-- **Recursos** - Guías, consejos y herramientas para tu bienestar
+- **Blog** - Inspiring articles about wellness and personal growth
+- **Shop** - Carefully selected products for your balance
+- **Community** - Connect with people who share your journey
+- **Resources** - Guides, tips, and tools for your well-being
 
-## Visita el sitio
+## Visit the site
 
 🌐 [www.sagradacura.com](https://www.sagradacura.com)
 
 ---
 
-*Versión 2.0.1*
+*Version 2.0.1*
