@@ -324,25 +324,77 @@ en Vercel Preview durante Fase 5, donde no existe la restricción de Google Font
 
 ---
 
-### **FASE 5: Deploy y Monitoreo** ⏱️ ~30 min
+### **FASE 5: Deploy y Monitoreo** ⏱️ ~30 min 🔄 EN PROGRESO
 
 #### 5.1 Pre-Deploy
-- [ ] Crear commit con cambios
-- [ ] Push a la rama de desarrollo
-- [ ] Crear PR con checklist de cambios
-- [ ] Solicitar code review (opcional)
+- [x] Crear commit con cambios - ✅
+- [x] Push a la rama de desarrollo - ✅
+- [ ] Verificar deploy en Vercel Preview
+- [ ] Obtener URL de preview
+
+**Estado del repositorio:**
+- Branch: `claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n`
+- Último commit: `74de1c4 - fix: correct searchParams reference in tienda/page.tsx`
+- Working tree: limpio ✅
+- Todos los cambios pusheados ✅
+
+**Commits de upgrade:**
+1. `beb37ad` - Phase 1: Preparación y Análisis
+2. `e432f51` - Phase 2: Dependency updates (Next.js 15, React 19)
+3. `4077d66` - Phase 3: Code adjustments (async APIs)
+4. `e83c90a` - Phase 4: Fix async searchParams
+5. `74de1c4` - Phase 4: Fix searchParams reference
 
 #### 5.2 Deploy a Preview (Vercel)
-- [ ] Deploy automático en Vercel (preview)
-- [ ] Probar en preview environment
-- [ ] Verificar variables de entorno
-- [ ] Verificar integración con Strapi
+
+**Vercel debe detectar automáticamente el branch y crear un Preview Deploy.**
+
+**Pasos para verificar:**
+1. Ve a tu dashboard de Vercel: https://vercel.com/leshz/sagrada-cura
+2. Busca el deployment del branch: `claude/plan-nextjs-upgrade-01MYcvz8oWSaQ4CJJrAxbu1n`
+3. Vercel debería mostrar un "Preview" deployment en proceso o completado
+4. Obtén la URL de preview (ejemplo: `https://sagrada-cura-[hash].vercel.app`)
+
+**Checklist de Vercel Preview:**
+- [ ] Deploy automático detectado por Vercel
+- [ ] Build exitoso sin errores
+- [ ] Preview URL generada
+- [ ] Variables de entorno correctas
+- [ ] Integración con Strapi funcional
+
+**Páginas críticas a probar en Preview:**
+- [ ] `/` (Home) - Layout, banners, productos destacados
+- [ ] `/blog` (Lista de blogs) - Paginación con searchParams
+- [ ] `/blog/[slug]` (Detalle de blog) - Params async
+- [ ] `/tienda` (Tienda) - Filtros, categorías, paginación
+- [ ] `/tienda/[slug]` (Detalle de producto) - Params async, metadata
+- [ ] `/tienda/carrito-de-compras` (Carrito) - Zustand state
+- [ ] `/tienda/checkout` (Checkout) - Formik forms
+- [ ] `/tienda/confirmation?status=approved&external_reference=123` - SearchParams async
+- [ ] `/contacto` (Contacto) - Formulario
+- [ ] `/politicas/tratamiento-de-datos` (Políticas) - Params async
 
 #### 5.3 Monitoreo Post-Deploy
-- [ ] Verificar logs en Vercel
-- [ ] Monitorear errores en tiempo real
-- [ ] Verificar Analytics
+- [ ] Verificar logs en Vercel (buscar errores)
+- [ ] Revisar Runtime Logs (errores de servidor)
+- [ ] Verificar Build Logs (errores de compilación)
+- [ ] Confirmar Analytics funciona
 - [ ] Revisar Speed Insights
+- [ ] Core Web Vitals en verde
+
+**Métricas a verificar:**
+- [ ] Build time (debería ser similar o mejor)
+- [ ] Bundle size (JS enviado al cliente)
+- [ ] LCP (Largest Contentful Paint) < 2.5s
+- [ ] FID (First Input Delay) < 100ms
+- [ ] CLS (Cumulative Layout Shift) < 0.1
+
+**Errores comunes a buscar:**
+- ❌ Google Fonts no carga (no debería ocurrir en Vercel)
+- ❌ Async params/searchParams errors
+- ❌ Hydration mismatches
+- ❌ API routes con errores
+- ❌ Imágenes no cargan del CDN
 
 ---
 
