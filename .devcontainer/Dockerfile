@@ -39,6 +39,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxrandr2\                                  
     libgbm1\                                          
     libasound2\
+    libx11-xcb1\ 
+    libxcursor1\ 
+    libgtk-3-0\
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Ensure default node user has access to /usr/local/share
