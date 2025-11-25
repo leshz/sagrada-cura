@@ -12,7 +12,7 @@ import type { Metadata } from 'next'
 import { getImagePath } from '@/utils/helpers'
 
 import 'react-toastify/dist/ReactToastify.css'
-import '@/styles/global.scss'
+import '@/styles/main.scss'
 
 export const cormorant = Cormorant({
   weight: ['400', '600'],

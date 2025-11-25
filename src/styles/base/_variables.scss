@@ -1,0 +1,36 @@
+/*================================================
+  CSS Variables - Sagrada Cura
+  Define all CSS custom properties used throughout the project
+=================================================*/
+
+:root {
+  // Font Variables
+  --font-primary: var(--font-primary-next);
+  --font-secondary: var(--font-secondary-next);
+
+  // Colors
+  --white-color: #fff;
+  --black-color: #000000;
+  --title-color: #13141a;
+  --text-color: #212121;
+  --text-color2: #ababab;
+  --text-color3: #969696;
+
+  // Theme Colors
+  --primary-color1: #222222;
+  --bg-color: #f2f2f2;
+  --important-color1: #c08558;
+  --important-color2: #1f261c;
+  --important-color3: #250507;
+
+  // State Colors (RGB for opacity usage)
+  --success: 7, 188, 12;
+  --warning: 241, 196, 15;
+  --error: 231, 76, 60;
+
+  // Third-party library variables
+  --toastify-font-family: var(--main-font-next);
+
+  // Border Radius
+  --radius: 5px;
+}

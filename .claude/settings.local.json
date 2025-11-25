@@ -18,7 +18,13 @@
       "mcp__playwright__browser_evaluate",
       "mcp__playwright__browser_close",
       "Bash(node --version)",
-      "Bash(yarn add:*)"
+      "Bash(yarn add:*)",
+      "Bash(ANALYZE=true npm run build:*)",
+      "Bash(src/styles/_global-remaining.scss)",
+      "mcp__playwright__browser_snapshot",
+      "Bash(tree:*)",
+      "Bash(nvm:*)",
+      "Bash(yarn dev)"
     ],
     "deny": [],
     "ask": []

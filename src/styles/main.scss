@@ -1,0 +1,63 @@
+/*!
+ * Sagrada Cura - Main Stylesheet
+ * Modular and organized CSS architecture
+ * Version: 2.0.0 (Refactored from global.scss)
+ */
+
+/*================================================
+  1. VENDORS
+  Third-party libraries and frameworks
+=================================================*/
+@import './vendors/bootstrap-custom';
+@import '~bootstrap-icons/font/bootstrap-icons';
+
+/*================================================
+  2. BASE
+  Variables, resets, and foundational styles
+=================================================*/
+@import './base/mixins';
+@import './base/variables';
+@import './base/reset';
+@import './base/scrollbar';
+
+/*================================================
+  3. ANIMATIONS
+  Keyframes and transitions
+=================================================*/
+@import './animations/transitions';
+
+/*================================================
+  4. UTILITIES
+  Helper classes and accessibility
+=================================================*/
+@import './utilities/accessibility';
+
+/*================================================
+  5. COMPONENTS
+  Reusable UI components
+=================================================*/
+@import './components/skip-links';
+@import './components/breadcrumbs';
+@import './components/faq';
+@import './components/testimonials';
+@import './components/range-slider';
+
+/*================================================
+  6. PAGES
+  Page-specific styles
+=================================================*/
+@import './pages/product-not-found';
+
+/*================================================
+  7. LEGACY
+  Legacy code from old design variants
+  TODO: Review if still needed, remove if unused
+=================================================*/
+@import './legacy/home2';
+
+/*================================================
+  8. REMAINING (TEMPORARY)
+  Content from original global.scss to be refactored
+  TODO: Break down into proper sections
+=================================================*/
+@import './global-remaining';
