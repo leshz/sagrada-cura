@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { checkout } from '@/services/checkout'
 import * as api from '@/services/api'
-import { mockCheckoutResponse } from '../fixtures/checkout'
+import { mockCheckoutResponse } from '../../fixtures/checkout'
 
 // Mock del módulo api
 vi.mock('@/services/api', () => ({

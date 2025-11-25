@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { create } from 'zustand'
 import { CartSlice, cartSlice } from '@/store/cart'
-import { mockProduct, mockProductWithDiscount } from '../fixtures/products'
+import { mockProduct, mockProductWithDiscount } from '../../../fixtures/products'
 import { toast } from 'react-toastify'
 
 // Crear una store de prueba

@@ -6,7 +6,7 @@ Este proyecto incluye pruebas unitarias con **Vitest** y pruebas E2E con **Playw
 
 ### Tests Unitarios
 
-#### Cart Store (`tests/unit/cart.test.ts`)
+#### Cart Store (`tests/unit/store/cart/index.test.ts`)
 - ✅ Agregar productos al carrito
 - ✅ Incrementar cantidad de productos existentes
 - ✅ Validación de límite de stock
@@ -14,14 +14,14 @@ Este proyecto incluye pruebas unitarias con **Vitest** y pruebas E2E con **Playw
 - ✅ Limpiar carrito completo
 - ✅ Gestión de departamento para envío
 
-#### Helpers de Precios (`tests/unit/helpers.test.ts`)
+#### Helpers de Precios (`tests/unit/utils/helpers.test.ts`)
 - ✅ Cálculo de precio por producto (con y sin descuento)
 - ✅ Cálculo total del carrito
 - ✅ Cálculo de precio de envío por departamento
 - ✅ Precio total con envío
 - ✅ Formateo de teléfono y moneda
 
-#### Servicio Checkout (`tests/unit/checkout.test.ts`)
+#### Servicio Checkout (`tests/unit/services/checkout.test.ts`)
 - ✅ Llamada API exitosa
 - ✅ Manejo de errores de red
 - ✅ Manejo de errores del servidor
@@ -74,20 +74,30 @@ yarn test:e2e:headed
 
 ## 📁 Estructura
 
-```
-tests/
-├── unit/
-│   ├── cart.test.ts        # Tests del store del carrito
-│   ├── helpers.test.ts     # Tests de utilidades de precios
-│   └── checkout.test.ts    # Tests del servicio de checkout
-├── e2e/
-│   └── purchase-flow.spec.ts  # Test del flujo completo de compra
-├── fixtures/
-│   ├── products.ts         # Datos mock de productos
-│   └── checkout.ts         # Datos mock de checkout y envío
-└── setup.ts                # Configuración de Vitest
+La estructura de tests unitarios **refleja la estructura del proyecto** para facilitar su localización:
 
 ```
+tests/
+├── unit/                   # Tests unitarios (estructura espejo de src/)
+│   ├── store/
+│   │   └── cart/
+│   │       └── index.test.ts      # Tests del store del carrito
+│   ├── utils/
+│   │   └── helpers.test.ts        # Tests de utilidades de precios
+│   └── services/
+│       └── checkout.test.ts       # Tests del servicio de checkout
+├── e2e/
+│   └── purchase-flow.spec.ts      # Test del flujo completo de compra
+├── fixtures/
+│   ├── products.ts                # Datos mock de productos
+│   └── checkout.ts                # Datos mock de checkout y envío
+└── setup.ts                       # Configuración de Vitest
+```
+
+**Estructura espejo:** Los tests siguen la misma organización que el código fuente:
+- `src/store/cart/index.ts` → `tests/unit/store/cart/index.test.ts`
+- `src/utils/helpers.ts` → `tests/unit/utils/helpers.test.ts`
+- `src/services/checkout.ts` → `tests/unit/services/checkout.test.ts`
 
 ## 🔧 Configuración
 

@@ -8,8 +8,8 @@ import {
   phoneFormmater,
   currencyFormat
 } from '@/utils/helpers'
-import { mockProduct, mockProductWithDiscount, mockService } from '../fixtures/products'
-import { mockShipments, mockDepartments } from '../fixtures/checkout'
+import { mockProduct, mockProductWithDiscount, mockService } from '../../fixtures/products'
+import { mockShipments, mockDepartments } from '../../fixtures/checkout'
 
 describe('Price Calculation Helpers', () => {
   describe('productPriceSummary', () => {
