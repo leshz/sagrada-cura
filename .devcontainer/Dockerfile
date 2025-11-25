@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxfixes3\                                  
     libxrandr2\                                  
     libgbm1\                                          
-    libasound2
+    libasound2\
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Ensure default node user has access to /usr/local/share
@@ -100,9 +100,7 @@ RUN npm install -g \
     vercel \
     prettier \
     eslint \
-    vitest \
-
-
+    vitest
 # Copy and set up firewall script
 COPY init-firewall.sh /usr/local/bin/
 USER root
