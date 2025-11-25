@@ -63,10 +63,6 @@ const RootLayout = async ({ children }) => {
       lang="es-CO"
     >
       <head>
-        {/* Preload critical resources */}
-        <link rel="preload" href="/assets/css/bootstrap.min.css" as="style" />
-        <link rel="preload" href="/assets/css/style.css" as="style" />
-
         {/* Hreflang tags for localization */}
         <link rel="alternate" hrefLang="es-CO" href="https://sagradacura.com" />
         <link rel="alternate" hrefLang="es" href="https://sagradacura.com" />

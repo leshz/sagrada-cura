@@ -7,7 +7,18 @@
       "Bash(git push:*)",
       "Bash(git mv:*)",
       "Bash(npm run dev:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(mkdir:*)",
+      "Bash(while read file)",
+      "Bash(done)",
+      "Bash(sort:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_run_code",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_close",
+      "Bash(node --version)",
+      "Bash(yarn add:*)"
     ],
     "deny": [],
     "ask": []
