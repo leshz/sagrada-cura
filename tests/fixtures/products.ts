@@ -1,7 +1,7 @@
 import { Product } from '@/types/types'
 
 export const mockProduct: Product = {
-  id: '1',
+  id: 1,
   attributes: {},
   name: 'Aceite Esencial de Lavanda',
   price: 45000,
@@ -34,7 +34,7 @@ export const mockProduct: Product = {
 }
 
 export const mockProductWithDiscount: Product = {
-  id: '2',
+  id: 2,
   attributes: {},
   name: 'Set de Velas Aromáticas',
   price: 60000,
@@ -67,7 +67,7 @@ export const mockProductWithDiscount: Product = {
 }
 
 export const mockService: Product = {
-  id: '3',
+  id: 3,
   attributes: {},
   name: 'Consulta de Tarot',
   price: 35000,
