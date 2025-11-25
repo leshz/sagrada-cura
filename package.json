@@ -8,7 +8,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "linter:fix": "next lint --fix"
+    "linter:fix": "next lint --fix",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "playwright:install": "playwright install chromium"
   },
   "engines": {
     "node": "20.x"
@@ -29,10 +37,16 @@
     "zustand": "4.5.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "20.12.14",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "7.13.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/ui": "^4.0.14",
     "eslint": "^9.39.1",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "^16.0.4",
@@ -42,9 +56,12 @@
     "eslint-plugin-prettier": "5.1.3",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "happy-dom": "^20.0.10",
     "husky": "^9.0.11",
+    "jsdom": "^27.2.0",
     "prettier": "3.2.5",
     "sass": "1.76.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.14"
   }
 }
