@@ -122,10 +122,10 @@ Si estás usando PPR en Next.js 15 canary, espera una guía de migración oficia
 
 #### ✅ Checklist de Pre-requisitos
 
-- [ ] **Backup del Proyecto**
-  - [ ] Crear rama específica para migración: `feature/nextjs-16-upgrade`
+- [ ] **Preparación de Git**
+  - [ ] Verificar que estás en la rama correcta o crear rama de migración
   - [ ] Commit de todos los cambios pendientes
-  - [ ] Verificar que el proyecto build y corre correctamente
+  - [ ] Verificar que el proyecto build y corre correctamente (`npm run build`)
 
 - [ ] **Auditoría del Código**
   - [ ] Listar todos los componentes que usan `params`
@@ -429,21 +429,31 @@ Con el nuevo sistema de routing y layout deduplication:
 
 ### Si algo sale mal:
 
-1. **Revertir cambios de código:**
+1. **Opción 1: Revertir commits específicos**
 ```bash
-git checkout main
-git branch -D feature/nextjs-16-upgrade
+# Ver historial
+git log --oneline
+
+# Revertir último commit manteniendo cambios en staging
+git reset --soft HEAD~1
+
+# O revertir último commit descartando cambios
+git reset --hard HEAD~1
 ```
 
-2. **Revertir dependencias:**
+2. **Opción 2: Cambiar a rama anterior**
 ```bash
-npm install next@15.5.6 react@19.0.0-rc react-dom@19.0.0-rc
+# Si estás en rama de feature
+git checkout main  # o develop
 ```
 
-3. **Limpiar caché:**
+3. **Revertir solo dependencias (si ya hiciste commit de código):**
 ```bash
-rm -rf .next
-rm -rf node_modules
+# Revertir package.json y package-lock.json
+git checkout HEAD~1 -- package.json package-lock.json
+
+# Reinstalar
+rm -rf node_modules .next
 npm install
 npm run dev
 ```
