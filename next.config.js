@@ -17,6 +17,9 @@ const contentSecurityPolicy = process.env.VERCEL === '1' ? prodCSP : ''
 
 const nextConfig = {
   reactStrictMode: false,
+  experimental: {
+    turbopackUseSystemTlsCerts: true
+  },
   images: {
     unoptimized: false,
     remotePatterns: [
