@@ -85,7 +85,9 @@ RUN npm install -g \
     @next/codemod \
     vercel \
     prettier \
-    eslint
+    eslint \
+    vitest \
+
 
 # Copy and set up firewall script
 COPY init-firewall.sh /usr/local/bin/

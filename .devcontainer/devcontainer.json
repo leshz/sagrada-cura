@@ -41,7 +41,8 @@
         "streetsidesoftware.code-spell-checker",
         "ms-vscode.vscode-typescript-next",
         "Yummygum.city-lights-icon-vsc",
-        "Anthropic.claude-code"
+        "Anthropic.claude-code",
+        "vitest.explorer"
       ]
     }
   },

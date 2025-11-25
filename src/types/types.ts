@@ -58,6 +58,6 @@ export type Product = APIResponseData & {
   slug: string;
   stock: number;
   quantityCart?: number;
-  id?: string;
+  id: number;
   [key: string]: any;
 }
