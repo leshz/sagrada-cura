@@ -6,7 +6,20 @@ import { COLLECTIONS } from '@/utils/constants'
 import type { Metadata } from 'next'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
-  title: 'Confirmación'
+  title: 'Confirmación',
+  description: 'Confirmación de compra - Sagrada Cura',
+  alternates: {
+    canonical: 'https://sagradacura.com/tienda/confirmation'
+  },
+  robots: {
+    index: false,
+    follow: false
+  },
+  openGraph: {
+    title: 'Confirmación',
+    url: `https://sagradacura.com/tienda/confirmation`,
+    type: 'website'
+  }
 })
 
 const Confirmation = async ({

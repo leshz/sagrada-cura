@@ -1,0 +1,21 @@
+/*================================================
+  Reset Styles - Sagrada Cura
+  Basic reset and normalization styles
+=================================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-synthesis: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.plain-text {
+  display: none;
+}

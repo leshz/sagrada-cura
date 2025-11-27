@@ -1,0 +1,50 @@
+/*================================================
+  Skip Links Component - Sagrada Cura
+  Accessibility navigation links
+=================================================*/
+
+.skip-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: var(--primary-color1);
+  padding: 10px;
+  border-radius: 0 0 5px 0;
+}
+
+.skip-link {
+  display: block;
+  color: var(--white-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  margin: 5px 0;
+  background: var(--important-color1);
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background: var(--white-color);
+    color: var(--primary-color1);
+    outline: 2px solid var(--important-color1);
+    outline-offset: 2px;
+  }
+}
+
+/* Product-specific skip links */
+.product-skip-links {
+  background: var(--important-color1);
+
+  .skip-link {
+    background: var(--white-color);
+    color: var(--important-color1);
+
+    &:hover,
+    &:focus {
+      background: var(--important-color2);
+      color: var(--white-color);
+    }
+  }
+}

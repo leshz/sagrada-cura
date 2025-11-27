@@ -12,7 +12,7 @@ import type { Metadata } from 'next'
 import { getImagePath } from '@/utils/helpers'
 
 import 'react-toastify/dist/ReactToastify.css'
-import '@/styles/global.scss'
+import '@/styles/main.scss'
 
 export const cormorant = Cormorant({
   weight: ['400', '600'],
@@ -63,10 +63,6 @@ const RootLayout = async ({ children }) => {
       lang="es-CO"
     >
       <head>
-        {/* Preload critical resources */}
-        <link rel="preload" href="/assets/css/bootstrap.min.css" as="style" />
-        <link rel="preload" href="/assets/css/style.css" as="style" />
-
         {/* Hreflang tags for localization */}
         <link rel="alternate" hrefLang="es-CO" href="https://sagradacura.com" />
         <link rel="alternate" hrefLang="es" href="https://sagradacura.com" />
