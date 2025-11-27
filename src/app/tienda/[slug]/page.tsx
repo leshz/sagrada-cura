@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Script from 'next/script'
 import {
   ProductImageGallery,
@@ -162,7 +163,9 @@ const ProductDefaultPage = async ({ params }) => {
               /> */}
               <div className="row gy-5">
                 <section id="product-gallery" className="col-lg-6" aria-label="Galería de imágenes del producto">
-                  <ProductImageGallery pictures={pictures} productName={name} />
+                  <Suspense fallback={<div className="loading-gallery">Cargando imágenes...</div>}>
+                    <ProductImageGallery pictures={pictures} productName={name} />
+                  </Suspense>
                 </section>
                 <section id="product-info" className="col-lg-6" aria-label="Información del producto">
                   <div className="shop-details-content">
