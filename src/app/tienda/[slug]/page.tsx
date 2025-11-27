@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import {
-  Slider,
+  ProductImageGallery,
   PaymentsInformation,
   ShippingInfo,
   Accordion,
@@ -162,7 +162,7 @@ const ProductDefaultPage = async ({ params }) => {
               /> */}
               <div className="row gy-5">
                 <section id="product-gallery" className="col-lg-6" aria-label="Galería de imágenes del producto">
-                  <Slider pictures={pictures} />
+                  <ProductImageGallery pictures={pictures} productName={name} />
                 </section>
                 <section id="product-info" className="col-lg-6" aria-label="Información del producto">
                   <div className="shop-details-content">

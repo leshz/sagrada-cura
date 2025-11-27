@@ -1,4 +1,5 @@
 export { Slider } from './slider'
+export { ProductImageGallery } from './ProductImageGallery'
 export { PaymentsInformation } from './payment'
 export { ShippingInfo } from './shipping'
 export { Buttons } from './buttons-actions'
