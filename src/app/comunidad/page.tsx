@@ -9,6 +9,13 @@ import { CommunityForm } from "@/components/pages/comunidad/form"
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: "Haz parte de nuestra comunidad",
   description: "Haz parte de nuestra comunidad y únete a nosotros en XXX",
+  alternates: {
+    canonical: 'https://sagradacura.com/comunidad'
+  },
+  robots: {
+    index: true,
+    follow: true
+  },
   openGraph: {
     title: "Haz parte de nuestra comunidad",
     description: "Haz parte de nuestra comunidad y únete a nosotros en XXX",

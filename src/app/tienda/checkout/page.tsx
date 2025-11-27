@@ -8,7 +8,20 @@ import type { Metadata } from 'next'
 import { APIResponseCollection } from '@/types/types'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
-  title: 'Checkout'
+  title: 'Checkout',
+  description: 'Finalizar compra - Sagrada Cura',
+  alternates: {
+    canonical: 'https://sagradacura.com/tienda/checkout'
+  },
+  robots: {
+    index: false,
+    follow: false
+  },
+  openGraph: {
+    title: 'Checkout',
+    url: `https://sagradacura.com/tienda/checkout`,
+    type: 'website'
+  }
 })
 
 const Checkout = async () => {

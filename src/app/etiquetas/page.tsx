@@ -8,9 +8,17 @@ import { Card } from '@/components/product-card'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Etiquetas de nuestros productos',
+  description: 'Descubre nuestros productos por etiquetas - Sagrada Cura',
+  alternates: {
+    canonical: 'https://sagradacura.com/etiquetas'
+  },
+  robots: {
+    index: true,
+    follow: true
+  },
   openGraph: {
     title: 'Etiquetas de nuestros productos',
-    url: `https://sagradacura.com/tienda`,
+    url: `https://sagradacura.com/etiquetas`,
     type: 'website'
   }
 })
