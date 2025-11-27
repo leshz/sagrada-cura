@@ -1,0 +1,138 @@
+/*================================================
+  Newsletter Component - Sagrada Cura
+  Newsletter subscription section with form
+=================================================*/
+
+.newsletter-section {
+  .newsletter-banner {
+    background-image: linear-gradient(rgba(#222, 0.699999988079071),
+        rgba(#222, 0.699999988079071)),
+      url('/img/newsletter-bg.png');
+    object-fit: cover;
+    background-repeat: no-repeat;
+    padding: 110px 10px 110px 10px;
+
+    .newsletter-content {
+      text-align: center;
+      max-width: 570px;
+      width: 100%;
+      margin: 0 auto;
+
+      @include sm-device() {
+        max-width: 450px;
+      }
+
+      @include sm-down-device() {
+        max-width: 310px;
+      }
+
+      h2 {
+        color: var(--white-color);
+        font-size: 30px;
+        font-family: var(--font-primary);
+        font-weight: 600;
+        text-transform: capitalize;
+        margin-bottom: 70px;
+
+        @include sm-device() {
+          font-size: 25px;
+          margin-bottom: 50px;
+        }
+
+        @include sm-down-device() {
+          font-size: 20px;
+          margin-bottom: 40px;
+        }
+      }
+
+      .from-inner {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--white-color);
+        padding-bottom: 5px;
+
+        input {
+          background: transparent;
+          border: none;
+          outline: none;
+          color: var(--white-color);
+          font-size: 12px;
+          font-family: var(--font-primary);
+          text-transform: capitalize;
+          width: 100%;
+
+          &::placeholder {
+            color: var(--white-color);
+          }
+        }
+
+        .from-arrow {
+          i {
+            color: var(--white-color);
+          }
+        }
+      }
+    }
+  }
+
+  &.style-2 {
+    .newsletter-banner {
+      background-color: #f4f0d7;
+      background-image: none;
+      position: relative;
+      border-radius: 10px;
+
+      .top-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px 0 0 0;
+      }
+
+      .bottom-left {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 0 0 0 10px;
+      }
+
+      .top-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 0 10px 0 0;
+      }
+
+      .bottom-right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-radius: 0 0 10px 0;
+      }
+
+      .newsletter-content {
+        h2 {
+          color: var(--primary-color1);
+        }
+
+        .from-inner {
+          border-bottom: 1px solid var(--primary-color1);
+
+          input {
+            color: var(--primary-color1);
+
+            &::placeholder {
+              color: var(--primary-color1);
+            }
+          }
+
+          .from-arrow {
+            i {
+              color: var(--primary-color1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

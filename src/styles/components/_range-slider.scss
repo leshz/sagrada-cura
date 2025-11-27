@@ -1,0 +1,155 @@
+/*================================================
+  Range Slider Component - Sagrada Cura
+  Custom price range slider with noUi-slider styles
+=================================================*/
+
+.range-wrap {
+  padding-top: 10px;
+
+  .slider-labels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .caption {
+      color: rgba(#222, 0.6000000238418579);
+      font-family: var(--font-primary);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.3px;
+    }
+
+    a {
+      color: var(--text-color);
+      font-family: var(--font-primary);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  .noUi-target,
+  .range-wrap .noUi-target * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    -moz-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+  }
+
+  .noUi-target {
+    position: relative;
+    direction: ltr;
+  }
+
+  .noUi-base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    /* Fix 401 */
+  }
+
+  .noUi-origin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .noUi-handle {
+    position: relative;
+    z-index: 1;
+  }
+
+  .noUi-stacking .noUi-handle {
+    /* This class is applied to the lower origin when
+       its values is > 50%. */
+    z-index: 10;
+  }
+
+  .noUi-state-tap {
+    .noUi-origin {
+      transition:
+        left 0.3s,
+        top 0.3s;
+    }
+  }
+
+  .noUi-state-drag * {
+    cursor: inherit !important;
+  }
+
+  .noUi-base,
+  .range-wrap .noUi-handle {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .noUi-horizontal {
+    height: 4px;
+
+    .noUi-handle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      left: 0px;
+      right: 0px;
+      top: -4px;
+      background-color: var(--primary-color1);
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        background-color: var(--white-color);
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  .noUi-background {
+    background: rgba(33, 33, 33, 0.5);
+    height: 5px;
+    border-radius: 10px;
+  }
+
+  .noUi-connect {
+    background: var(--primary-color1);
+    transition: background 450ms;
+    border-radius: 10px;
+    height: 5px;
+  }
+
+  .noUi-target {
+    border-radius: 10px;
+  }
+
+  &.style-2 {
+    box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);
+    padding: 20px;
+    border-radius: 4px;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    background-color: var(--white-color);
+    display: none;
+    transform: scaleY(0);
+    transform-origin: top;
+    z-index: 9;
+
+    &.slide {
+      display: block;
+      transform: scaleY(1);
+      animation: fade-down 0.45s linear;
+    }
+  }
+}

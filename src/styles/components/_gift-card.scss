@@ -1,0 +1,146 @@
+/*================================================
+  Gift Card Component - Sagrada Cura
+  Gift card promotional section
+=================================================*/
+
+.gift-section {
+  background: #f5f3f1;
+  position: relative;
+
+  @include xxl-device() {
+    // padding: 0 30px;
+  }
+
+  .gift-img1 {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include xl-device() {
+      left: 15px;
+    }
+
+    @include xl-down-device() {
+      display: none;
+    }
+  }
+
+  .gift-img2 {
+    position: absolute;
+    right: 85px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include xxl-device() {
+      right: 65px;
+    }
+
+    @include xl-device() {
+      right: 5px;
+    }
+
+    @include xl-down-device() {
+      display: none;
+    }
+  }
+
+  .gift-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include xxl-device() {
+      justify-content: center;
+      gap: 70px;
+    }
+
+    @include xl-device() {
+      justify-content: center;
+      gap: 50px;
+    }
+
+    @include lg-down-device() {
+      gap: 20px;
+    }
+
+    @include md-down-device() {
+      flex-direction: column;
+    }
+
+    padding: 55px 0 55px 0;
+
+    h5 {
+      color: var(--primary-color1);
+      font-family: var(--font-primary);
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: capitalize;
+      margin: 0;
+    }
+
+    .gift-card-content {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--primary-color1);
+        left: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include xxl-device() {
+          left: -30px;
+        }
+
+        @include xl-device() {
+          left: -30px;
+        }
+
+        @include lg-device() {
+          left: -25px;
+        }
+
+        @include lg-down-device() {
+          display: none;
+        }
+      }
+
+      p {
+        max-width: 465px;
+        width: 100%;
+        color: var(--primary-color1);
+        font-family: var(--font-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.8;
+        letter-spacing: 0.48px;
+        text-transform: capitalize;
+        margin: 0;
+
+        @include md-device() {
+          max-width: 300px;
+        }
+
+        @include md-down-device() {
+          text-align: center;
+        }
+      }
+    }
+
+    .primary-btn1 {
+      padding: 10px 30px;
+
+      @include md-device() {
+        padding: 8px 20px;
+      }
+    }
+  }
+}

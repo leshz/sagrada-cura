@@ -15,6 +15,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: 'Nuestra tienda',
     description: 'Nuestra tienda',
+    alternates: {
+      canonical: 'https://sagradacura.com/tienda'
+    },
+    robots: {
+      index: true,
+      follow: true
+    },
     openGraph: {
       title: 'Nuestra tienda',
       description: 'Nuestra tienda',
