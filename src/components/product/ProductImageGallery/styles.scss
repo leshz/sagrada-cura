@@ -1,12 +1,18 @@
+@import '@/styles/base/mixins.scss';
+
+/*........................
+  Product Image Gallery
+........................*/
+
 // Gallery Container
-.gallery {
+.product-image-gallery {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.noImages {
+.product-image-gallery-no-images {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +23,7 @@
 }
 
 // Main Image
-.mainImageContainer {
+.product-image-main-container {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
@@ -26,7 +32,7 @@
   overflow: hidden;
 }
 
-.mainImageButton {
+.product-image-main-button {
   position: relative;
   width: 100%;
   height: 100%;
@@ -37,7 +43,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    .zoomIcon {
+    .product-image-zoom-icon {
       opacity: 1;
     }
   }
@@ -48,7 +54,7 @@
   }
 }
 
-.imageWrapper {
+.product-image-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
@@ -63,11 +69,11 @@
   }
 }
 
-.mainImage {
+.product-image-main {
   object-fit: contain !important;
 }
 
-.zoomIcon {
+.product-image-zoom-icon {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -84,7 +90,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.imagePlaceholder {
+.product-image-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
@@ -95,7 +101,7 @@
 }
 
 // Thumbnail Grid
-.thumbnailGrid {
+.product-image-thumbnail-grid {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
@@ -116,13 +122,13 @@
   }
 }
 
-.thumbnailWrapper {
+.product-image-thumbnail-wrapper {
   display: flex;
   gap: 10px;
   padding: 4px 0;
 }
 
-.thumbnail {
+.product-image-thumbnail {
   flex-shrink: 0;
   width: 80px;
   height: 80px;
@@ -149,22 +155,22 @@
     width: 100%;
     height: 100%;
   }
-}
 
-.thumbnailActive {
-  border-color: #858585;
-
-  &:hover {
+  &.active {
     border-color: #858585;
+
+    &:hover {
+      border-color: #858585;
+    }
   }
 }
 
-.thumbnailImage {
+.product-image-thumbnail-img {
   object-fit: cover !important;
 }
 
 // Zoom Modal
-.zoomModal {
+.product-image-zoom-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -181,7 +187,7 @@
   }
 }
 
-.zoomOverlay {
+.product-image-zoom-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -190,7 +196,7 @@
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.zoomContent {
+.product-image-zoom-content {
   position: relative;
   width: 100%;
   height: 100%;
@@ -200,7 +206,7 @@
   padding: 60px 20px 20px;
 }
 
-.closeButton {
+.product-image-zoom-close {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -227,7 +233,7 @@
   }
 }
 
-.zoomControls {
+.product-image-zoom-controls {
   position: absolute;
   bottom: 24px;
   left: 50%;
@@ -269,14 +275,14 @@
   }
 }
 
-.scaleText {
+.product-image-zoom-scale {
   font-size: 14px;
   font-weight: 500;
   min-width: 50px;
   text-align: center;
 }
 
-.navButton {
+.product-image-zoom-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -301,17 +307,17 @@
     outline: 2px solid white;
     outline-offset: 2px;
   }
+
+  &.prev {
+    left: 16px;
+  }
+
+  &.next {
+    right: 16px;
+  }
 }
 
-.navButtonPrev {
-  left: 16px;
-}
-
-.navButtonNext {
-  right: 16px;
-}
-
-.zoomImageContainer {
+.product-image-zoom-image-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -321,7 +327,7 @@
   overflow: hidden;
 }
 
-.zoomImageWrapper {
+.product-image-zoom-image-wrapper {
   max-width: 90%;
   max-height: 90%;
   transition: transform 0.3s ease;
@@ -339,7 +345,7 @@
   }
 }
 
-.imageCounter {
+.product-image-zoom-counter {
   position: absolute;
   top: 24px;
   left: 50%;
@@ -365,44 +371,44 @@
 
 // Responsive
 @media (max-width: 768px) {
-  .zoomContent {
+  .product-image-zoom-content {
     padding: 80px 16px 100px;
   }
 
-  .closeButton {
+  .product-image-zoom-close {
     top: 12px;
     right: 12px;
   }
 
-  .zoomControls {
+  .product-image-zoom-controls {
     bottom: 20px;
   }
 
-  .navButton {
+  .product-image-zoom-nav {
     width: 40px;
     height: 40px;
+
+    &.prev {
+      left: 12px;
+    }
+
+    &.next {
+      right: 12px;
+    }
   }
 
-  .navButtonPrev {
-    left: 12px;
-  }
-
-  .navButtonNext {
-    right: 12px;
-  }
-
-  .thumbnailWrapper {
+  .product-image-thumbnail-wrapper {
     gap: 8px;
   }
 
-  .thumbnail {
+  .product-image-thumbnail {
     width: 70px;
     height: 70px;
   }
 }
 
 @media (max-width: 480px) {
-  .thumbnail {
+  .product-image-thumbnail {
     width: 60px;
     height: 60px;
   }
