@@ -7,7 +7,7 @@ import { ZoomModal } from './ZoomModal'
 import { useImageGallery } from './hooks/useImageGallery'
 import { useImageZoom } from './hooks/useImageZoom'
 import type { ProductImageGalleryProps } from './types'
-import styles from './ImageGallery.module.scss'
+import './styles.scss'
 
 export const ProductImageGallery: FC<ProductImageGalleryProps> = ({
   pictures,
@@ -35,8 +35,8 @@ export const ProductImageGallery: FC<ProductImageGalleryProps> = ({
 
   if (!pictures || pictures.length === 0) {
     return (
-      <div className={styles.gallery}>
-        <div className={styles.noImages}>
+      <div className="product-image-gallery">
+        <div className="product-image-gallery-no-images">
           <p>No hay imágenes disponibles</p>
         </div>
       </div>
@@ -44,7 +44,7 @@ export const ProductImageGallery: FC<ProductImageGalleryProps> = ({
   }
 
   return (
-    <div className={styles.gallery} role="region" aria-label="Galería de imágenes del producto">
+    <div className="product-image-gallery" role="region" aria-label="Galería de imágenes del producto">
       <MainImage
         image={currentImage}
         onZoomClick={openZoom}

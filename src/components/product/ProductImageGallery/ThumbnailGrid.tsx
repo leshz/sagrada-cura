@@ -4,7 +4,6 @@ import type { FC } from 'react'
 import { useRef, useEffect } from 'react'
 import { ImageWrapper } from '@/components/Image'
 import type { Picture } from './types'
-import styles from './ImageGallery.module.scss'
 
 interface ThumbnailGridProps {
   images: Picture[]
@@ -50,19 +49,19 @@ export const ThumbnailGrid: FC<ThumbnailGridProps> = ({
 
   return (
     <nav
-      className={styles.thumbnailGrid}
+      className="product-image-thumbnail-grid"
       aria-label="Miniaturas de producto"
       ref={containerRef}
     >
-      <div className={styles.thumbnailWrapper}>
+      <div className="product-image-thumbnail-wrapper">
         {images.map((image, index) => (
           <button
             key={image.id || index}
             ref={(el) => {
               thumbnailRefs.current[index] = el
             }}
-            className={`${styles.thumbnail} ${
-              index === currentIndex ? styles.thumbnailActive : ''
+            className={`product-image-thumbnail ${
+              index === currentIndex ? 'active' : ''
             }`}
             onClick={() => onSelect(index)}
             aria-label={`Ver imagen ${index + 1} de ${images.length}`}
@@ -74,7 +73,7 @@ export const ThumbnailGrid: FC<ThumbnailGridProps> = ({
               width={80}
               height={80}
               format="thumbnail"
-              className={styles.thumbnailImage}
+              className="product-image-thumbnail-img"
             />
           </button>
         ))}

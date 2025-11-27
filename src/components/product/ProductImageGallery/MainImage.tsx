@@ -3,7 +3,6 @@
 import type { FC } from 'react'
 import { ImageWrapper } from '@/components/Image'
 import type { Picture } from './types'
-import styles from './ImageGallery.module.scss'
 
 interface MainImageProps {
   image: Picture | null
@@ -20,8 +19,8 @@ export const MainImage: FC<MainImageProps> = ({
 }) => {
   if (!image) {
     return (
-      <div className={styles.mainImageContainer}>
-        <div className={styles.imagePlaceholder}>
+      <div className="product-image-main-container">
+        <div className="product-image-placeholder">
           <span>No hay imagen disponible</span>
         </div>
       </div>
@@ -29,21 +28,21 @@ export const MainImage: FC<MainImageProps> = ({
   }
 
   return (
-    <div className={styles.mainImageContainer}>
+    <div className="product-image-main-container">
       <button
-        className={styles.mainImageButton}
+        className="product-image-main-button"
         onClick={onZoomClick}
         aria-label="Ampliar imagen del producto"
         type="button"
       >
-        <div className={styles.imageWrapper}>
+        <div className="product-image-wrapper">
           <ImageWrapper
             image={image}
             priority={priority}
-            className={styles.mainImage}
+            className="product-image-main"
           />
         </div>
-        <div className={styles.zoomIcon}>
+        <div className="product-image-zoom-icon">
           <svg
             width="24"
             height="24"

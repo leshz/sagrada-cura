@@ -4,7 +4,6 @@ import type { FC } from 'react'
 import { useEffect, useRef } from 'react'
 import { ImageWrapper } from '@/components/Image'
 import type { Picture } from './types'
-import styles from './ImageGallery.module.scss'
 
 interface ZoomModalProps {
   isOpen: boolean
@@ -57,7 +56,7 @@ export const ZoomModal: FC<ZoomModalProps> = ({
 
   return (
     <div
-      className={styles.zoomModal}
+      className="product-image-zoom-modal"
       onClick={handleOverlayClick}
       role="dialog"
       aria-modal="true"
@@ -65,11 +64,11 @@ export const ZoomModal: FC<ZoomModalProps> = ({
       ref={modalRef}
       tabIndex={-1}
     >
-      <div className={styles.zoomOverlay} />
+      <div className="product-image-zoom-overlay" />
 
-      <div className={styles.zoomContent}>
+      <div className="product-image-zoom-content">
         <button
-          className={styles.closeButton}
+          className="product-image-zoom-close"
           onClick={onClose}
           aria-label="Cerrar vista ampliada"
           type="button"
@@ -91,7 +90,7 @@ export const ZoomModal: FC<ZoomModalProps> = ({
           </svg>
         </button>
 
-        <div className={styles.zoomControls}>
+        <div className="product-image-zoom-controls">
           <button
             onClick={onZoomOut}
             disabled={scale <= 1}
@@ -115,7 +114,7 @@ export const ZoomModal: FC<ZoomModalProps> = ({
           </button>
 
           <button onClick={onReset} aria-label="Restablecer zoom" type="button">
-            <span className={styles.scaleText}>{Math.round(scale * 100)}%</span>
+            <span className="product-image-zoom-scale">{Math.round(scale * 100)}%</span>
           </button>
 
           <button
@@ -145,7 +144,7 @@ export const ZoomModal: FC<ZoomModalProps> = ({
           <>
             {onPrev && (
               <button
-                className={`${styles.navButton} ${styles.navButtonPrev}`}
+                className="product-image-zoom-nav prev"
                 onClick={onPrev}
                 aria-label="Imagen anterior"
                 type="button"
@@ -170,7 +169,7 @@ export const ZoomModal: FC<ZoomModalProps> = ({
 
             {onNext && (
               <button
-                className={`${styles.navButton} ${styles.navButtonNext}`}
+                className="product-image-zoom-nav next"
                 onClick={onNext}
                 aria-label="Siguiente imagen"
                 type="button"
@@ -196,11 +195,11 @@ export const ZoomModal: FC<ZoomModalProps> = ({
         )}
 
         <div
-          className={styles.zoomImageContainer}
+          className="product-image-zoom-image-container"
           onMouseMove={onMouseMove}
         >
           <div
-            className={styles.zoomImageWrapper}
+            className="product-image-zoom-image-wrapper"
             style={{
               transform: `scale(${scale})`,
               transformOrigin: transformOrigin,
@@ -212,7 +211,7 @@ export const ZoomModal: FC<ZoomModalProps> = ({
         </div>
 
         {totalImages > 1 && (
-          <div className={styles.imageCounter}>
+          <div className="product-image-zoom-counter">
             {currentIndex + 1} / {totalImages}
           </div>
         )}
