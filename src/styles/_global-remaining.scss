@@ -616,15 +616,16 @@ input::-webkit-inner-spin-button {
 
 textarea,
 input.text,
-input[type="text"],
-input[type="button"],
-input[type="submit"],
-input[type="date"],
+input[type='text'],
+input[type='button'],
+input[type='submit'],
+input[type='date'],
 .input-checkbox {
   -webkit-appearance: none;
 }
 
-input[type="date"], select{
+input[type='date'],
+select {
   background: white;
   color: black;
   min-height: 50px;
@@ -776,7 +777,6 @@ input[type='number'] {
   }
 
   &:hover {
-
     // border: 0.5px solid transparent;
     &::before {
       width: 100%;
@@ -1448,11 +1448,13 @@ input[type='number'] {
     padding: 80px 0 80px 0;
   }
 
-  h3 {
-    color: var(--white-color);
+  .section-title {
+    h3 {
+      color: var(--white-color);
 
-    &:after {
-      background: var(--white-color);
+      &:after {
+        background: var(--white-color);
+      }
     }
   }
 
@@ -1997,11 +1999,12 @@ input[type='number'] {
   position: relative;
   z-index: 1;
 
-  h3 {
-    color: var(--white-color);
-
-    &:after {
-      background: var(--white-color);
+  .section-title2 {
+    h3 {
+      color: var(--white-color);
+      &:after {
+        background: var(--white-color);
+      }
     }
   }
 
@@ -2224,7 +2227,7 @@ input[type='number'] {
     }
   }
 
-  .breadcrumb-item+.breadcrumb-item::before {
+  .breadcrumb-item + .breadcrumb-item::before {
     float: left;
     padding-right: 0.5rem;
     color: var(--title-color);
@@ -3299,7 +3302,7 @@ input[type='number'] {
       }
 
       .recent-post-content {
-        >a {
+        > a {
           color: rgba(#222, 0.5);
           font-family: var(--font-secondary);
           font-size: 12px;
@@ -4194,4 +4197,3 @@ Brand-Section Css
     }
   }
 }
-
