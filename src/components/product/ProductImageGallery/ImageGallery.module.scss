@@ -1,0 +1,409 @@
+// Gallery Container
+.gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.noImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  color: #666;
+}
+
+// Main Image
+.mainImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mainImageButton {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: zoom-in;
+  transition: all 0.3s ease;
+
+  &:hover {
+    .zoomIcon {
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #858585;
+    outline-offset: 2px;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.mainImage {
+  object-fit: contain !important;
+}
+
+.zoomIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  color: #999;
+}
+
+// Thumbnail Grid
+.thumbnailGrid {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+}
+
+.thumbnailWrapper {
+  display: flex;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    border-color: #b8b8b8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #858585;
+    outline-offset: 2px;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.thumbnailActive {
+  border-color: #858585;
+
+  &:hover {
+    border-color: #858585;
+  }
+}
+
+.thumbnailImage {
+  object-fit: cover !important;
+}
+
+// Zoom Modal
+.zoomModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.zoomOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.zoomContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 20px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+.zoomControls {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 8px 16px;
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+
+  button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: none;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #858585;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.scaleText {
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: center;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+.navButtonPrev {
+  left: 16px;
+}
+
+.navButtonNext {
+  right: 16px;
+}
+
+.zoomImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.zoomImageWrapper {
+  max-width: 90%;
+  max-height: 90%;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.imageCounter {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .zoomContent {
+    padding: 80px 16px 100px;
+  }
+
+  .closeButton {
+    top: 12px;
+    right: 12px;
+  }
+
+  .zoomControls {
+    bottom: 20px;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navButtonPrev {
+    left: 12px;
+  }
+
+  .navButtonNext {
+    right: 12px;
+  }
+
+  .thumbnailWrapper {
+    gap: 8px;
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+}
