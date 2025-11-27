@@ -9,9 +9,17 @@ export const dynamic = 'force-static'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: 'Carrito de compras',
+  description: 'Carrito de compras - Sagrada Cura',
+  alternates: {
+    canonical: 'https://sagradacura.com/tienda/carrito-de-compras'
+  },
+  robots: {
+    index: false,
+    follow: false
+  },
   openGraph: {
     title: 'Carrito de compras',
-    url: `https://sagradacura.com/tienda`,
+    url: `https://sagradacura.com/tienda/carrito-de-compras`,
     type: 'website'
   }
 })
