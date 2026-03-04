@@ -2,7 +2,9 @@
   "name": "sagrada-cura",
   "resolutions": {
     "lodash": "^4.17.23",
-    "lodash-es": "^4.17.23"
+    "lodash-es": "^4.17.23",
+    "minimatch": "^10.2.3",
+    "rollup": "^4.59.0"
   },
   "version": "3.1.2",
   "description": "Sagrada Cura is a web to find you balance in life",
@@ -39,7 +41,7 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-toastify": "^11.0.5",
-    "swiper": "11.1.1",
+    "swiper": "^12.1.2",
     "yup": "^1.4.0",
     "zustand": "4.5.6"
   },
