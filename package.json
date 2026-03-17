@@ -72,7 +72,7 @@
     "husky": "^9.0.11",
     "jsdom": "^27.2.0",
     "prettier": "3.2.5",
-    "sass": "1.76.0",
+    "sass": "1.98.0",
     "stylelint": "^16.26.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard-scss": "^16.0.0",
