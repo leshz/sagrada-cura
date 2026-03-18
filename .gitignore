@@ -39,3 +39,4 @@ next-env.d.ts
 .turbo
 /playwright-report
 /test-results
+.claude/settings.local.json
