@@ -1,4 +1,4 @@
-@import '@/styles/base/mixins.scss';
+@use '@/styles/base/mixins' as *;
 
 .article-card {
   border: 1px solid var(--primary-color1);

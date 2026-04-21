@@ -20,9 +20,6 @@ const contentSecurityPolicy = process.env.VERCEL === '1' ? prodCSP : ''
 
 const nextConfig = {
   reactStrictMode: false,
-  experimental: {
-    turbopackUseSystemTlsCerts: true
-  },
   images: {
     unoptimized: false,
     remotePatterns: [
@@ -43,7 +40,8 @@ const nextConfig = {
     minimumCacheTTL: 60,
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')]
+    includePaths: [path.join(__dirname, 'styles')],
+    silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function']
   },
   async headers() {
     return [
