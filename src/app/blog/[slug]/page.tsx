@@ -15,8 +15,6 @@ import { ImageWrapper } from '@/components/Image'
 
 import './page.scss'
 
-export const dynamic = 'force-static'
-
 export const generateStaticParams = async () => {
   const { data: blogs } = await getCollections<any>(COLLECTIONS.blogs, {
     params: {
