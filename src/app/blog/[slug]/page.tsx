@@ -15,11 +15,13 @@ import { ImageWrapper } from '@/components/Image'
 
 import './page.scss'
 
+export const dynamic = 'force-dynamic'
+
 export const generateStaticParams = async () => {
   const { data: blogs } = await getCollections<any>(COLLECTIONS.blogs, {
     params: {
-      'pagination[pageSize]': '100',
-    },
+      'pagination[pageSize]': '100'
+    }
   })
   const slugs = blogs.map(entry => ({ slug: entry.slug }))
 
@@ -35,13 +37,14 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
     return {}
   }
 
-
   const { title, image, short_description, slug: slugPost, tags } = data
 
   const imgUrl = getImagePath(image, 'small')
   const canonicalUrl = `https://sagradacura.com/blog/${slugPost}`
-  const authorName = "Sagrada Cura"
-  const keywords = tags?.data?.map((tag: any) => tag.name).join(", ") || "sanación natural, bienestar, espiritualidad"
+  const authorName = 'Sagrada Cura'
+  const keywords =
+    tags?.data?.map((tag: any) => tag.name).join(', ') ||
+    'sanación natural, bienestar, espiritualidad'
 
   return {
     title: `${title} | Blog de Sagrada Cura`,
@@ -62,7 +65,7 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
       locale: 'es',
       siteName: 'Sagrada Cura',
       authors: [authorName],
-      tags: keywords.split(", ")
+      tags: keywords.split(', ')
     },
     twitter: {
       card: 'summary_large_image',
@@ -110,7 +113,10 @@ const BlogDetailsPage = async ({ params }) => {
               <div className="blog-navigation mt-40">
                 <div className="row">
                   <div className="col-12">
-                    <Link href="/blog" className="primary-btn3 black-bg hover-btn5 hover-white">
+                    <Link
+                      href="/blog"
+                      className="primary-btn3 black-bg hover-btn5 hover-white"
+                    >
                       ← Volver al Blogs
                     </Link>
                   </div>

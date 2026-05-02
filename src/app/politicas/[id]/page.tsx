@@ -5,6 +5,8 @@ import { getSingles } from '@/services'
 
 import '../../nuestra-marca/page.scss'
 
+export const dynamic = 'force-dynamic'
+
 export const generateStaticParams = async () => [
   { id: 'condiciones-de-envio' },
   { id: 'derecho-de-retracto' },
