@@ -1,6 +1,5 @@
 import type { ContactFormData, StrapiBodyFormContact } from '@/types/types'
 import { transformData } from '@/utils/helpers'
-import { notFound } from 'next/navigation';
 import { fetchApi } from './api'
 import type { optionsCollection, APIResponse } from './type'
 
@@ -41,7 +40,7 @@ const getCollections = async <T = Record<string, unknown>>(
     return data
 
   } catch (error) {
-    return notFound()
+    return { data: null as unknown as T, status: 404, statusText: 'Not Found', meta: undefined }
   }
 }
 

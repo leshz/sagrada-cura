@@ -15,17 +15,14 @@ import { ImageWrapper } from '@/components/Image'
 
 import './page.scss'
 
-export const dynamic = 'force-dynamic'
-
 export const generateStaticParams = async () => {
   const { data: blogs } = await getCollections<any>(COLLECTIONS.blogs, {
     params: {
       'pagination[pageSize]': '100'
     }
   })
-  const slugs = blogs.map(entry => ({ slug: entry.slug }))
-
-  return slugs
+  if (!blogs || !Array.isArray(blogs)) return []
+  return blogs.map(entry => ({ slug: entry.slug }))
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
