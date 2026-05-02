@@ -1,4 +1,4 @@
-@import '@/styles/base/mixins.scss';
+@use '@/styles/base/mixins' as *;
 
 .footer-section {
   background-color: var(--important-color1);
