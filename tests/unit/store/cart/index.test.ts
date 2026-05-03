@@ -1,14 +1,12 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { create } from 'zustand'
+import { create, StateCreator } from 'zustand'
 import { CartSlice, cartSlice } from '@/store/cart'
 import { mockProduct, mockProductWithDiscount } from '../../../fixtures/products'
 import { toast } from 'react-toastify'
 
 // Crear una store de prueba
 const createTestStore = () => {
-  return create<CartSlice>()((...args) => ({
-    ...cartSlice(...args)
-  }))
+  return create<CartSlice>()(cartSlice as StateCreator<CartSlice>)
 }
 
 describe('Cart Store', () => {

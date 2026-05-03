@@ -43,7 +43,8 @@ describe('Checkout Service', () => {
       vi.mocked(api.fetchApi).mockResolvedValue({
         data: mockCheckoutResponse,
         status: 200,
-        statusText: 'OK'
+        statusText: 'OK',
+        meta: null
       })
 
       const result = await checkout(checkoutData)
@@ -108,7 +109,8 @@ describe('Checkout Service', () => {
       vi.mocked(api.fetchApi).mockResolvedValue({
         data: mockCheckoutResponse,
         status: 200,
-        statusText: 'OK'
+        statusText: 'OK',
+        meta: null
       })
 
       await checkout(checkoutData)
@@ -128,7 +130,8 @@ describe('Checkout Service', () => {
       vi.mocked(api.fetchApi).mockResolvedValue({
         data: mockCheckoutResponse,
         status: 200,
-        statusText: 'OK'
+        statusText: 'OK',
+        meta: null
       })
 
       await checkout(checkoutData)

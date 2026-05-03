@@ -40,7 +40,13 @@ const getCollections = async <T = Record<string, unknown>>(
     return data
 
   } catch (error) {
+<<<<<<< HEAD
     return { data: null as unknown as T, status: 404, statusText: 'Not Found', meta: null }
+||||||| 0d4a5e0
+    return notFound()
+=======
+    return { data: null as unknown as T, status: 404, statusText: 'Not Found', meta: undefined }
+>>>>>>> main
   }
 }
 
