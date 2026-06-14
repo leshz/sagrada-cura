@@ -6,7 +6,7 @@ import { useChangePath } from '@/hooks/use-change-path'
 
 import './styles/header.scss'
 
-const Header = ({ data, menuLinks }) => {
+const Header = ({ data, menuLinks, shopEnabled = false }) => {
   const { menu: cmsMenu } = data
   const { logo = {}, cart_menu } = cmsMenu
   const { items = [] } = menuLinks || {}
@@ -71,6 +71,7 @@ const Header = ({ data, menuLinks }) => {
           toggleMobile()
         }}
         isOpen={menu.isSidebarOpen}
+        shopEnabled={shopEnabled}
       />
     </Menu.Root>
   )

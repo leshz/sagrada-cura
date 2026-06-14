@@ -1,8 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { notFound } from 'next/navigation'
+import { isShopEnabled } from '@/config/feature-flags'
 
 export const dynamic = 'force-static'
 
-const OrderTracking = () => null 
+const OrderTracking = () => {
+  if (!isShopEnabled()) notFound()
+
+  return null
+}
 //  (
 //     <div className="order-tracking">
 //         <div className="container">

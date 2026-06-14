@@ -1,8 +1,12 @@
 import { MetadataRoute } from 'next'
+import { isShopEnabled } from '@/config/feature-flags'
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = 'https://sagradacura.com'
-  
+  const shopEnabled = isShopEnabled()
+
+  const shopDisallow = shopEnabled ? [] : ['/tienda']
+
   return {
     rules: [
       {
@@ -14,7 +18,8 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/private/',
           '*.json',
-          '*.xml'
+          '*.xml',
+          ...shopDisallow
         ],
       },
       {
@@ -24,7 +29,8 @@ export default function robots(): MetadataRoute.Robots {
           '/api/',
           '/_next/',
           '/admin/',
-          '/private/'
+          '/private/',
+          ...shopDisallow
         ],
       },
       {
@@ -34,11 +40,12 @@ export default function robots(): MetadataRoute.Robots {
           '/api/',
           '/_next/',
           '/admin/',
-          '/private/'
+          '/private/',
+          ...shopDisallow
         ],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,
   }
-} 
+}

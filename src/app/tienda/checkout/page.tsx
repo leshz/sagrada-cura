@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { BillingForm } from '@/components/form'
 import { OrderSummary, OrderTotalizer } from '@/components/order-summary'
 
@@ -6,25 +7,32 @@ import { COLLECTIONS } from '@/utils/constants'
 import { getCollections } from '@/services'
 import type { Metadata } from 'next'
 import { APIResponseCollection } from '@/types/types'
+import { isShopEnabled } from '@/config/feature-flags'
 
-export const generateMetadata = async (): Promise<Metadata> => ({
-  title: 'Checkout',
-  description: 'Finalizar compra - Sagrada Cura',
-  alternates: {
-    canonical: 'https://sagradacura.com/tienda/checkout'
-  },
-  robots: {
-    index: false,
-    follow: false
-  },
-  openGraph: {
+export const generateMetadata = async (): Promise<Metadata> => {
+  if (!isShopEnabled()) return {}
+
+  return {
     title: 'Checkout',
-    url: `https://sagradacura.com/tienda/checkout`,
-    type: 'website'
+    description: 'Finalizar compra - Sagrada Cura',
+    alternates: {
+      canonical: 'https://sagradacura.com/tienda/checkout'
+    },
+    robots: {
+      index: false,
+      follow: false
+    },
+    openGraph: {
+      title: 'Checkout',
+      url: `https://sagradacura.com/tienda/checkout`,
+      type: 'website'
+    }
   }
-})
+}
 
 const Checkout = async () => {
+  if (!isShopEnabled()) notFound()
+
   const { data: shipment } = await getCollections<APIResponseCollection<"plugin::strapi-ecommerce-mercadopago.shipment">>(COLLECTIONS.shipment)
 
   return (

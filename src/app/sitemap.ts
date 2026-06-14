@@ -1,9 +1,11 @@
 import { MetadataRoute } from 'next'
 import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
+import { isShopEnabled } from '@/config/feature-flags'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sagradacura.com'
+  const shopEnabled = isShopEnabled()
 
   const pages = {
     params: {
@@ -12,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const [productsResponse, blogsResponse] = await Promise.all([
-    getCollections(COLLECTIONS.products, pages),
+    shopEnabled ? getCollections(COLLECTIONS.products, pages) : Promise.resolve({ data: [] }),
     getCollections(COLLECTIONS.blogs, pages),
   ])
 
@@ -26,12 +28,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 1,
     },
-    {
-      url: `${baseUrl}/tienda`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
+    ...(shopEnabled
+      ? [
+          {
+            url: `${baseUrl}/tienda`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.9,
+          },
+        ]
+      : []),
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
@@ -52,12 +58,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  const productUrls = products.map((product) => ({
-    url: `${baseUrl}/tienda/${product.slug}`,
-    lastModified: new Date(product.updatedAt || product.createdAt || new Date()),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
+  const productUrls = shopEnabled
+    ? products.map((product) => ({
+        url: `${baseUrl}/tienda/${product.slug}`,
+        lastModified: new Date(product.updatedAt || product.createdAt || new Date()),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      }))
+    : []
 
   const blogUrls = (blogs || []).map((blog: any) => ({
     url: `${baseUrl}/blog/${blog.slug}`,

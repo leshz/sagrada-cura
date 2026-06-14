@@ -1,30 +1,38 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { WishList } from '@/components/wish-list'
 import { PurchaseSummary } from '@/components/purchase-summary'
 import { getSingles } from '@/services'
+import { isShopEnabled } from '@/config/feature-flags'
 
 import './page.scss'
 
 export const dynamic = 'force-static'
 
-export const generateMetadata = async (): Promise<Metadata> => ({
-  title: 'Carrito de compras',
-  description: 'Carrito de compras - Sagrada Cura',
-  alternates: {
-    canonical: 'https://sagradacura.com/tienda/carrito-de-compras'
-  },
-  robots: {
-    index: false,
-    follow: false
-  },
-  openGraph: {
+export const generateMetadata = async (): Promise<Metadata> => {
+  if (!isShopEnabled()) return {}
+
+  return {
     title: 'Carrito de compras',
-    url: `https://sagradacura.com/tienda/carrito-de-compras`,
-    type: 'website'
+    description: 'Carrito de compras - Sagrada Cura',
+    alternates: {
+      canonical: 'https://sagradacura.com/tienda/carrito-de-compras'
+    },
+    robots: {
+      index: false,
+      follow: false
+    },
+    openGraph: {
+      title: 'Carrito de compras',
+      url: `https://sagradacura.com/tienda/carrito-de-compras`,
+      type: 'website'
+    }
   }
-})
+}
 
 const Cart = async () => {
+  if (!isShopEnabled()) notFound()
+
   const { table, summary, empty } = await getSingles<any>('cart')
   return (
     <div className="whistlist-section cart mt-40 mb-110">
