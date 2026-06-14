@@ -77,11 +77,13 @@ const NavBarRoot = ({ children, isOpen, logo }) => (
     </div>
   )
 
-const RightSideMenu = ({ click, isOpen, labels }) => (
+const RightSideMenu = ({ click, isOpen, labels, shopEnabled = false }) => (
   <div className="nav-right position-inherit d-flex jsutify-content-end align-items-center">
-    <div className="dropdown">
-      <Cart labels={labels} />
-    </div>
+    {shopEnabled && (
+      <div className="dropdown">
+        <Cart labels={labels} />
+      </div>
+    )}
 
     <button
       className={`sidebar-button mobile-menu-btn ${isOpen ? 'active' : ''}`}

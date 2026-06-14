@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
+import { notFound } from 'next/navigation'
 import {
   ProductImageGallery,
   PaymentsInformation,
@@ -17,11 +18,15 @@ import { ProductNotFound } from '@/components/product/product-not-found'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { getImagePath } from '@/utils/helpers'
+import { isShopEnabled } from '@/config/feature-flags'
 
 import './page.scss'
 
 
 export const generateStaticParams = async () => {
+  // `output: 'export'` requiere al menos un param para rutas dinámicas.
+  if (!isShopEnabled()) return [{ slug: '_export-placeholder' }]
+
   const { data: products } = await getCollections<any>(COLLECTIONS.products, {
     params: {
       'pagination[pageSize]': '100',
@@ -32,6 +37,8 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
+  if (!isShopEnabled()) return {}
+
   const { slug = '' } = await params
   const { data } = await getCollections<any>(COLLECTIONS.products, {
     slug
@@ -108,6 +115,8 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
 }
 
 const ProductDefaultPage = async ({ params }) => {
+  if (!isShopEnabled()) notFound()
+
   const { slug = '' } = await params
   const single = getSingles<any>('product-detail')
   const collection = getCollections<any>(COLLECTIONS.products, {

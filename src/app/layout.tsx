@@ -3,6 +3,8 @@ import { FooterLayout } from '@/components/layout/footer'
 import { Topbar } from '@/components/layout/topbar'
 import { SkipLinks } from '@/components/accessibility/skip-links'
 import { getSingles } from '@/services'
+import { isShopEnabled } from '@/config/feature-flags'
+import { filterShopLinks } from '@/utils/filter-shop-links'
 import { Cormorant, Fauna_One } from 'next/font/google'
 import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
@@ -57,6 +59,12 @@ const RootLayout = async ({ children }) => {
   const generalRes = await getSingles<any>('general')
   const menuRes = await getSingles<any>(`menus/${process.env.MENU}?nested&populate=*`)
 
+  const shopEnabled = isShopEnabled()
+  const filteredMenuRes = {
+    ...menuRes,
+    items: filterShopLinks(menuRes?.items || [], shopEnabled)
+  }
+
   return (
     <html
       className={`${cormorant.variable} ${Secondary.variable} `}
@@ -78,7 +86,7 @@ const RootLayout = async ({ children }) => {
         <SkipLinks />
         <Topbar data={generalRes} />
         <Suspense>
-          <Header data={generalRes} menuLinks={menuRes} />
+          <Header data={generalRes} menuLinks={filteredMenuRes} shopEnabled={shopEnabled} />
         </Suspense>
         {children}
         <ToastContainer

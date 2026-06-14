@@ -1,16 +1,19 @@
 /* eslint-disable arrow-body-style */
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { CategoryBox } from '@/components/category-box'
 import { getCollections, getSingles } from '@/services'
 import { COLLECTIONS, LIST_OF_PRODUCTS } from '@/utils/constants'
 import { GridSelector } from '@/components/grid-selector'
 import { Card } from '@/components/product-card'
 import { Paginator } from '@/components/paginator'
+import { isShopEnabled } from '@/config/feature-flags'
 
 import { APIResponseCollectionMetadata } from '@/types/types'
 
 export const generateMetadata = async (): Promise<Metadata> => {
+  if (!isShopEnabled()) return {}
 
   return {
     title: 'Nuestra tienda',
@@ -32,6 +35,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Shop = async ({ searchParams }) => {
+  if (!isShopEnabled()) notFound()
+
   const searchParamsResolved = await searchParams
   let params = {}
   const category = searchParamsResolved?.category
