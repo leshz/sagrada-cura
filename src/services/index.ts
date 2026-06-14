@@ -1,5 +1,3 @@
-'use server'
-
 import { fetchApi } from './api'
 import { getCollections, sendContactForm, sendCommunityForm } from './collections'
 import { getSingles } from './singles'

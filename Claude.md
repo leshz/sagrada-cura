@@ -1,10 +1,14 @@
 # Sagrada Cura - Cursor Rules
 
 ## Project Overview
-Sagrada Cura is a Next.js 14 e-commerce application focused on natural healing products. The project uses TypeScript, Bootstrap 5, Zustand for state management, and follows modern React patterns.
+Sagrada Cura is a Next.js 16 e-commerce application focused on natural healing products. The project uses TypeScript, Bootstrap 5, Zustand for state management, and follows modern React patterns.
+
+The site is currently configured for `output: 'export'` (full static export) while the
+Strapi CMS is migrated from v4 to v5 and `SHOP_ENABLED=false`. All data fetching happens
+at build time; there is no Node runtime in production during this window.
 
 ## Technology Stack
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js 16 (App Router, Turbopack) + React 19
 - **Language**: TypeScript
 - **Styling**: Bootstrap 5 + SASS
 - **State Management**: Zustand

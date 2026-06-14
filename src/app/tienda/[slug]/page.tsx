@@ -24,7 +24,8 @@ import './page.scss'
 
 
 export const generateStaticParams = async () => {
-  if (!isShopEnabled()) return []
+  // `output: 'export'` requiere al menos un param para rutas dinámicas.
+  if (!isShopEnabled()) return [{ slug: '_export-placeholder' }]
 
   const { data: products } = await getCollections<any>(COLLECTIONS.products, {
     params: {

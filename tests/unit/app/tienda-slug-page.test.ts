@@ -40,14 +40,16 @@ describe('GET /tienda/[slug] - shop visibility guard', () => {
     expect(getCollections).not.toHaveBeenCalled()
   })
 
-  it('generateStaticParams returns [] when SHOP_ENABLED is OFF (no fetch performed)', async () => {
+  it('generateStaticParams returns a placeholder param when SHOP_ENABLED is OFF (no fetch performed)', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
     const { getCollections } = await import('@/services')
     const { generateStaticParams } = await import('@/app/tienda/[slug]/page')
 
     const params = await generateStaticParams()
 
-    expect(params).toEqual([])
+    // `output: 'export'` requiere al menos un param para rutas dinámicas;
+    // ese placeholder resuelve a notFound() en runtime.
+    expect(params).toEqual([{ slug: '_export-placeholder' }])
     expect(getCollections).not.toHaveBeenCalled()
   })
 

@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { isShopEnabled } from '@/config/feature-flags'
 
+export const dynamic = 'force-static'
+
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = 'https://sagradacura.com'
   const shopEnabled = isShopEnabled()

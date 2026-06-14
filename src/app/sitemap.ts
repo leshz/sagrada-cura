@@ -3,6 +3,8 @@ import { getCollections } from '@/services'
 import { COLLECTIONS } from '@/utils/constants'
 import { isShopEnabled } from '@/config/feature-flags'
 
+export const dynamic = 'force-static'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://sagradacura.com'
   const shopEnabled = isShopEnabled()

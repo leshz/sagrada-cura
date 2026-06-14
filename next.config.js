@@ -4,24 +4,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
-const prodCSP = `
-  default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com https://vercel.live;
-  style-src 'self' 'unsafe-inline';
-  connect-src 'self' https://analytics.google.com https://www.mercadopago.com.co https://analytics.google.com;
-  img-src 'self' https://www.googletagmanager.com ${process.env.CDN} data:;
-  font-src 'self' data:;
-  frame-src 'self';
-`
-  .trim()
-  .replace(/(\r\n|\n|\r)/g, '')
-
-const contentSecurityPolicy = process.env.VERCEL === '1' ? prodCSP : ''
-
 const nextConfig = {
+  output: 'export',
   reactStrictMode: false,
   images: {
-    unoptimized: false,
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -42,46 +29,9 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
     silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function']
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: contentSecurityPolicy
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin'
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
-          }
-        ]
-      }
-    ]
-  },
-  async redirects() {
-    return [
-      {
-        source: '/admin',
-        destination: `${process.env.ADMIN_PATH}`,
-        basePath: false,
-        permanent: false
-      }
-    ]
   }
+  // `headers()` y `redirects()` se ignoran con `output: 'export'`.
+  // Movidos a vercel.json (CSP pendiente: requiere el hostname real de CDN).
 }
 
 module.exports = withBundleAnalyzer(nextConfig)
