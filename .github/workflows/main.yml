@@ -7,14 +7,32 @@ on:
     branches:
     - main
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: yarn
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Unit tests
+        run: yarn test:run
+      - name: Build
+        run: yarn build
+
   create_release_tag:
     if: github.event_name == 'push'
+    needs: verify
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Tag/Release on Push Action
         uses: rymndhng/release-on-push-action@v0.27.0
         with:

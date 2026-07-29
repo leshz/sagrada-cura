@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    versioning-strategy: increase-if-necessary
+    commit-message:
+      prefix: 'fix(deps)'
+      prefix-development: 'chore(deps)'
+    groups:
+      # Agrupar los patches de tooling en un solo PR: son ruido de bajo riesgo
+      # y abrir uno por paquete es lo que hace que se ignoren.
+      dev-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+      # Los patches de producción también se agrupan; los majors llegan sueltos
+      # para poder revisarlos con calma.
+      production-patches:
+        dependency-type: production
+        update-types:
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: 'ci'
