@@ -64,7 +64,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "happy-dom": "^20.9.0",
     "husky": "^9.0.11",
-    "jsdom": "^27.2.0",
+    "jsdom": "^30.0.0",
     "prettier": "3.2.5",
     "sass": "1.98.0",
     "stylelint": "^16.26.0",
