@@ -7,6 +7,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   output: 'export',
   reactStrictMode: false,
+  // Next 16.3 genera AGENTS.md y CLAUDE.md en la raíz al correr `next dev`.
+  // Este repo ya mantiene su propio `Claude.md`, y en sistemas de archivos
+  // case-insensitive (macOS) el archivo generado lo sobrescribiría.
+  agentRules: false,
   images: {
     unoptimized: true,
     remotePatterns: [
