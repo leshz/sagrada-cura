@@ -20,7 +20,7 @@ describe('GET /tienda/confirmation - shop visibility guard', () => {
 
   it('body calls notFound() when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { default: Confirmation } = await import('@/app/tienda/confirmation/page')
+    const { default: Confirmation } = await import('@/app/(main)/tienda/confirmation/page')
 
     await expect(
       Confirmation({ searchParams: Promise.resolve({ status: 'approved', external_reference: 'ref-1' }) as any })
@@ -30,7 +30,7 @@ describe('GET /tienda/confirmation - shop visibility guard', () => {
 
   it('generateMetadata returns {} when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { generateMetadata } = await import('@/app/tienda/confirmation/page')
+    const { generateMetadata } = await import('@/app/(main)/tienda/confirmation/page')
 
     const metadata = await generateMetadata()
 
@@ -42,7 +42,7 @@ describe('GET /tienda/confirmation - shop visibility guard', () => {
     const { getCollections } = await import('@/services/collections')
     vi.mocked(getCollections).mockResolvedValue({ data: { payment_status: 'approved' } } as any)
 
-    const { default: Confirmation } = await import('@/app/tienda/confirmation/page')
+    const { default: Confirmation } = await import('@/app/(main)/tienda/confirmation/page')
     await Confirmation({ searchParams: Promise.resolve({ status: 'approved', external_reference: 'ref-1' }) as any })
 
     expect(notFound).not.toHaveBeenCalled()

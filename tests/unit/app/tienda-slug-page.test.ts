@@ -21,7 +21,7 @@ describe('GET /tienda/[slug] - shop visibility guard', () => {
 
   it('body calls notFound() for any slug when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { default: ProductDefaultPage } = await import('@/app/tienda/[slug]/page')
+    const { default: ProductDefaultPage } = await import('@/app/(main)/tienda/[slug]/page')
 
     await expect(
       ProductDefaultPage({ params: Promise.resolve({ slug: 'any-arbitrary-slug' }) })
@@ -32,7 +32,7 @@ describe('GET /tienda/[slug] - shop visibility guard', () => {
   it('generateMetadata returns {} when SHOP_ENABLED is OFF (no fetch performed)', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
     const { getCollections } = await import('@/services')
-    const { generateMetadata } = await import('@/app/tienda/[slug]/page')
+    const { generateMetadata } = await import('@/app/(main)/tienda/[slug]/page')
 
     const metadata = await generateMetadata({ params: Promise.resolve({ slug: 'any-slug' }) })
 
@@ -43,7 +43,7 @@ describe('GET /tienda/[slug] - shop visibility guard', () => {
   it('generateStaticParams returns a placeholder param when SHOP_ENABLED is OFF (no fetch performed)', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
     const { getCollections } = await import('@/services')
-    const { generateStaticParams } = await import('@/app/tienda/[slug]/page')
+    const { generateStaticParams } = await import('@/app/(main)/tienda/[slug]/page')
 
     const params = await generateStaticParams()
 
@@ -61,7 +61,7 @@ describe('GET /tienda/[slug] - shop visibility guard', () => {
       data: { name: 'Producto', stock: 5, promotion: {}, categories: { data: [] } }
     } as any)
 
-    const { default: ProductDefaultPage } = await import('@/app/tienda/[slug]/page')
+    const { default: ProductDefaultPage } = await import('@/app/(main)/tienda/[slug]/page')
     await ProductDefaultPage({ params: Promise.resolve({ slug: 'producto-x' }) })
 
     expect(notFound).not.toHaveBeenCalled()

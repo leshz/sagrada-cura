@@ -1,0 +1,243 @@
+@use '@/styles/base/mixins' as *;
+
+.farewell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 40px 20px;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  text-align: center;
+
+  // Halo cálido que sostiene el bloque central sin competir con el texto.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(900px, 120vw);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      circle,
+      rgba(192, 133, 88, 0.12) 0%,
+      rgba(192, 133, 88, 0.04) 45%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 640px;
+    width: 100%;
+    animation: farewell-rise 1.2s ease-out both;
+  }
+
+  &__wordmark {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-color1);
+    margin-bottom: 32px;
+
+    @include md-down-device() {
+      font-size: 24px;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 220px;
+    margin-bottom: 32px;
+    color: var(--important-color1);
+
+    span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(192, 133, 88, 0.55)
+      );
+
+      &:last-of-type {
+        background: linear-gradient(
+          to left,
+          transparent,
+          rgba(192, 133, 88, 0.55)
+        );
+      }
+    }
+
+    i {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    @include md-down-device() {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    color: var(--title-color);
+    margin-bottom: 28px;
+
+    em {
+      display: block;
+      font-style: italic;
+      color: var(--important-color1);
+    }
+
+    @include lg-down-device() {
+      font-size: 46px;
+    }
+
+    @include md-down-device() {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    @include sm-down-device() {
+      font-size: 30px;
+    }
+  }
+
+  &__lead,
+  &__text {
+    font-family: var(--font-secondary);
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--text-color);
+    max-width: 520px;
+    margin-bottom: 20px;
+
+    @include md-down-device() {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+  }
+
+  &__text {
+    margin-bottom: 44px;
+
+    @include md-down-device() {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__social {
+    margin-bottom: 40px;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(34, 34, 34, 0.18);
+      border-radius: 50%;
+      color: var(--primary-color1);
+      text-decoration: none;
+      transition: color 0.4s ease, border-color 0.4s ease,
+        background-color 0.4s ease, transform 0.4s ease;
+
+      i {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: var(--white-color);
+        border-color: var(--important-color1);
+        background-color: var(--important-color1);
+        transform: translateY(-4px);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--important-color1);
+        outline-offset: 4px;
+      }
+
+      @include md-down-device() {
+        width: 48px;
+        height: 48px;
+
+        i {
+          font-size: 18px;
+        }
+      }
+    }
+
+    @include md-down-device() {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__signature {
+    font-family: var(--font-primary);
+    font-style: italic;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    color: var(--text-color3);
+    margin-bottom: 0;
+
+    @include md-down-device() {
+      font-size: 15px;
+    }
+  }
+}
+
+@keyframes farewell-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .farewell__inner {
+    animation: none;
+  }
+
+  .farewell__social a:hover,
+  .farewell__social a:focus-visible {
+    transform: none;
+  }
+}

@@ -21,7 +21,7 @@ describe('GET /tienda (Shop page) - shop visibility guard', () => {
 
   it('calls notFound() when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { default: Shop } = await import('@/app/tienda/page')
+    const { default: Shop } = await import('@/app/(main)/tienda/page')
 
     await expect(Shop({ searchParams: Promise.resolve({}) })).rejects.toThrow('NEXT_NOT_FOUND')
     expect(notFound).toHaveBeenCalledTimes(1)
@@ -33,7 +33,7 @@ describe('GET /tienda (Shop page) - shop visibility guard', () => {
     vi.mocked(getSingles).mockResolvedValue({})
     vi.mocked(getCollections).mockResolvedValue({ data: [], meta: { pagination: { total: 0 } } } as any)
 
-    const { default: Shop } = await import('@/app/tienda/page')
+    const { default: Shop } = await import('@/app/(main)/tienda/page')
     await Shop({ searchParams: Promise.resolve({}) })
 
     expect(notFound).not.toHaveBeenCalled()
@@ -41,14 +41,14 @@ describe('GET /tienda (Shop page) - shop visibility guard', () => {
 
   it('generateMetadata returns {} when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { generateMetadata } = await import('@/app/tienda/page')
+    const { generateMetadata } = await import('@/app/(main)/tienda/page')
 
     await expect(generateMetadata()).resolves.toEqual({})
   })
 
   it('generateMetadata returns shop metadata when SHOP_ENABLED is ON', async () => {
     vi.stubEnv('SHOP_ENABLED', 'true')
-    const { generateMetadata } = await import('@/app/tienda/page')
+    const { generateMetadata } = await import('@/app/(main)/tienda/page')
 
     await expect(generateMetadata()).resolves.toMatchObject({ title: 'Nuestra tienda' })
   })

@@ -16,7 +16,7 @@ describe('GET /tienda/order-tracker - shop visibility guard', () => {
 
   it('calls notFound() when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { default: OrderTracking } = await import('@/app/tienda/order-tracker/page')
+    const { default: OrderTracking } = await import('@/app/(main)/tienda/order-tracker/page')
 
     expect(() => OrderTracking()).toThrow('NEXT_NOT_FOUND')
     expect(notFound).toHaveBeenCalledTimes(1)
@@ -24,7 +24,7 @@ describe('GET /tienda/order-tracker - shop visibility guard', () => {
 
   it('does not call notFound() when SHOP_ENABLED is ON', async () => {
     vi.stubEnv('SHOP_ENABLED', 'true')
-    const { default: OrderTracking } = await import('@/app/tienda/order-tracker/page')
+    const { default: OrderTracking } = await import('@/app/(main)/tienda/order-tracker/page')
 
     OrderTracking()
 
