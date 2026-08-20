@@ -21,7 +21,7 @@ describe('GET /tienda/carrito-de-compras - shop visibility guard', () => {
 
   it('body calls notFound() when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { default: Cart } = await import('@/app/tienda/carrito-de-compras/page')
+    const { default: Cart } = await import('@/app/(main)/tienda/carrito-de-compras/page')
 
     await expect(Cart()).rejects.toThrow('NEXT_NOT_FOUND')
     expect(notFound).toHaveBeenCalledTimes(1)
@@ -29,7 +29,7 @@ describe('GET /tienda/carrito-de-compras - shop visibility guard', () => {
 
   it('generateMetadata returns {} when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { generateMetadata } = await import('@/app/tienda/carrito-de-compras/page')
+    const { generateMetadata } = await import('@/app/(main)/tienda/carrito-de-compras/page')
 
     const metadata = await generateMetadata()
 
@@ -41,7 +41,7 @@ describe('GET /tienda/carrito-de-compras - shop visibility guard', () => {
     const { getSingles } = await import('@/services')
     vi.mocked(getSingles).mockResolvedValue({ table: {}, summary: {}, empty: {} })
 
-    const { default: Cart } = await import('@/app/tienda/carrito-de-compras/page')
+    const { default: Cart } = await import('@/app/(main)/tienda/carrito-de-compras/page')
     await Cart()
 
     expect(notFound).not.toHaveBeenCalled()

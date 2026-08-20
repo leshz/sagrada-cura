@@ -20,7 +20,7 @@ describe('GET /tienda/checkout - shop visibility guard', () => {
 
   it('body calls notFound() when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { default: Checkout } = await import('@/app/tienda/checkout/page')
+    const { default: Checkout } = await import('@/app/(main)/tienda/checkout/page')
 
     await expect(Checkout()).rejects.toThrow('NEXT_NOT_FOUND')
     expect(notFound).toHaveBeenCalledTimes(1)
@@ -28,7 +28,7 @@ describe('GET /tienda/checkout - shop visibility guard', () => {
 
   it('generateMetadata returns {} when SHOP_ENABLED is OFF', async () => {
     vi.stubEnv('SHOP_ENABLED', 'false')
-    const { generateMetadata } = await import('@/app/tienda/checkout/page')
+    const { generateMetadata } = await import('@/app/(main)/tienda/checkout/page')
 
     const metadata = await generateMetadata()
 
@@ -40,7 +40,7 @@ describe('GET /tienda/checkout - shop visibility guard', () => {
     const { getCollections } = await import('@/services')
     vi.mocked(getCollections).mockResolvedValue({ data: [] } as any)
 
-    const { default: Checkout } = await import('@/app/tienda/checkout/page')
+    const { default: Checkout } = await import('@/app/(main)/tienda/checkout/page')
     await Checkout()
 
     expect(notFound).not.toHaveBeenCalled()

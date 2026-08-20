@@ -1,12 +1,5 @@
-import { Header } from '@/components/layout/header'
-import { FooterLayout } from '@/components/layout/footer'
-import { Topbar } from '@/components/layout/topbar'
-import { SkipLinks } from '@/components/accessibility/skip-links'
 import { getSingles } from '@/services'
-import { isShopEnabled } from '@/config/feature-flags'
-import { filterShopLinks } from '@/utils/filter-shop-links'
 import { Cormorant, Fauna_One } from 'next/font/google'
-import { Suspense } from 'react'
 import { ToastContainer, Slide } from 'react-toastify'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@/providers/analytics'
@@ -55,52 +48,35 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 }
 
-const RootLayout = async ({ children }) => {
-  const generalRes = await getSingles<any>('general')
-  const menuRes = await getSingles<any>(`menus/${process.env.MENU}?nested&populate=*`)
+const RootLayout = async ({ children }) => (
+  <html
+    className={`${cormorant.variable} ${Secondary.variable} `}
+    lang="es-CO"
+  >
+    <head>
+      {/* Hreflang tags for localization */}
+      <link rel="alternate" hrefLang="es-CO" href="https://sagradacura.com" />
+      <link rel="alternate" hrefLang="es" href="https://sagradacura.com" />
+      <link rel="alternate" hrefLang="x-default" href="https://sagradacura.com" />
 
-  const shopEnabled = isShopEnabled()
-  const filteredMenuRes = {
-    ...menuRes,
-    items: filterShopLinks(menuRes?.items || [], shopEnabled)
-  }
-
-  return (
-    <html
-      className={`${cormorant.variable} ${Secondary.variable} `}
-      lang="es-CO"
-    >
-      <head>
-        {/* Hreflang tags for localization */}
-        <link rel="alternate" hrefLang="es-CO" href="https://sagradacura.com" />
-        <link rel="alternate" hrefLang="es" href="https://sagradacura.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://sagradacura.com" />
-
-        {/* Geo targeting for Colombia */}
-        <meta name="geo.region" content="CO" />
-        <meta name="geo.placename" content="Colombia" />
-        <meta name="geo.position" content="4.5709;-74.2973" />
-        <meta name="ICBM" content="4.5709, -74.2973" />
-      </head>
-      <body>
-        <SkipLinks />
-        <Topbar data={generalRes} />
-        <Suspense>
-          <Header data={generalRes} menuLinks={filteredMenuRes} shopEnabled={shopEnabled} />
-        </Suspense>
-        {children}
-        <ToastContainer
-          pauseOnHover={false}
-          position="bottom-right"
-          transition={Slide}
-          pauseOnFocusLoss={false}
-        />
-        <FooterLayout data={generalRes} />
-        <SpeedInsights />
-      </body>
-      <Analytics />
-    </html>
-  )
-}
+      {/* Geo targeting for Colombia */}
+      <meta name="geo.region" content="CO" />
+      <meta name="geo.placename" content="Colombia" />
+      <meta name="geo.position" content="4.5709;-74.2973" />
+      <meta name="ICBM" content="4.5709, -74.2973" />
+    </head>
+    <body>
+      {children}
+      <ToastContainer
+        pauseOnHover={false}
+        position="bottom-right"
+        transition={Slide}
+        pauseOnFocusLoss={false}
+      />
+      <SpeedInsights />
+    </body>
+    <Analytics />
+  </html>
+)
 
 export default RootLayout

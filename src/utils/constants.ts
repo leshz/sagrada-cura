@@ -57,3 +57,26 @@ export const ITEM_TYPES = {
   PRODUCT: 'producto',
   SERVICE: 'servicio'
 }
+
+// Redes sociales que permanecen activas tras el cierre del sitio.
+// Hardcodeadas a propósito: no dependen de Strapi durante la migración v4 → v5.
+export const FAREWELL_SOCIAL_LINKS = [
+  {
+    id: 'instagram',
+    label: 'Instagram',
+    icon: 'instagram',
+    href: 'https://www.instagram.com/sagradacura_'
+  },
+  {
+    id: 'facebook',
+    label: 'Facebook',
+    icon: 'facebook',
+    href: 'https://www.facebook.com/people/Sagrada-Cura/61559396086072/'
+  },
+  {
+    id: 'tiktok',
+    label: 'TikTok',
+    icon: 'tiktok',
+    href: 'https://www.tiktok.com/@sagradacura'
+  }
+] as const

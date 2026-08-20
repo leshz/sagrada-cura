@@ -59,7 +59,7 @@ const menuRes = {
   ]
 }
 
-describe('RootLayout', () => {
+describe('MainLayout', () => {
   afterEach(() => {
     vi.unstubAllEnvs()
     vi.clearAllMocks()
@@ -70,9 +70,9 @@ describe('RootLayout', () => {
     getSingles.mockResolvedValueOnce(generalRes).mockResolvedValueOnce(menuRes)
 
     const { Header } = await import('@/components/layout/header')
-    const { default: RootLayout } = await import('@/app/layout')
+    const { default: MainLayout } = await import('@/app/(main)/layout')
 
-    const element = await RootLayout({ children: <div /> })
+    const element = await MainLayout({ children: <div /> })
     render(element)
 
     expect(Header).toHaveBeenCalledTimes(1)
@@ -87,9 +87,9 @@ describe('RootLayout', () => {
     getSingles.mockResolvedValueOnce(generalRes).mockResolvedValueOnce(menuRes)
 
     const { Header } = await import('@/components/layout/header')
-    const { default: RootLayout } = await import('@/app/layout')
+    const { default: MainLayout } = await import('@/app/(main)/layout')
 
-    const element = await RootLayout({ children: <div /> })
+    const element = await MainLayout({ children: <div /> })
     render(element)
 
     expect(Header).toHaveBeenCalledTimes(1)
